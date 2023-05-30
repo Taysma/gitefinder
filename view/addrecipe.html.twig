@@ -1,0 +1,36 @@
+{% extends "template.html.twig" %}
+
+{% block headerblock %}
+{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
+{% block title %}Add a recipe{% endblock %}
+
+{% block content %}
+
+	<div id="addRecipeForm">
+		<fieldset>
+
+		{% if message %} <p> {{ message }} </p> {% endif %}
+		
+			<legend>Add your Recipe to our journal</legend>
+
+			<form method="POST" action="{{ path('recipeAdd') }}">
+
+				<label for="title">Title</label>
+            <br>
+				<input type="text" id="title" name="title" placeholder="Enter the name of your recipe here">
+            <br>
+				<label for="duration">How long does this recipe take ?</label>
+            <br>
+				<input type="text" id="duration" name="duration" placeholder="Time in hours or minutes">
+            <br>
+                <label for="content">Write your recipe</label>
+            <br>
+                <textarea id="content" name="content" placeholder="Write your recipe here"></textarea>
+            <br>
+				<input type="submit" name="submit" value="Submit">
+			</form>
+		</fieldset>
+	</div>
+{% endblock %}

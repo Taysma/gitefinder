@@ -1,0 +1,51 @@
+<header class="limit-size">
+
+	<div id="nav-menu">
+		<nav>
+			<ul>
+				<a href="{{ path('home') }}"><img src="{{ asset('/media/icons/logo.svg') }}"></a>
+
+				<li>
+					<a href="#">About Us</a>
+				</li>
+				<li>
+					{% if session.connect %}
+						<a href="{{ path('account') }}">My account</a>
+						
+						<li>
+							<a href="{{ path('recipeAdd') }}">Add a Recipe</a>
+						</li>
+						<li>
+							<a href="{{ path('logout') }}">Log Out</a>
+						</li>
+						
+
+					{% else %}
+						<a href="{{ path('register') }}">Register</a>
+						<li>
+							<a href="{{ path('login') }}">Log In</a>
+						</li>
+					{% endif %}
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+	<div id="nav-list">
+		<nav>
+			<ul>
+				<li>
+					<a href="{{ path('recipeindex')}}">All Recipes</a>
+				</li>
+				<!-- START LOOP HERE -->
+				{% for category in categories %}
+					<li>
+						<a href="{{ categorieslink }}{{ category.cid }}">
+							{{ category.cname }}
+						</a>
+					</li>
+				{% endfor %}
+			</nav>
+		</div>
+
+	</header>

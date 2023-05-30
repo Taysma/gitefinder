@@ -1,0 +1,32 @@
+{% extends "template.html.twig" %}
+
+{% block title %} Register {% endblock %}
+
+{% block headerblock %}
+	{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
+
+{% block content %}
+
+	<div id="register">
+		<fieldset>
+			<legend>Register</legend>
+
+			<form method="POST" action="{{ register }}">
+
+				<label for="username">Username :</label>
+				<input type="text" id="username" name="username" placeholder="Your username here">
+
+				<label for="password">Password :</label>
+				<input type="password" id="password" name="password" placeholder="password">
+
+				<label for="email">Email :</label>
+				<input type="email" id="email" name="email" placeholder="Your email adress here">
+
+				<input type="submit" value="Sign Up">
+			</form>
+		</fieldset>
+	</div>
+
+{% endblock %}

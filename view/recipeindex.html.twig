@@ -1,0 +1,25 @@
+{% extends "template.html.twig" %}
+
+{% block headerblock %}
+	{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
+{% block title %}
+	Our Recipes
+{% endblock %}
+
+{% block content %}
+<ul>
+	{% for recipe in recipes %}
+		<div id="recipe-card">
+			<li>
+				<a href="{{ oneRecipe }}{{ recipe.id }}">{{ recipe.title }}</a>
+			</li>
+			<li>
+				<p>{{ recipe.duration }}</p>
+			</li>
+		</div>
+	{% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "template.html.twig" %}
+
+{% block headerblock %}{% include 'header.html.twig' with {'categories' : cats } %}{% endblock %}
+
+{% block title %}Edit a recipe{% endblock %}
+
+{% block content %}
+
+	<div id="addRecipeForm">
+		<fieldset>
+
+		{% if message %} <p> {{ message }} </p> {% endif %}
+		
+			<legend>Update your Recipe</legend>
+
+			<form method="POST" action="{{ router.generate('editRecipe', {'id': recipe.id}) }}">
+
+				<label for="title">Title</label>
+            <br>
+				<input type="text" id="title" name="title" value="{{ recipe.title }}" placeholder="Enter the name of your recipe here">
+            <br>
+				<label for="duration">Edit Time :</label>
+            <br>
+				<input type="text" id="duration" name="duration" value="{{ recipe.duration }}" placeholder="Time in hours or minutes">
+            <br>
+                <label for="content">Edit your recipe</label>
+            <br>
+                <textarea id="content" name="content" placeholder="Write your recipe here">{{ recipe.content }}</textarea>
+            <br>
+				<input type="submit" name="submit" value="Submit">
+			</form>
+		</fieldset>
+	</div>
+    
+{% endblock %}
