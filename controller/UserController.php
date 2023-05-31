@@ -41,7 +41,7 @@ class UserController extends Controller {
                     $_SESSION['connect'] = true;
 
                 global $router;
-                header('Location: ' . $router->generate('account'));
+                header('Location: ' . $router->generate('dashboardGuest')); // add condition "if" pour les 3 routes si role match host/guest/admin
                 exit();
                 } else {
                     echo 'ECLATAX';

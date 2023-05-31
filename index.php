@@ -11,7 +11,7 @@ $router->setBasePath('/projets/gitefinder');
 $router->map('GET', '/', 'HomeController#home', 'home');
 
 //  HOMEPAGE // Affichages des contenues de la homepage
-
+// Add homepage content
 
 // Log-in/out form route
 $router->map('GET|POST','/login', 'UserController#login', 'login');
@@ -20,14 +20,16 @@ $router->map('GET','/logout', 'UserController#logout', 'logout');
 $router->map('GET|POST','/registration', 'UserController#register', 'register');
 
 // USER
-$router->map('GET', '/account', 'RecipeController#getUserRecipe', 'account');
+$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardHost');
+$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardGuest');
+$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardAdmin');
 
-// CRUD RECIPE
-$router->map('GET|POST', '/addrecipe', 'RecipeController#createRecipe', 'recipeAdd');
+// CRUD Post
+$router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
 
-$router->map('GET|POST', '/recipe/edit/[i:id]', 'RecipeController#edit', 'editRecipe');
+$router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
 
-$router->map('POST|DELETE', '/recipe/delete/[i:id]', 'RecipeController#delete', 'deleteRecipe');
+$router->map('POST|DELETE', '/post/delete/[i:id]', 'PostController#delete', 'deletePost');
 
 
 // SEARCH
