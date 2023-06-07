@@ -4,7 +4,7 @@ class CategoryModel extends Model {
     public function getAllCategory(){
         $categories = [];
 
-        $req = $this->getDb()->query('SELECT `cid`, `cname`, `cslug` FROM `category`');
+        $req = $this->getDb()->query('SELECT `id_category`, `tag`, `name`, `slug` FROM `category`');
 
         while($category = $req->fetch(PDO::FETCH_ASSOC)){
             $categories[] = new Category($category);
@@ -12,10 +12,10 @@ class CategoryModel extends Model {
         return $categories;
     }
 
-    public function getOneCategory(int $id){
+    public function getOneCategory(int $id_category){
 
-        $req = $this->getDb()->prepare('SELECT `cid`, `cname`, `cslug` FROM `category` WHERE `cid` = :id');
-        $req->bindParam('id',$id,PDO::PARAM_INT);
+        $req = $this->getDb()->prepare('SELECT `id_category`, `tag`, `name`, `slug` FROM `category` WHERE `id_category` = :id_category');
+        $req->bindParam('id_category',$id_category,PDO::PARAM_INT);
         $req->execute();
 
         $category = new Category($req->fetch(PDO::FETCH_ASSOC));
@@ -23,23 +23,23 @@ class CategoryModel extends Model {
         return $category;
     }
     
-    public function getRecipesByCategory(int $categoryId) {
-        $recipes = [];
+    public function getrentalsByCategory(int $id_category) {
+        $rentals = [];
 
-        $req = $this->getDb()->prepare('SELECT `recipe`.`id`, `recipe`.`author`, `recipe`.`title`, `recipe`.`duration`, `recipe`.`thumbnail`, `recipe`.`content`, `recipe`.`created_at`
-            FROM `recipe`
-            INNER JOIN `recipe_category`
-            ON `recipe_category`.`id_recipe` = `recipe`.`id`
+        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content` 
+            FROM `rental`
+            INNER JOIN `rental_category`
+            ON `rental_category`.`id_rental` = `rental`.`id_rental`
             INNER JOIN `category`
-            ON `recipe_category`.`id_category` = `category`.`cid`
-            WHERE `category`.`cid` = :categoryId');
-        $req->bindParam(':categoryId', $categoryId, PDO::PARAM_INT);
+            ON `rental_category`.`id_category` = `category`.`id_category`
+            WHERE `category`.`id_category` = :id_category');
+        $req->bindParam(':id_category', $id_category, PDO::PARAM_INT);
         $req->execute();
 
-        while ($recipeData = $req->fetch(PDO::FETCH_ASSOC)) {
-            $recipes[] = new Recipe($recipeData);
+        while ($rentalData = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rentals[] = new Rental($rentalData);
         }
 
-        return $recipes;
+        return $rentals;
     }
 }
