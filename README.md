@@ -1,6 +1,6 @@
 # Projet Gîtes
 
-• Collaborators : DayZmooN & orikam
+• Collaborators : DayZmooN & orikham
 
 # /!\ Ne pas oublier : - composer install /!\
 

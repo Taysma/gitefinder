@@ -1,15 +1,12 @@
 <?php
 
-class  Review{
-
-    private $id_review;
+class Chat {
+    private $id_chat;
     private $id_user;
     private $id_rental;
     private $content;
-    private $rating;
-    private $created_at;
+    private $send_at;
     
-
     public function __construct(array $post){
         $this->hydrate($post);
     }
@@ -25,15 +22,15 @@ class  Review{
     }
 
     //GETTERS
-    public function getId_review(){
-        return $this->id_review;
+    public function getId_chat(){
+        return $this->id_chat;
     }
 
-    public function getId_user(){
+    public function getIdUser(){
         return $this->id_user;
     }
 
-    public function getId_rental(){
+    public function getIdRental(){
         return $this->id_rental;
     }
 
@@ -41,27 +38,21 @@ class  Review{
         return $this->content;
     }
 
-    public function getRating(){
-        return $this->rating;
+    public function getSendAt(){
+        return $this->send_at;
     }
-
-    public function getCreatedAt(){
-        return $this->created_at;
-    }
-
-    
 
 
 
     //SETTERS
 
-    public function setId(int $id_review){
-        $this->id_review=$id_review;
+    public function setId_chat(int $id_chat){
+        $this->id_chat=$id_chat;
     }
 
     public function setId_user(int $id_user){
         $this->id_user=$id_user;
-    } 
+    }
 
     public function setId_rental(int $id_rental){
         $this->id_rental=$id_rental;
@@ -71,13 +62,8 @@ class  Review{
         $this->content=$content;
     }
 
-    public function setRating(int $rating){
-        $this->rating=$rating;
+    public function setSendAt(String $send_at){
+        $this->send_at=$send_at;
     }
 
-    public function setCreatedAt(String $created_at){
-        $this->created_at= $created_at;
-    }
-
-   
 }

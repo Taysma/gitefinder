@@ -2,12 +2,13 @@
 
 class User {
     private $id_user;
-    private $username;
+    private $firstname;
+    private $lastname;
     private $mail;
     private $birthdate;
     private $password;
-    private $role;
     private $content;
+    private $roles;
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -28,8 +29,12 @@ class User {
         return $this->id_user;
     }
 
-    public function getUsername(){
-        return $this->username;
+    public function getFirstname(){
+        return $this->firstname;
+    }
+
+    public function getLastname(){
+        return $this->lastname;
     }
 
     public function getMail(){
@@ -42,42 +47,42 @@ class User {
 
     public function getPassword(){
         return $this->password;
-    }
-
-    public function getRole(){
-        return $this->role;
-    }
+    } 
 
     public function getContent(){
         return $this->content;
     }
 
+    public function getRoles(){
+        return $this->roles;
+    }
+
     //SETTERS
-    public function setId(int $id_user){
+    public function setId_user(int $id_user){
         $this->id_user=$id_user;
     }
 
-    public function setUsername(String $username){
-        $this->username=$username;
+    public function setLastname(String $lastname){
+        $this->lastname=$lastname;
     }
 
-    public function setMail(int $mail){
-        $this->mail=$mail;
+    public function setFirstname(String $firstname){
+        $this->firstname=$firstname;
     }
 
     public function setBirthdate(String $birthdate){
         $this->birthdate=$birthdate;
-    }
+    } 
 
     public function setPassword(String $password){
         $this->password=$password;
-    }
-
-    public function setRole(String $role){
-        $this->role=$role;
-    }
+    } 
 
     public function setContent(String $content){
         $this->content=$content;
+    }
+
+    public function setRoles(String $roles){
+        $this->roles=$roles;
     }
 }
