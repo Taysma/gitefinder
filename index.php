@@ -26,9 +26,7 @@ $router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardAdmin'
 
 // CRUD Post
 $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
-
 $router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
-
 $router->map('POST|DELETE', '/post/delete/[i:id]', 'PostController#delete', 'deletePost');
 
 

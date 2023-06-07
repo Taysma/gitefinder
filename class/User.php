@@ -10,12 +10,12 @@ class User {
     private $content;
     private $roles;
 
-    public function __construct(array $post){
-        $this->hydrate($post);
+    public function __construct(array $datas){
+        $this->hydrate($datas);
     }
 
-    private function hydrate(array $post){
-        foreach($post as $key => $value){
+    private function hydrate(array $datas){
+        foreach($datas as $key => $value){
             $method = 'set' . ucfirst($key);
 
             if(method_exists($this, $method)){
@@ -25,16 +25,8 @@ class User {
     }
 
     //GETTERS
-    public function getId(){
+    public function getId_user(){
         return $this->id_user;
-    }
-
-    public function getFirstname(){
-        return $this->firstname;
-    }
-
-    public function getLastname(){
-        return $this->lastname;
     }
 
     public function getMail(){
@@ -76,9 +68,7 @@ class User {
         $this->birthdate=$birthdate;
     }
 
-    public function setEmail(String $mail){
-        $this->mail=$mail;
-    }
+   
 
     public function setPassword(String $password){
         $this->password=$password;

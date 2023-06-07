@@ -1,21 +1,21 @@
-<?php
+<?php 
 
-class Rental {
+class Rental{
     private $id_rental;
     private $id_user;
     private $title;
-    private $content;
     private $capacity;
     private $surface_area;
     private $city;
-    private $address;
+    private $adress;
+    private $content;
 
-    public function __construct(array $post){
-        $this->hydrate($post);
+    public function __construct(array $datas){
+        $this->hydrate($datas);
     }
 
-    private function hydrate(array $post){
-        foreach($post as $key => $value){
+    private function hydrate(array $datas){
+        foreach($datas as $key => $value){
             $method = 'set' . ucfirst($key);
 
             if(method_exists($this, $method)){
@@ -25,11 +25,11 @@ class Rental {
     }
 
     //GETTERS
-    public function getId(){
+    public function getId_rental(){
         return $this->id_rental;
     }
 
-    public function getIdUser(){
+    public function getId_user(){
         return $this->id_user;
     }
 
@@ -37,61 +37,58 @@ class Rental {
         return $this->title;
     }
 
-    public function getContent(){
-        return $this->content;
-    }
-
     public function getCapacity(){
         return $this->capacity;
     }
 
-    public function getSurface(){
+    public function getSurface_area(){
         return $this->surface_area;
     }
 
     public function getCity(){
         return $this->city;
     }
-    
-    public function getAddress(){
-        return $this->address;
+
+    public function getAdress(){
+        return $this->adress;
     }
 
+    public function getContent(){
+        return $this->content;
+    }
 
 
     //SETTERS
-
-    public function setId(int $id_rental){
+    public function setId_rental(int $id_rental){
         $this->id_rental=$id_rental;
     }
 
-    public function setIdUser(int $id_user){
-        $this->id_user=$id_user;
+    public function setId_user(int $id_rental){
+        $this->id_rental=$id_rental;
     }
-
-    
 
     public function setTitle(String $title){
         $this->title=$title;
-    }
-
-    public function setContent(String $content){
-        $this->content=$content;
     }
 
     public function setCapacity(int $capacity){
         $this->capacity=$capacity;
     }
 
-    public function setSurface(int $surface_area){
-        $this->surface_area = $surface_area;
+    public function setSurface_area(int $surface_area){
+        $this->surface_area=$surface_area;
     }
 
-    public function setCity(String $city){
+    public function setCity(int $city){
         $this->city=$city;
-    } 
-
-    public function setAddress(String $address){
-        $this->address=$address;
     }
+
+    public function setAdress(int $adress){
+        $this->adress=$adress;
+    }
+
+    public function setContent(int $content){
+        $this->content=$content;
+    }
+
 }
