@@ -14,10 +14,10 @@ $router->map('GET', '/', 'HomeController#home', 'home');
 // Add homepage content
 
 // Log-in/out form route
-$router->map('GET|POST','/login', 'UserController#login', 'login');
-$router->map('GET','/logout', 'UserController#logout', 'logout');
+$router->map('GET|POST', '/login', 'UserController#login', 'login');
+$router->map('GET', '/logout', 'UserController#logout', 'logout');
 // Register
-$router->map('GET|POST','/registration', 'UserController#register', 'register');
+$router->map('GET|POST', '/registration', 'UserController#register', 'register');
 
 // USER
 $router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardHost');
