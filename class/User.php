@@ -1,19 +1,20 @@
 <?php
 
 class User {
-    private $id;
+    private $id_user;
     private $username;
+    private $mail;
+    private $birthdate;
     private $password;
-    private $email;
-    private $favoris;
-    private $joined_date;
+    private $role;
+    private $content;
 
-    public function __construct(array $post){
-        $this->hydrate($post);
+    public function __construct(array $datas){
+        $this->hydrate($datas);
     }
 
-    private function hydrate(array $post){
-        foreach($post as $key => $value){
+    private function hydrate(array $datas){
+        foreach($datas as $key => $value){
             $method = 'set' . ucfirst($key);
 
             if(method_exists($this, $method)){
@@ -23,52 +24,60 @@ class User {
     }
 
     //GETTERS
-    public function getId(){
-        return $this->id;
+    public function getId_user(){
+        return $this->id_user;
     }
 
     public function getUsername(){
         return $this->username;
     }
 
+    public function getMail(){
+        return $this->mail;
+    }
+
+    public function getBirthdate(){
+        return $this->birthdate;
+    }
+
     public function getPassword(){
         return $this->password;
     }
 
-    public function getEmail(){
-        return $this->email;
+    public function getRole(){
+        return $this->role;
     }
 
-    public function getFavoris(){
-        return $this->favoris;
-    }
-
-    public function getJoined_date(){
-        return $this->joined_date;
+    public function getContent(){
+        return $this->content;
     }
 
     //SETTERS
-    public function setId(int $id){
-        $this->id=$id;
+    public function setId(int $id_user){
+        $this->id_user=$id_user;
     }
 
     public function setUsername(String $username){
         $this->username=$username;
     }
 
+    public function setMail(int $mail){
+        $this->mail=$mail;
+    }
+
+    public function setBirthdate(String $birthdate){
+        $this->birthdate=$birthdate;
+    }
+
     public function setPassword(String $password){
         $this->password=$password;
     }
 
-    public function setEmail(String $email){
-        $this->email=$email;
+    public function setRole(String $role){
+        $this->role=$role;
     }
 
-    public function setFavoris(String $favoris){
-        $this->favoris=$favoris;
-    }
-
-    public function setJoined_date(String $joined_date){
-        $this->joined_date=$joined_date;
+    public function setContent(String $content){
+        $this->content=$content;
     }
 }
