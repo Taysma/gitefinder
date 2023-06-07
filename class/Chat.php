@@ -22,7 +22,7 @@ class Chat {
     }
 
     //GETTERS
-    public function getId(){
+    public function getId_chat(){
         return $this->id_chat;
     }
 
@@ -46,15 +46,15 @@ class Chat {
 
     //SETTERS
 
-    public function setId(int $id_chat){
+    public function setId_chat(int $id_chat){
         $this->id_chat=$id_chat;
     }
 
-    public function setIdUser(int $id_user){
+    public function setId_user(int $id_user){
         $this->id_user=$id_user;
     }
 
-    public function setIdRental(int $id_rental){
+    public function setId_rental(int $id_rental){
         $this->id_rental=$id_rental;
     }
 

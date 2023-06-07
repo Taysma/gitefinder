@@ -21,7 +21,7 @@ class  Picture{
     }
 
     //GETTERS
-    public function getId(){
+    public function getId_picture(){
         return $this->id_picture;
     }
 
@@ -37,7 +37,7 @@ class  Picture{
 
     //SETTERS
 
-    public function setId(int $id_picture){
+    public function setId_picture(int $id_picture){
         $this->id_picture=$id_picture;
     }
 

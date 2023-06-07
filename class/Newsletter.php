@@ -20,7 +20,7 @@ class  Newsletter{
     }
 
     //GETTERS
-    public function getId(){
+    public function getId_newsletter(){
         return $this->id_newsletter;
     }
 
@@ -33,7 +33,7 @@ class  Newsletter{
 
     //SETTERS
 
-    public function setId(int $id_newsletter){
+    public function setId_newsletter(int $id_newsletter){
         $this->id_newsletter=$id_newsletter;
     }
 

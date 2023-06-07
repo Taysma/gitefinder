@@ -25,15 +25,15 @@ class  Review{
     }
 
     //GETTERS
-    public function getId(){
+    public function getId_review(){
         return $this->id_review;
     }
 
-    public function getIdUser(){
+    public function getId_user(){
         return $this->id_user;
     }
 
-    public function getIdRental(){
+    public function getId_rental(){
         return $this->id_rental;
     }
 
@@ -59,11 +59,11 @@ class  Review{
         $this->id_review=$id_review;
     }
 
-    public function setIdUser(int $id_user){
+    public function setId_user(int $id_user){
         $this->id_user=$id_user;
     } 
 
-    public function setIdRental(int $id_rental){
+    public function setId_rental(int $id_rental){
         $this->id_rental=$id_rental;
     }
 

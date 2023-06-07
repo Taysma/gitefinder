@@ -27,15 +27,15 @@ class Reservation{
 
     //GETTERS
 
-    public function getId(){
+    public function getId_reservation(){
         return $this->id_reservation;
     }
 
-    public function getIdUser(){
+    public function getId_user(){
         return $this->id_user;
     }
 
-    public function getIdRental(){
+    public function getId_rental(){
         return $this->id_rental;
     }
 
@@ -59,15 +59,15 @@ class Reservation{
 
     //SETTERS
 
-    public function setId(int $id_reservation){
+    public function setId_reservation(int $id_reservation){
         $this->id_reservation=$id_reservation;
     }
 
-    public function setIdUser(int $id_user){
+    public function setId_user(int $id_user){
         $this->id_user=$id_user;
     }
 
-    public function setIdRental(int $id_rental){
+    public function setId_rental(int $id_rental){
         $this->id_rental=$id_rental;
     }
 

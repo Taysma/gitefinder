@@ -29,6 +29,14 @@ class User {
         return $this->id_user;
     }
 
+    public function getFirstname(){
+        return $this->firstname;
+    }
+
+    public function getLastname(){
+        return $this->lastname;
+    }
+
     public function getMail(){
         return $this->mail;
     }
@@ -39,9 +47,7 @@ class User {
 
     public function getPassword(){
         return $this->password;
-    }
-
-    
+    } 
 
     public function getContent(){
         return $this->content;
@@ -52,7 +58,7 @@ class User {
     }
 
     //SETTERS
-    public function setId(int $id_user){
+    public function setId_user(int $id_user){
         $this->id_user=$id_user;
     }
 
@@ -66,9 +72,7 @@ class User {
 
     public function setBirthdate(String $birthdate){
         $this->birthdate=$birthdate;
-    }
-
-   
+    } 
 
     public function setPassword(String $password){
         $this->password=$password;
