@@ -3,10 +3,10 @@ class UserModel extends Model {
     public function getAllUsers(){
         $users = [];
 
-        $req = $this->getDb()->query('SELECT `uid`, `username`, `password`, `email`, `favoris`, `joined_date` FROM `user`');
+        $req = $this->getDb()->query('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles` FROM `user`');
 
         while ($user = $req->fetch(PDO::FETCH_ASSOC)) {
-            $users[] = new Recipe($user);
+            $users[] = new User($user);
         }
 
         $req->closeCursor();
@@ -14,23 +14,36 @@ class UserModel extends Model {
     }
 
     public function createUser(User $user){
-        $username = $user->getUsername();
+        $id_user = $user->getId_user();
+        $firstname = $user->getFirstname();
+        $lastname = $user->getLastname();
+        $mail = $user->getMail();
+        $birthdate = $user->getBirthdate();
         $password = $user->getPassword();
-        $email = $user->getEmail();
+        $content = $user->getContent();
+        $roles = $user->getRoles();
+        
+        
 
-        $req = $this->getDb()->prepare("INSERT INTO `user` (`password`, `username`, `email`) VALUES (:password, :username, :email)");
+        $req = $this->getDb()->prepare("INSERT INTO `user` (`id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles`) VALUES (:id_user, :firstname, :lastname, :mail, :birthdate, :password, :content, :roles)");
+        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+        $req->bindParam(":firstname", $firstname, PDO::PARAM_STR);
+        $req->bindParam(":lastname", $lastname, PDO::PARAM_STR);
+        $req->bindParam(":mail", $mail, PDO::PARAM_STR);
+        $req->bindParam(":birthdate", $birthdate, PDO::PARAM_STR);
         $req->bindParam(":password", $password, PDO::PARAM_STR);
-        $req->bindParam(":username", $username, PDO::PARAM_STR);
-        $req->bindParam(":email", $email, PDO::PARAM_STR);
+        $req->bindParam(":content", $content, PDO::PARAM_STR);
+        $req->bindParam(":roles", $roles, PDO::PARAM_STR);
+        
 
         $req->execute();
 
         $req->closeCursor();
     }
 
-    public function getUserByEmail(string $email){
-        $req = $this->getDb()->prepare("SELECT `uid`, `username`, `password`, `email`, `favoris`, `joined_date` FROM `user` WHERE `email` = :email");
-        $req->bindParam(":email", $email, PDO::PARAM_STR);
+    public function getUserByEmail(string $mail){
+        $req = $this->getDb()->prepare("SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles` FROM `user` WHERE `mail` = :mail");
+        $req->bindParam(":mail", $mail, PDO::PARAM_STR);
         $req->execute();
 
         return $req->rowCount() === 1 ? new User($req->fetch(PDO::FETCH_ASSOC)) : false;

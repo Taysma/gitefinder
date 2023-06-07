@@ -7,7 +7,7 @@ class Rental{
     private $capacity;
     private $surface_area;
     private $city;
-    private $adress;
+    private $address;
     private $content;
 
     public function __construct(array $datas){
@@ -49,8 +49,8 @@ class Rental{
         return $this->city;
     }
 
-    public function getAdress(){
-        return $this->adress;
+    public function getAddress(){
+        return $this->address;
     }
 
     public function getContent(){
@@ -83,8 +83,8 @@ class Rental{
         $this->city=$city;
     }
 
-    public function setAdress(int $adress){
-        $this->adress=$adress;
+    public function setAddress(int $adress){
+        $this->address=$adress;
     }
 
     public function setContent(int $content){
