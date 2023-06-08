@@ -2,103 +2,118 @@
 class RentalModel extends Model {
 
     public function getLastTenPost(){
-        $recipes = [];
+        $rentals = [];
 
-        $req = $this->getDb()->query('SELECT `id`, `author`, `title`, `duration`, `thumbnail`, `content`, `created_at` FROM `recipe` ORDER BY `id` DESC LIMIT 10');
+        $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content` FROM `rental` ORDER BY `id` DESC LIMIT 50');
 
-        while($recipe = $req->fetch(PDO::FETCH_ASSOC)){
-            $recipes[] = new Recipe($recipe);
+        while($rental = $req->fetch(PDO::FETCH_ASSOC)){
+            $rentals[] = new Rental($rental);
         }
 
-        return $recipes;
+        return $rentals;
     }
 
-    public function getAllRecipes(){
-        $recipes = [];
+    public function getAllrentals(){
+        $rentals = [];
 
-        $req = $this->getDb()->query('SELECT `id`, `author`, `title`, `duration`, `thumbnail`, `content`, `created_at` FROM `recipe` ORDER BY `id` DESC');
+        $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content` FROM `rental` ORDER BY `id_rental` DESC');
 
-        while($recipe = $req->fetch(PDO::FETCH_ASSOC)){
-            $recipes[] = new Recipe($recipe);
+        while($rental = $req->fetch(PDO::FETCH_ASSOC)){
+            $rentals[] = new Rental($rental);
         }
 
-        return $recipes;
+        return $rentals;
     }
 
-    public function getOneRecipe(int $id){
+    public function getOnerental(int $id_rental){
 
-        $req = $this->getDb()->prepare('SELECT `id`, `author`, `title`, `duration`, `thumbnail`, `content`, `created_at` FROM `recipe` WHERE `id`= :id');
-        $req->bindParam('id',$id,PDO::PARAM_INT);
+        $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content` FROM `rental` WHERE `id_rental`= :id');
+        $req->bindParam('id_rental',$id_rental,PDO::PARAM_INT);
         $req->execute();
 
-        $recipe = new Recipe($req->fetch(PDO::FETCH_ASSOC));
+        $rental = new Rental($req->fetch(PDO::FETCH_ASSOC));
 
-        return $recipe;
+        return $rental;
     }
 
-    public function getUserRecipes(int $userId){
-        $recipes = [];
+    public function getUserrentals(int $id_user){
+        $rentals = [];
 
-        $req = $this->getDb()->prepare('SELECT `recipe`.`id`, `recipe`.`author`, `recipe`.`title`, `recipe`.`duration`, `recipe`.`thumbnail`, `recipe`.`content`, `recipe`.`created_at`, `user`.`uid`, `user`.`username`, `user`.`email`, `user`.`favoris`, `user`.`joined_date`, `user`.`password`
-            FROM `recipe`
+        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`, `user`.`id_user`, `user`.`firstname`, `user`.`lastname`, `user`.`mail`, `user`.`birthdate`, `user`.`password`, `user`.`content`, `user`.`roles`
+            FROM `rental`
             INNER JOIN `user`
-            ON `recipe`.`author` = `user`.`uid`
-            WHERE `recipe`.`author` = :id');
-        $req->bindParam(':id', $userId, PDO::PARAM_INT);
+            ON `rental`.`id_user` = `user`.`id_user`
+            WHERE `rental`.`id_user` = :id');
+        $req->bindParam(':id', $id_user, PDO::PARAM_INT);
         $req->execute();
 
-        while ($recipeData = $req->fetch(PDO::FETCH_ASSOC)) {
-            $recipes[] = new Recipe($recipeData);
+        while ($rentalData = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rentals[] = new Rental($rentalData);
         }
 
         $req->closeCursor();
-        return $recipes;
+        return $rentals;
     }
 
-    public function addRecipe (Recipe $recipe){
-        $author = $recipe->getAuthor();
-        $title = $recipe->getTitle();
-        $duration = $recipe->getDuration();
-        $content = $recipe->getContent();
+    public function addrental (Rental $rental){
+        $id_rental = $rental->getId_rental();
+        $id_user = $rental->getId_user();
+        $title = $rental->getTitle();
+        $capacity = $rental->getCapacity();
+        $surface_area = $rental->getSurface_area();
+        $city = $rental->getCity();
+        $address = $rental->getAddress();
+        $content = $rental->getContent();
+        
+        $req = $this->getDb()->prepare('INSERT INTO `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content` ) VALUES (:id_rental, :id_user, :title, :capacity, :surface_area, :city, :address, :content )');
 
-        $req = $this->getDb()->prepare('INSERT INTO `recipe`(`author`, `title`, `duration`, `content`) VALUES (:author, :title, :duration, :content)');
-
-        $req->bindParam('author', $author, PDO::PARAM_INT);
+        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);        
         $req->bindParam('title', $title, PDO::PARAM_STR);
-        $req->bindParam('duration', $duration, PDO::PARAM_STR);
+        $req->bindParam('capacity', $capacity, PDO::PARAM_INT);
+        $req->bindParam('surface_area', $surface_area, PDO::PARAM_INT);        
+        $req->bindParam('city', $city, PDO::PARAM_STR);
+        $req->bindParam('address', $address, PDO::PARAM_STR);
         $req->bindParam('content', $content, PDO::PARAM_STR);
 
         $req->execute();
     }
 
-    public function editRecipe(Recipe $recipe) {
-        $id = $recipe->getId();
-        $title = $recipe->getTitle();
-        $duration = $recipe->getDuration();
-        $content = $recipe->getContent();
+    public function editrental(rental $rental) {
+        $id_rental = $rental->getId_rental();
+        $title = $rental->getTitle();
+        $capacity = $rental->getCapacity();
+        $surface_area = $rental->getSurface_area();
+        $city = $rental->getCity();
+        $address = $rental->getAddress();
+        $content = $rental->getContent();
     
-        $req = $this->getDb()->prepare('UPDATE `recipe` SET `title` = :title, `duration` = :duration, `content` = :content WHERE `id` = :id');
+        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area, `city` = :city, `address` = :address,`content` = :content WHERE `id_rental` = :id');
     
-        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
         $req->bindParam('title', $title, PDO::PARAM_STR);
-        $req->bindParam('duration', $duration, PDO::PARAM_STR);
+        $req->bindParam('capacity', $capacity, PDO::PARAM_STR);
+        $req->bindParam('surface_area', $surface_area, PDO::PARAM_STR);
+        $req->bindParam('city', $city, PDO::PARAM_STR);
+        $req->bindParam('address', $address, PDO::PARAM_STR);
         $req->bindParam('content', $content, PDO::PARAM_STR);
+        
     
         $req->execute();
     }    
 
-    public function deleteRecipe(int $id){
+    public function deleterental(int $id){
             // Start a new transaction
             $this->getDb()->beginTransaction();
             
             try {
-                // Delete links in recipe_category table
-                $req = $this->getDb()->prepare('DELETE FROM `recipe_category` WHERE `id_recipe` = :id');
+                // Delete links in rental_category table
+                $req = $this->getDb()->prepare('DELETE FROM `rental_category` WHERE `id_rental` = :id');
                 $req->bindParam('id', $id, PDO::PARAM_INT);
                 $req->execute();
         
-                // Delete the recipe
-                $req = $this->getDb()->prepare('DELETE FROM `recipe` WHERE `id` = :id');
+                // Delete the rental
+                $req = $this->getDb()->prepare('DELETE FROM `rental` WHERE `id_rental` = :id');
                 $req->bindParam('id', $id, PDO::PARAM_INT);
                 $req->execute();
         
