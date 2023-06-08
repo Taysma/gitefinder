@@ -37,7 +37,7 @@ class CategoryModel extends Model {
         $req->execute();
 
         while ($rentalData = $req->fetch(PDO::FETCH_ASSOC)) {
-            $rentals[] = new Rental($rentalData);
+            $rentals[] = new Category($rentalData);
         }
 
         return $rentals;
