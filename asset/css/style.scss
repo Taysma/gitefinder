@@ -686,7 +686,6 @@ body {
                     .content-article {
                         margin: 0 auto;
                         max-width: 500px;
-                        background-color: #0056b3;
 
                         .title-star-rating {
                             display: flex;
@@ -700,10 +699,45 @@ body {
                             justify-content: center;
 
                             .content-p {
-                                margin: 10px 60px;
+                                margin: 20px auto;
                             }
 
+                            .user-location-condition {
+                                margin: 0 auto;
+                                width: 100%;
 
+                                .condition {
+                                    height: 70px;
+                                    margin: 20px 60px;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 10px;
+                                    // background-color: #0056b3;
+
+                                    .condition-img-span {
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 20px;
+
+
+                                        .img-p {
+                                            img {
+                                                width: 30px;
+
+                                            }
+                                        }
+
+                                        .condition-p {
+                                            font-size: 1rem;
+                                            color: #191825;
+                                        }
+                                    }
+                                }
+
+                                .content-user-for-utulisateur {
+                                    margin: 30px auto;
+                                }
+                            }
                         }
 
                     }
@@ -717,16 +751,18 @@ body {
                     padding: 10px;
                     justify-content: center;
                     border: none;
-                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
                     border-radius: 15px;
 
 
                     .card-reservation {
-                        border: 1px solid black;
                         border-radius: 10px;
+                        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
                         padding: 10px;
+                        height: 640px;
 
                         .prince-rating-comment {
+                            padding: 30px;
                             width: 100%;
                             display: inline-flex;
                             gap: 20px;
@@ -776,6 +812,50 @@ body {
                             }
 
 
+                        }
+
+                        .form-card-reservation {
+                            display: flex;
+                            justify-content: center;
+
+                            form {
+                                border: 1px solid black;
+                                padding: 3px;
+                                border-radius: 10px;
+
+                                #date-arrive {
+                                    border: none;
+                                    background-color: none;
+                                    font-size: 1rem;
+                                    padding: 10px;
+                                }
+
+                                #date-depart {
+                                    border: none;
+                                    background-color: none;
+                                    font-size: 1rem;
+                                    padding: 10px;
+                                }
+
+                                button {
+                                    padding: 8px 16px;
+                                    background-color: #E74646;
+                                    color: #fff;
+                                    border: none;
+                                    margin-left: 10px;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        background-color: #0056b3;
+                                    }
+
+                                    @media screen and (max-width:768px) {
+                                        width: 50%;
+                                        margin-top: 30px;
+                                    }
+                                }
+                            }
                         }
                     }
                 }

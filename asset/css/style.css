@@ -549,7 +549,6 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article {
   margin: 0 auto;
   max-width: 500px;
-  background-color: #0056b3;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .title-star-rating {
   display: flex;
@@ -562,7 +561,33 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   justify-content: center;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .content-p {
-  margin: 10px 60px;
+  margin: 20px auto;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition {
+  margin: 0 auto;
+  width: 100%;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition {
+  height: 70px;
+  margin: 20px 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition .condition-img-span {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition .condition-img-span .img-p img {
+  width: 30px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition .condition-img-span .condition-p {
+  font-size: 1rem;
+  color: #191825;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .content-user-for-utulisateur {
+  margin: 30px auto;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article {
   display: flex;
@@ -570,15 +595,16 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   padding: 10px;
   justify-content: center;
   border: none;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation {
-  border: 1px solid black;
   border-radius: 10px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   padding: 10px;
+  height: 640px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .prince-rating-comment {
+  padding: 30px;
   width: 100%;
   display: inline-flex;
   gap: 20px;
@@ -606,6 +632,45 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .prince-rating-comment .comment .comment-number {
   font-size: 1.1rem;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation {
+  display: flex;
+  justify-content: center;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form {
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 10px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form #date-arrive {
+  border: none;
+  background-color: none;
+  font-size: 1rem;
+  padding: 10px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form #date-depart {
+  border: none;
+  background-color: none;
+  font-size: 1rem;
+  padding: 10px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form button {
+  padding: 8px 16px;
+  background-color: #E74646;
+  color: #fff;
+  border: none;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form button:hover {
+  background-color: #0056b3;
+}
+@media screen and (max-width: 768px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form button {
+    width: 50%;
+    margin-top: 30px;
+  }
 }
 body .dashboard {
   width: 100%;
