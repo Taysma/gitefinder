@@ -6,7 +6,24 @@ class WishlistModel extends Model {
         $id_rental = $wishlist->getId_rental();
 
 
-        $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_wishlist`, `id_user`, `id_rental`) VALUES (:id_user, :id_user, :id_rental)");
+        $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_wishlist`, `id_user`, `id_rental`) VALUES (:id_wishlist, :id_user, :id_rental)");
+        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+        $req->bindParam(":id_wishlist", $id_wishlist, PDO::PARAM_INT);
+        $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
+
+        $req->execute();
+
+        $req->closeCursor();
+
+    }
+
+    public function updateWishlist(wishlist $wishlist){
+        $id_wishlist = $wishlist->getId_wishlist();
+        $id_user = $wishlist->getId_user();
+        $id_rental = $wishlist->getId_rental();
+
+
+        $req = $this->getDb()->prepare("UPDATE `wishlist` SET `id_wishlist`=':id_wishlist',`id_user`=':id_user',`id_rental`=':id_rental' ");
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
         $req->bindParam(":id_wishlist", $id_wishlist, PDO::PARAM_INT);
         $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
@@ -38,23 +55,23 @@ class WishlistModel extends Model {
         return $category;
     }
     
-    public function getwishlistByRental(int $id_category) {
-        $rentals = [];
+    public function getwishlistByRental(int $id_wishlist) {
+        $contentWishlist = [];
 
         $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content` 
             FROM `rental`
-            INNER JOIN `rental_category`
-            ON `rental_category`.`id_rental` = `rental`.`id_rental`
-            INNER JOIN `category`
-            ON `rental_category`.`id_category` = `category`.`id_category`
-            WHERE `category`.`id_category` = :id_category');
-        $req->bindParam(':id_category', $id_category, PDO::PARAM_INT);
+            INNER JOIN `wishlist`
+            ON `wishlist`.`id_rental` = `rental`.`id_rental`
+            INNER JOIN `user`
+            ON `wishlist`.`id_user` = `user`.`id_user`
+            WHERE `user`.`id_user` = :id_user');
+        $req->bindParam(':id_wishlist', $id_wishlist, PDO::PARAM_INT);
         $req->execute();
 
-        while ($rentalData = $req->fetch(PDO::FETCH_ASSOC)) {
-            $rentals[] = new Wishlist($rentalData);
+        while ($contentWishlistData = $req->fetch(PDO::FETCH_ASSOC)) {
+            $contentWishlist[] = new Wishlist($contentWishlistData);
         }
 
-        return $rentals;
+        return $contentWishlist;
     }
 }
