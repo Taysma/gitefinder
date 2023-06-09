@@ -16,7 +16,6 @@ $router->map('GET', '/', 'HomeController#home', 'home');
 // Log-in/out form route
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
-// Register
 $router->map('GET|POST', '/registration', 'UserController#register', 'register');
 
 // USER
