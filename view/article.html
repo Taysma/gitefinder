@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="../asset/css/font.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="article">
+        <div class="container-article-img">
+            <div class="title-article">
+                <h1>Cabane perchée à 5 m, "l'Asiatique"</h1>
+            </div>
+            <div class="rating-comment-location-share-like">
+                <div class="rating">
+                    <img src="../asset/media/images/etoile.svg" alt="rating">
+                    <span>4.83</span>
+                </div>
+                <div class="comment">
+                    <span>64</span>
+                    <span>commentaires </span>
+                </div>
+                <div class="location">
+                    <span>Chamigny, Île-de-France, France</span>
+                </div>
+                <div class="share">
+                    <button class="share-button" onclick="toggleSharePopup()">
+                        Partager
+
+                        <!-- Bouton de Partage avec Icônes -->
+                        <div class="share-popup" id="sharePopup">
+                            <img src="../asset/media/images/facebook.png" alt="Facebook" onclick="shareOnFacebook()">
+                            <img src="../asset/media/images/twitter.svg" alt="Twitter" onclick="shareOnTwitter()">
+                            <img src="../asset/media/images/instagram.png" alt="LinkedIn" onclick="shareOnLinkedIn()">
+                        </div>
+                    </button>
+
+                </div>
+            </div>
+    </section>
+    <script src="../asset/js/sharePopup.js"></script>
+</body>
+
+</html>
