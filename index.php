@@ -13,16 +13,13 @@ $router->map('GET', '/', 'HomeController#home', 'home');
 //  HOMEPAGE // Affichages des contenues de la homepage
 // Add homepage content
 
-// Log-in/out form route
+// Connection form route
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
-$router->map('GET', '/logout', 'UserController#logout', 'logout');
-// Register
 $router->map('GET|POST', '/registration', 'UserController#register', 'register');
+$router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardHost');
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardGuest');
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardAdmin');
+$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardUser');
 
 // CRUD Post
 $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
