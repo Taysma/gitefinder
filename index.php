@@ -20,9 +20,7 @@ $router->map('GET','/logout', 'UserController#logout', 'logout');
 $router->map('GET|POST','/registration', 'UserController#register', 'register');
 
 // USER
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardHost');
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardGuest');
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardAdmin');
+$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardUser');
 
 // CRUD Post
 $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');

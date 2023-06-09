@@ -23,7 +23,7 @@ class CategoryModel extends Model {
         return $category;
     }
     
-    public function getrentalsByCategory(int $id_category) {
+    public function getRentalsByCategory(int $id_category) {
         $rentals = [];
 
         $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content` 
