@@ -624,7 +624,7 @@ body {
                     gap: 20px;
                     width: 500px;
                     padding: 10px;
-                    background-color: #007bff;
+                    // background-color: #007bff;
 
                     .title-article {
                         margin: auto;
@@ -684,8 +684,31 @@ body {
                     }
 
                     .content-article {
-                        display: flex;
+                        margin: 0 auto;
+                        max-width: 500px;
+                        background-color: #0056b3;
+
+                        .title-star-rating {
+                            display: flex;
+                            justify-content: center;
+                            padding: 20px;
+                        }
+
+                        .content-paragragraphe-article {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+
+                            .content-p {
+                                margin: 10px 60px;
+                            }
+
+
+                        }
+
                     }
+
+
                 }
 
                 .card-map-article {

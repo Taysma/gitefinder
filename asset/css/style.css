@@ -500,7 +500,6 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   gap: 20px;
   width: 500px;
   padding: 10px;
-  background-color: #007bff;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article {
   margin: auto;
@@ -548,7 +547,22 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   white-space: nowrap;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article {
+  margin: 0 auto;
+  max-width: 500px;
+  background-color: #0056b3;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .title-star-rating {
   display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .content-p {
+  margin: 10px 60px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article {
   display: flex;
