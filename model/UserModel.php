@@ -13,7 +13,7 @@ class UserModel extends Model {
         return $users;
     }
 
-    public function createUser(User $user){
+    public function createUser (User $user){
         $id_user = $user->getId_user();
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();

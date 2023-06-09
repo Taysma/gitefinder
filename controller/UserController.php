@@ -20,13 +20,13 @@ class UserController extends Controller {
             $model->createUser($user);
             header('Location: ' . $router->generate('login'));
         } else {
-            echo self::getRender('registration.html.twig', []);
+            echo self::getRender('connect.html.twig', []);
         }
     }
 
     public function login(){
         if (!$_POST) {
-            echo self::getRender('login.html.twig', []);
+            echo self::getRender('connect.html.twig', []);
         } else {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -36,19 +36,19 @@ class UserController extends Controller {
 
             if ($user) {
                 if (password_verify($password, $user->getPassword())) {
-                    $_SESSION['id'] = $user->getId();
-                    $_SESSION['username'] = $user->getUsername();
+                    $_SESSION['id'] = $user->getId_user();
+                    $_SESSION['username'] = $user->getFirstname();
                     $_SESSION['connect'] = true;
 
                 global $router;
-                header('Location: ' . $router->generate('dashboardGuest')); // add condition "if" pour les 3 routes si role match host/guest/admin
+                header('Location: ' . $router->generate('dashboardUser')); // add condition "if" pour les 3 routes si role match host/guest/admin
                 exit();
                 } else {
-                    echo 'ECLATAX';
+                    echo 'Email / password incorrect !';
                 }
             } else {
-                $message = "Email / password incorrect !";
-                echo self::getRender('login.html.twig', ['message' => $message]);
+                $message = "Veillez remplir tout les champs";
+                echo self::getRender('connect.html.twig', ['message' => $message]);
             }
         }
     }
