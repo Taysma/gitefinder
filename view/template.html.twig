@@ -22,12 +22,15 @@
 			{% block content %}{% endblock %}
 		</main>
 
-		{% block javascript %}{% endblock %}
-		<script src="{{ asset('/js/main.js') }}"></script>
-		<script src="{{ asset('/js/modal-footer.js') }}"></script>
-		<script src="{{ asset('/js/calendrier.js') }}"></script>
-		<script src="{{ asset('/js/sharePopup.js') }}"></script>
 
 		{% include 'footer.html.twig' %}
+
+		{% block javascript %}
+			<script src="{{ asset('/js/main.js') }}"></script>
+			<script src="{{ asset('/js/modal-footer.js') }}"></script>
+			<script src="{{ asset('/js/calendrier.js') }}"></script>
+			<script src="{{ asset('/js/sharePopup.js') }}"></script>
+		{% endblock %}
+
 	</body>
 </html>

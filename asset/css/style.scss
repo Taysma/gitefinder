@@ -509,65 +509,259 @@ body {
         height: auto;
         // background-color: #0056b3;
         margin: 100px auto;
+        max-width: 1440px;
 
         .container-article-img {
-            text-align: center;
-        }
+            width: 100%;
 
-        .rating-comment-location-share-like {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 10px 0px 0px 100px;
-            column-gap: 50px;
-        }
+            .title-article {
+                margin: 20px;
 
-        .share {
-            text-align: center;
+                .h1-title-article {
+                    font-size: 1.2rem;
+                    color: #191825;
+                }
+            }
 
-            .share-button {
-                width: 70px;
-                height: 30px;
-                align-items: center;
-                justify-content: center;
-                position: relative;
+            .img-article {
+                width: 100%;
                 display: flex;
-                flex-direction: column;
-                border-radius: 10px;
-                margin: 0 auto;
-                // background-color: #191825;
-                color: #191825;
-                border: none;
-                background: none;
+                justify-content: center;
+                margin: 10px auto;
+
+                img {
+                    height: 50vh;
+                }
+            }
 
 
 
-                .share-popup {
-                    width: 300px;
-                    background-color: rgba(0, 0, 0, 0.848), 0 10px 10px rgba(0, 0, 0, 0.778);
-                    // border: 1px solid black;
-                    display: none;
-                    margin: -100px;
-                    margin-top: 20px;
-                    padding: 5px;
+            .rating-comment-location-share-like {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin: 30px 0px 0px 100px;
+                column-gap: 50px;
+                width: 100%;
 
-                    gap: 10px;
-                    border-radius: 15px;
+                @media screen and (max-width:850px) {
+                    margin: 10px 0px;
+                    column-gap: 20px;
 
-                    img {
-                        width: 64px;
-                        // background-color: #ccc;
-                        border-radius: 999px;
-                        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+                }
+
+
+                .share {
+                    text-align: center;
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    white-space: nowrap;
+
+                    .img-share {
+                        width: 24px;
+                        height: 20px;
+                    }
+
+                    .share-button {
+                        width: 70px;
+                        align-items: center;
+                        position: relative;
+                        display: flex;
+                        padding: 5px;
+                        font-size: 1rem;
+                        // background-color: #191825;
+                        color: #191825;
                         border: none;
-                        cursor: pointer;
+                        background: none;
 
+
+
+                        .share-popup {
+                            width: 300px;
+                            background-color: rgba(0, 0, 0, 0.848), 0 10px 10px rgba(0, 0, 0, 0.778);
+                            // border: 1px solid black;
+                            display: none;
+                            margin: -100px;
+                            margin-top: 20px;
+                            padding: 5px;
+
+                            gap: 10px;
+                            border-radius: 15px;
+
+                            .icon-img {
+                                width: 44px;
+                                // background-color: #ccc;
+                                border-radius: 999px;
+                                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+                                border: none;
+                                cursor: pointer;
+
+                            }
+                        }
                     }
                 }
             }
         }
 
+        .profil-content-reservation-map {
+            width: 100%;
+            // display: flex;
+            margin: 0 30px;
+
+
+            .row-limit-size-flex {
+                display: flex;
+                max-width: 1440px;
+                gap: 20px;
+                justify-content: center;
+
+
+
+                .profil-article {
+                    // display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    width: 500px;
+                    padding: 10px;
+                    background-color: #007bff;
+
+                    .title-article {
+                        margin: auto;
+
+                        .h1-title-article {
+                            font-size: 1rem;
+                        }
+
+                        .h2-content-article {
+                            font-size: 0.95rem;
+                        }
+                    }
+
+                    .profil-user-article {
+                        display: flex;
+                        gap: 20px;
+
+                        .img-profil {
+                            width: 64px;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .profil-span {
+                            display: flex;
+                            flex-direction: column;
+                            color: #191825;
+                            font-size: 1.1rem;
+
+                            .profil-user {
+                                color: #E74646;
+                                font-size: 1.3rem;
+                                font: 900;
+                                cursor: pointer;
+                            }
+
+                            .date-profil {
+                                color: #19182586;
+                            }
+                        }
+
+                        #btn-profil {
+                            background-color: #E74646;
+                            border: none;
+                            margin: auto 15px;
+                            padding: 5px;
+                            color: #f2f2f2;
+                            font-size: 1rem;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            white-space: nowrap;
+                        }
+
+
+                    }
+
+                    .content-article {
+                        display: flex;
+                    }
+                }
+
+                .card-map-article {
+                    display: flex;
+                    width: auto;
+                    padding: 10px;
+                    justify-content: center;
+                    border: none;
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+                    border-radius: 15px;
+
+
+                    .card-reservation {
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        padding: 10px;
+
+                        .prince-rating-comment {
+                            width: 100%;
+                            display: inline-flex;
+                            gap: 20px;
+                            align-items: center;
+                            justify-content: center;
+
+                            .prince-device {
+                                .prince {
+                                    font-size: 1.3rem;
+
+
+
+                                }
+
+                                .night-card-reservation {
+                                    font-size: 0.90rem;
+                                    color: #0000005e;
+                                }
+
+                            }
+
+                            .prince-device,
+                            .star-rating,
+                            .comment {
+                                color: #191825;
+                                font-size: 1rem;
+                            }
+
+
+                            .star-rating {
+
+                                .rating-img {
+                                    width: auto;
+                                }
+
+                                .rating {
+                                    font-size: 1.1rem;
+                                }
+                            }
+
+                            .comment {
+                                .comment-number {
+                                    font-size: 1.1rem;
+                                }
+
+
+                            }
+
+
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
+
 
 
     //dashboard 
@@ -967,6 +1161,7 @@ body {
 
     }
 }
+
 
 
 

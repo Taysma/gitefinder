@@ -14,7 +14,7 @@
     <section class="article">
         <div class="container-article-img">
             <div class="title-article">
-                <h1>Cabane perchée à 5 m, "l'Asiatique"</h1>
+                <h1 class="h1-title-article">Cabane perchée à 5 m, "l'Asiatique"</h1>
             </div>
             <div class="rating-comment-location-share-like">
                 <div class="rating">
@@ -29,20 +29,101 @@
                     <span>Chamigny, Île-de-France, France</span>
                 </div>
                 <div class="share">
+                    <img class="img-share sharePopup" src="../asset/media/images/Font_Awesome_5_solid_share.svg.png"
+                        alt="share article" onclick="toggleSharePopup()">
                     <button class="share-button" onclick="toggleSharePopup()">
                         Partager
 
                         <!-- Bouton de Partage avec Icônes -->
                         <div class="share-popup" id="sharePopup">
-                            <img src="../asset/media/images/facebook.png" alt="Facebook" onclick="shareOnFacebook()">
-                            <img src="../asset/media/images/twitter.svg" alt="Twitter" onclick="shareOnTwitter()">
-                            <img src="../asset/media/images/instagram.png" alt="LinkedIn" onclick="shareOnLinkedIn()">
+                            <img class="icon-img" src="../asset/media/images/facebook.png" alt="Facebook"
+                                onclick="shareOnFacebook()">
+                            <img class="icon-img" src="../asset/media/images/twitter.svg" alt="Twitter"
+                                onclick="shareOnTwitter()">
+                            <img class="icon-img" src="../asset/media/images/instagram.png" alt="LinkedIn"
+                                onclick="shareOnLinkedIn()">
                         </div>
                     </button>
+                </div>
+
+
+            </div>
+            <div class="img-article">
+                <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- profil-content-reservation-map -->
+        <div class="profil-content-reservation-map">
+            <div class="row-limit-size-flex">
+                <!-- profil-article-content -->
+                <div class="profil-article">
+                    <div class="profil-user-article">
+                        <div class="img-profil">
+                            <img src="../asset/media/images/instagram.svg" alt="">
+                        </div>
+                        <div class="profil-span">
+                            <span>Proposé par <span class="profil-user">Zen</span>
+                            </span>
+                            <span class="date-profil">Menbre depuis <span>janvier 2019</span>
+                            </span>
+                        </div>
+                        <button id="btn-profil">Contacter l'hote</button>
+                    </div>
+                    <!-- content-article -->
+                    <div class="content-article">
+                        <div class="title-article">
+                            <h1 class="h1-title-article">Cabane perchée</h1>
+                            <h2 class="h2-content-article">2 voyageurs · 1 lit Demi-salle de bain</h2>
+                        </div>
+                        <div class="star-rating">
+                            <div class="rating-img">
+                                <img src="../asset/media/images/etoile.svg" alt="star rating" class="rating-img">
+                                <img src="../asset/media/images/etoile.svg" alt="star rating" class="rating-img">
+                                <img src="../asset/media/images/etoile.svg" alt="star rating" class="rating-img">
+                                <img src="../asset/media/images/etoile.svg" alt="star rating" class="rating-img">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- card-reservation-map-article -->
+                <div class="card-map-article">
+
+                    <div class="card-reservation">
+                        <div class="prince-rating-comment">
+                            <div class="prince-device">
+                                <span class="prince">110</span>
+                                <span class="devise">€</span> <span class='night-card-reservation'>par
+                                    nuit</span>
+                            </div>
+                            <div class="star-rating">
+                                <img class="rating-img" src="../asset/media/images/etoile.svg" alt="star-rating">
+                                <span class="rating">4.83
+                                </span>
+                            </div>
+                            </span>
+                            <div class="comment">
+                                <span class="number-comment">64 </span>
+                                <span class="sapn-comment">Comments</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-r-map">
+                        <div class="map">
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
+        </div>
+
     </section>
+
+
     <script src="../asset/js/sharePopup.js"></script>
 </body>
 
