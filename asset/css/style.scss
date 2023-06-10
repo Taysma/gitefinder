@@ -40,6 +40,36 @@ a {
     text-transform: none;
 }
 
+input[type="date"] {
+    padding: 10px;
+    border: 2px solid #ccc;
+
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f2f2f2;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #333;
+    font-size: 16px;
+}
+
+label {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #666;
+}
+
+.selected-range {
+    background-color: #2d64bd !important;
+}
+
+#calendar {
+    display: none;
+    margin-top: 20px;
+}
+
 body {
     scroll-behavior: smooth;
     font-family: $mainfont;
@@ -746,10 +776,11 @@ body {
                 }
 
                 .card-map-article {
-                    display: flex;
+                    // display: flex;
                     width: auto;
+                    max-width: 450px;
                     padding: 10px;
-                    justify-content: center;
+                    // justify-content: center;
                     border: none;
 
                     border-radius: 15px;
@@ -759,7 +790,7 @@ body {
                         border-radius: 10px;
                         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
                         padding: 10px;
-                        height: 640px;
+                        height: fit-content;
 
                         .prince-rating-comment {
                             padding: 30px;
@@ -815,47 +846,154 @@ body {
                         }
 
                         .form-card-reservation {
+                            width: auto;
                             display: flex;
                             justify-content: center;
+                            flex-direction: column;
+                            text-align: center;
+
 
                             form {
-                                border: 1px solid black;
-                                padding: 3px;
-                                border-radius: 10px;
+                                margin: auto;
 
-                                #date-arrive {
-                                    border: none;
-                                    background-color: none;
-                                    font-size: 1rem;
-                                    padding: 10px;
-                                }
+                                .form-reservation {
+                                    padding: 3px;
+                                    border-radius: 10px;
+                                    text-align: center;
 
-                                #date-depart {
-                                    border: none;
-                                    background-color: none;
-                                    font-size: 1rem;
-                                    padding: 10px;
-                                }
+                                    border: 1px solid black;
 
-                                button {
-                                    padding: 8px 16px;
-                                    background-color: #E74646;
-                                    color: #fff;
-                                    border: none;
-                                    margin-left: 10px;
-                                    border-radius: 4px;
-                                    cursor: pointer;
+                                    .form-date-arrivee-depart {
+                                        display: flex;
 
-                                    &:hover {
-                                        background-color: #0056b3;
+
+
+
+
+                                        #date-arrive {
+
+                                            border: none;
+                                            background-color: none;
+                                            font-size: 1rem;
+                                            padding: 10px;
+
+                                            // border-radius: 10px; 
+                                            .calendrier {
+                                                background-color: #E74646;
+                                            }
+
+                                        }
+
+                                        #date-depart {
+                                            border: none;
+                                            background-color: none;
+                                            font-size: 1rem;
+                                            padding: 10px;
+                                        }
+
                                     }
 
-                                    @media screen and (max-width:768px) {
-                                        width: 50%;
-                                        margin-top: 30px;
+
+                                    .guest-input {
+                                        border-top: 1px solid black;
+                                        display: flex;
+                                        justify-content: center;
+                                        width: auto;
+
+                                        #input-select {
+                                            padding: 10px;
+                                            width: 100%;
+                                            border: none;
+                                            background-color: none;
+
+                                            &:active {
+                                                border: none;
+                                            }
+
+
+                                        }
+                                    }
+
+                                }
+
+
+                                .btn-reservation {
+                                    width: 100%;
+                                    text-align: center;
+
+
+
+                                    #search-button {
+                                        padding: 10px 16px;
+                                        background-color: #E74646;
+                                        color: #fff;
+                                        border: none;
+                                        width: 60%;
+                                        margin: 30px auto;
+                                        margin-left: 10px;
+                                        border-radius: 4px;
+                                        cursor: pointer;
+                                        font-size: 1.2rem;
+
+
+                                        &:hover {
+                                            background-color: #0056b3;
+                                        }
+
+                                        @media screen and (max-width:768px) {
+                                            width: 50%;
+                                            margin-top: 30px;
+                                        }
                                     }
                                 }
                             }
+
+                            .card-span-reservation {
+                                max-width: 80%;
+                                text-align: center;
+                                margin: auto;
+
+                                .span-card {
+                                    font-size: 1rem;
+                                    color: #191825;
+                                }
+
+                            }
+
+                            .prince-card-reservation {
+                                padding: 30px;
+
+                                .day-prince {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    padding: 30px;
+                                }
+                            }
+
+                            .total-prince {
+                                display: flex;
+                                justify-content: space-between;
+                                bottom: 10px;
+                                margin: 20px auto;
+
+                                .span-prince {
+                                    font-size: 1.1rem;
+                                }
+                            }
+                        }
+                    }
+
+                    .map-container {
+                        width: 100%;
+                        margin: 30px auto;
+
+                        .map {
+                            width: auto;
+
+                            img {
+                                width: 100%;
+                            }
+
                         }
                     }
                 }

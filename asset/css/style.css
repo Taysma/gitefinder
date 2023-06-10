@@ -26,6 +26,35 @@ a {
   text-transform: none;
 }
 
+input[type=date] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f2f2f2;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  color: #333;
+  font-size: 16px;
+}
+
+label {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #666;
+}
+
+.selected-range {
+  background-color: #2d64bd !important;
+}
+
+#calendar {
+  display: none;
+  margin-top: 20px;
+}
+
 body {
   scroll-behavior: smooth;
   font-family: "Sora";
@@ -590,10 +619,9 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   margin: 30px auto;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article {
-  display: flex;
   width: auto;
+  max-width: 450px;
   padding: 10px;
-  justify-content: center;
   border: none;
   border-radius: 15px;
 }
@@ -601,7 +629,8 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   border-radius: 10px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  height: 640px;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .prince-rating-comment {
   padding: 30px;
@@ -634,43 +663,114 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   font-size: 1.1rem;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation {
+  width: auto;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form {
-  border: 1px solid black;
+  margin: auto;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation {
   padding: 3px;
   border-radius: 10px;
+  text-align: center;
+  border: 1px solid black;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form #date-arrive {
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart {
+  display: flex;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-arrive {
   border: none;
   background-color: none;
   font-size: 1rem;
   padding: 10px;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form #date-depart {
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-arrive .calendrier {
+  background-color: #E74646;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-depart {
   border: none;
   background-color: none;
   font-size: 1rem;
   padding: 10px;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form button {
-  padding: 8px 16px;
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .guest-input {
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .guest-input #input-select {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  background-color: none;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .guest-input #input-select:active {
+  border: none;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .btn-reservation {
+  width: 100%;
+  text-align: center;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .btn-reservation #search-button {
+  padding: 10px 16px;
   background-color: #E74646;
   color: #fff;
   border: none;
+  width: 60%;
+  margin: 30px auto;
   margin-left: 10px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1.2rem;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form button:hover {
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .btn-reservation #search-button:hover {
   background-color: #0056b3;
 }
 @media screen and (max-width: 768px) {
-  body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form button {
+  body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .btn-reservation #search-button {
     width: 50%;
     margin-top: 30px;
   }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation .card-span-reservation {
+  max-width: 80%;
+  text-align: center;
+  margin: auto;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation .card-span-reservation .span-card {
+  font-size: 1rem;
+  color: #191825;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation .prince-card-reservation {
+  padding: 30px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation .prince-card-reservation .day-prince {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation .total-prince {
+  display: flex;
+  justify-content: space-between;
+  bottom: 10px;
+  margin: 20px auto;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation .total-prince .span-prince {
+  font-size: 1.1rem;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .map-container {
+  width: 100%;
+  margin: 30px auto;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .map-container .map {
+  width: auto;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .map-container .map img {
+  width: 100%;
 }
 body .dashboard {
   width: 100%;
