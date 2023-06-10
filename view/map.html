@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ma carte</title>
+    <style>
+        /* Définis la taille du conteneur de la carte */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Conteneur de la carte -->
+    <div id="map"></div>
+
+    <script>
+        // Initialise la carte
+        function initMap() {
+            // Coordonnées du lieu à afficher
+            var myLatLng = { lat: 48.8566, lng: 2.3522 };
+
+            // Crée une instance de la carte
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng, // Centre la carte sur les coordonnées spécifiées
+                zoom: 12 // Définit le niveau de zoom initial
+            });
+
+            // Ajoute un marqueur sur la carte
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Ma position'
+            });
+        }
+    </script>
+
+    <!-- Charge l'API Google Maps avec ta clé d'API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=TACLEAPIKEY&callback=initMap" async defer></script>
+</body>
+
+</html>

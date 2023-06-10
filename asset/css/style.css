@@ -26,35 +26,6 @@ a {
   text-transform: none;
 }
 
-input[type=date] {
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  color: #333;
-  background-color: #f2f2f2;
-}
-
-input[type=date]::-webkit-calendar-picker-indicator {
-  color: #333;
-  font-size: 16px;
-}
-
-label {
-  margin-right: 10px;
-  font-size: 18px;
-  color: #666;
-}
-
-.selected-range {
-  background-color: #2d64bd !important;
-}
-
-#calendar {
-  display: none;
-  margin-top: 20px;
-}
-
 body {
   scroll-behavior: smooth;
   font-family: "Sora";
@@ -516,7 +487,7 @@ body .article .container-article-img .rating-comment-location-share-like .share 
 }
 body .article .profil-content-reservation-map {
   width: 100%;
-  margin: 0 30px;
+  margin: 0 auto;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex {
   display: flex;
@@ -618,6 +589,30 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .content-user-for-utulisateur {
   margin: 30px auto;
 }
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .title-liste {
+  padding: 20px;
+  font-size: 1.4rem;
+  color: #191825;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-container-rental {
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-container-rental ul {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-stuf-container-rental .stuf-chambre {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article {
   width: auto;
   max-width: 450px;
@@ -677,6 +672,38 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   border-radius: 10px;
   text-align: center;
   border: 1px solid black;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .selected-arrival {
+  background-color: #FFA07A !important;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .selected-departure {
+  background-color: #87CEFA !important;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .selected-range {
+  background-color: #2d64bd !important;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation #calendar {
+  display: none;
+  margin-top: 20px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart input {
+  width: 150px;
+  padding: 5px;
+  margin: 0 10px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation #calendar {
+  display: none;
+  margin: 20px auto;
+  max-width: 600px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .selected-range {
+  background-color: #ccc;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart {
   display: flex;
@@ -771,6 +798,41 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .map-container .map img {
   width: 100%;
+}
+body .article .comment-container {
+  width: 100%;
+  margin: auto;
+  height: auto;
+  padding: 50px;
+  max-width: 1440px;
+}
+body .article .comment-container .star-comment {
+  display: inline-flex;
+  gap: 20px;
+  font-size: 1.5rem;
+  margin: 50px auto;
+}
+body .article .comment-container .comment-flex {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+body .article .comment-container .comment-flex .comment-img-p {
+  display: flex;
+  width: 450px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+body .article .comment-container .comment-flex .comment-img-p img {
+  width: 70px;
+}
+body .article .comment-container .comment-flex .comment-img-p .name-comment-p {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 body .dashboard {
   width: 100%;

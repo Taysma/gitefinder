@@ -40,35 +40,35 @@ a {
     text-transform: none;
 }
 
-input[type="date"] {
-    padding: 10px;
-    border: 2px solid #ccc;
+// input[type="date"] {
+//     padding: 10px;
+//     border: 2px solid #ccc;
 
-    border-radius: 4px;
-    font-size: 16px;
-    color: #333;
-    background-color: #f2f2f2;
-}
+//     border-radius: 4px;
+//     font-size: 16px;
+//     color: #333;
+//     background-color: #f2f2f2;
+// }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    color: #333;
-    font-size: 16px;
-}
+// input[type="date"]::-webkit-calendar-picker-indicator {
+//     color: #333;
+//     font-size: 16px;
+// }
 
-label {
-    margin-right: 10px;
-    font-size: 18px;
-    color: #666;
-}
+// label {
+//     margin-right: 10px;
+//     font-size: 18px;
+//     color: #666;
+// }
 
-.selected-range {
-    background-color: #2d64bd !important;
-}
+// .selected-range {
+//     background-color: #2d64bd !important;
+// }
 
-#calendar {
-    display: none;
-    margin-top: 20px;
-}
+// #calendar {
+//     display: none;
+//     margin-top: 20px;
+// }
 
 body {
     scroll-behavior: smooth;
@@ -533,7 +533,7 @@ body {
 
     }
 
-    //article
+    //article post
     .article {
         width: 100%;
         height: auto;
@@ -637,7 +637,7 @@ body {
         .profil-content-reservation-map {
             width: 100%;
             // display: flex;
-            margin: 0 30px;
+            margin: 0 auto;
 
 
             .row-limit-size-flex {
@@ -654,7 +654,6 @@ body {
                     gap: 20px;
                     width: 500px;
                     padding: 10px;
-                    // background-color: #007bff;
 
                     .title-article {
                         margin: auto;
@@ -768,6 +767,39 @@ body {
                                     margin: 30px auto;
                                 }
                             }
+
+                            .title-liste {
+                                padding: 20px;
+                                font-size: 1.4rem;
+                                color: #191825;
+                            }
+
+                            .list-container-rental {
+                                display: flex;
+                                padding: 10px;
+                                width: 100%;
+                                height: auto;
+                                justify-content: space-between;
+
+                                ul {
+                                    width: auto;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    flex-direction: column;
+                                    gap: 30px;
+                                }
+
+
+                            }
+
+                            .list-stuf-container-rental {
+                                .stuf-chambre {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    margin: 10px auto;
+                                }
+                            }
+
                         }
 
                     }
@@ -860,8 +892,48 @@ body {
                                     padding: 3px;
                                     border-radius: 10px;
                                     text-align: center;
-
                                     border: 1px solid black;
+
+                                    .selected-arrival {
+                                        background-color: #FFA07A !important;
+                                    }
+
+                                    .selected-departure {
+                                        background-color: #87CEFA !important;
+                                    }
+
+                                    .selected-range {
+                                        background-color: #2d64bd !important;
+                                    }
+
+                                    #calendar {
+                                        display: none;
+                                        margin-top: 20px;
+                                    }
+
+                                    .form-date-arrivee-depart {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin-bottom: 20px;
+
+                                    }
+
+                                    .form-date-arrivee-depart input {
+                                        width: 150px;
+                                        padding: 5px;
+                                        margin: 0 10px;
+                                    }
+
+                                    #calendar {
+                                        display: none;
+                                        margin: 20px auto;
+                                        max-width: 600px;
+                                    }
+
+                                    .selected-range {
+                                        background-color: #ccc;
+                                    }
 
                                     .form-date-arrivee-depart {
                                         display: flex;
@@ -1000,6 +1072,48 @@ body {
             }
         }
 
+        .comment-container {
+            width: 100%;
+            margin: auto;
+            height: auto;
+            padding: 50px;
+            max-width: 1440px;
+
+
+            .star-comment {
+                display: inline-flex;
+                gap: 20px;
+                font-size: 1.5rem;
+                margin: 50px auto;
+            }
+
+            .comment-flex {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 50px;
+
+                .comment-img-p {
+                    display: flex;
+                    width: 450px;
+                    justify-content: space-around;
+                    align-items: center;
+                    gap: 20px;
+
+                    img {
+                        width: 70px;
+                    }
+
+                    .name-comment-p {
+                        width: auto;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
+            }
+
+        }
 
     }
 

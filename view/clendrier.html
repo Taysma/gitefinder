@@ -2,35 +2,89 @@
 <html>
 
 <head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <title>Sélection des dates</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        .form-date-arrivee-depart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-date-arrivee-depart input {
+            width: 150px;
+            padding: 5px;
+            margin: 0 10px;
+        }
+
+        #calendar {
+            display: none;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .selected-range {
+            background-color: #ccc;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <label for="arrival">Date d'arrivée:</label>
-        <input type="text" id="arrival" />
+    <div class="form-date-arrivee-depart">
+        <input type="text" name="arrivee" id="date-arrive" placeholder="Date d'arrivée">
+        <input type="text" name="depart" id="date-depart" placeholder="Date de départ">
     </div>
-    <div>
-        <label for="departure">Date de départ:</label>
-        <input type="text" id="departure" />
-    </div>
-
     <div id="calendar"></div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
             var arrivalDate;
             var departureDate;
 
-            $('#arrival').click(function () {
+            $('#date-arrive').click(function () {
                 $('#calendar').show();
+                arrivalDate = null;
+                departureDate = null;
+                $('.selected-arrival').removeClass('selected-arrival');
+                $('.selected-departure').removeClass('selected-departure');
+                $('.selected-range').removeClass('selected-range');
             });
 
-            $('#departure').click(function () {
-                $('#calendar').show();
+            $('#date-depart').click(function () {
+                if (arrivalDate) {
+                    $('#calendar').show();
+                    $('.selected-arrival').removeClass('selected-arrival');
+                    $('.selected-departure').removeClass('selected-departure');
+                    $('.selected-range').removeClass('selected-range');
+                }
+            });
+
+            $('#date-arrive').datepicker({
+                dateFormat: 'yy-mm-dd',
+                minDate: 0,
+                onSelect: function (selectedDate) {
+                    arrivalDate = moment(selectedDate, 'YYYY-MM-DD');
+                    $('#date-arrive').val(arrivalDate.format('YYYY-MM-DD'));
+                    if (departureDate && arrivalDate.isAfter(departureDate)) {
+                        $('#date-depart').val('');
+                        departureDate = null;
+                    }
+                    updateCalendar();
+                }
+            });
+
+            $('#date-depart').datepicker({
+                dateFormat: 'yy-mm-dd',
+                minDate: 0,
+                onSelect: function (selectedDate) {
+                    departureDate = moment(selectedDate, 'YYYY-MM-DD');
+                    $('#date-depart').val(departureDate.format('YYYY-MM-DD'));
+                    updateCalendar();
+                    $('#calendar').hide();
+                }
             });
 
             $('#calendar').fullCalendar({
@@ -42,17 +96,22 @@
                 defaultView: 'month',
                 selectable: true,
                 select: function (start, end) {
-                    arrivalDate = moment(start);
-                    departureDate = moment(end);
-
-                    $('#arrival').val(arrivalDate.format('YYYY-MM-DD'));
-                    $('#departure').val(departureDate.format('YYYY-MM-DD'));
-
-                    updateCalendar();
-                    $('#calendar').hide();
+                    if (!arrivalDate) {
+                        arrivalDate = moment(start);
+                        $('#date-arrive').val(arrivalDate.format('YYYY-MM-DD'));
+                    } else if (!departureDate) {
+                        departureDate = moment(start);
+                        $('#date-depart').val(departureDate.format('YYYY-MM-DD'));
+                        updateCalendar();
+                        $('#calendar').hide();
+                    }
                 },
                 dayRender: function (date, cell) {
-                    if (arrivalDate && departureDate && date.isBetween(arrivalDate, departureDate, 'day', '[]')) {
+                    if (arrivalDate && !departureDate && date.isSame(arrivalDate)) {
+                        cell.addClass('selected-arrival');
+                    } else if (departureDate && date.isSame(departureDate)) {
+                        cell.addClass('selected-departure');
+                    } else if (arrivalDate && departureDate && date.isBetween(arrivalDate, departureDate, 'day', '[]')) {
                         cell.addClass('selected-range');
                     }
                 },
@@ -60,6 +119,8 @@
                     arrivalDate = null;
                     departureDate = null;
 
+                    $('.selected-arrival').removeClass('selected-arrival');
+                    $('.selected-departure').removeClass('selected-departure');
                     $('.selected-range').removeClass('selected-range');
 
                     $('#calendar').hide();
@@ -72,7 +133,7 @@
 
                 if (arrivalDate && departureDate) {
                     var currentDate = moment(arrivalDate);
-                    while (currentDate.isSameOrBefore(departureDate)) {
+                    while (currentDate.isBefore(departureDate) || currentDate.isSame(departureDate)) {
                         var dateCell = $('.fc-day[data-date="' + currentDate.format('YYYY-MM-DD') + '"]');
                         dateCell.addClass('selected-range');
                         currentDate.add(1, 'day');
@@ -81,17 +142,6 @@
             }
         });
     </script>
-
-    <style>
-        .selected-range {
-            background-color: #2d64bd !important;
-        }
-
-        #calendar {
-            display: none;
-            margin-top: 20px;
-        }
-    </style>
 </body>
 
 </html>
