@@ -26,6 +26,10 @@ a {
   text-transform: none;
 }
 
+hr {
+  margin: 30px auto;
+}
+
 body {
   scroll-behavior: smooth;
   font-family: "Sora";
@@ -36,6 +40,8 @@ body header {
   width: 100%;
   position: sticky;
   top: 0;
+  background: #F7F7F7;
+  z-index: 999;
 }
 body header .header-limit-size {
   width: 100%;
@@ -487,13 +493,21 @@ body .article .container-article-img .rating-comment-location-share-like .share 
 }
 body .article .profil-content-reservation-map {
   width: 100%;
+  display: flex;
   margin: 0 auto;
+  justify-content: center;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex {
   display: flex;
-  max-width: 1440px;
+  width: auto;
   gap: 20px;
   justify-content: center;
+}
+@media screen and (max-width: 750px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article {
   align-items: center;
@@ -882,6 +896,131 @@ body .dashboard .container-dashboard .card-dashboard .content-dashboard .p-card-
   margin: 10px auto;
   font: 300;
   color: rgba(25, 24, 37, 0.5568627451);
+}
+body .profil {
+  width: 100%;
+  height: auto;
+}
+body .profil .container-profil {
+  margin: 50px auto;
+  max-width: 700px;
+}
+body .profil .container-profil .breadcrumb {
+  background-color: #f5f5f5;
+  padding: 8px 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+body .profil .container-profil .breadcrumb img {
+  width: 27px;
+  height: 20px;
+  padding: 2px;
+}
+body .profil .container-profil .breadcrumb-item {
+  display: inline-flex;
+  gap: 10px;
+  margin-right: 4px;
+  font-size: 1.2rem;
+  position: relative;
+}
+body .profil .container-profil .breadcrumb-item a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+body .profil .container-profil .breadcrumb-item:hover a {
+  text-decoration: underline;
+}
+body .profil .container-profil .breadcrumb-item.active {
+  color: #333;
+  font-weight: bold;
+}
+body .profil .container-profil .title-img-btn h1 {
+  font-size: 1.8rem;
+  color: #191825;
+  margin: 20px;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin: 20px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
+}
+body .profil .container-profil .title-img-btn .img-btn-profil img {
+  width: auto;
+  height: 100%;
+  border-radius: 999px;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .btn-edit,
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .btn-delete {
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  color: #F7F7F7;
+  border-radius: 4px;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .btn-edit {
+  background-color: #007bff;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .btn-delete {
+  background-color: #E74646;
+}
+body .profil .container-profil .profil-information {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+body .profil .container-profil .profil-information .name-lastname {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+body .profil .container-profil .profil-information .name-lastname #span-information {
+  font-size: 1.3rem;
+}
+body .profil .container-profil .profil-information .name-lastname .input-btn {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+@media screen and (max-width: 750px) {
+  body .profil .container-profil .profil-information .name-lastname .input-btn {
+    flex-direction: column;
+  }
+}
+body .profil .container-profil .profil-information .name-lastname .input-btn #input-profil {
+  width: 300px;
+  margin: auto 10px;
+  height: 40px;
+  border: 1px solid #191825;
+  border-radius: 7px;
+}
+body .profil .container-profil .profil-information .name-lastname .input-btn #input-profil:focus {
+  border: 5px solid #007bff;
+}
+body .profil .container-profil .profil-information .name-lastname .input-btn #edit {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #007bff;
+  color: #F7F7F7;
+  font-size: 1rem;
+  border: none;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
 }
 body footer {
   width: 100%;

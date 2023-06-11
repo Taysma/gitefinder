@@ -40,6 +40,10 @@ a {
     text-transform: none;
 }
 
+hr {
+    margin: 30px auto;
+}
+
 // input[type="date"] {
 //     padding: 10px;
 //     border: 2px solid #ccc;
@@ -80,6 +84,8 @@ body {
         width: 100%;
         position: sticky;
         top: 0;
+        background: #F7F7F7;
+        z-index: 999;
 
         .header-limit-size {
             width: 100%;
@@ -636,15 +642,21 @@ body {
 
         .profil-content-reservation-map {
             width: 100%;
-            // display: flex;
+            display: flex;
             margin: 0 auto;
+            justify-content: center;
 
 
             .row-limit-size-flex {
                 display: flex;
-                max-width: 1440px;
+                width: auto;
                 gap: 20px;
                 justify-content: center;
+
+                @media screen and (max-width:750px) {
+                    flex-direction: column;
+                    width: 100%;
+                }
 
 
 
@@ -1179,6 +1191,179 @@ body {
                     }
 
                 }
+            }
+        }
+    }
+
+    //profil
+    .profil {
+        width: 100%;
+        height: auto;
+
+        .container-profil {
+            margin: 50px auto;
+            max-width: 700px;
+
+            .breadcrumb {
+                background-color: #f5f5f5;
+                padding: 8px 15px;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 27px;
+                    height: 20px;
+                    padding: 2px;
+                }
+
+                &-item {
+                    display: inline-flex;
+                    gap: 10px;
+                    margin-right: 4px;
+                    font-size: 1.2rem;
+                    position: relative;
+
+
+
+                    a {
+                        color: #007bff;
+                        text-decoration: none;
+                        font-size: 1.4rem;
+                    }
+
+                    &:hover a {
+                        text-decoration: underline;
+                    }
+
+                    &.active {
+                        color: #333;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+
+
+            .title-img-btn {
+                h1 {
+                    font-size: 1.8rem;
+                    color: #191825;
+                    margin: 20px;
+                }
+
+
+
+
+                .img-btn-profil {
+                    // background-color: #007bff;
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 50px;
+                    margin: 20px;
+                    // border: 1px solid #1918251f;
+                    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
+
+                    img {
+                        width: auto;
+                        height: 100%;
+                        border-radius: 999px;
+
+                    }
+
+                    .btn-edit-delete {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+
+                        .btn-edit,
+                        .btn-delete {
+                            border: none;
+                            padding: 10px;
+                            font-size: 1rem;
+                            color: #F7F7F7;
+                            border-radius: 4px;
+                        }
+
+                        .btn-edit {
+                            background-color: #007bff;
+                        }
+
+                        .btn-delete {
+                            background-color: #E74646;
+                        }
+                    }
+
+
+                }
+
+
+            }
+
+            .profil-information {
+                width: fit-content;
+                display: flex;
+                flex-direction: column;
+                margin: auto;
+
+
+                .name-lastname {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding: 10px;
+
+
+
+
+
+                    #span-information {
+                        font-size: 1.3rem;
+
+                    }
+
+                    .input-btn {
+                        display: flex;
+                        justify-content: center;
+                        margin: 10px auto;
+
+                        @media screen and (max-width:750px) {
+                            flex-direction: column;
+                        }
+
+                        #input-profil {
+                            width: 300px;
+                            margin: auto 10px;
+                            height: 40px;
+                            border: 1px solid #191825;
+
+                            border-radius: 7px;
+
+                            &:focus {
+                                border: 5px solid #007bff;
+                            }
+
+
+                        }
+
+                        #edit {
+                            width: fit-content;
+                            background-color: #007bff;
+                            color: #F7F7F7;
+                            font-size: 1rem;
+                            border: none;
+                            margin: 10px auto;
+                            border-radius: 5px;
+                            padding: 10px;
+                            cursor: pointer;
+                        }
+                    }
+
+                }
+
+
             }
         }
     }
