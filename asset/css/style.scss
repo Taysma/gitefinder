@@ -1375,8 +1375,141 @@ body {
         }
     }
 
+    //favoris
+    .favoris {
+        width: 100%;
+        height: auto;
+
+        .container-favoris {
+            width: 100%;
+            margin: auto;
+            max-width: 1440px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 350px);
+            justify-content: center;
+            grid-gap: 55px;
+            grid-auto-rows: auto;
+            margin: 50px auto;
+            // background-color: #e7464640;
+            // border-radius: 15px;
+            // height: 100%;
+            // max-height: 100vh;
+
+
+
+            .card {
+                height: auto;
+                border-bottom-left-radius: 13px;
+                border-bottom-right-radius: 13px;
+
+                .img-card {
+                    width: 100%;
+                    position: relative;
+
+                    .size-img {
+                        width: 100%;
+                        border-top-left-radius: 13px;
+                        border-top-right-radius: 13px;
+                    }
+
+                    .like-heart {
+                        position: absolute;
+                        top: 10px;
+                        width: 64px;
+                        right: 10px;
+                        padding: 15px;
+                        background-color: #f2f2f2;
+                        border-radius: 999px;
+                        display: flex;
+                        height: auto;
+                        align-items: center;
+
+
+                        .like-size {
+                            width: 100%;
+
+
+
+                        }
+
+                    }
+
+
+                }
+
+                .content-card {
+                    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.101);
+                    padding: 10px;
+                    border-bottom-left-radius: 13px;
+                    border-bottom-right-radius: 13px;
+
+
+
+                    .title-prince {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+
+
+                        .h1-title-card {
+                            font-size: 1.1rem;
+                        }
+
+                        .prince {
+                            display: flex;
+
+                            span {
+                                font-size: xx-large;
+                                color: #F85E9F;
+                                text-align: center;
+                                font: xx-large;
+                                padding: 3px;
+
+                            }
+                        }
+
+
+                    }
+
+                    .location-card {
+                        width: 100%;
+                        margin: 10px 0px;
+
+                        span {
+
+                            font-size: x-large;
+                        }
+                    }
+
+                    .rating-card {
+                        text-align: center;
+                        margin-top: 10px;
+
+                        .rating {
+                            font-size: 1.5rem;
+                            font-weight: bolder;
+                            color: #FF5722;
+                        }
+
+                        .size-img-star {
+                            width: 24px;
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+
+
+
+    }
+
     //footer
     footer {
+
         width: 100%;
         display: flex;
         align-items: center;
@@ -1706,6 +1839,50 @@ body {
         }
 
 
+    }
+
+    // breadcrumb
+    .breadcrumb {
+        background-color: #f5f5f5;
+        padding: 18px 100px;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        height: fit-content;
+        width: 100%;
+
+
+        img {
+            display: inline-block;
+            width: 27px;
+            height: 20px;
+            padding: 2px;
+        }
+
+        &-item {
+            display: flex;
+            gap: 10px;
+            margin-right: 4px;
+            font-size: 1.2rem;
+            position: relative;
+
+
+
+            a {
+                color: #007bff;
+                text-decoration: none;
+                font-size: 1.4rem;
+            }
+
+            &:hover a {
+                text-decoration: underline;
+            }
+
+            &.active {
+                color: #333;
+                font-weight: bold;
+            }
+        }
     }
 }
 
