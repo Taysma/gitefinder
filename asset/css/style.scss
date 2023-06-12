@@ -203,9 +203,17 @@ body {
                         border: 2px solid #E74646;
                         height: 40px;
 
-                        @media screen and (max-width:900px) {
+                        @media screen and (max-width:1010px) {
                             color: #E74646;
                             // margin-top: 10px;
+                            width: 135px;
+
+                        }
+
+                        @media screen and (max-width:790px) {
+                            color: #E74646;
+                            // margin-top: 10px;
+                            width: 120px;
 
                         }
 
