@@ -1,5 +1,6 @@
 function toggleSharePopup() {
-    var popup = document.getElementById("sharePopup");
+
+    let popup = document.getElementById("sharePopup");
     popup.style.display = (popup.style.display === "block") ? "none" : "block";
 }
 

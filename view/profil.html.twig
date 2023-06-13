@@ -1,0 +1,85 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+	Profil
+{% endblock %}
+
+
+{% block header %}
+	{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
+{% block content %}
+	<section class="profil">
+		<div
+			class="container-profil">
+			{# <!-- fil d'ariane  breadcrumb --> #}
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="../view/homePage.html">Dashboard</a>
+					</li>
+					<img src="../asset/media/icon/fleche.svg" alt="fleche">
+					<li class="breadcrumb-item active" aria-current="page">Compte</li>
+				</ol>
+			</nav>
+			{# title and img #}
+			<div class="title-img-btn">
+				<h1>Mon Profil</h1>
+				<div class="img-btn-profil">
+					<div class="img">
+						<img src="../asset/media/icon/instagram.png" alt="photo de profil">
+					</div>
+					<div class="btn-edit-delete">
+						<button class="btn-edit">Modifier</button>
+						<button class="btn-delete">delete</button>
+					</div>
+				</div>
+			</div>
+			{# <!-- profil information --> #}
+			<div class="profil-information">
+				<div class="name-lastname profil-edit">
+					<span id="span-information" class="lastname-span">Nom</span>
+					<div class="input-btn">
+						<input type="text" id="input-profil">
+						<button id="edit">Modifier</button>
+					</div>
+				</div>
+				<div class="name-lastname profil-edit">
+					<span id="span-information" class="name-span">prenom</span>
+					<div class="input-btn">
+						<input type="text" id="input-profil">
+						<button id="edit">Modifier</button>
+					</div>
+				</div>
+				<div class="name-lastname profil-edit">
+					<span id="span-information" class="email-span">Adresse e-mail</span>
+					<div class="input-btn">
+						<input type="text" id="input-profil">
+						<button id="edit">Modifier</button>
+					</div>
+				</div>
+				<div class="name-lastname profil-edit">
+					<span id="span-information" class="address-span">Adresse</span>
+					<div class="input-btn">
+						<input type="text" id="input-profil">
+						<button id="edit">Modifier</button>
+					</div>
+				</div>
+				<div class="name-lastname profil-edit">
+					<span id="span-information" class="number-phone-span">Numéro de téléphone</span>
+					<div class="input-btn">
+						<input type="text" id="input-profil">
+						<button id="edit">Modifier</button>
+					</div>
+				</div>
+				<div class="name-lastname profil-edit">
+					<span id="span-information" class="id-card-span">Pièce d'identité officielle</span>
+					<div class="input-btn">
+						<button id="edit">ajouter</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

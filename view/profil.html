@@ -5,18 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="../asset/css/style.css">
-    <link rel="stylesheet" href="../asset/css/font.css">
-
-
-
-
-
+    <title>Document</title>
 </head>
 
 <body>
-    <!-- header -->
+
     <header>
         <div class="header-limit-size">
             <div class="logo">
@@ -60,38 +54,78 @@
         </div>
     </header>
 
-    <!-- section homePage gallery-grid -->
-    <section id="homepage" class="limit-size">
-        <div class="gallery-grid">
 
-            <div class="card">
-                <a href="./article.html">
-                    <div class="img-card">
-                        <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="gite en Foret">
-                    </div>
-                    <div class="txt-card">
-                        <div class="title-card">
-                            <div class="h1-card">
-                                <h1>Paradise Beach, Bantayan Island</h1>
-                            </div>
-                            <p>150€</p>
-                        </div>
-                        <h2 class="h2-card">rome, Italy</h2>
-                        <div class="note-card">
-                            <p>4.3</p>
-                            <!-- <i class="fas fa-star"></i> -->
-                            <span>
-                                <img src="../asset/media/icon/etoile.svg" alt="">
-                            </span>
 
-                        </div>
+    <section class="profil">
+        <div class="container-profil">
+            <!-- fil d'ariane  breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../view/homePage.html">Dashboard</a></li>
+                    <img src="../asset/media/icon/fleche.svg" alt="fleche">
+                    <li class="breadcrumb-item active" aria-current="page">Compte</li>
+                </ol>
+            </nav>
+            <div class="title-img-btn">
+                <h1>Mon Profil</h1>
+                <div class="img-btn-profil">
+                    <div class="img">
+                        <img src="../asset/media/icon/instagram.png" alt="photo de profil">
                     </div>
-                </a>
+                    <div class="btn-edit-delete">
+                        <button class="btn-edit">Modifier</button>
+                        <button class="btn-delete">delete</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- profil -->
+            <div class="profil-information">
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="lastname-span">Nom</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="name-span">prenom</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="email-span">Adresse e-mail</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="address-span">Adresse</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="number-phone-span">Numéro de téléphone</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="id-card-span">Pièce d'identité officielle</span>
+                    <div class="input-btn">
+                        <button id="edit">ajouter</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-limit-size">
@@ -194,9 +228,27 @@
 
 
     </footer>
+
+
+    <script>
+        document.getElementById('edit-button').addEventListener('click', function () {
+            var nameElement = document.getElementById('name');
+            var editButton = document.getElementById('edit-button');
+
+            if (nameElement.contentEditable === 'true') {
+                // Si le champ est déjà éditable, afficher le nom et le prénom et désactiver l'édition
+                nameElement.contentEditable = 'false';
+                nameElement.style.border = 'none';
+                editButton.textContent = 'Modifier';
+            } else {
+                // Si le champ n'est pas éditable, activer l'édition
+                nameElement.contentEditable = 'true';
+                nameElement.style.border = '1px solid #ccc';
+                editButton.textContent = 'Enregistrer';
+            }
+        });
+
+    </script>
 </body>
-<script src="../asset/js/main.js"></script>
-<script src="../asset/js/modal-footer.js"></script>
-<script src="../asset/js/calendrier.js"></script>
 
 </html>
