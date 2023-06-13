@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-limit-size">
+            <div class="logo">
+                <h1>GiteFinder</h1>
+            </div>
+            <div class="button-search">
+                <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="Search in GiteFinder">
+            </div>
+            <!-- search bar -->
+            <form action="#" method="post" class="search-bar-form">
+                <div class="search-bar ">
+
+                    <input type=" text" id="location-input" placeholder="Location">
+                    <div class="date-inputs">
+                        <input type="text" name="dateArrivee" id="dateArrivee" placeholder="Date d'arrivée" required />
+                        <input type="text" name="dateDepart" id="dateDepart" placeholder="Date de départ" required />
+                        <div id='calendar'></div>
+                    </div>
+
+                    <select id="guests-input">
+                        <option value="1">1 Personne</option>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes</option>
+                        <option value="5">5 Personnes</option>
+                        <option value="6">6 Personnes</option>
+                        <option value="7">7 Personnes</option>
+                        <option value="8">8 Personnes</option>
+                    </select>
+                    <button type="submit" id="search-button">Search</button>
+
+                </div>
+            </form>
+
+            <div class="menu-burger-header">
+                <a href="#">
+                    <img class="img-burger" src="../asset/media/icon/bars-solid.svg" alt="Connexion et inscription">
+                    <img class="img-burger border-user" src="../asset/media/icon/user-solid.svg" alt="menu burger">
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section class="profil">
+        <div class="container-profil">
+            <!-- fil d'ariane  breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../view/homePage.html">Dashboard</a></li>
+                    <img src="../asset/media/icon/fleche.svg" alt="fleche">
+                    <li class="breadcrumb-item active" aria-current="page">Compte</li>
+                </ol>
+            </nav>
+            <div class="title-img-btn">
+                <h1>Mon Profil</h1>
+                <div class="img-btn-profil">
+                    <div class="img">
+                        <img src="../asset/media/icon/instagram.png" alt="photo de profil">
+                    </div>
+                    <div class="btn-edit-delete">
+                        <button class="btn-edit">Modifier</button>
+                        <button class="btn-delete">delete</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- profil -->
+            <div class="profil-information">
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="lastname-span">Nom</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="name-span">prenom</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="email-span">Adresse e-mail</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="address-span">Adresse</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="number-phone-span">Numéro de téléphone</span>
+                    <div class="input-btn">
+                        <input type="text" id="input-profil">
+                        <button id="edit">Modifier</button>
+                    </div>
+                </div>
+                <div class="name-lastname profil-edit">
+                    <span id="span-information" class="id-card-span">Pièce d'identité officielle</span>
+                    <div class="input-btn">
+                        <button id="edit">ajouter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-limit-size">
+                <div class="footer-container-help">
+                    <div class="logo-footer">
+                        <span><a href="#" class="footer-logo-span">2023 GiteFinder, Inc</a></span>
+                    </div>
+                    <!-- newsletter -->
+                    <div class="container-newsletter">
+                        <form action="" id="form-newsletter">
+                            <label for="newsletter" id="label-newsletter">Newsletter</label>
+                            <input type="text" id="input-newsletter">
+                            <button type="submit" id="footer-submit-button">envoyer</button>
+                        </form>
+                    </div>
+
+                    <span class="footer-span-ol">
+                        <ol>
+                            <li class="footer-li"><a href="#">Confidentialité</a></li>
+                            <li class="footer-li"><a href="#">Conditions générales</a>
+                            </li>
+                            <li class="footer-li"><a href="#">Infos sur l'entreprise</a></li>
+                        </ol>
+                    </span>
+                </div>
+
+                <div class="container-footer-language-devise-help">
+
+                    <div class="footer-button">
+                        <span class="footer-button-span"> Francais</span>
+                        <div class="footer-button">
+                            <span class="footer-button-span">€</span>
+                            <span class="footer-button-span">EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-button-asistance" id="openModalButton">
+                        <span class="footer-button-span">Assistance et ressources</span>
+                        <img class="footer-img" src="../asset/media/icon/hate.svg" alt="hat">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-mobile">
+            <div class="mobile-footer-explore">
+                <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="" class="footer-img">
+                <P class="txt-footer">Explorer</P>
+            </div>
+            <div class="mobile-footer-favoris">
+                <img src="../asset/media/icon/coeur (1).png" alt="Favoris" class="footer-img">
+                <P class="txt-footer">Favoris</P>
+            </div>
+            <div class="mobile-footer-user">
+                <img src="../asset/media/icon/user-solid.svg" alt="" class="footer-user">
+                <p class="txt-footer">Connection</p>
+            </div>
+        </div>
+
+        <!-- <button id="openModalButton">Ouvrir la modal</button> -->
+
+        <div id="modal" class="modal">
+
+            <div class="modal-content">
+                <img class="close-footer" src="../asset/media/icon/x-solid.svg" alt="close">
+                <div class="footer-modal-ul">
+                    <ul class="link-list">
+                        <h3><a href="#">Assistance</a></h3>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">AirCover</a></li>
+                        <li><a href="#">Soutenir les personnes en situation de handicap</a></li>
+                        <li><a href="#">Options d'annulation</a></li>
+                        <li><a href="#">Nos mesures face au Covid-19</a></li>
+                        <li><a href="#">Signaler un problème de voisinage</a></li>
+                    </ul>
+                </div>
+                <ul class="link-list">
+                    <li><a href="#">Communauté</a></li>
+                    <li><a href="#">Airbnb.org : réponse aux catastrophes</a></li>
+                    <li><a href="#">Lutte contre la discrimination</a></li>
+                </ul>
+                <ul class="link-list">
+                    <li><a href="#">Accueil de voyageurs</a></li>
+                    <li><a href="#">Mettez votre logement sur Airbnb</a></li>
+                    <li><a href="#">AirCover pour les hôtes</a></li>
+                    <li><a href="#">Ressources pour les hôtes</a></li>
+                    <li><a href="#">Forum de la communauté</a></li>
+                    <li><a href="#">Accueillir de manière responsable</a></li>
+                </ul>
+                <ul class="link-list">
+                    <li><a href="#">GiteFinder</a></li>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">En savoir plus sur les nouveautés</a></li>
+                    <li><a href="#">Lettre de nos fondateurs</a></li>
+                    <li><a href="#">Carrières</a></li>
+                    <li><a href="#">Investisseurs</a></li>
+                    <li><a href="#">Cartes cadeaux</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </footer>
+
+
+    <script>
+        document.getElementById('edit-button').addEventListener('click', function () {
+            var nameElement = document.getElementById('name');
+            var editButton = document.getElementById('edit-button');
+
+            if (nameElement.contentEditable === 'true') {
+                // Si le champ est déjà éditable, afficher le nom et le prénom et désactiver l'édition
+                nameElement.contentEditable = 'false';
+                nameElement.style.border = 'none';
+                editButton.textContent = 'Modifier';
+            } else {
+                // Si le champ n'est pas éditable, activer l'édition
+                nameElement.contentEditable = 'true';
+                nameElement.style.border = '1px solid #ccc';
+                editButton.textContent = 'Enregistrer';
+            }
+        });
+
+    </script>
+</body>
+
+</html>

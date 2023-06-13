@@ -4,25 +4,26 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 require_once './vendor/autoload.php';
 
 $router = new AltoRouter();
-$router->setBasePath('/Projet/GiteFinder');
+$router->setBasePath('/projets/gitefinder');
 
 
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
 //  HOMEPAGE // Affichages des contenues de la homepage
-// Add homepage content
+$router->map('GET', '/rental/', '', 'baseRental');
+$router->map('GET', '/rental/[i:id]', 'HomeController#getOne', 'article');
 
-// Log-in/out form route
-$router->map('GET|POST','/login', 'UserController#login', 'login');
-$router->map('GET','/logout', 'UserController#logout', 'logout');
-// Register
-$router->map('GET|POST','/registration', 'UserController#register', 'register');
+$router->map('GET','/category/','','baseCats');
+$router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
+
+// Connection form route
+$router->map('GET|POST', '/login', 'UserController#login', 'login');
+$router->map('GET|POST', '/registration', 'UserController#register', 'register');
+$router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardHost');
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardGuest');
-$router->map('GET', '/dashboard', 'PostController#getUserPost', 'dashboardAdmin');
+$router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard');
 
 // CRUD Post
 $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
@@ -35,7 +36,7 @@ $router->map('GET', '/search', 'SearchController#searchResult', 'search');
 
 
 $match = $router->match();
-var_dump($match);
+// var_dump($match);
 
 if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
