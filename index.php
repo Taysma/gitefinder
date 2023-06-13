@@ -23,7 +23,7 @@ $router->map('GET|POST', '/registration', 'UserController#register', 'register')
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
-$router->map('GET', '/dashboard', 'RentalController#getUserPost', 'dashboard');
+$router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard');
 
 // CRUD Post
 $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');

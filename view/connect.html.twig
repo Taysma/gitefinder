@@ -1,5 +1,9 @@
 {% extends "template.html.twig" %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ asset('/css/connect.css') }}">
+{% endblock %}
+
 {% block content %}
 
 	<div class="cont">
@@ -110,6 +114,3 @@
 	</div>
 {% endblock %}
 
-{% block javascript %}
-	<script src="{{ javascript }}main.js"></script>
-{% endblock %}
