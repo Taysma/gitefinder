@@ -22,7 +22,7 @@ class Category {
     }
 
     //GETTERS
-    public function getId(){
+    public function getId_category(){
         return $this->id_category;
     }
 
