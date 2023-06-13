@@ -1,147 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Sélection des dates</title>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier de réservation</title>
     <style>
-        .form-date-arrivee-depart {
+        /* Style du calendrier */
+        .calendar {
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        /* Style du titre du calendrier */
+        .calendar .calendar-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Style des jours de la semaine */
+        .calendar .weekdays {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
 
-        .form-date-arrivee-depart input {
-            width: 150px;
+        /* Style d'un jour de la semaine */
+        .calendar .weekdays .day {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Style des jours du mois */
+        .calendar .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        /* Style d'un jour du mois */
+        .calendar .days .day {
+            text-align: center;
             padding: 5px;
-            margin: 0 10px;
+            cursor: pointer;
         }
 
-        #calendar {
+        /* Style d'un jour du mois sélectionné */
+        .calendar .days .day.selected {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Style d'un jour du mois désactivé */
+        .calendar .days .day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Style du formulaire de réservation */
+        .booking-form {
             display: none;
-            margin: 20px auto;
-            max-width: 600px;
+            margin-top: 10px;
         }
 
-        .selected-range {
-            background-color: #ccc;
+        .booking-form h2 {
+            text-align: center;
+        }
+
+        .booking-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .booking-form label {
+            margin-bottom: 5px;
+        }
+
+        .booking-form .submit-btn {
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div class="form-date-arrivee-depart">
-        <input type="text" name="arrivee" id="date-arrive" placeholder="Date d'arrivée">
-        <input type="text" name="depart" id="date-depart" placeholder="Date de départ">
+    <!-- calendar -->
+    <div class="calendar">
+        <div class="calendar-header">
+            <button class="prev-month-btn" onclick="prevMonth()">&lt;</button>
+            <h1 class="calendar-title"></h1>
+            <button class="next-month-btn" onclick="nextMonth()">&gt;</button>
+        </div>
+        <div class="weekdays">
+            <div class="day">Dim</div>
+            <div class="day">Lun</div>
+            <div class="day">Mar</div>
+            <div class="day">Mer</div>
+            <div class="day">Jeu</div>
+            <div class="day">Ven</div>
+            <div class="day">Sam</div>
+        </div>
+        <div class="days"></div>
+        <div class="calendar-footer">
+            <button class="book-btn" onclick="showBookingForm()">Réserver</button>
+        </div>
     </div>
-    <div id="calendar"></div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- booking form -->
+    <div class="booking-form" id="bookingForm">
+        <h2>Réserver</h2>
+        <form>
+            <label for="check-in-date">Date d'arrivée:</label>
+            <input type="date" id="check-in-date" name="check-in-date">
+            <label for="check-out-date">Date de départ:</label>
+            <input type="date" id="check-out-date" name="check-out-date">
+            <button class="submit-btn" onclick="submitBooking()">Valider</button>
+        </form>
+    </div>
+
     <script>
-        $(document).ready(function () {
-            var arrivalDate;
-            var departureDate;
+        // Variables globales pour le mois et l'année actuels
+        let currentMonth = 5; // 0 correspond à janvier, 1 à février, ..., 11 à décembre
+        let currentYear = 2023;
 
-            $('#date-arrive').click(function () {
-                $('#calendar').show();
-                arrivalDate = null;
-                departureDate = null;
-                $('.selected-arrival').removeClass('selected-arrival');
-                $('.selected-departure').removeClass('selected-departure');
-                $('.selected-range').removeClass('selected-range');
-            });
+        // Fonction pour afficher le calendrier
+        function showCalendar() {
+            const calendarTitle = document.querySelector('.calendar-title');
+            calendarTitle.textContent = getMonthName(currentMonth) + ' ' + currentYear;
 
-            $('#date-depart').click(function () {
-                if (arrivalDate) {
-                    $('#calendar').show();
-                    $('.selected-arrival').removeClass('selected-arrival');
-                    $('.selected-departure').removeClass('selected-departure');
-                    $('.selected-range').removeClass('selected-range');
-                }
-            });
+            const daysContainer = document.querySelector('.days');
+            daysContainer.innerHTML = '';
 
-            $('#date-arrive').datepicker({
-                dateFormat: 'yy-mm-dd',
-                minDate: 0,
-                onSelect: function (selectedDate) {
-                    arrivalDate = moment(selectedDate, 'YYYY-MM-DD');
-                    $('#date-arrive').val(arrivalDate.format('YYYY-MM-DD'));
-                    if (departureDate && arrivalDate.isAfter(departureDate)) {
-                        $('#date-depart').val('');
-                        departureDate = null;
-                    }
-                    updateCalendar();
-                }
-            });
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const numDays = lastDay.getDate();
 
-            $('#date-depart').datepicker({
-                dateFormat: 'yy-mm-dd',
-                minDate: 0,
-                onSelect: function (selectedDate) {
-                    departureDate = moment(selectedDate, 'YYYY-MM-DD');
-                    $('#date-depart').val(departureDate.format('YYYY-MM-DD'));
-                    updateCalendar();
-                    $('#calendar').hide();
-                }
-            });
-
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next',
-                    center: 'title',
-                    right: 'month,agendaWeek'
-                },
-                defaultView: 'month',
-                selectable: true,
-                select: function (start, end) {
-                    if (!arrivalDate) {
-                        arrivalDate = moment(start);
-                        $('#date-arrive').val(arrivalDate.format('YYYY-MM-DD'));
-                    } else if (!departureDate) {
-                        departureDate = moment(start);
-                        $('#date-depart').val(departureDate.format('YYYY-MM-DD'));
-                        updateCalendar();
-                        $('#calendar').hide();
-                    }
-                },
-                dayRender: function (date, cell) {
-                    if (arrivalDate && !departureDate && date.isSame(arrivalDate)) {
-                        cell.addClass('selected-arrival');
-                    } else if (departureDate && date.isSame(departureDate)) {
-                        cell.addClass('selected-departure');
-                    } else if (arrivalDate && departureDate && date.isBetween(arrivalDate, departureDate, 'day', '[]')) {
-                        cell.addClass('selected-range');
-                    }
-                },
-                unselect: function () {
-                    arrivalDate = null;
-                    departureDate = null;
-
-                    $('.selected-arrival').removeClass('selected-arrival');
-                    $('.selected-departure').removeClass('selected-departure');
-                    $('.selected-range').removeClass('selected-range');
-
-                    $('#calendar').hide();
-                },
-                events: []
-            });
-
-            function updateCalendar() {
-                $('.selected-range').removeClass('selected-range');
-
-                if (arrivalDate && departureDate) {
-                    var currentDate = moment(arrivalDate);
-                    while (currentDate.isBefore(departureDate) || currentDate.isSame(departureDate)) {
-                        var dateCell = $('.fc-day[data-date="' + currentDate.format('YYYY-MM-DD') + '"]');
-                        dateCell.addClass('selected-range');
-                        currentDate.add(1, 'day');
-                    }
-                }
+            // Ajoute les cases pour les jours du mois
+            for (let i = 1; i <= numDays; i++) {
+                const dayCell = document.createElement('div');
+                dayCell.classList.add('day');
+                dayCell.textContent = i;
+                dayCell.addEventListener('click', selectDay);
+                daysContainer.appendChild(dayCell);
             }
-        });
-    </script>
-</body>
+        }
 
-</html>
+        // Fonction pour afficher le mois précédent
+        function prevMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            showCalendar();
+        }
+
+        // Fonction pour afficher le mois suivant
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            showCalendar();
+        }
+
+        // Fonction pour obtenir le nom du mois à partir de son numéro
+        function getMonthName(month) {
+            const months = [
+                'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+            ];
+            return months[month];
+        }
+
+        // Fonction pour sélectionner un jour
+        function selectDay() {
+            const selectedDay = this.textContent;
+            const selectedMonth = currentMonth + 1;
+            const selectedYear = currentYear;
+
+            // Ajouter la classe "selected" au jour sélectionné
+            const days = document.querySelectorAll('.day');
+            days.forEach((day) => {
+                day.classList.remove('selected');
+            });
+            this.classList.add('selected');
+
+            // Mettre à jour le champ de saisie de la date d'arrivée avec le jour sélectionné
+            const checkInDateInput = document.getElementById('check-in-date');
+            checkInDateInput.value = `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${selectedDay.padStart(2, '0')}`;
+        }
+
+        // Fonction pour afficher le formulaire de réservation
+        function showBookingForm() {
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.style.display = 'block';
+        }
+
+        // Fonction pour soumettre la réservation
+        function submitBooking() {
+            // Récupérer les dates d'arrivée et de départ depuis les champs de saisie
+            const checkInDate = document.getElementById('check-in-date').value;
+            const checkOutDate = document.getElementById('check-out-date').value;
+
+            // Vérifier si les dates sont valides
+            if (checkInDate && checkOutDate) {
+                // Effectuer les opérations de réservation ici
+
+                // Afficher un message de confirmation
+                const confirmationMessage = `Réservation effectuée du ${checkInDate} au ${checkOutDate}`;
+                alert(confirmationMessage);
+
+                // Réinitialiser les champs de saisie
+                document.getElementById('check-in-date').value = '';
+                document.getElementById('check-out-date').value = '';
+            } else {
+                // Afficher un message d'erreur si les dates ne sont pas saisies
+                alert('Veuillez saisir les dates de réservation.');
+            }
+        }
+    </script>

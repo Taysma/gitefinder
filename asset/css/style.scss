@@ -108,7 +108,7 @@ body {
 
                 h1 {
                     font-size: 1.5rem;
-                    color: #E74646;
+                    color: #FF385C;
 
                     @media screen and (max-width:900px) {
                         font-size: 1rem;
@@ -126,7 +126,7 @@ body {
                     width: 50px;
                     height: 50px;
                     border-radius: 999px;
-                    background-color: #E74646;
+                    background-color: #FF385C;
                     z-index: 99;
                     margin-top: 100px;
                     align-items: center;
@@ -145,8 +145,24 @@ body {
             .search-bar-form {
                 display: flex;
                 justify-content: center;
+                background: white;
+                box-shadow: 0 0 5px hsl(0 0% 78%);
+                height: 55px;
+                border-radius: 100vw;
+                display: flex;
+                justify-content: center;
+                font-size: 0.6rem;
 
-                width: 550px;
+                width: auto;
+                transition: background 250ms ease;
+
+
+
+                &:hover {
+                    background: hsl(0 0% 94%);
+                }
+
+
 
                 @media screen and (max-width:768px) {
                     position: absolute;
@@ -200,18 +216,19 @@ body {
 
                     input {
                         padding: 8px;
-                        border: 2px solid #E74646;
+                        border: 2px solid #FF385C;
+                        ;
                         height: 40px;
 
                         @media screen and (max-width:1010px) {
-                            color: #E74646;
+                            color: #FF385C;
                             // margin-top: 10px;
                             width: 135px;
 
                         }
 
                         @media screen and (max-width:790px) {
-                            color: #E74646;
+                            color: #FF385C;
                             // margin-top: 10px;
                             width: 120px;
 
@@ -222,7 +239,7 @@ body {
 
 
                         &:hover:focus {
-                            border: 2px solid #E74646;
+                            border: 2px solid #FF385C;
                         }
 
 
@@ -237,7 +254,7 @@ body {
 
                         @media screen and (max-width:900px) {
                             width: 120px;
-                            color: #E74646;
+                            color: #FF385C;
 
                         }
 
@@ -302,7 +319,7 @@ body {
                     .date-inputs input {
                         // width: 100%;
                         // height: auto;
-                        border: 2px solid #E74646;
+                        border: 2px solid #FF385C;
 
                         @media screen and (max-width:850px) {
                             // margin-top: 10px;
@@ -340,7 +357,7 @@ body {
                     #guests-input {
                         // width: 150px;
                         padding: 8px;
-                        border: 2px solid #E74646;
+                        border: 2px solid #FF385C;
                         height: 40px;
                         border-top-right-radius: 14px;
                         border-bottom-right-radius: 14px;
@@ -364,7 +381,7 @@ body {
 
                     button {
                         padding: 8px 16px;
-                        background-color: #E74646;
+                        background-color: #FF385C;
                         color: #fff;
                         border: none;
                         margin-left: 10px;
@@ -705,7 +722,7 @@ body {
                             font-size: 1.1rem;
 
                             .profil-user {
-                                color: #E74646;
+                                color: #FF385C;
                                 font-size: 1.3rem;
                                 font: 900;
                                 cursor: pointer;
@@ -717,7 +734,7 @@ body {
                         }
 
                         #btn-profil {
-                            background-color: #E74646;
+                            background-color: #FF385C;
                             border: none;
                             margin: auto 15px;
                             padding: 5px;
@@ -970,7 +987,7 @@ body {
 
                                             // border-radius: 10px; 
                                             .calendrier {
-                                                background-color: #E74646;
+                                                background-color: #FF385C;
                                             }
 
                                         }
@@ -1016,7 +1033,7 @@ body {
 
                                     #search-button {
                                         padding: 10px 16px;
-                                        background-color: #E74646;
+                                        background-color: #FF385C;
                                         color: #fff;
                                         border: none;
                                         width: 60%;
@@ -1298,7 +1315,7 @@ body {
                         }
 
                         .btn-delete {
-                            background-color: #E74646;
+                            background-color: #FF385C;
                         }
                     }
 
@@ -1390,7 +1407,7 @@ body {
             grid-gap: 55px;
             grid-auto-rows: auto;
             margin: 50px auto;
-            // background-color: #e7464640;
+            // background-color: #FF385C40;
             // border-radius: 15px;
             // height: 100%;
             // max-height: 100vh;
@@ -1507,6 +1524,71 @@ body {
 
     }
 
+    //rental
+    .rental {
+        .container-rental {
+            width: 100%;
+            max-width: 1440px;
+            height: auto;
+            margin: auto;
+
+
+            .card-rental {
+                width: fit-content;
+                box-shadow: 5px 5px 16px #1918252a;
+                margin: auto;
+                height: 300px;
+                display: flex;
+                gap: 20px;
+                align-items: center;
+
+                .img-card-rental {
+                    width: 40%;
+                    height: 100%;
+
+                    .size-img-rental-card {
+                        width: 100%;
+                        height: 100%;
+                        border-top-left-radius: 13px;
+                        border-bottom-left-radius: 13px;
+                    }
+
+                }
+
+                .content-rental-card {
+                    display: flex;
+                    width: fit-content;
+
+                    .title-prince {
+                        display: flex;
+                        width: 80%;
+                        align-items: center;
+                        // gap: 10px;
+
+                        .title {
+                            h1 {
+                                font-size: 1.8rem;
+                                font: xx-large;
+                            }
+                        }
+
+                        .prince {
+                            display: flex;
+                            gap: 5px;
+
+                            span {
+                                font: bolder;
+                                font-size: 1.7rem;
+                                color: #F85E9F;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
     //footer
     footer {
 
@@ -1555,7 +1637,7 @@ body {
                             font: bolder;
                             text-decoration: none;
                             text-transform: none;
-                            color: #E74646;
+                            color: #FF385C;
                             white-space: nowrap;
                         }
                     }
@@ -1584,13 +1666,13 @@ body {
                                 width: 100px;
                                 height: 30PX;
                                 border-radius: 5px;
-                                border: 2px solid #e7464667;
+                                border: 2px solid #FF385C67;
                                 margin: 10px;
                                 text-align: center;
                             }
 
                             #footer-submit-button {
-                                background-color: #E74646;
+                                background-color: #FF385C;
                                 padding: 5px;
                                 border-radius: 5px;
                                 width: 70px;
@@ -1725,7 +1807,7 @@ body {
 
                 &:hover {
                     height: auto;
-                    background-color: #E74646;
+                    background-color: #FF385C;
                     // border-top-left-radius: 3px solid #000000;
                     // border-top-right-radius: 30px;
                     // border-top-left-radius: 30px;
@@ -1789,7 +1871,7 @@ body {
                 .footer-modal-ul {
                     display: flex;
                     row-gap: 20px;
-                    // background-color: #E74646;
+                    // background-color: #FF385C;
                 }
             }
 

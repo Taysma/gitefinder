@@ -64,7 +64,7 @@ body header .header-limit-size .logo {
 }
 body header .header-limit-size .logo h1 {
   font-size: 1.5rem;
-  color: #E74646;
+  color: #FF385C;
 }
 @media screen and (max-width: 900px) {
   body header .header-limit-size .logo h1 {
@@ -81,7 +81,7 @@ body header .header-limit-size .button-search {
     width: 50px;
     height: 50px;
     border-radius: 999px;
-    background-color: #E74646;
+    background-color: #FF385C;
     z-index: 99;
     margin-top: 100px;
     align-items: center;
@@ -94,7 +94,18 @@ body header .header-limit-size .button-search img {
 body header .header-limit-size .search-bar-form {
   display: flex;
   justify-content: center;
-  width: 550px;
+  background: white;
+  box-shadow: 0 0 5px hsl(0, 0%, 78%);
+  height: 55px;
+  border-radius: 100vw;
+  display: flex;
+  justify-content: center;
+  font-size: 0.6rem;
+  width: auto;
+  transition: background 250ms ease;
+}
+body header .header-limit-size .search-bar-form:hover {
+  background: hsl(0, 0%, 94%);
 }
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form {
@@ -145,23 +156,23 @@ body header .header-limit-size .search-bar-form .search-bar {
 }
 body header .header-limit-size .search-bar-form .search-bar input {
   padding: 8px;
-  border: 2px solid #E74646;
+  border: 2px solid #FF385C;
   height: 40px;
 }
 @media screen and (max-width: 1010px) {
   body header .header-limit-size .search-bar-form .search-bar input {
-    color: #E74646;
+    color: #FF385C;
     width: 135px;
   }
 }
 @media screen and (max-width: 790px) {
   body header .header-limit-size .search-bar-form .search-bar input {
-    color: #E74646;
+    color: #FF385C;
     width: 120px;
   }
 }
 body header .header-limit-size .search-bar-form .search-bar input:hover:focus {
-  border: 2px solid #E74646;
+  border: 2px solid #FF385C;
 }
 body header .header-limit-size .search-bar-form .search-bar #location-input {
   border-top-left-radius: 14px;
@@ -170,7 +181,7 @@ body header .header-limit-size .search-bar-form .search-bar #location-input {
 @media screen and (max-width: 900px) {
   body header .header-limit-size .search-bar-form .search-bar #location-input {
     width: 120px;
-    color: #E74646;
+    color: #FF385C;
   }
 }
 @media screen and (max-width: 850px) {
@@ -225,7 +236,7 @@ body header .header-limit-size .search-bar-form .search-bar .date-inputs .calend
   cursor: pointer;
 }
 body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
-  border: 2px solid #E74646;
+  border: 2px solid #FF385C;
 }
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
@@ -244,7 +255,7 @@ body header .header-limit-size .search-bar-form .search-bar #departure-input {
 }
 body header .header-limit-size .search-bar-form .search-bar #guests-input {
   padding: 8px;
-  border: 2px solid #E74646;
+  border: 2px solid #FF385C;
   height: 40px;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
@@ -268,7 +279,7 @@ body header .header-limit-size .search-bar-form .search-bar #guests-input {
 }
 body header .header-limit-size .search-bar-form .search-bar button {
   padding: 8px 16px;
-  background-color: #E74646;
+  background-color: #FF385C;
   color: #fff;
   border: none;
   margin-left: 10px;
@@ -547,7 +558,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   font-size: 1.1rem;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .profil-user-article .profil-span .profil-user {
-  color: #E74646;
+  color: #FF385C;
   font-size: 1.3rem;
   font: 900;
   cursor: pointer;
@@ -556,7 +567,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   color: rgba(25, 24, 37, 0.5254901961);
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .profil-user-article #btn-profil {
-  background-color: #E74646;
+  background-color: #FF385C;
   border: none;
   margin: auto 15px;
   padding: 5px;
@@ -735,7 +746,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   padding: 10px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-arrive .calendrier {
-  background-color: #E74646;
+  background-color: #FF385C;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-depart {
   border: none;
@@ -764,7 +775,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .btn-reservation #search-button {
   padding: 10px 16px;
-  background-color: #E74646;
+  background-color: #FF385C;
   color: #fff;
   border: none;
   width: 60%;
@@ -977,7 +988,7 @@ body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .
   background-color: #007bff;
 }
 body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .btn-delete {
-  background-color: #E74646;
+  background-color: #FF385C;
 }
 body .profil .container-profil .profil-information {
   width: -moz-fit-content;
@@ -1115,6 +1126,55 @@ body .favoris .container-favoris .card .content-card .rating-card .rating {
 body .favoris .container-favoris .card .content-card .rating-card .size-img-star {
   width: 24px;
 }
+body .rental .container-rental {
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  margin: auto;
+}
+body .rental .container-rental .card-rental {
+  width: -moz-fit-content;
+  width: fit-content;
+  box-shadow: 5px 5px 16px rgba(25, 24, 37, 0.1647058824);
+  margin: auto;
+  height: 300px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+body .rental .container-rental .card-rental .img-card-rental {
+  width: 40%;
+  height: 100%;
+}
+body .rental .container-rental .card-rental .img-card-rental .size-img-rental-card {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+body .rental .container-rental .card-rental .content-rental-card {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+body .rental .container-rental .card-rental .content-rental-card .title-prince {
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+body .rental .container-rental .card-rental .content-rental-card .title-prince .title h1 {
+  font-size: 1.8rem;
+  font: xx-large;
+}
+body .rental .container-rental .card-rental .content-rental-card .title-prince .prince {
+  display: flex;
+  gap: 5px;
+}
+body .rental .container-rental .card-rental .content-rental-card .title-prince .prince span {
+  font: bolder;
+  font-size: 1.7rem;
+  color: #F85E9F;
+}
 body footer {
   width: 100%;
   display: flex;
@@ -1156,7 +1216,7 @@ body footer .footer-container .footer-limit-size .footer-container-help .logo-fo
   font: bolder;
   text-decoration: none;
   text-transform: none;
-  color: #E74646;
+  color: #FF385C;
   white-space: nowrap;
 }
 body footer .footer-container .footer-limit-size .footer-container-help .container-newsletter {
@@ -1179,12 +1239,12 @@ body footer .footer-container .footer-limit-size .footer-container-help .contain
   width: 100px;
   height: 30PX;
   border-radius: 5px;
-  border: 2px solid rgba(231, 70, 70, 0.4039215686);
+  border: 2px solid rgba(255, 56, 92, 0.4039215686);
   margin: 10px;
   text-align: center;
 }
 body footer .footer-container .footer-limit-size .footer-container-help .container-newsletter #form-newsletter #footer-submit-button {
-  background-color: #E74646;
+  background-color: #FF385C;
   padding: 5px;
   border-radius: 5px;
   width: 70px;
@@ -1290,7 +1350,7 @@ body footer .footer-mobile .mobile-footer-explore:hover,
 body footer .footer-mobile .mobile-footer-favoris:hover,
 body footer .footer-mobile .mobile-footer-user:hover {
   height: auto;
-  background-color: #E74646;
+  background-color: #FF385C;
 }
 body footer .footer-mobile .mobile-footer-explore .footer-img,
 body footer .footer-mobile .mobile-footer-explore .footer-user,
