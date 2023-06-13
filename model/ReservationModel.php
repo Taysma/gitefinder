@@ -29,8 +29,10 @@ class ReservationModel extends Model
 
     //read
 
-    public function read(Reservation $reservation)
+    public function readAllReservationUser(Reservation $reservation)
     {
+        
+
         $id_reservation = $reservation->getId_reservation();
         $id_user = $reservation->getId_user();
         $id_rental = $reservation->getId_rental();
@@ -48,6 +50,10 @@ class ReservationModel extends Model
         $req->bindParam(":checkin_date", $checkin_date, PDO::PARAM_STR);
         $req->bindParam(":checkout_date", $checkout_date, PDO::PARAM_STR);
         $req->bindParam(":validation", $validation, PDO::PARAM_STR);
+
+        while($reservation = $req->fetch(PDO::FETCH_ASSOC)){
+            $reservations[] = new Reservation($reservation);
+        }
 
         $req->execute();
     }

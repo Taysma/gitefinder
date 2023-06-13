@@ -7,6 +7,7 @@ $router = new AltoRouter();
 $router->setBasePath('/projets/gitefinder');
 
 
+
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 

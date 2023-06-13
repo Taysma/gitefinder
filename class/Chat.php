@@ -26,11 +26,11 @@ class Chat {
         return $this->id_chat;
     }
 
-    public function getIdUser(){
+    public function getId_user(){
         return $this->id_user;
     }
 
-    public function getIdRental(){
+    public function getId_rental(){
         return $this->id_rental;
     }
 
