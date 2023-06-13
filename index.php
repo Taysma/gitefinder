@@ -4,7 +4,7 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 require_once './vendor/autoload.php';
 
 $router = new AltoRouter();
-$router->setBasePath('/projets/gitefinder');
+$router->setBasePath('/Projet/GiteFinder');
 
 
 // HOMEPAGE
@@ -32,7 +32,7 @@ $router->map('GET', '/search', 'SearchController#searchResult', 'search');
 
 
 $match = $router->match();
-// var_dump($match);
+var_dump($match);
 
 if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
