@@ -78,4 +78,50 @@ class UserModel extends Model {
 
         
     }
+
+    public function deleteUser(int $id){
+        // Start a new transaction
+        $this->getDb()->beginTransaction();
+        
+        try {
+            // Delete links in chat table
+            $req = $this->getDb()->prepare('DELETE FROM `chat` WHERE `id_user` = :id_user');
+            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->execute();
+
+            // Delete links in rental table
+            $req = $this->getDb()->prepare('DELETE FROM `rental` WHERE `id_user` = :id_user');
+            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->execute();
+
+            // Delete links in reservation table
+            $req = $this->getDb()->prepare('DELETE FROM `reservation` WHERE `id_user` = :id_user');
+            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->execute();
+
+            // Delete links in review table
+            $req = $this->getDb()->prepare('DELETE FROM `review` WHERE `id_user` = :id_user');
+            $req->bindParam('id', $id, PDO::PARAM_INT);
+            $req->execute();
+
+            // Delete links in wishlist table
+            $req = $this->getDb()->prepare('DELETE FROM `wishlist` WHERE `id_user` = :id_user');
+            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->execute();
+    
+            // Delete the user
+            $req = $this->getDb()->prepare('DELETE FROM `user` WHERE `id_user` = :id_user');
+            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->execute();
+    
+            // Commit the transaction if both operations succeeded
+            $this->getDb()->commit();
+    
+        } catch(Exception $e) {
+            // If any operation fails, an exception is thrown
+            // Rollback the transaction
+            $this->getDb()->rollBack();
+            throw $e;  // or handle it in another way depending on your needs
+        }
+}
 }

@@ -74,4 +74,26 @@ class WishlistModel extends Model {
 
         return $contentWishlist;
     }
+
+    public function deleteWishlist(int $id){
+        // Start a new transaction
+        $this->getDb()->beginTransaction();
+        
+        try {
+           
+            // Delete the wishlist
+            $req = $this->getDb()->prepare('DELETE FROM `wishlist` WHERE `id_wishlist` = :id_wishlist');
+            $req->bindParam('id_wishlist', $id, PDO::PARAM_INT);
+            $req->execute();
+    
+            // Commit the transaction if both operations succeeded
+            $this->getDb()->commit();
+    
+        } catch(Exception $e) {
+            // If any operation fails, an exception is thrown
+            // Rollback the transaction
+            $this->getDb()->rollBack();
+            throw $e;  // or handle it in another way depending on your needs
+        }
+    }
 }
