@@ -1526,49 +1526,125 @@ body {
 
     //rental
     .rental {
-        .container-rental {
-            width: 100%;
-            max-width: 1440px;
-            height: auto;
-            margin: auto;
+        width: 100%;
+        max-width: 1440px;
+        margin: 50px auto;
 
+        .container-rental {
+
+            width: auto;
+            padding: 10px;
+
+            @media screen and (max-width:750px) {
+                padding: 0px;
+            }
 
             .card-rental {
-                width: fit-content;
+                width: 100%;
+                max-width: 1085px;
                 box-shadow: 5px 5px 16px #1918252a;
-                margin: auto;
-                height: 300px;
+                margin: 0 auto;
+                height: 309px;
                 display: flex;
+                border-radius: 13px;
                 gap: 20px;
                 align-items: center;
 
+                @media screen and (max-width:1046px) {
+                    gap: 30px;
+                }
+
+                @media screen and (max-width:912px) {
+                    gap: 10px;
+                }
+
+
+
+                @media screen and (max-width:750px) {
+                    flex-direction: column;
+                    height: auto;
+                    max-width: 350px;
+                }
+
+
+
+
+
                 .img-card-rental {
-                    width: 40%;
+                    width: 100%;
+                    image-rendering: pixelated;
                     height: 100%;
 
+                    @media screen and (max-width:750px) {
+                        font-size: 1.2rem;
+                    }
+
                     .size-img-rental-card {
-                        width: 100%;
+                        width: 350px;
                         height: 100%;
                         border-top-left-radius: 13px;
                         border-bottom-left-radius: 13px;
+                        background-size: cover;
+
+                        @media screen and (max-width:750px) {
+                            width: 100%;
+                        }
+
+
                     }
 
                 }
 
                 .content-rental-card {
                     display: flex;
-                    width: fit-content;
+                    flex-direction: column;
+                    row-gap: 10px;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: center;
+
 
                     .title-prince {
                         display: flex;
-                        width: 80%;
+                        width: 100%;
                         align-items: center;
-                        // gap: 10px;
+                        gap: 8px;
+
+                        @media screen and (max-width:750px) {
+                            flex-direction: column;
+                        }
+
+
+
 
                         .title {
+                            max-width: 100%;
+                            margin: 10px auto;
+
+
+                            @media screen and (max-width:750px) {
+                                margin: 0px auto;
+                            }
+
+
+
                             h1 {
                                 font-size: 1.8rem;
-                                font: xx-large;
+                                font: 900;
+                                margin: 5px auto;
+
+                                @media screen and (max-width:1020px) {
+                                    font-size: 1.6rem;
+                                }
+
+                                @media screen and (max-width:960px) {
+                                    font-size: 1.4rem;
+                                }
+                            }
+
+                            span {
+                                font-size: 1.3rem;
+                                margin: auto 2px;
                             }
                         }
 
@@ -1580,8 +1656,82 @@ body {
                                 font: bolder;
                                 font-size: 1.7rem;
                                 color: #F85E9F;
+                                font: bolder;
+
+                                @media screen and (max-width:1020px) {
+                                    font-size: 1.4rem;
+                                }
+
+                                // @media screen and (max-width:960px) {
+                                //     font-size: 1.2rem;
+                                // }
                             }
                         }
+
+
+                    }
+
+                    .date-rental {
+                        width: 100%;
+                        text-align: center;
+
+                        span {
+                            font-size: 1.4rem;
+                        }
+
+                        .date-arrivee,
+                        .date-depart {
+                            font-size: 1.7rem;
+                            font: bolder;
+                            margin: auto 2px;
+                            color: #0056b3;
+                        }
+                    }
+                }
+
+                .btn-rental-card {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px;
+
+                    form {
+                        margin: auto;
+                        width: 100%;
+
+                        #reserver,
+                        #annuler,
+                        #wait {
+
+                            padding: 10px;
+                            border-radius: 5px;
+                            border: none;
+                            max-width: 222px;
+                            // width: auto;
+                            font-size: 1.5rem;
+                            color: #f7f7f7;
+
+                            @media screen and (max-width:1060px) {
+                                width: auto;
+                            }
+
+                        }
+
+                        #reserver {
+                            background-color: #1FAB71;
+
+                        }
+
+                        #annuler {
+                            background-color: #E74646;
+                        }
+
+                        #wait {
+                            background: #FAC800;
+                        }
+
                     }
                 }
             }
