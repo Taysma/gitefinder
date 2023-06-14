@@ -1,0 +1,326 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+	Post
+{% endblock %}
+
+
+{% block header %}
+	{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
+{% block content %}
+
+	{# section post article #}
+	<section class="article">
+		<div class="container-article-img">
+			<div class="title-article">
+				<h1 class="h1-title-article">Cabane perchée à 5 m, "l'Asiatique"</h1>
+			</div>
+			<div class="rating-comment-location-share-like">
+				<div class="rating">
+					<img src="../asset/media/icon/etoile.svg" alt="rating">
+					<span>4.83</span>
+				</div>
+				<div class="comment">
+					<span>64</span>
+					<span>commentaires
+					</span>
+				</div>
+				<div class="location">
+					<span>Chamigny, Île-de-France, France</span>
+				</div>
+				<!-- share -->
+				<div class="share">
+					<img class="img-share sharePopup" src="../asset/media/icon/Font_Awesome_5_solid_share.svg.png" alt="share article" onclick="toggleSharePopup()">
+					<button class="share-button" onclick="toggleSharePopup()">
+						Partager
+
+						<!-- Bouton de Partage avec Icônes -->
+						<div class="share-popup" id="sharePopup">
+							<img class="icon-img" src="../asset/media/icon/facebook.png" alt="Facebook" onclick="shareOnFacebook()">
+							<img class="icon-img" src="../asset/media/icon/twitter.svg" alt="Twitter" onclick="shareOnTwitter()">
+							<img class="icon-img" src="../asset/media/icon/instagram.png" alt="LinkedIn" onclick="shareOnLinkedIn()">
+						</div>
+					</button>
+				</div>
+
+
+			</div>
+			<div class="img-article">
+				<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="">
+			</div>
+		</div>
+
+		<!-- profil-content-reservation-map -->
+		<div class="profil-content-reservation-map">
+			<div
+				class="row-limit-size-flex">
+				<!-- profil-article-content -->
+				<div class="profil-article">
+					<div class="profil-user-article">
+						<div class="img-profil">
+							<img src="../asset/media/icon/instagram.svg" alt="">
+						</div>
+						<div class="profil-span">
+							<span>Proposé par
+								<span class="profil-user">Zen</span>
+							</span>
+							<span class="date-profil">Menbre depuis
+								<span>janvier 2019</span>
+							</span>
+						</div>
+						<button id="btn-profil">Contacter l'hote</button>
+					</div>
+					<!-- content-article -->
+					<div class="content-article">
+						<div class="title-star-rating">
+							<div class="title-article">
+								<h1 class="h1-title-article">Cabane perchée</h1>
+								<h2 class="h2-content-article">2 voyageurs · 1 lit Demi-salle de bain</h2>
+							</div>
+							<div class="star-rating">
+								<div class="rating-img">
+									<img src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
+									<img src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
+									<img src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
+									<img
+									src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
+								<!-- <span class="rating-text">4.83 (64 avis)</span> -->
+								</div>
+							</div>
+						</div>
+
+						<!-- description article -->
+						<div class="content-paragragraphe-article">
+							<p class="content-p">Un arbre au centre de la cabane, vous serez à 5 mètres du sol avec de multiples fenêtres pour une vue panoramique sur la forêt.
+								<br>
+								<br>
+								Le chant des oiseaux et peut être un écureuil viendra vous saluer. Le logement Un arbre au centre de la cabane, vous serez à 5 mètres du sol avec de multiples fenêtres
+							</p>
+							<!-- annonce info -->
+							<div class="user-location-condition">
+								<div class="condition">
+									<div class="condition-img-span">
+										<div class="img-p">
+											<img src="../asset/media/icon/location-dot-solid.svg" alt="location">
+
+										</div>
+										<div class="condition-p">
+											<p class='content-p'>Idéalement situé
+											</p>
+											<p class='content-p'>100 % des voyageurs ont attribué 5 étoiles à l'emplacement du logement.
+											</p>
+										</div>
+									</div>
+
+								</div>
+								<hr>
+								<div class="condition">
+									<div class="condition-img-span">
+										<div class="img-p">
+											<img src="../asset/media/icon/key-solid.svg" alt="location">
+
+										</div>
+										<div class="condition-p">
+											<p class='content-p'>Procédure d'arrivée irréprochable
+
+											</p>
+											<p class='content-p'>100 % des voyageurs ont attribué 5 étoiles à l'emplacement du logement.
+											</p>
+										</div>
+									</div>
+
+								</div>
+								<hr>
+								<div class="condition">
+									<div class="condition-img-span">
+										<div class="img-p">
+											<img src="../asset/media/icon/location-dot-solid.svg" alt="location">
+
+										</div>
+										<div class="condition-p">
+											<p class='content-p'>Annulation gratuite avant le 30 juin.
+											</p>
+
+										</div>
+									</div>
+
+								</div>
+								<hr>
+								<!-- condition de prevention  -->
+								<div class="content-user-for-utulisateur">
+									<span class='content-p'>Pendant votre séjour :</span>
+									<p class="p-user-condition content-p">
+										Merci de prévenir de votre horaire d'arrivée par SMS. Parking privé et sécurisé. On vous aide à monter vos bagages avec une corde.Taux de réponse : 100% Délai de réponse : Moins d'une heure
+									</p>
+								</div>
+							</div>
+							<hr>
+							<!-- liste ce que propose le logement  -->
+							<h4 class="title-liste">Ce que propose ce logement</h4>
+							<div class="list-container-rental">
+								<ul class="ul-list">
+									<li>Parking gratuit sur place</li>
+									<li>Patio ou balcon : privé(e)</li>
+									<li>Brasero</li>
+									<li>Petit déjeuner</li>
+								</ul>
+
+								<ul class="ul-list">
+									<li>Petit déjeuner</li>
+									<li>Déjeuner</li>
+									<li>Gouter</li>
+									<li>Diner</li>
+								</ul>
+							</div>
+							<hr>
+							<div class="list-stuf-container-rental">
+
+								<div class="stuf-chambre">
+									<span class="title-liste">Equipements</span>
+									<span class="title-liste">Chambre et linge</span>
+								</div>
+								<div class="list-container-rental">
+									<ul class="ul-list">
+										<li>Parking gratuit sur place</li>
+										<li>Patio ou balcon : privé(e)</li>
+										<li>Brasero</li>
+										<li>Petit déjeuner</li>
+									</ul>
+
+									<ul class="ul-list">
+										<li>Petit déjeuner</li>
+										<li>Déjeuner</li>
+										<li>Gouter</li>
+										<li>Diner</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- card-reservation-map-article -->
+				<div class=" card-map-article">
+
+					<div class="card-reservation">
+						<div class="prince-rating-comment">
+							<div class="prince-device">
+								<span class="prince">110</span>
+								<span class="devise">€</span>
+								<span class='night-card-reservation'>par nuit</span>
+							</div>
+							<div class="star-rating">
+								<img class="rating-img" src="../asset/media/icon/etoile.svg" alt="star-rating">
+								<span class="rating">4.83
+								</span>
+							</div>
+						</span>
+						<div class="comment">
+							<span class="number-comment">64
+							</span>
+							<span class="sapn-comment">Comments</span>
+						</span>
+					</div>
+				</div>
+				<div class="form-card-reservation">
+					<form action="#">
+						<div class="form-reservation">
+							<div class="form-date-arrivee-depart">
+								<input type="date" name="arrivee" id="date-arrive">
+								<input type="date" name="depart" id="date-depart">
+							</div>
+							<div class="guest-input">
+								<select id="input-select">
+									<option value="1">1 Personne</option>
+									<option value="2">2 Personnes</option>
+									<option value="3">3 Personnes</option>
+									<option value="4">4 Personnes</option>
+									<option value="5">5 Personnes</option>
+									<option value="6">6 Personnes</option>
+									<option value="7">7 Personnes</option>
+									<option value="8">8 Personnes</option>
+								</select>
+							</div>
+						</div>
+						<!-- calendrier -->
+						<div>
+							<label for="arrival">Date d'arrivée:</label>
+							<input type="text" id="arrival"/>
+						</div>
+						<div>
+							<label for="departure">Date de départ:</label>
+							<input type="text" id="departure"/>
+						</div>
+
+						<div id="calendar"></div>
+
+						<div class="btn-reservation">
+							<button type="submit" id="search-button">Reserver</button>
+						</div>
+					</form>
+					<div class="card-span-reservation">
+						<span class="span-card">Aucun montant ne vous sera débité pour le moment</span>
+					</div>
+					<div class="prince-card-reservation">
+						<div class="day-prince">
+							<div class="prince-for-day">
+								<span>110€</span>
+								<span>x</span>
+								<span>
+									5
+								</span>
+								<span>nuits</span>
+							</div>
+							<div class="prince">
+								<span>550</span>
+								<span>€</span>
+							</div>
+						</div>
+						<hr>
+						<div class="total-prince">
+							<span class="span-prince">total</span>
+							<span class="prince-total-span">550
+								<span class="device-total-span">€</span>
+							</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- map -->
+			<div class="map-container">
+				<div class="map">
+					<img src="../asset/media/images/location.png" alt="map">
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="comment-container">
+	<div class="star-comment">
+		<div class="star">
+			<img src="../asset/media/icon/etoile.svg" alt="star">
+			<span>4.83</span>
+		</div>
+		<div class="comment">
+			<span>64</span>
+			<span>Comments</span>
+		</div>
+	</div>
+
+
+	<!-- comment img and p -->
+	<div class="comment-flex">
+		<div class="comment-img-p">
+			<img src="../asset/media/icon/instagram.png" alt="">
+			<div class="name-comment-p">
+				<p class="name">karim</p>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt quidem dolore ducimus provident aperiam delectus hic.</p>
+			</div>
+		</div>
+	</div>
+</section>{% endblock %}

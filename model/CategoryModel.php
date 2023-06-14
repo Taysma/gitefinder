@@ -9,10 +9,8 @@ class CategoryModel extends Model
         $name = $category->getName();
         $slug = $category->getSlug();
 
-
-
-
         $req = $this->getDb()->prepare("INSERT INTO `category` (`id_category`, `tag`, `name`, `slug`) VALUES (:id_category, :tag, :name, :slug)");
+ 
         $req->bindParam(":id_category", $id_category, PDO::PARAM_INT);
         $req->bindParam(":tag", $tag, PDO::PARAM_STR);
         $req->bindParam(":name", $name, PDO::PARAM_STR);
@@ -34,6 +32,7 @@ class CategoryModel extends Model
         while ($category = $req->fetch(PDO::FETCH_ASSOC)) {
             $categories[] = new Category($category);
         }
+        
         return $categories;
     }
 

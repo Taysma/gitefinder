@@ -7,6 +7,7 @@ $router = new AltoRouter();
 $router->setBasePath('/projets/gitefinder');
 
 
+
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
@@ -23,16 +24,16 @@ $router->map('POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
-$router->map('GET', '/dashboard', 'RentalController#getUserPost', 'dashboard');
+$router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard');
 
 // CRUD Post
-$router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
-$router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
-$router->map('POST|DELETE', '/post/delete/[i:id]', 'PostController#delete', 'deletePost');
+// $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
+// $router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
+// $router->map('POST|DELETE', '/post/delete/[i:id]', 'PostController#delete', 'deletePost');
 
 
-// SEARCH
-$router->map('GET', '/search', 'SearchController#searchResult', 'search');
+// // SEARCH
+// $router->map('GET', '/search', 'SearchController#searchResult', 'search');
 
 
 $match = $router->match();

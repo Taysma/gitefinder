@@ -6,15 +6,27 @@ class UserController extends Controller {
         $model = new UserModel();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'];
+            $id_user = $_POST['id_user'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
+            $birthdate = $_POST['birthdate'];
             $rawPass = $_POST['password'];
             $password = password_hash($rawPass, PASSWORD_DEFAULT);
-            $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+            $content = $_POST['content'];
+            $roles = $_POST['roles'];
+            
 
             $user = new User([
-                'username' => $username,
+                'id_user' => $id_user,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'mail' => $mail,
+                'birthdate' => $birthdate,
                 'password' => $password,
-                'email' => $email
+                'content' => $content,
+                'roles' => $roles
+                
             ]);
 
             $model->createUser($user);
@@ -28,16 +40,16 @@ class UserController extends Controller {
         if (!$_POST) {
             echo self::getRender('connect.html.twig', []);
         } else {
-            $email = $_POST['email'];
+            $mail = $_POST['mail'];
             $password = $_POST['password'];
 
             $model = new UserModel();
-            $user = $model->getUserByEmail($email);
+            $user = $model->getUserByEmail($mail);
 
             if ($user) {
                 if (password_verify($password, $user->getPassword())) {
                     $_SESSION['id'] = $user->getId_user();
-                    $_SESSION['username'] = $user->getFirstname();
+                    $_SESSION['firstname'] = $user->getFirstname();
                     $_SESSION['connect'] = true;
 
                 global $router;

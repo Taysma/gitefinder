@@ -1,3 +1,4 @@
+{% set style = '/projets/gitefinder/asset/' %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,7 +10,7 @@
 		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 		<link
 		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-		<link rel="stylesheet" href="{{ asset('/css/connect.css') }}">
+		
 
 		<title>
 			{% block title %}{% endblock %}
@@ -33,6 +34,5 @@
 		<script src="{{ asset('/js/sharePopup.js') }}"></script>
 		<script src="{{ asset('/js/connect.js') }}"></script>
 
-		{# {% include 'footer.html.twig' %} #}
 	</body>
 </html>

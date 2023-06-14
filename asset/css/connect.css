@@ -6,29 +6,12 @@
   padding: 0;
 }
 
-body {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background: #ededed;
-}
-
-a {
-  text-decoration: none;
-}
-
-@font-face {
-  font-family: "OpenSans-bold";
-  src: url(../fonts/OpenSans-Bold.ttf);
-}
-@font-face {
-  font-family: "OpenSans-Regular";
-  src: url(../fonts/OpenSans-Regular.ttf);
-}
 input,
 button {
   border: none;
   outline: none;
   background: none;
-  font-family: "OpenSans-Regular", sans-serif;
+  font-family: "Sora";
 }
 
 .cont {

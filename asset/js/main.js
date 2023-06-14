@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 easing: 'ease-out',
                 fill: 'both'
             });
-            buttonSearch.innerHTML = '<img src="../asset/media/images/magnifying-glass-solid.svg" alt="">';
+            buttonSearch.innerHTML = '<img src="../asset/media/icon/magnifying-glass-solid.svg" alt="">';
 
             setTimeout(function () {
                 searchBar.style.display = 'none';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 easing: 'ease-out',
                 fill: 'both'
             });
-            buttonSearch.innerHTML = '<img src="../asset/media/images/x-solid.svg" alt="">';
+            buttonSearch.innerHTML = '<img src="../asset/media/icon/x-solid.svg" alt="">';
         }
         isSearchBarVisible = !isSearchBarVisible;
     });
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     easing: 'ease-out',
                     fill: 'both'
                 });
-                buttonSearch.innerHTML = '<img src="../asset/media/images/magnifying-glass-solid.svg" alt="">';
+                buttonSearch.innerHTML = '<img src="../asset/media/icon/magnifying-glass-solid.svg" alt="">';
 
                 setTimeout(function () {
                     searchBar.style.display = 'none';
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     easing: 'ease-out',
                     fill: 'both'
                 });
-                buttonSearch.innerHTML = '<img src="../asset/media/images/x-solid.svg" alt="">';
+                buttonSearch.innerHTML = '<img src="../asset/media/icon/x-solid.svg" alt="">';
             }
             isSearchBarVisible = !isSearchBarVisible;
         }

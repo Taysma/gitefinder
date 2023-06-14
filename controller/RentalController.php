@@ -15,7 +15,7 @@ class RentalController extends Controller
         //}
     }
 
-    public function getOne($id){
+    public function getOneRental($id){
         
         echo self::getRender('article.html.twig', []);
     }

@@ -2,8 +2,7 @@
 
 class HomeController extends Controller
 {
-    public function home()
-    {
+    public function home(){
 
         echo self::getRender('homepage.html.twig',[]);
     }

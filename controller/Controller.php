@@ -39,11 +39,12 @@ abstract class Controller{
         global $router;
 
         //LINKS
-        //$link = $router->generate('baseCats');        
+        $cats = $router->generate('baseCats');        
 
         // LINKS TABLE + NEW ONES
         $new = [
             //'categorieslink' => $link,
+            'link4' => $cats
         ] + $datas;
         
         echo self::getTwig()->render($template, $new);

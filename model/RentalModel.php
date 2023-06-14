@@ -2,6 +2,31 @@
 class RentalModel extends Model
 {
 
+    public function createRental (Rental $rental){
+        $id_rental = $rental->getId_rental();
+        $id_user = $rental->getId_user();
+        $title = $rental->getTitle();
+        $capacity = $rental->getCapacity();
+        $surface_area = $rental->getSurface_area();
+        $city = $rental->getCity();
+        $address = $rental->getAddress();
+        $content = $rental->getContent();
+
+
+        $req = $this->getDb()->prepare('INSERT INTO `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content` ) VALUES (:id_rental, :id_user, :title, :capacity, :surface_area, :city, :address, :content )');
+
+        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
+        $req->bindParam('title', $title, PDO::PARAM_STR);
+        $req->bindParam('capacity', $capacity, PDO::PARAM_INT);
+        $req->bindParam('surface_area', $surface_area, PDO::PARAM_INT);
+        $req->bindParam('city', $city, PDO::PARAM_STR);
+        $req->bindParam('address', $address, PDO::PARAM_STR);
+        $req->bindParam('content', $content, PDO::PARAM_STR);
+
+        $req->execute();
+    }
+
     public function getLastTenPost(){
         $rentals = [];
 
@@ -56,32 +81,9 @@ class RentalModel extends Model
         return $rentals;
     }
 
-    public function addrental (Rental $rental){
-        $id_rental = $rental->getId_rental();
-        $id_user = $rental->getId_user();
-        $title = $rental->getTitle();
-        $capacity = $rental->getCapacity();
-        $surface_area = $rental->getSurface_area();
-        $city = $rental->getCity();
-        $address = $rental->getAddress();
-        $content = $rental->getContent();
+    
 
-
-        $req = $this->getDb()->prepare('INSERT INTO `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content` ) VALUES (:id_rental, :id_user, :title, :capacity, :surface_area, :city, :address, :content )');
-
-        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
-        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
-        $req->bindParam('title', $title, PDO::PARAM_STR);
-        $req->bindParam('capacity', $capacity, PDO::PARAM_INT);
-        $req->bindParam('surface_area', $surface_area, PDO::PARAM_INT);
-        $req->bindParam('city', $city, PDO::PARAM_STR);
-        $req->bindParam('address', $address, PDO::PARAM_STR);
-        $req->bindParam('content', $content, PDO::PARAM_STR);
-
-        $req->execute();
-    }
-
-    public function editrental(rental $rental) {
+    public function updateRental(rental $rental) {
         $id_rental = $rental->getId_rental();
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
@@ -94,8 +96,8 @@ class RentalModel extends Model
 
         $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
-        $req->bindParam(':capacity', $capacity, PDO::PARAM_STR);
-        $req->bindParam(':surface_area', $surface_area, PDO::PARAM_STR);
+        $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
+        $req->bindParam(':surface_area', $surface_area, PDO::PARAM_INT);
         $req->bindParam(':city', $city, PDO::PARAM_STR);
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);

@@ -1,9 +1,11 @@
 <?php
-class ReservationModel extends Model {
+class ReservationModel extends Model
+{
 
 
-    public function createReservation(Reservation $reservation){
-        
+    public function createReservation(Reservation $reservation)
+    {
+
         $id_reservation = $reservation->getId_reservation();
         $id_user = $reservation->getId_user();
         $id_rental = $reservation->getId_rental();
@@ -11,11 +13,9 @@ class ReservationModel extends Model {
         $checkin_date = $reservation->getCheckinDate();
         $checkout_date = $reservation->getCheckoutDate();
         $validation = $reservation->getValidation();
-        
-        
-        
 
         $req = $this->getDb()->prepare("INSERT INTO `reservation` (`id_reservation`, `id_user`, `id_rental`, `available`, `checkin_date`, `checkout_date`, `validation`) VALUES (:id_reservation, :id_user, :id_rental, :available, :checkin_date, :checkout_date, :validation)");
+
         $req->bindParam(":id_reservation", $id_reservation, PDO::PARAM_INT);
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
         $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
@@ -23,7 +23,38 @@ class ReservationModel extends Model {
         $req->bindParam(":checkin_date", $checkin_date, PDO::PARAM_STR);
         $req->bindParam(":checkout_date", $checkout_date, PDO::PARAM_STR);
         $req->bindParam(":validation", $validation, PDO::PARAM_STR);
+
+        $req->execute();
+    }
+
+    //read
+
+    public function readAllReservationUser(Reservation $reservation)
+    {
         
+
+        $id_reservation = $reservation->getId_reservation();
+        $id_user = $reservation->getId_user();
+        $id_rental = $reservation->getId_rental();
+        $available = $reservation->getAvailable();
+        $checkin_date = $reservation->getCheckinDate();
+        $checkout_date = $reservation->getCheckoutDate();
+        $validation = $reservation->getValidation();
+
+        $req = $this->getDb()->prepare("SELECT `id_reservation`, `id_user`, `id_rental`, `available`, `checkin_date`, `checkout_date`, `validation` FROM `reservation` WHERE `id_reservation` = :id_reservation");
+
+        $req->bindParam(":id_reservation", $id_reservation, PDO::PARAM_INT);
+        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+        $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
+        $req->bindParam(":available", $available, PDO::PARAM_STR);
+        $req->bindParam(":checkin_date", $checkin_date, PDO::PARAM_STR);
+        $req->bindParam(":checkout_date", $checkout_date, PDO::PARAM_STR);
+        $req->bindParam(":validation", $validation, PDO::PARAM_STR);
+
+        while($reservation = $req->fetch(PDO::FETCH_ASSOC)){
+            $reservations[] = new Reservation($reservation);
+        }
+
         $req->execute();
     }
 
@@ -33,9 +64,8 @@ class ReservationModel extends Model {
 
 
 
-
-
-    public function updateReservation(Reservation $reservation){
+    public function updateReservation(Reservation $reservation)
+    {
         $id_reservation = $reservation->getId_reservation();
         $id_user = $reservation->getId_user();
         $id_rental = $reservation->getId_rental();
@@ -43,7 +73,7 @@ class ReservationModel extends Model {
         $checkin_date = $reservation->getCheckinDate();
         $checkout_date = $reservation->getCheckoutDate();
         $validation = $reservation->getValidation();
-    
+
         $req = $this->getDb()->prepare("UPDATE `reservation` SET `id_reservation`=':id_reservation',`id_user`=':id_user',`id_rental`=':id_rental',`available`=':available',`checkin_date`=':checkin_date',`checkout_date`=':checkout_date',`validation`=':validation' ");
         $req->bindParam(":id_reservation", $id_reservation, PDO::PARAM_INT);
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
@@ -52,15 +82,15 @@ class ReservationModel extends Model {
         $req->bindParam(":checkin_date", $checkin_date, PDO::PARAM_STR);
         $req->bindParam(":checkout_date", $checkout_date, PDO::PARAM_STR);
         $req->bindParam(":validation", $validation, PDO::PARAM_STR);
-    
+
         $req->execute();
-    
-        
-    
+
+
+
     }
 
 
-    public function deletereservation(int $id)
+    public function deleteReservation(int $id)
     {
         // Start a new transaction
         $this->getDb()->beginTransaction();

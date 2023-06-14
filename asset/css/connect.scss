@@ -1,8 +1,7 @@
 $primary: #f7953c;
 $secondary: #b54f2c;
 $new: #ebded5;
-$font: 'OpenSans-Regular', sans-serif;
-$font1: 'OpenSans-Bold', sans-serif;
+$mainfont: 'Sora';
 
 *,
 *:before,
@@ -12,31 +11,12 @@ $font1: 'OpenSans-Bold', sans-serif;
     padding: 0;
 }
 
-body {
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    background: #ededed;
-}
-
-a{
-    text-decoration: none;
-}
-
-@font-face {
-    font-family: 'OpenSans-bold';
-    src: url(../fonts/OpenSans-Bold.ttf);
-}
-
-@font-face {
-    font-family: 'OpenSans-Regular';
-    src: url(../fonts/OpenSans-Regular.ttf);
-}
-
 input,
 button {
     border: none;
     outline: none;
     background: none;
-    font-family: $font;
+    font-family: $mainfont;
 }
 
 @mixin signUpActive {
