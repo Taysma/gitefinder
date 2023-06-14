@@ -917,41 +917,12 @@ body .dashboard .container-dashboard .card-dashboard .content-dashboard .p-card-
 body .profil {
   width: 100%;
   height: auto;
+  max-width: 1440px;
+  margin: auto;
 }
 body .profil .container-profil {
   margin: 50px auto;
   max-width: 700px;
-}
-body .profil .container-profil .breadcrumb {
-  background-color: #f5f5f5;
-  padding: 8px 15px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-}
-body .profil .container-profil .breadcrumb img {
-  width: 27px;
-  height: 20px;
-  padding: 2px;
-}
-body .profil .container-profil .breadcrumb-item {
-  display: inline-flex;
-  gap: 10px;
-  margin-right: 4px;
-  font-size: 1.2rem;
-  position: relative;
-}
-body .profil .container-profil .breadcrumb-item a {
-  color: #007bff;
-  text-decoration: none;
-  font-size: 1.4rem;
-}
-body .profil .container-profil .breadcrumb-item:hover a {
-  text-decoration: underline;
-}
-body .profil .container-profil .breadcrumb-item.active {
-  color: #333;
-  font-weight: bold;
 }
 body .profil .container-profil .title-img-btn h1 {
   font-size: 1.8rem;
@@ -1042,6 +1013,8 @@ body .profil .container-profil .profil-information .name-lastname .input-btn #ed
 body .favoris {
   width: 100%;
   height: auto;
+  max-width: 1440px;
+  margin: 50px auto;
 }
 body .favoris .container-favoris {
   width: 100%;

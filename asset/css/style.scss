@@ -1223,51 +1223,12 @@ body {
     .profil {
         width: 100%;
         height: auto;
+        max-width: 1440px;
+        margin: auto;
 
         .container-profil {
             margin: 50px auto;
             max-width: 700px;
-
-            .breadcrumb {
-                background-color: #f5f5f5;
-                padding: 8px 15px;
-                border-radius: 4px;
-                display: flex;
-                align-items: center;
-
-                img {
-                    width: 27px;
-                    height: 20px;
-                    padding: 2px;
-                }
-
-                &-item {
-                    display: inline-flex;
-                    gap: 10px;
-                    margin-right: 4px;
-                    font-size: 1.2rem;
-                    position: relative;
-
-
-
-                    a {
-                        color: #007bff;
-                        text-decoration: none;
-                        font-size: 1.4rem;
-                    }
-
-                    &:hover a {
-                        text-decoration: underline;
-                    }
-
-                    &.active {
-                        color: #333;
-                        font-weight: bold;
-                    }
-                }
-            }
-
-
 
             .title-img-btn {
                 h1 {
@@ -1275,9 +1236,6 @@ body {
                     color: #191825;
                     margin: 20px;
                 }
-
-
-
 
                 .img-btn-profil {
                     // background-color: #007bff;
@@ -1396,6 +1354,8 @@ body {
     .favoris {
         width: 100%;
         height: auto;
+        max-width: 1440px;
+        margin: 50px auto;
 
         .container-favoris {
             width: 100%;
