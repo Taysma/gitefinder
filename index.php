@@ -4,7 +4,7 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 require_once './vendor/autoload.php';
 
 $router = new AltoRouter();
-$router->setBasePath('/Projet/GiteFinder');
+$router->setBasePath('/projets/gitefinder');
 
 
 // HOMEPAGE
@@ -19,7 +19,7 @@ $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
 // Connection form route
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
-$router->map('GET|POST', '/registration', 'UserController#register', 'register');
+$router->map('POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
@@ -36,7 +36,7 @@ $router->map('GET', '/search', 'SearchController#searchResult', 'search');
 
 
 $match = $router->match();
-var_dump($match);
+// var_dump($match);
 
 if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
