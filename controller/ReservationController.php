@@ -1,2 +1,4 @@
 <?php
-class ReservationController extends Controller {}
+class ReservationController extends Controller
+{
+}
