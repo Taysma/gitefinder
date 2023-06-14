@@ -1,5 +1,9 @@
 {% extends "template.html.twig" %}
 
+{% block header %}
+	{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ asset('/css/connect.css') }}">
 {% endblock %}
@@ -12,10 +16,10 @@
 			<h2>Ravi de vous revoir,</h2>
 
 			<form action= "{{ login }}" method="POST">
-				<label for="mail">
-					<span>E-MAIL</span>
+				<label for="firstname">
+					<span>PSEUDO</span>
 				</label>
-				<input name="mail" type="text" requeried/>
+				<input name="firstname" type="text"/>
 
 				<label for="password">
 					<span>MOT DE PASSE</span>
@@ -28,7 +32,7 @@
 
 				<button type="button" class="fb-btn">
 					<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
-						<span>Facebook</span>
+						<span>facebook</span>
 					</a>
 				</button>
 
@@ -56,37 +60,41 @@
 						<br>
 						Mamoun Veggie!!!</p>
 				</div>
-				
-				{# <div class="img__btn">
+				<div class="img__text m--in">
+					<h2>Déjà inscrit?</h2>
+					<p>Si vous possédez un compte!
+						<br>
+						C'est par ici !!</p>
+				</div>
+				<div class="img__btn">
 					<span class="m--up">Inscription</span>
 					<span class="m--in">Connexion</span>
-				</div> #}
+				</div>
 			</div>
 
 
 			<div class="form sign-up">
 
 				<form action= "{{ path('register') }}" method="POST">
-					
-					<label for="lastname">
-						<span>Nom</span>
-					</label>
-					<input name="lastname" type="text"/>
-
 					<label for="firstname">
-						<span>Prénom</span>
+						<span>Prenom</span>
 					</label>
 					<input name="firstname" type="text"/>
 
-					<label for="birthdate">
-						<span>Date de naissance</span>
+					<label for="lastname">
+						<span>Pseudo</span>
 					</label>
-					<input name="birthdate" type="date"/>
+					<input name="lastname" type="text"/>
 
 					<label for="mail">
-						<span>Email</span>
+						<span>Mail</span>
 					</label>
 					<input name="mail" type="mail"/>
+
+					<label for="birthdate">
+						<span>Mail</span>
+					</label>
+					<input name="birthdate" type="date"/>
 
 					<label for="password">
 						<span>Password</span>
@@ -97,7 +105,7 @@
 
 					<button type="button" class="fb-btn">
 						<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
-							<span>Facebook</span>
+							<span>facebook</span>
 						</a>
 					</button>
 

@@ -40,20 +40,20 @@ class UserController extends Controller {
         if (!$_POST) {
             echo self::getRender('connect.html.twig', []);
         } else {
-            $mail = $_POST['mail'];
+            $firstname = $_POST['firstname'];
             $password = $_POST['password'];
 
             $model = new UserModel();
-            $user = $model->getUserByEmail($mail);
+            $user = $model->getUserByEmail($firstname);
 
             if ($user) {
                 if (password_verify($password, $user->getPassword())) {
-                    $_SESSION['id'] = $user->getId_user();
+                    $_SESSION['id_user'] = $user->getId_user();
                     $_SESSION['firstname'] = $user->getFirstname();
                     $_SESSION['connect'] = true;
 
                 global $router;
-                header('Location: ' . $router->generate('dashboardUser')); // add condition "if" pour les 3 routes si role match host/guest/admin
+                header('Location: ' . $router->generate('dashboard')); // add condition "if" pour les 3 routes si role match host/guest/admin
                 exit();
                 } else {
                     echo 'Email / password incorrect !';
