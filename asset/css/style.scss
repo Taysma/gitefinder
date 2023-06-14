@@ -1534,6 +1534,9 @@ body {
 
             width: auto;
             padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
 
             @media screen and (max-width:750px) {
                 padding: 0px;
@@ -1541,9 +1544,9 @@ body {
 
             .card-rental {
                 width: 100%;
-                max-width: 1085px;
+                max-width: 1000px;
                 box-shadow: 5px 5px 16px #1918252a;
-                margin: 0 auto;
+                margin: 40px auto;
                 height: 309px;
                 display: flex;
                 border-radius: 13px;
@@ -1569,9 +1572,9 @@ body {
 
 
 
-
+                // img card
                 .img-card-rental {
-                    width: 100%;
+                    // width: 100%;
                     image-rendering: pixelated;
                     height: 100%;
 
@@ -1588,6 +1591,8 @@ body {
 
                         @media screen and (max-width:750px) {
                             width: 100%;
+                            border-top-right-radius: 13px;
+                            border-bottom-left-radius: 0px;
                         }
 
 
@@ -1595,12 +1600,14 @@ body {
 
                 }
 
+                // content card title prince personn date-rental
                 .content-rental-card {
                     display: flex;
                     flex-direction: column;
                     row-gap: 10px;
                     width: 100%;
                     height: 100%;
+
                     justify-content: center;
 
 
@@ -1671,6 +1678,25 @@ body {
 
                     }
 
+                    .personne {
+                        width: auto;
+
+                        @media screen and (max-width:750px) {
+                            text-align: center;
+                        }
+
+
+                        span {
+                            font-size: 1.4rem;
+                        }
+
+                        .number-personne {
+                            font-size: 1.5rem;
+                            color: #191825;
+                            font-weight: xx;
+                        }
+                    }
+
                     .date-rental {
                         width: 100%;
                         text-align: center;
@@ -1687,6 +1713,7 @@ body {
                             color: #0056b3;
                         }
                     }
+
                 }
 
                 .btn-rental-card {
@@ -2076,43 +2103,51 @@ body {
     // breadcrumb
     .breadcrumb {
         background-color: #f5f5f5;
-        padding: 18px 100px;
         border-radius: 4px;
         display: inline-flex;
         align-items: center;
-        height: fit-content;
-        width: 100%;
+        // height: fit-content;
+        width: auto;
 
 
-        img {
-            display: inline-block;
-            width: 27px;
-            height: 20px;
-            padding: 2px;
-        }
-
-        &-item {
+        .ol-breadcrumb {
             display: flex;
-            gap: 10px;
-            margin-right: 4px;
-            font-size: 1.2rem;
-            position: relative;
+            align-items: center;
+            justify-content: left;
+            margin: auto 10px;
+            gap: 5px;
 
-
-
-            a {
-                color: #007bff;
-                text-decoration: none;
-                font-size: 1.4rem;
+            img {
+                display: inline-block;
+                width: 27px;
+                height: 20px;
+                padding: 2px;
             }
 
-            &:hover a {
-                text-decoration: underline;
-            }
+            .breadcrumb-item {
+                display: flex;
+                gap: 10px;
+                margin-right: 4px;
+                font-size: 1.2rem;
+                position: relative;
 
-            &.active {
-                color: #333;
-                font-weight: bold;
+
+
+                a {
+                    color: #007bff;
+                    text-decoration: none;
+                    font-size: 1.4rem;
+
+
+                    &:hover a {
+                        text-decoration: underline;
+                    }
+
+                    &.active {
+                        color: #333;
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }

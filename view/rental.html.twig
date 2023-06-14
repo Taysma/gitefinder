@@ -1,0 +1,75 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+	rental
+{% endblock %}
+
+
+{% block header %}
+	{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
+{% block content %}
+	<!-- rental, reservation -->
+	<section
+		class="rental">
+		<!-- fil d'ariane  breadcrumb -->
+		<nav class="breadcrumb" aria-label="breadcrumb">
+			<ol class="ol-breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="../view/homePage.html">Dashboard</a>
+				</li>
+				<img src="../asset/media/icon/fleche.svg" alt="fleche">
+				<li class="breadcrumb-item active" aria-current="page">Réservation</li>
+			</ol>
+		</nav>
+		<div class="container-rental">
+			<div class="card-rental">
+				<div class="img-card-rental">
+					<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet image" class="size-img-rental-card">
+				</div>
+				<div class="content-rental-card">
+					<div class="title-prince">
+						<div class="title">
+							<h1>Paradise Beach, Bantayan Island</h1>
+							<span>Rome</span>
+							<span>,</span>
+							<span>italy</span>
+						</div>
+						<div class="prince">
+							<span>550.16</span>
+							<span>€</span>
+						</div>
+					</div>
+					<div class="personne">
+						<span>pour de
+						</span>
+						<span>2 personnes</span>
+					</div>
+					<div class="date-rental">
+						<span>Date :</span>
+						<span class="date-arrivee">14/06/2023</span>
+						<span>au</span>
+						<span class="date-depart">07/07/2023</span>
+					</div>
+
+				</div>
+				<!-- button reserver wait annuler -->
+				<div class="btn-rental-card">
+					<form action="#">
+						<button id="reserver" type="submit">reserver</button>
+					</form>
+					<!-- <form action="">
+																														                        <button id="wait" type="submit">En cours</button>
+																														                    </form>
+																														                    <form action="">
+																														                        <button id="annuler" type="submit">annuler</button>
+																														                    </form> -->
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+{% endblock %}
