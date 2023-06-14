@@ -6,31 +6,24 @@ class UserController extends Controller {
         $model = new UserModel();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id_user = $_POST['id_user'];
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
             $birthdate = $_POST['birthdate'];
             $rawPass = $_POST['password'];
             $password = password_hash($rawPass, PASSWORD_DEFAULT);
-            $content = $_POST['content'];
-            $roles = $_POST['roles'];
             
-
             $user = new User([
-                'id_user' => $id_user,
                 'firstname' => $firstname,
                 'lastname' => $lastname,
                 'mail' => $mail,
                 'birthdate' => $birthdate,
                 'password' => $password,
-                'content' => $content,
-                'roles' => $roles
                 
             ]);
 
             $model->createUser($user);
-            header('Location: ' . $router->generate('login'));
+            header('Location: ' . $router->generate('home'));
         } else {
             echo self::getRender('connect.html.twig', []);
         }
@@ -40,11 +33,11 @@ class UserController extends Controller {
         if (!$_POST) {
             echo self::getRender('connect.html.twig', []);
         } else {
-            $firstname = $_POST['firstname'];
+            $mail = $_POST['mail'];
             $password = $_POST['password'];
 
             $model = new UserModel();
-            $user = $model->getUserByEmail($firstname);
+            $user = $model->getUserByEmail($mail);
 
             if ($user) {
                 if (password_verify($password, $user->getPassword())) {

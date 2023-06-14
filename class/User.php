@@ -70,6 +70,10 @@ class User {
         $this->firstname=$firstname;
     }
 
+    public function setMail(String $mail){
+        $this->mail=$mail;
+    }
+
     public function setBirthdate(String $birthdate){
         $this->birthdate=$birthdate;
     } 
@@ -78,11 +82,11 @@ class User {
         $this->password=$password;
     } 
 
-    public function setContent(String $content){
+    public function setContent($content){
         $this->content=$content;
     }
 
-    public function setRoles(String $roles){
+    public function setRoles($roles){
         $this->roles=$roles;
     }
 }
