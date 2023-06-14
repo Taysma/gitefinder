@@ -13,31 +13,32 @@
 	{# <!-- section homePage gallery-grid --> #}
 	<section id="homepage" class="limit-size">
 		<div class="gallery-grid">
-
-			<div class="card">
-				<a href="./article.html.twig">
-					<div class="img-card">
-						<img src="./asset/media/images/chalet-foret-nuit.jpg" alt="gite en Foret">
-					</div>
-					<div class="txt-card">
-						<div class="title-card">
-							<div class="h1-card">
-								<h1>Paradise Beach, Bantayan Island</h1>
+			{% for rental in rentals %}
+				<div class="card">
+					<a href="{{ rental.id }}">
+						<div class="img-card">
+							<img src="./asset/media/images/chalet-foret-nuit.jpg" alt="gite en Foret">
+						</div>
+						<div class="txt-card">
+							<div class="title-card">
+								<div class="h1-card">
+									<h1>{{ rental.title }}</h1>
+								</div>
+								<p>{{ rental.price }}</p>
 							</div>
-							<p>150€</p>
-						</div>
-						<h2 class="h2-card">rome, Italy</h2>
-						<div class="note-card">
-							<p>4.3</p>
-							<!-- <i class="fas fa-star"></i> -->
-							<span>
-								<img src="./asset/media/icon/etoile.svg" alt="">
-							</span>
+							<h2 class="h2-card">{{ rental.country }}</h2>
+							<div class="note-card">
+								<p>4.3</p>
+								<!-- <i class="fas fa-star"></i> -->
+								<span>
+									<img src="./asset/media/icon/etoile.svg" alt="">
+								</span>
 
+							</div>
 						</div>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
+			{% endfor %}
 		</div>
 	</section>
 

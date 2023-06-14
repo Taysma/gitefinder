@@ -9,6 +9,7 @@ class Rental{
     private $city;
     private $address;
     private $content;
+    private $country;
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -57,6 +58,10 @@ class Rental{
         return $this->content;
     }
 
+    public function getCountry(){
+        return $this->country;
+    }
+
 
     //SETTERS
     public function setId_rental(int $id_rental){
@@ -89,6 +94,10 @@ class Rental{
 
     public function setContent(int $content){
         $this->content=$content;
+    }
+
+    public function setCountry(int $country){
+        $this->country=$country;
     }
 
 }
