@@ -12,10 +12,10 @@
 			<h2>Ravi de vous revoir,</h2>
 
 			<form action= "{{ login }}" method="POST">
-				<label for="username">
-					<span>PSEUDO</span>
+				<label for="mail">
+					<span>E-MAIL</span>
 				</label>
-				<input name="username" type="text"/>
+				<input name="mail" type="text" requeried/>
 
 				<label for="password">
 					<span>MOT DE PASSE</span>
@@ -28,7 +28,7 @@
 
 				<button type="button" class="fb-btn">
 					<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
-						<span>facebook</span>
+						<span>Facebook</span>
 					</a>
 				</button>
 
@@ -72,11 +72,21 @@
 			<div class="form sign-up">
 
 				<form action= "{{ path('register') }}" method="POST">
-					<label for="username">
-						<span>Pseudo</span>
+					
+					<label for="lastname">
+						<span>Nom</span>
 					</label>
-					<input name="username" type="text"/>
+					<input name="lastname" type="text"/>
 
+					<label for="firstname">
+						<span>Prénom</span>
+					</label>
+					<input name="firstname" type="text"/>
+
+					<label for="birthdate">
+						<span>Date de naissance</span>
+					</label>
+					<input name="birthdate" type="date"/>
 
 					<label for="mail">
 						<span>Email</span>
@@ -92,7 +102,7 @@
 
 					<button type="button" class="fb-btn">
 						<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
-							<span>facebook</span>
+							<span>Facebook</span>
 						</a>
 					</button>
 
