@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Votre titre</title>
+    <!-- Assurez-vous d'inclure la bibliothèque Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .heart {
+            color: black;
+            /* Couleur par défaut du cœur */
+            font-size: 24px;
+            transition: color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .heart.red {
+            color: red;
+            /* Couleur rouge du cœur */
+        }
+    </style>
+</head>
+
+<body>
+    <i id="heart" class="heart fa-solid fa-heart"></i>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var heartIcon = document.getElementById('heart');
+            var isLiked = false;
+
+            heartIcon.addEventListener('click', function () {
+                if (isLiked) {
+                    heartIcon.classList.remove('red');
+                    isLiked = false;
+                } else {
+                    heartIcon.classList.add('red');
+                    isLiked = true;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

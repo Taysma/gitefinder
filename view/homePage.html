@@ -8,6 +8,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="../asset/css/style.css">
     <link rel="stylesheet" href="../asset/css/font.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
 
 
 
@@ -20,7 +23,9 @@
     <header>
         <div class="header-limit-size">
             <div class="logo">
-                <h1>GiteFinder</h1>
+                <a href="">
+                    <h1>GiteFinder</h1>
+                </a>
             </div>
             <div class="button-search">
                 <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="Search in GiteFinder">
@@ -64,12 +69,18 @@
     <section id="homepage" class="limit-size">
         <div class="gallery-grid">
 
+
             <div class="card">
-                <a href="./article.html">
-                    <div class="img-card">
+                <i id="heart" class="heart fa-regular fa-heart"></i>
+                <div class="img-card">
+                    <a href="./article.html">
                         <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="gite en Foret">
-                    </div>
-                    <div class="txt-card">
+
+                    </a>
+                </div>
+                <div class="txt-card">
+                    <a href="./article.html">
+
                         <div class="title-card">
                             <div class="h1-card">
                                 <h1>Paradise Beach, Bantayan Island</h1>
@@ -85,7 +96,7 @@
                             </span>
 
                         </div>
-                    </div>
+                </div>
                 </a>
             </div>
         </div>
@@ -196,6 +207,7 @@
     </footer>
 </body>
 <script src="../asset/js/main.js"></script>
+<script src="../asset/js/like-heart.js"></script>
 <script src="../asset/js/modal-footer.js"></script>
 <script src="../asset/js/calendrier.js"></script>
 
