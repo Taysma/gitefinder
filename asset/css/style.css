@@ -28,7 +28,12 @@ a {
 }
 
 hr {
-  margin: 30px auto;
+  margin: 60px auto;
+}
+@media screen and (max-width: 350px) {
+  hr {
+    margin: 70px auto;
+  }
 }
 
 body {
@@ -443,6 +448,7 @@ body .article .container-article-img {
 }
 body .article .container-article-img .title-article {
   margin: 20px;
+  position: relative;
 }
 body .article .container-article-img .title-article .h1-title-article {
   font-size: 1.2rem;
@@ -464,7 +470,6 @@ body .article .container-article-img .img-article {
 body .article .container-article-img .img-article img {
   width: 100%;
   image-rendering: pixelated;
-  height: 50vh;
 }
 body .article .container-article-img .rating-comment-location-share-like {
   display: flex;
@@ -478,6 +483,26 @@ body .article .container-article-img .rating-comment-location-share-like {
     margin: 10px 0px;
     -moz-column-gap: 20px;
          column-gap: 20px;
+  }
+}
+body .article .container-article-img .rating-comment-location-share-like .rating,
+body .article .container-article-img .rating-comment-location-share-like .comment {
+  white-space: nowrap;
+  font: 500;
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 750px) {
+  body .article .container-article-img .rating-comment-location-share-like .rating,
+  body .article .container-article-img .rating-comment-location-share-like .comment {
+    font-size: 0.8rem;
+  }
+}
+body .article .container-article-img .rating-comment-location-share-like .location {
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 750px) {
+  body .article .container-article-img .rating-comment-location-share-like .location {
+    font-size: 0.8rem;
   }
 }
 body .article .container-article-img .rating-comment-location-share-like .share {
@@ -514,12 +539,25 @@ body .article .container-article-img .rating-comment-location-share-like .share 
   gap: 10px;
   border-radius: 15px;
 }
+@media screen and (max-width: 750px) {
+  body .article .container-article-img .rating-comment-location-share-like .share .share-button .share-popup {
+    rotate: 90deg;
+    top: 40%;
+    left: 0%;
+    position: fixed;
+  }
+}
 body .article .container-article-img .rating-comment-location-share-like .share .share-button .share-popup .icon-img {
   width: 44px;
   border-radius: 999px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   border: none;
   cursor: pointer;
+}
+@media screen and (max-width: 750px) {
+  body .article .container-article-img .rating-comment-location-share-like .share .share-button .share-popup .icon-img {
+    rotate: 270deg;
+  }
 }
 body .article .profil-content-reservation-map {
   width: 100%;
@@ -542,11 +580,13 @@ body .article .profil-content-reservation-map .row-limit-size-flex {
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article {
   align-items: center;
   gap: 20px;
-  width: 500px;
+  width: auto;
   padding: 10px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article {
-  margin: auto;
+  display: flex;
+  gap: 50px;
+  align-items: center;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article .h1-title-article {
   font-size: 1rem;
@@ -592,11 +632,11 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 750px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .title-star-rating {
   display: flex;
-  justify-content: center;
+  position: relative;
   padding: 20px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article {
@@ -658,10 +698,14 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   margin: 10px auto;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article {
-  width: auto;
+  display: flex;
+  width: 100%;
   max-width: 450px;
   padding: 10px;
+  justify-content: center;
+  flex-direction: column;
   border: none;
+  margin: auto;
   border-radius: 15px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation {
@@ -707,6 +751,13 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  max-width: 650px;
+  width: 100%;
+}
+@media screen and (max-width: 1000px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation {
+    max-width: 450px;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form {
   margin: auto;
@@ -744,6 +795,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation #calendar {
   display: none;
   margin: 20px auto;
+  width: auto;
   max-width: 600px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .selected-range {
@@ -1305,6 +1357,7 @@ body footer {
   background-color: #F7F7F7;
   position: fixed;
   bottom: 0;
+  z-index: 20;
 }
 body footer .footer-container {
   display: flex;
@@ -1604,25 +1657,10 @@ body .breadcrumb .ol-breadcrumb .breadcrumb-item a.active {
   color: #333;
   font-weight: bold;
 }
-body .like-heart {
-  position: absolute;
-  top: 15px;
-  width: 64px;
-  right: 10px;
-  padding: 15px;
-  background-color: #f2f2f2;
-  border-radius: 999px;
-  display: flex;
-  height: auto;
-  align-items: center;
-}
-body .like-heart .like-size {
-  width: 100%;
-}
 body .heart {
   z-index: 150;
   right: 20px;
-  top: 25px;
+  top: 5px;
   position: absolute;
   font-size: 48px;
   transition: color 0.3s ease-in-out;
@@ -1635,4 +1673,17 @@ body .heart.filled {
 body .heart.empty {
   color: black;
   /* Couleur du cœur vide */
+}
+body .star {
+  font-size: 24px;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+body .star.selected {
+  color: gold;
+  /* Couleur de l'étoile sélectionnée */
+}
+body .star.filled {
+  color: gold;
+  /* Couleur de l'étoile remplie */
 }/*# sourceMappingURL=style.css.map */
