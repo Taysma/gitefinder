@@ -14,7 +14,6 @@ class RentalModel extends Model
 
         $req = $this->getDb()->prepare('INSERT INTO `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content`, `country` ) VALUES (:id_rental, :id_user, :title, :capacity, :surface_area, :city, :address, :content, :country )');
 
-        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
         $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
         $req->bindParam('title', $title, PDO::PARAM_STR);
         $req->bindParam('capacity', $capacity, PDO::PARAM_INT);
@@ -79,6 +78,25 @@ class RentalModel extends Model
 
         $req->closeCursor();
         return $rentals;
+    }
+
+    public function getRentalPicture($id_picture){
+        $rentalpicture = [];
+    
+        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`,`rental`.`country`,`rental`.`price`, `picture`.`id_picture`, `picture`.`id_picture`, `picture`.`title`
+            FROM `rental`
+            INNER JOIN `picture`
+            ON `picture`.`id_rental` = `rental`.`id_rental`
+            WHERE `rental`.`id_rental` = :id');
+        $req->bindParam(':id', $id_picture, PDO::PARAM_INT);
+        $req->execute();
+    
+        while ($rentalData = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rentalpicture[] = new Rental($rentalData);
+        }
+    
+        $req->closeCursor();
+        return $rentalpicture;
     }
 
     
