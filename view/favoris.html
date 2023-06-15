@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../asset/css/style.css">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <header>
         <div class="header-limit-size">
             <div class="logo">
-                <h1>GiteFinder</h1>
+                <a href="../view/homePage.html">
+                    <h1>GiteFinder</h1>
+                </a>
             </div>
             <div class="button-search">
                 <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="Search in GiteFinder">
@@ -67,11 +70,10 @@
         <div class="container-favoris">
 
             <div class="card">
+                <i id="heart" class="heart fa-regular fa-heart"></i>
                 <div class="img-card">
                     <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet en foret" class="size-img">
-                    <div class="like-heart">
-                        <img src="../asset/media/icon/like.svg" alt="like" class="like-size">
-                    </div>
+
                 </div>
                 <div class="content-card">
                     <div class="title-prince">
@@ -101,7 +103,7 @@
         </div>
     </section>
 
-
+    <script src="../asset/js/like-heart.js"></script>
 </body>
 
 </html>
