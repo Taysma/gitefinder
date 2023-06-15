@@ -4,11 +4,13 @@ class Rental{
     private $id_rental;
     private $id_user;
     private $title;
+    private $content;
     private $capacity;
     private $surface_area;
     private $city;
     private $address;
-    private $content;
+    private $country;
+    private $price;
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -37,6 +39,10 @@ class Rental{
         return $this->title;
     }
 
+    public function getContent(){
+        return $this->content;
+    }
+
     public function getCapacity(){
         return $this->capacity;
     }
@@ -53,8 +59,12 @@ class Rental{
         return $this->address;
     }
 
-    public function getContent(){
-        return $this->content;
+    public function getCountry(){
+        return $this->country;
+    }
+
+    public function getPrice(){
+        return $this->price;
     }
 
 
@@ -71,6 +81,10 @@ class Rental{
         $this->title=$title;
     }
 
+    public function setContent(String $content){
+        $this->content=$content;
+    }
+
     public function setCapacity(int $capacity){
         $this->capacity=$capacity;
     }
@@ -79,16 +93,20 @@ class Rental{
         $this->surface_area=$surface_area;
     }
 
-    public function setCity(int $city){
+    public function setCity(String $city){
         $this->city=$city;
     }
 
-    public function setAddress(int $adress){
+    public function setAddress(String $adress){
         $this->address=$adress;
     }
 
-    public function setContent(int $content){
-        $this->content=$content;
+    public function setCountry(String $country){
+        $this->country=$country;
+    }
+
+    public function setPrice(int $price){
+        $this->price=$price;
     }
 
 }

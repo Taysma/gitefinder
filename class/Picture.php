@@ -25,7 +25,7 @@ class  Picture{
         return $this->id_picture;
     }
 
-    public function getIdRental(){
+    public function getId_Rental(){
         return $this->id_rental;
     }
 
@@ -41,7 +41,7 @@ class  Picture{
         $this->id_picture=$id_picture;
     }
 
-    public function setIdRental(int $id_rental){
+    public function setId_Rental(int $id_rental){
         $this->id_rental=$id_rental;
     }
 
