@@ -751,6 +751,14 @@ body {
                         gap: 50px;
                         align-items: center;
 
+                        @media screen and (max-width:1100px) {
+                            flex-direction: column;
+                            gap: 5px;
+                            text-align: center;
+                            justify-content: center;
+                            width: 200px;
+                        }
+
                         .h1-title-article {
                             font-size: 1rem;
                         }

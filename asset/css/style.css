@@ -588,6 +588,15 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   gap: 50px;
   align-items: center;
 }
+@media screen and (max-width: 1100px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    justify-content: center;
+    width: 200px;
+  }
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article .h1-title-article {
   font-size: 1rem;
 }
