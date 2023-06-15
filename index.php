@@ -25,6 +25,12 @@ $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
 $router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard');
+$router->map('GET', '/dashboard/profil', '', 'userProfil');
+$router->map('GET', '/dashboard/favoris', '', 'userFavoris');
+$router->map('GET', '/dashboard/reservation', '', 'userFavoris');
+$router->map('GET', '/dashboard/propriete', '', 'userRental');
+
+
 
 // CRUD Post
 // $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
