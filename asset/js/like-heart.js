@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     var heartIcon = document.getElementById('heart');
-    var isLiked = false;
+    var likeCount = 0;
 
     heartIcon.addEventListener('click', function () {
-        isLiked = !isLiked;
-        if (isLiked) {
+        likeCount++;
+
+        if (likeCount % 2 === 1) {
             heartIcon.classList.remove('fa-regular');
             heartIcon.classList.add('fa-solid');
             heartIcon.classList.add('filled');
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: 'liked=' + (isLiked ? 'true' : 'false')
+            body: 'likeCount=' + likeCount
         })
             .then(function (response) {
                 if (response.ok) {

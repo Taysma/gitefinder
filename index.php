@@ -13,7 +13,7 @@ $router->map('GET', '/', 'HomeController#home', 'home');
 $router->map('GET', '/rental/', '', 'baseRental');
 $router->map('GET', '/rental/[i:id]', 'HomeController#getOne', 'article');
 
-$router->map('GET','/category/','','baseCats');
+$router->map('GET', '/category/', '', 'baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
 // Connection form route
