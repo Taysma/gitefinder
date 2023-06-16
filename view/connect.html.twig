@@ -72,7 +72,6 @@
 					</div>
 				</div>
 
-
 				<div class="form sign-up">
 
 					<form action="{{ path('register') }}" method="POST">
@@ -128,3 +127,118 @@
 		</div>
 	</section>
 {% endblock %}
+
+<section  id="connect">
+		<div id="container-connexion">
+			<div id="sign-in" class="form">
+
+				<h2>Ravi de vous revoir,</h2>
+
+				<form action="{{ path('login') }}" method="POST">
+					<label for="mail">
+						<span>E-MAIL</span>
+					</label>
+					<input name="mail" type="text" requeried/>
+
+					<label for="password">
+						<span>MOT DE PASSE</span>
+					</label>
+					<input name="password" type="password"/>
+
+					<a href="#">
+						<p class="forgot-pass">Mot de passe oublié ?</p>
+					</a>
+
+					<button type="submit" class="submit">Se connecter</button>
+
+					<button type="button" class="fb-btn">
+						<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
+							<span>Facebook</span>
+						</a>
+					</button>
+
+					<button type="button" class="gmail-btn">
+						<a href="https://www.google.com/intl/fr/gmail/about/">
+							Connexion avec
+							<span>Gmail</span>
+						</a>
+					</button>
+
+					<button type="button" class="apple-btn">
+						<a href="https://www.icloud.com/">Connexion avec
+							<span>Apple</span>
+						</a>
+					</button>
+
+				</div>
+			</form>
+
+			<div class="sub-cont">
+				<div class="img">
+					<div class="img__text m--up">
+						<h2>Nouveau?</h2>
+						<p>Rejoignez la team
+							<br>
+							Mamoun Veggie!!!</p>
+					</div>
+
+					<div class="img__btn">
+						<span class="m--up">Inscription</span>
+						<span class="m--in">Connexion</span>
+					</div>
+				</div>
+
+				<div class="form sign-up">
+
+					<form action="{{ path('register') }}" method="POST">
+
+						<label for="lastname">
+							<span>Nom</span>
+						</label>
+						<input name="lastname" type="text"/>
+
+						<label for="firstname">
+							<span>Prénom</span>
+						</label>
+						<input name="firstname" type="text"/>
+
+						<label for="birthdate">
+							<span>Date de naissance</span>
+						</label>
+						<input name="birthdate" type="date"/>
+
+						<label for="mail">
+							<span>Email</span>
+						</label>
+						<input name="mail" type="mail"/>
+
+						<label for="password">
+							<span>Password</span>
+						</label>
+						<input name="password" type="password"/>
+
+						<button type="submit" class="submit">S'inscrire</button>
+
+						<button type="button" class="fb-btn">
+							<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
+								<span>Facebook</span>
+							</a>
+						</button>
+
+						<button type="button" class="gmail-btn">
+							<a href="https://www.google.com/intl/fr/gmail/about/">Connexion avec
+								<span>Gmail</span>
+							</a>
+						</button>
+
+						<button type="button" class="apple-btn">
+							<a href="https://www.icloud.com/">Connexion avec
+								<span>Apple</span>
+							</a>
+						</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>

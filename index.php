@@ -9,36 +9,32 @@ $router->setBasePath('/projets/gitefinder');
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
-//  HOMEPAGE // Affichages des contenues de la homepage
-$router->map('GET', '/rental/', '', 'baseRental');
-$router->map('GET', '/rental/[i:id]', 'HomeController#getOne', 'article');
-
 $router->map('GET','/category/','','baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
-// Connection form route
+// ARTICLE - POST
+$router->map('GET', '/rental/', '', 'baseRental');
+$router->map('GET', '/rental/[i:id]', 'HomeController#getOne', 'article');
+
+// CONNEXION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
 $router->map('POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
-$router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard');
-$router->map('GET', '/dashboard/profil', '', 'userProfil');
-$router->map('GET', '/dashboard/favoris', '', 'userFavoris');
-$router->map('GET', '/dashboard/reservation', '', 'userFavoris');
-$router->map('GET', '/dashboard/propriete', '', 'userRental');
-
-
+$router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
+$router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
+$router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
+$router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
+// $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
 
 // CRUD Post
 // $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
 // $router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
 // $router->map('POST|DELETE', '/post/delete/[i:id]', 'PostController#delete', 'deletePost');
 
-
 // // SEARCH
 // $router->map('GET', '/search', 'SearchController#searchResult', 'search');
-
 
 $match = $router->match();
 // var_dump($match);

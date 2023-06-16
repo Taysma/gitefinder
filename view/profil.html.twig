@@ -4,7 +4,6 @@
 	Profil
 {% endblock %}
 
-
 {% block header %}
 	{% include 'header.html.twig' with {'categories' : cats } %}
 {% endblock %}
@@ -17,9 +16,9 @@
 			<nav class="breadcrumb" aria-label="breadcrumb">
 				<ol class="ol-breadcrumb">
 					<li class="breadcrumb-item">
-						<a href="../view/dashboard.html">Dashboard</a>
+						<a href="{{ path('dashboard') }}">Dashboard</a>
 					</li>
-					<img src="../asset/media/icon/fleche.svg" alt="fleche">
+					<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
 					<li class="breadcrumb-item active" aria-current="page">Favoris</li>
 				</ol>
 			</nav>
@@ -27,7 +26,7 @@
 				<h1>Mon Profil</h1>
 				<div class="img-btn-profil">
 					<div class="img">
-						<img src="../asset/media/icon/instagram.png" alt="photo de profil">
+						<img src="{{ asset('/media/icon/instagram.png') }}" alt="photo de profil">
 					</div>
 					<div class="btn-edit-delete">
 						<button class="btn-edit">Modifier</button>

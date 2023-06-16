@@ -18,7 +18,7 @@
 					<i id="heart" class="heart fa-regular fa-heart"></i>
 					<div class="img-card">
 						<a href="{{ rental.id }}">
-							<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="gite en Foret">
+							<img src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
 						</a>
 					</div>
 					<div class="txt-card">
@@ -34,7 +34,7 @@
 								<p>4.3</p>
 								<!-- <i class="fas fa-star"></i> -->
 								<span>
-									<img src="../asset/media/icon/etoile.svg" alt="">
+									<img src="{{ asset('/media/icon/etoile.svg') }}" alt="">
 								</span>
 							</div>
 						</a>	
@@ -43,6 +43,4 @@
 			{% endfor %}
 		</div>
 	</section>
-
-
 {% endblock %}
