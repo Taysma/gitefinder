@@ -184,7 +184,6 @@
                                     <div class="condition-img-span">
                                         <div class="img-p">
                                             <img src="../asset/media/icon/location-dot-solid.svg" alt="location">
-
                                         </div>
                                         <div class="condition-p">
                                             <p class='content-p'>Idéalement situé
@@ -310,9 +309,15 @@
                         <div class="form-card-reservation">
                             <form action="#">
                                 <div class="form-reservation">
+                                    <div class="label">
+                                        <label for="arrival">date arrivée</label>
+                                        <label for="departure">Date depart</label>
+                                    </div>
+                                    <!-- calendrier -->
                                     <div class="form-date-arrivee-depart">
-                                        <input type="date" name="arrivee" id="date-arrive">
-                                        <input type="date" name="depart" id="date-depart">
+                                        <input name="arrivee" id="date-arrive" placeholder="Date arrivée">
+
+                                        <input name="depart" id="date-depart" placeholder="Date depart">
                                     </div>
                                     <div class="guest-input">
                                         <select id="input-select">
@@ -327,15 +332,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <!-- calendrier -->
-                                <div>
-                                    <label for="arrival">Date d'arrivée:</label>
-                                    <input type="text" id="arrival" />
-                                </div>
-                                <div>
-                                    <label for="departure">Date de départ:</label>
-                                    <input type="text" id="departure" />
-                                </div>
+
 
                                 <div id="calendar"></div>
 
@@ -519,12 +516,18 @@
 
     <script src="../asset/js/like-heart.js"></script>
     <script src="../asset/js/sharePopup.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <script src="../asset/js/star.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
     <script src="../asset/js/calendrier.js"></script>
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
+
 </body>
 
 </html>
