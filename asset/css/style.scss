@@ -93,11 +93,11 @@ body {
 
         .header-limit-size {
             width: 100%;
-            max-width: 1440px;
+            // max-width: 1440px;
             height: 100px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
             margin: 0 auto;
             position: relative;
             border-bottom: 1px solid rgba(0, 0, 0, 0.399);
@@ -277,9 +277,12 @@ body {
                     }
 
                     .date-inputs {
-                        display: flex;
+                        // display: flex;
                         width: auto;
                         margin: 0 auto;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 341px;
 
                         @media screen and (max-width:900px) {
                             width: auto;
@@ -567,6 +570,108 @@ body {
 
         }
 
+    }
+
+    // filter
+    .filter {
+        max-width: 1440px;
+        margin: auto;
+        width: 100%;
+
+        .container-btn-filter {
+            width: 100%;
+            display: flex;
+            height: auto;
+            align-items: center;
+
+            border-top: none;
+
+            .btn-right,
+            .btn-left {
+                background-color: #c4080800;
+                border: none;
+                border-radius: 999px;
+                margin: auto;
+                width: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 100%;
+                }
+
+            }
+
+            .img-title {
+                width: 100px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+                // border: 1px solid rgba(0, 0, 0, 0.089);
+                border-bottom: none;
+                border-top: none;
+
+                .img-filter {
+                    cursor: pointer;
+                    display: flex;
+
+                    img {
+                        margin: auto;
+                        width: 48px;
+                    }
+                }
+
+                .title {
+                    padding: 5px;
+                    text-align: center;
+
+                    span {
+                        font-size: 1.2rem;
+                        color: #E74646;
+                    }
+                }
+            }
+
+            // container-filter icon name
+            .container-filter {
+                width: 100%;
+                max-width: 900px;
+                height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: scroll;
+                white-space: nowrap;
+                scroll-behavior: smooth;
+                overflow-x: scroll;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+
+
+                .img-title {
+                    margin: auto 20px;
+                    cursor: pointer;
+
+
+                    .img {
+                        width: 64px;
+                        // padding: 10px
+
+                    }
+
+                    .title {
+                        color: #1a7fe4;
+                    }
+                }
+
+            }
+        }
     }
 
     //article post
@@ -912,14 +1017,19 @@ body {
                 .card-map-article {
                     display: flex;
                     width: 100%;
-                    max-width: 450px;
+                    max-width: 500px;
                     padding: 10px;
-                    justify-content: center;
                     flex-direction: column;
                     border: none;
-                    margin: auto;
-
+                    margin: 10px auto;
+                    position: sticky;
+                    top: 0;
                     border-radius: 15px;
+
+                    @media screen and (max-width:900px) {
+                        max-width: 450px;
+
+                    }
 
 
                     .card-reservation {
@@ -927,6 +1037,8 @@ body {
                         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
                         padding: 10px;
                         height: fit-content;
+                        // position: sticky;
+                        // top: 0px;
 
                         .prince-rating-comment {
                             padding: 30px;
@@ -995,15 +1107,22 @@ body {
 
                             }
 
-
+                            //form reservation
                             form {
                                 margin: auto;
+                                width: 100%;
 
                                 .form-reservation {
                                     padding: 3px;
                                     border-radius: 10px;
                                     text-align: center;
                                     border: 1px solid black;
+
+                                    .label {
+                                        display: flex;
+                                        justify-content: space-around;
+                                        border-bottom: 1px solid black;
+                                    }
 
                                     .selected-arrival {
                                         background-color: #FFA07A !important;
@@ -1024,7 +1143,7 @@ body {
                                         // max-width: 500px;
                                     }
 
-                                    .form-date-arrivee-depart {
+                                    .form-date-arrive-depart {
                                         display: flex;
                                         justify-content: center;
                                         align-items: center;
@@ -1032,7 +1151,7 @@ body {
 
                                     }
 
-                                    .form-date-arrivee-depart input {
+                                    .form-date-arrive-depart input {
                                         width: 150px;
                                         padding: 5px;
                                         margin: 0 10px;
@@ -1057,8 +1176,10 @@ body {
 
 
                                         #date-arrive {
-
+                                            width: 100%;
                                             border: none;
+                                            border-right: 2px solid black;
+
                                             background-color: none;
                                             font-size: 1rem;
                                             padding: 10px;
@@ -1075,6 +1196,7 @@ body {
                                             background-color: none;
                                             font-size: 1rem;
                                             padding: 10px;
+                                            width: 100%;
                                         }
 
                                     }
@@ -1172,6 +1294,8 @@ body {
                     .map-container {
                         width: 100%;
                         margin: 30px auto;
+                        // position: sticky;
+                        // top: 0px;
 
                         .map {
                             width: auto;

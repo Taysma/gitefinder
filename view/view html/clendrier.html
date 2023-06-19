@@ -90,7 +90,7 @@
 
 <body>
     <!-- calendar -->
-    <div class="calendar">
+    <!-- <div class="calendar">
         <div class="calendar-header">
             <button class="prev-month-btn" onclick="prevMonth()">&lt;</button>
             <h1 class="calendar-title"></h1>
@@ -109,120 +109,151 @@
         <div class="calendar-footer">
             <button class="book-btn" onclick="showBookingForm()">Réserver</button>
         </div>
-    </div>
+    </div> -->
 
-    <!-- booking form -->
-    <div class="booking-form" id="bookingForm">
-        <h2>Réserver</h2>
-        <form>
-            <label for="check-in-date">Date d'arrivée:</label>
-            <input type="date" id="check-in-date" name="check-in-date">
-            <label for="check-out-date">Date de départ:</label>
-            <input type="date" id="check-out-date" name="check-out-date">
-            <button class="submit-btn" onclick="submitBooking()">Valider</button>
-        </form>
-    </div>
+    <div class="form-card-reservation">
+        <form action="#">
+            <div class="form-reservation">
+                <div class="form-date-arrivee-depart">
+                    <input type="date" name="arrivee" id="date-arrive">
+                    <input type="date" name="depart" id="date-depart">
+                </div>
+                <div class="guest-input">
+                    <select id="input-select">
+                        <option value="1">1 Personne</option>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes</option>
+                        <option value="5">5 Personnes</option>
+                        <option value="6">6 Personnes</option>
+                        <option value="7">7 Personnes</option>
+                        <option value="8">8 Personnes</option>
+                    </select>
+                </div>
+            </div>
+            <!-- calendrier -->
+            <div>
+                <label for="arrival">Date d'arrivée:</label>
+                <input type="text" id="arrival" />
+            </div>
+            <div>
+                <label for="departure">Date de départ:</label>
+                <input type="text" id="departure" />
+            </div>
 
-    <script>
-        // Variables globales pour le mois et l'année actuels
-        let currentMonth = 5; // 0 correspond à janvier, 1 à février, ..., 11 à décembre
-        let currentYear = 2023;
+            <div id="calendar"></div>
+            <!-- booking form -->
+            <div class="booking-form" id="bookingForm">
+                <h2>Réserver</h2>
+                <form>
+                    <label for="check-in-date">Date d'arrivée:</label>
+                    <input type="date" id="check-in-date" name="check-in-date">
+                    <label for="check-out-date">Date de départ:</label>
+                    <input type="date" id="check-out-date" name="check-out-date">
+                    <button class="submit-btn" onclick="submitBooking()">Valider</button>
+                </form>
+            </div>
 
-        // Fonction pour afficher le calendrier
-        function showCalendar() {
-            const calendarTitle = document.querySelector('.calendar-title');
-            calendarTitle.textContent = getMonthName(currentMonth) + ' ' + currentYear;
+            <script>
+                // Variables globales pour le mois et l'année actuels
+                let currentMonth = 5; // 0 correspond à janvier, 1 à février, ..., 11 à décembre
+                let currentYear = 2023;
 
-            const daysContainer = document.querySelector('.days');
-            daysContainer.innerHTML = '';
+                // Fonction pour afficher le calendrier
+                function showCalendar() {
+                    const calendarTitle = document.querySelector('.calendar-title');
+                    calendarTitle.textContent = getMonthName(currentMonth) + ' ' + currentYear;
 
-            const firstDay = new Date(currentYear, currentMonth, 1);
-            const lastDay = new Date(currentYear, currentMonth + 1, 0);
-            const numDays = lastDay.getDate();
+                    const daysContainer = document.querySelector('.days');
+                    daysContainer.innerHTML = '';
 
-            // Ajoute les cases pour les jours du mois
-            for (let i = 1; i <= numDays; i++) {
-                const dayCell = document.createElement('div');
-                dayCell.classList.add('day');
-                dayCell.textContent = i;
-                dayCell.addEventListener('click', selectDay);
-                daysContainer.appendChild(dayCell);
-            }
-        }
+                    const firstDay = new Date(currentYear, currentMonth, 1);
+                    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+                    const numDays = lastDay.getDate();
 
-        // Fonction pour afficher le mois précédent
-        function prevMonth() {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            showCalendar();
-        }
+                    // Ajoute les cases pour les jours du mois
+                    for (let i = 1; i <= numDays; i++) {
+                        const dayCell = document.createElement('div');
+                        dayCell.classList.add('day');
+                        dayCell.textContent = i;
+                        dayCell.addEventListener('click', selectDay);
+                        daysContainer.appendChild(dayCell);
+                    }
+                }
 
-        // Fonction pour afficher le mois suivant
-        function nextMonth() {
-            currentMonth++;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
-            showCalendar();
-        }
+                // Fonction pour afficher le mois précédent
+                function prevMonth() {
+                    currentMonth--;
+                    if (currentMonth < 0) {
+                        currentMonth = 11;
+                        currentYear--;
+                    }
+                    showCalendar();
+                }
 
-        // Fonction pour obtenir le nom du mois à partir de son numéro
-        function getMonthName(month) {
-            const months = [
-                'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-            ];
-            return months[month];
-        }
+                // Fonction pour afficher le mois suivant
+                function nextMonth() {
+                    currentMonth++;
+                    if (currentMonth > 11) {
+                        currentMonth = 0;
+                        currentYear++;
+                    }
+                    showCalendar();
+                }
 
-        // Fonction pour sélectionner un jour
-        function selectDay() {
-            const selectedDay = this.textContent;
-            const selectedMonth = currentMonth + 1;
-            const selectedYear = currentYear;
+                // Fonction pour obtenir le nom du mois à partir de son numéro
+                function getMonthName(month) {
+                    const months = [
+                        'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                        'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+                    ];
+                    return months[month];
+                }
 
-            // Ajouter la classe "selected" au jour sélectionné
-            const days = document.querySelectorAll('.day');
-            days.forEach((day) => {
-                day.classList.remove('selected');
-            });
-            this.classList.add('selected');
+                // Fonction pour sélectionner un jour
+                function selectDay() {
+                    const selectedDay = this.textContent;
+                    const selectedMonth = currentMonth + 1;
+                    const selectedYear = currentYear;
 
-            // Mettre à jour le champ de saisie de la date d'arrivée avec le jour sélectionné
-            const checkInDateInput = document.getElementById('check-in-date');
-            checkInDateInput.value = `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${selectedDay.padStart(2, '0')}`;
-        }
+                    // Ajouter la classe "selected" au jour sélectionné
+                    const days = document.querySelectorAll('.day');
+                    days.forEach((day) => {
+                        day.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
 
-        // Fonction pour afficher le formulaire de réservation
-        function showBookingForm() {
-            const bookingForm = document.getElementById('bookingForm');
-            bookingForm.style.display = 'block';
-        }
+                    // Mettre à jour le champ de saisie de la date d'arrivée avec le jour sélectionné
+                    const checkInDateInput = document.getElementById('check-in-date');
+                    checkInDateInput.value = `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}-${selectedDay.padStart(2, '0')}`;
+                }
 
-        // Fonction pour soumettre la réservation
-        function submitBooking() {
-            // Récupérer les dates d'arrivée et de départ depuis les champs de saisie
-            const checkInDate = document.getElementById('check-in-date').value;
-            const checkOutDate = document.getElementById('check-out-date').value;
+                // Fonction pour afficher le formulaire de réservation
+                function showBookingForm() {
+                    const bookingForm = document.getElementById('bookingForm');
+                    bookingForm.style.display = 'block';
+                }
 
-            // Vérifier si les dates sont valides
-            if (checkInDate && checkOutDate) {
-                // Effectuer les opérations de réservation ici
+                // Fonction pour soumettre la réservation
+                function submitBooking() {
+                    // Récupérer les dates d'arrivée et de départ depuis les champs de saisie
+                    const checkInDate = document.getElementById('check-in-date').value;
+                    const checkOutDate = document.getElementById('check-out-date').value;
 
-                // Afficher un message de confirmation
-                const confirmationMessage = `Réservation effectuée du ${checkInDate} au ${checkOutDate}`;
-                alert(confirmationMessage);
+                    // Vérifier si les dates sont valides
+                    if (checkInDate && checkOutDate) {
+                        // Effectuer les opérations de réservation ici
 
-                // Réinitialiser les champs de saisie
-                document.getElementById('check-in-date').value = '';
-                document.getElementById('check-out-date').value = '';
-            } else {
-                // Afficher un message d'erreur si les dates ne sont pas saisies
-                alert('Veuillez saisir les dates de réservation.');
-            }
-        }
-    </script>
+                        // Afficher un message de confirmation
+                        const confirmationMessage = `Réservation effectuée du ${checkInDate} au ${checkOutDate}`;
+                        alert(confirmationMessage);
+
+                        // Réinitialiser les champs de saisie
+                        document.getElementById('check-in-date').value = '';
+                        document.getElementById('check-out-date').value = '';
+                    } else {
+                        // Afficher un message d'erreur si les dates ne sont pas saisies
+                        alert('Veuillez saisir les dates de réservation.');
+                    }
+                }
+            </script>

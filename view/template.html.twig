@@ -8,10 +8,9 @@
 		<meta name="description" content="Trouver le gîte idéal pour vos vacances ou séjours."> {% block stylesheet %}{% endblock %}
 		<link rel="stylesheet" href="{{ asset('/css/font.css') }}">
 		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-		<link
-		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 		<title>
 			{% block title %}{% endblock %}
@@ -21,6 +20,10 @@
 
 	<body>
 		{% block header %}{% endblock %}
+		{% block filters %}
+			{% include "filter.html.twig" %}
+		{% endblock %}
+
 
 		<main>
 			{% block content %}{% endblock %}
@@ -31,10 +34,15 @@
 		{% block javascript %}{% endblock %}
 		<script src="{{ asset('/js/main.js') }}"></script>
 		<script src="{{ asset('/js/modal-footer.js') }}"></script>
-		<script src="{{ asset('/js/calendrier.js') }}"></script>
 		<script src="{{ asset('/js/sharePopup.js') }}"></script>
 		<script src="{{ asset('/js/connect.js') }}"></script>
 		<script src="{{ asset('/js/like-heart.js') }}"></script>
+		<script src="{{ asset('/js/filter-slider.js') }}"></script>
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+		<script src="../asset/js/calendrier.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 
 	</body>
 </html>

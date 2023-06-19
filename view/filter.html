@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="../asset/css/font.css">
+    <!-- pour le calendrier -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- <style>
+        /* Styles CSS pour le slider */
+        .container-filter {
+            display: flex;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            white-space: nowrap;
+        }
+
+        .img-title {
+            flex: 0 0 auto;
+            margin-right: 20px;
+        }
+
+        /* Autres styles CSS nécessaires */
+    </style> -->
+
+
+    <!-- <style>
+        #calendar {
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+
+        .fc-toolbar {
+            background-color: #f7f7f7;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .fc-button {
+            background-color: #f7f7f7;
+            border: none;
+            color: #333;
+            font-weight: bold;
+            margin: 0;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .fc-button:hover {
+            background-color: #e5e5e5;
+        }
+
+        .fc-button.active {
+            background-color: #d3d3d3;
+        }
+
+        .fc-toolbar-title {
+            font-size: 20px;
+            color: #333;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .fc-content {
+            background-color: #fff;
+        }
+
+        .fc-day-header {
+            background-color: #f7f7f7;
+            color: #666;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .fc-day {
+            background-color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .fc-day:hover {
+            background-color: #e5e5e5;
+        }
+
+        .fc-today {
+            background-color: #e5e5e5;
+        }
+
+        .fc-selected {
+            background-color: #ff5a5f;
+            color: #fff;
+        }
+
+        .fc-selected:hover {
+            background-color: #e1484c;
+        }
+    </style> -->
+    <title> Document</title>
+</head>
+
+<body>
+
+    <!-- header -->
+    <header>
+        <div class="header-limit-size">
+            <div class="logo">
+                <a href="">
+                    <h1>GiteFinder</h1>
+                </a>
+            </div>
+            <div class="button-search">
+                <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="Search in GiteFinder">
+            </div>
+            <!-- search bar -->
+            <form action="#" method="post" class="search-bar-form">
+                <div class="search-bar ">
+
+                    <input type=" text" id="location-input" placeholder="Location">
+                    <div class="date-inputs">
+                        <input type="text" name="dateArrivee" id="dateArrivee" placeholder="Date d'arrivée" required />
+                        <input type="text" name="dateDepart" id="dateDepart" placeholder="Date de départ" required />
+                        <div id='calendar'></div>
+                    </div>
+
+                    <select id="guests-input">
+                        <option value="1">1 Personne</option>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes</option>
+                        <option value="5">5 Personnes</option>
+                        <option value="6">6 Personnes</option>
+                        <option value="7">7 Personnes</option>
+                        <option value="8">8 Personnes</option>
+                    </select>
+                    <button type="submit" id="search-button">Search</button>
+
+                </div>
+            </form>
+
+            <div class="menu-burger-header">
+                <a href="#">
+                    <img class="img-burger" src="../asset/media/icon/bars-solid.svg" alt="Connexion et inscription">
+                    <img class="img-burger border-user" src="../asset/media/icon/user-solid.svg" alt="menu burger">
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- filter -->
+    <section class="filter">
+        <div class="container-btn-filter">
+            <div class="btn-right">
+                <button class="btn-right">
+                    <img src="../asset/media/icon/circle_chevron_left_icon_199382.png" alt="tourner à gauche">
+                </button>
+            </div>
+            <div class="container-filter">
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+                <div class="img-title">
+                    <div class="img-filter">
+                        <img src="../asset/media/icon/facebook.svg" alt="">
+                    </div>
+                    <div class="title">
+                        <span>hello</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="btn-left">
+                <button class="btn-left">
+                    <img src="../asset/media/icon/circle_chevron_right_icon_199381.png" alt="tourner à droite">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- homePage -->
+    <section id="homepage" class="limit-size">
+        <div class="gallery-grid">
+
+
+            <div class="card">
+                <i id="heart" class="heart fa-regular fa-heart"></i>
+                <div class="img-card">
+                    <a href="./article.html">
+                        <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="gite en Foret">
+
+                    </a>
+                </div>
+                <div class="txt-card">
+                    <a href="./article.html">
+
+                        <div class="title-card">
+                            <div class="h1-card">
+                                <h1>Paradise Beach, Bantayan Island</h1>
+                            </div>
+                            <p>150€</p>
+                        </div>
+                        <h2 class="h2-card">rome, Italy</h2>
+                        <div class="note-card">
+                            <p>4.3</p>
+                            <!-- <i class="fas fa-star"></i> -->
+                            <span>
+                                <img src="../asset/media/icon/etoile.svg" alt="">
+                            </span>
+
+                        </div>
+                </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-limit-size">
+                <div class="footer-container-help">
+                    <div class="logo-footer">
+                        <span><a href="#" class="footer-logo-span">2023 GiteFinder, Inc</a></span>
+                    </div>
+                    <!-- newsletter -->
+                    <div class="container-newsletter">
+                        <form action="" id="form-newsletter">
+                            <label for="newsletter" id="label-newsletter">Newsletter</label>
+                            <input type="text" id="input-newsletter">
+                            <button type="submit" id="footer-submit-button">envoyer</button>
+                        </form>
+                    </div>
+
+                    <span class="footer-span-ol">
+                        <ol>
+                            <li class="footer-li"><a href="#">Confidentialité</a></li>
+                            <li class="footer-li"><a href="#">Conditions générales</a>
+                            </li>
+                            <li class="footer-li"><a href="#">Infos sur l'entreprise</a></li>
+                        </ol>
+                    </span>
+                </div>
+
+                <div class="container-footer-language-devise-help">
+
+                    <div class="footer-button">
+                        <span class="footer-button-span"> Francais</span>
+                        <div class="footer-button">
+                            <span class="footer-button-span">€</span>
+                            <span class="footer-button-span">EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-button-asistance" id="openModalButton">
+                        <span class="footer-button-span">Assistance et ressources</span>
+                        <img class="footer-img" src="../asset/media/icon/hate.svg" alt="hat">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-mobile">
+            <div class="mobile-footer-explore">
+                <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="" class="footer-img">
+                <P class="txt-footer">Explorer</P>
+            </div>
+            <div class="mobile-footer-favoris">
+                <img src="../asset/media/icon/coeur (1).png" alt="Favoris" class="footer-img">
+                <P class="txt-footer">Favoris</P>
+            </div>
+            <div class="mobile-footer-user">
+                <img src="../asset/media/icon/user-solid.svg" alt="" class="footer-user">
+                <p class="txt-footer">Connection</p>
+            </div>
+        </div>
+
+        <!-- <button id="openModalButton">Ouvrir la modal</button> -->
+
+        <div id="modal" class="modal">
+
+            <div class="modal-content">
+                <img class="close-footer" src="../asset/media/icon/x-solid.svg" alt="close">
+                <div class="footer-modal-ul">
+                    <ul class="link-list">
+                        <h3><a href="#">Assistance</a></h3>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">AirCover</a></li>
+                        <li><a href="#">Soutenir les personnes en situation de handicap</a></li>
+                        <li><a href="#">Options d'annulation</a></li>
+                        <li><a href="#">Nos mesures face au Covid-19</a></li>
+                        <li><a href="#">Signaler un problème de voisinage</a></li>
+                    </ul>
+                </div>
+                <ul class="link-list">
+                    <li><a href="#">Communauté</a></li>
+                    <li><a href="#">Airbnb.org : réponse aux catastrophes</a></li>
+                    <li><a href="#">Lutte contre la discrimination</a></li>
+                </ul>
+                <ul class="link-list">
+                    <li><a href="#">Accueil de voyageurs</a></li>
+                    <li><a href="#">Mettez votre logement sur Airbnb</a></li>
+                    <li><a href="#">AirCover pour les hôtes</a></li>
+                    <li><a href="#">Ressources pour les hôtes</a></li>
+                    <li><a href="#">Forum de la communauté</a></li>
+                    <li><a href="#">Accueillir de manière responsable</a></li>
+                </ul>
+                <ul class="link-list">
+                    <li><a href="#">GiteFinder</a></li>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">En savoir plus sur les nouveautés</a></li>
+                    <li><a href="#">Lettre de nos fondateurs</a></li>
+                    <li><a href="#">Carrières</a></li>
+                    <li><a href="#">Investisseurs</a></li>
+                    <li><a href="#">Cartes cadeaux</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </footer>
+
+    <script src="../asset/js/filter-slider.js"></script>
+    <script src="../asset/js/like-heart.js"></script>
+    <script src="../asset/js/sharePopup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="../asset/js/star.js"></script>
+
+    <script src="../asset/js/calendrier.js"></script>
+</body>
+
+</html>
