@@ -17,12 +17,12 @@
 				<div class="card">
 					<i id="heart" class="heart fa-regular fa-heart"></i>
 					<div class="img-card">
-						<a href="{{ rental.id }}">
+						<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
 							<img src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
 						</a>
 					</div>
 					<div class="txt-card">
-						<a href="{{ rental.id }}">
+						<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
 							<div class="title-card">
 								<div class="h1-card">
 									<h1>{{ rental.title }}</h1>

@@ -50,10 +50,10 @@ class RentalModel extends Model
         return $rentals;
     }
 
-    public function getOnerental(int $id_rental){
+    public function getOneRental(int $id_rental){
 
         $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `country` FROM `rental` WHERE `id_rental`= :id');
-        $req->bindParam('id_rental',$id_rental,PDO::PARAM_INT);
+        $req->bindParam('id',$id_rental,PDO::PARAM_INT);
         $req->execute();
 
         $rental = new Rental($req->fetch(PDO::FETCH_ASSOC));
@@ -87,8 +87,8 @@ class RentalModel extends Model
             FROM `rental`
             INNER JOIN `picture`
             ON `picture`.`id_rental` = `rental`.`id_rental`
-            WHERE `rental`.`id_rental` = :id');
-        $req->bindParam(':id', $id_picture, PDO::PARAM_INT);
+            WHERE `rental`.`id_rental` = :id_rental');
+        $req->bindParam(':id_rental', $id_picture, PDO::PARAM_INT);
         $req->execute();
     
         while ($rentalData = $req->fetch(PDO::FETCH_ASSOC)) {
