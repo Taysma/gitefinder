@@ -5,25 +5,60 @@ class HomeController extends Controller
     public function home(){
         $Rentalmodel = new RentalModel();
         $rentals = $Rentalmodel->getAllrentals();
-
         
-        
-        $picture = $Rentalmodel->getRentalPicture($id_picture);
 
-        if($picture === false){
-            echo "image inexistante";
-        }else{
-            echo self::getRender('homePage.html.twig', ['rentals' => $rentals, 'picture' => $picture]);
-        }
+       
+            echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
+        
 
         
     }
 
     
 
-    public function getOne($id){
-
+    public function getOne($id_rental){
+        global $router;
+        $Rentalmodel = new RentalModel();
+        $article = $Rentalmodel->getOneRental($id_rental);
+        $oneRental = $router->generate('article');
         
-        echo self::getRender('article.html.twig', []);
+        echo self::getRender('article.html.twig', ['rental' => $article, 'oneRental' => $oneRental]);
     }
+
+
+    public function addSubscribes(){
+        global $router;
+        $model = new NewsletterModel();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            $mail = $_POST['mail'];
+            
+            
+            $subscribe = new Newsletter([
+                
+                'mail' => $mail,
+                
+                
+            ]);
+
+            $model->createNewSubscribe($subscribe);
+            header('Location: ' . $router->generate('home'));
+        } else {
+            echo self::getRender('homepage.html.twig', []);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
+

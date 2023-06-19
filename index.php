@@ -13,7 +13,8 @@ $router->map('GET', '/', 'HomeController#home', 'home');
 
 //  HOMEPAGE // Affichages des contenues de la homepage
 $router->map('GET', '/rental/', '', 'baseRental');
-$router->map('GET', '/rental/[i:id]', 'HomeController#getOne', 'article');
+$router->map('GET', '/rental/[i:id_rental]', 'HomeController#getOne', 'article');
+
 
 $router->map('GET','/category/','','baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
@@ -26,6 +27,9 @@ $router->map('GET', '/logout', 'UserController#logout', 'logout');
 // USER
 $router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard');
 
+// ajout d'abonnés a la newsletter
+$router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
+
 // CRUD Post
 // $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
 // $router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
@@ -37,7 +41,7 @@ $router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard')
 
 
 $match = $router->match();
-// var_dump($match);
+ var_dump($match);
 
 if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);

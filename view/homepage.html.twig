@@ -15,9 +15,9 @@
 		<div class="gallery-grid">
 			{% for rental in rentals %}
 				<div class="card">
-					<a href="{{ rental.id }}">
+					<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
 						<div class="img-card">
-							<img src="./asset/media/images/" alt="gite en Foret">
+							<img src="./asset/media/images/villawalesca.png" alt="gite en Foret">
 						</div>
 						<div class="txt-card">
 							<div class="title-card">
