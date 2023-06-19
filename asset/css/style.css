@@ -788,13 +788,19 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article {
   display: flex;
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   padding: 10px;
-  justify-content: center;
   flex-direction: column;
   border: none;
-  margin: auto;
+  margin: 10px auto;
+  position: sticky;
+  top: 0;
   border-radius: 15px;
+}
+@media screen and (max-width: 900px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article {
+    max-width: 450px;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation {
   border-radius: 10px;
@@ -849,6 +855,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form {
   margin: auto;
+  width: 100%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation {
   padding: 3px;
@@ -898,6 +905,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   display: flex;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-arrive {
+  width: 100%;
   border: none;
   border-right: 2px solid black;
   background-color: none;
@@ -912,6 +920,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   background-color: none;
   font-size: 1rem;
   padding: 10px;
+  width: 100%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .guest-input {
   border-top: 1px solid black;

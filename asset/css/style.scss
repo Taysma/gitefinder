@@ -1017,14 +1017,19 @@ body {
                 .card-map-article {
                     display: flex;
                     width: 100%;
-                    max-width: 450px;
+                    max-width: 500px;
                     padding: 10px;
-                    justify-content: center;
                     flex-direction: column;
                     border: none;
-                    margin: auto;
-
+                    margin: 10px auto;
+                    position: sticky;
+                    top: 0;
                     border-radius: 15px;
+
+                    @media screen and (max-width:900px) {
+                        max-width: 450px;
+
+                    }
 
 
                     .card-reservation {
@@ -1032,6 +1037,8 @@ body {
                         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
                         padding: 10px;
                         height: fit-content;
+                        // position: sticky;
+                        // top: 0px;
 
                         .prince-rating-comment {
                             padding: 30px;
@@ -1100,9 +1107,10 @@ body {
 
                             }
 
-
+                            //form reservation
                             form {
                                 margin: auto;
+                                width: 100%;
 
                                 .form-reservation {
                                     padding: 3px;
@@ -1168,7 +1176,7 @@ body {
 
 
                                         #date-arrive {
-
+                                            width: 100%;
                                             border: none;
                                             border-right: 2px solid black;
 
@@ -1188,6 +1196,7 @@ body {
                                             background-color: none;
                                             font-size: 1rem;
                                             padding: 10px;
+                                            width: 100%;
                                         }
 
                                     }
@@ -1285,6 +1294,8 @@ body {
                     .map-container {
                         width: 100%;
                         margin: 30px auto;
+                        // position: sticky;
+                        // top: 0px;
 
                         .map {
                             width: auto;
