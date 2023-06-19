@@ -1460,7 +1460,7 @@ body footer {
   background-color: #F7F7F7;
   position: fixed;
   bottom: 0;
-  z-index: 20;
+  z-index: 999;
 }
 body footer .footer-container {
   display: flex;
