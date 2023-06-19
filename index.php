@@ -14,11 +14,7 @@ $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
 // ARTICLE - POST
 $router->map('GET', '/rental/', '', 'baseRental');
-$router->map('GET', '/rental/[i:id_rental]', 'HomeController#getOne', '');
-
-
-$router->map('GET','/category/','','baseCats');
-$router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
+$router->map('GET', '/rental/[i:id_rental]', 'HomeController#getOne', 'article');
 
 // Connection form route
 $router->map('GET|POST', '/login', 'UserController#login', 'login');

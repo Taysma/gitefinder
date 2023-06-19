@@ -17,7 +17,7 @@ class HomeController extends Controller
         $article = $Rentalmodel->getOneRental($id_rental);
         $oneRental = $router->generate('article');
         
-        echo self::getRender('article.html.twig', ['rental' => $article, 'oneRental' => $oneRental]);
+        echo self::getRender('post.html.twig', ['rental' => $article, 'oneRental' => $oneRental]);
     }
 
 
