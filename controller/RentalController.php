@@ -4,21 +4,18 @@ class RentalController extends Controller
 
     // public function getUserRental()
     // {
-    //     // if ($_SESSION['connect']) {
-    //     //     $userId = $_SESSION['uid'];
+    //      if ($_SESSION['connect']) {
+    //          $id_user = $_SESSION['id_user'];
 
-    //     //     $model = new RentalModel();
-    //     //     $userRecipes = $model->getUserRecipes($userId);
+    //          $model = new RentalModel();
+    //          $userRental = $model->getUserRentals($id_user);
 
-    //     //     global $router;
-    //         echo self::getRender('dashboard.html.twig', []);
-    //     //}
+    //          global $router;
+    //         echo self::getRender('dashboard.html.twig', ['rental' => $userRental]);
+    //     }
     // }
 
-    // public function getOneRental($id){
-        
-    //     echo self::getRender('article.html.twig', []);
-    // }
+    
 
     public function retrieveLastAdditions(){
         $model = new RentalModel();

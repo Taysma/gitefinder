@@ -41,7 +41,7 @@ $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter'
 
 
 $match = $router->match();
- var_dump($match);
+ //var_dump($match);
 
 if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
