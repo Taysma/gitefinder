@@ -6,12 +6,7 @@ class HomeController extends Controller
         $Rentalmodel = new RentalModel();
         $rentals = $Rentalmodel->getAllrentals();
         
-
-       
-            echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
-        
-
-        
+        echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
     }
 
     
@@ -22,7 +17,7 @@ class HomeController extends Controller
         $article = $Rentalmodel->getOneRental($id_rental);
         $oneRental = $router->generate('article');
         
-        echo self::getRender('article.html.twig', ['rental' => $article, 'oneRental' => $oneRental]);
+        echo self::getRender('post.html.twig', ['rental' => $article, 'oneRental' => $oneRental]);
     }
 
 

@@ -17,20 +17,19 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="../view/dashboard.html">Dashboard</a>
+					<a href="{{ path('dashboard') }}">Dashboard</a>
 				</li>
-				<img src="../asset/media/icon/fleche.svg" alt="fleche">
+				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
 				<li class="breadcrumb-item active" aria-current="page">Favoris</li>
 			</ol>
 		</nav>
 		<div class="container-favoris">
 
 			<div class="card">
+				<i id="heart" class="heart fa-regular fa-heart"></i>
 				<div class="img-card">
-					<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet en foret" class="size-img">
-					<div class="like-heart">
-						<img src="../asset/media/icon/like.svg" alt="like" class="like-size">
-					</div>
+					<img src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="chalet en foret" class="size-img">
+
 				</div>
 				<div class="content-card">
 					<div class="title-prince">
@@ -52,10 +51,9 @@
 					<div class="rating-card">
 						<span class="rating">4.8</span>
 						<span>
-							<img src="../asset/media/icon/etoile.svg" alt="star rating" class="size-img-star">
+							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
 						</span>
 					</div>
-
 				</div>
 			</div>
 		</div>

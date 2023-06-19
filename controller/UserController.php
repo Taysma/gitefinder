@@ -1,6 +1,7 @@
 <?php
 class UserController extends Controller {
 
+    // Connection utilisateur
     public function register(){
         global $router;
         $model = new UserModel();
@@ -65,5 +66,26 @@ class UserController extends Controller {
         global $router;
         header('Location: ' . $router->generate('home'));
         exit();
+    }
+
+    // Dashboard
+    public function getUserDashboard(){
+        echo self::getRender('dashboard.html.twig', []);
+    }
+
+    public function getUserProfil(){
+        echo self::getRender('profil.html.twig', []);
+    }
+
+    public function getUserFavoris(){
+        echo self::getRender('favoris.html.twig', []);
+    }
+
+    public function getUserReservation(){
+        echo self::getRender('rental.html.twig', []);
+    }
+
+    public function getUserRental(){
+        echo self::getRender('', []);
     }
 }

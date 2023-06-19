@@ -6,18 +6,15 @@ require_once './vendor/autoload.php';
 $router = new AltoRouter();
 $router->setBasePath('/projets/gitefinder');
 
-
-
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
-//  HOMEPAGE // Affichages des contenues de la homepage
-$router->map('GET', '/rental/', '', 'baseRental');
-$router->map('GET', '/rental/[i:id_rental]', 'HomeController#getOne', 'article');
-
-
 $router->map('GET','/category/','','baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
+
+// ARTICLE - POST
+$router->map('GET', '/rental/', '', 'baseRental');
+$router->map('GET', '/rental/[i:id_rental]', 'HomeController#getOne', 'article');
 
 // Connection form route
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
@@ -25,7 +22,11 @@ $router->map('POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
-$router->map('GET', '/dashboard', 'RentalController#getUserRental', 'dashboard');
+$router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
+$router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
+$router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
+$router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
+// $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
 
 // ajout d'abonnés a la newsletter
 $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
@@ -35,10 +36,8 @@ $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter'
 // $router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
 // $router->map('POST|DELETE', '/post/delete/[i:id]', 'PostController#delete', 'deletePost');
 
-
 // // SEARCH
 // $router->map('GET', '/search', 'SearchController#searchResult', 'search');
-
 
 $match = $router->match();
  //var_dump($match);

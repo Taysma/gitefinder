@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>rental</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-limit-size">
+            <div class="logo">
+                <h1>GiteFinder</h1>
+            </div>
+            <div class="button-search">
+                <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="Search in GiteFinder">
+            </div>
+            <!-- search bar -->
+            <form action="#" method="post" class="search-bar-form">
+                <div class="search-bar ">
+
+                    <input type=" text" id="location-input" placeholder="Location">
+                    <div class="date-inputs">
+                        <input type="text" name="dateArrivee" id="dateArrivee" placeholder="Date d'arrivée" required />
+                        <input type="text" name="dateDepart" id="dateDepart" placeholder="Date de départ" required />
+                        <div id='calendar'></div>
+                    </div>
+
+                    <select id="guests-input">
+                        <option value="1">1 Personne</option>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes</option>
+                        <option value="5">5 Personnes</option>
+                        <option value="6">6 Personnes</option>
+                        <option value="7">7 Personnes</option>
+                        <option value="8">8 Personnes</option>
+                    </select>
+                    <button type="submit" id="search-button">Search</button>
+
+                </div>
+            </form>
+
+            <div class="menu-burger-header">
+                <a href="#">
+                    <img class="img-burger" src="../asset/media/icon/bars-solid.svg" alt="Connexion et inscription">
+                    <img class="img-burger border-user" src="../asset/media/icon/user-solid.svg" alt="menu burger">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- rental, reservation -->
+    <section class="rental">
+        <!-- fil d'ariane  breadcrumb -->
+        <nav class="breadcrumb" aria-label="breadcrumb">
+            <ol class="ol-breadcrumb">
+                <li class="breadcrumb-item"><a href="../view/dashboard.html">Dashboard</a></li>
+                <img src="../asset/media/icon/fleche.svg" alt="fleche">
+                <li class="breadcrumb-item active" aria-current="page">Réservation</li>
+            </ol>
+        </nav>
+        <div class="container-rental">
+            <div class="card-rental">
+                <i id="heart" class="heart fa-regular fa-heart"></i>
+
+                <div class="img-card-rental">
+                    <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet image"
+                        class="size-img-rental-card">
+                </div>
+                <div class="content-rental-card">
+                    <div class="title-prince">
+                        <div class="title">
+                            <h1>Paradise Beach, Bantayan Island</h1>
+                            <span>Rome</span>
+                            <span>,</span>
+                            <span>italy</span>
+                        </div>
+                        <div class="prince">
+                            <span>550.16</span>
+                            <span>€</span>
+                        </div>
+                    </div>
+                    <div class="personne">
+                        <span>pour de </span>
+                        <span>2 personnes</span>
+                    </div>
+                    <div class="date-rental">
+                        <span>Date :</span>
+                        <span class="date-arrivee">14/06/2023</span>
+                        <span>au</span>
+                        <span class="date-depart">07/07/2023</span>
+                    </div>
+
+                </div>
+                <!-- button reserver wait annuler -->
+                <div class="btn-rental-card">
+                    <form action="#">
+                        <button id="reserver" type="submit">reserver</button>
+                    </form>
+                    <!-- <form action="">
+                        <button id="wait" type="submit">En cours</button>
+                    </form>
+                    <form action="">
+                        <button id="annuler" type="submit">annuler</button>
+                    </form> -->
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <script src="../asset/js/like-heart.js"></script>
+</body>
+
+</html>

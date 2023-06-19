@@ -4,7 +4,6 @@
 	rental
 {% endblock %}
 
-
 {% block header %}
 	{% include 'header.html.twig' with {'categories' : cats } %}
 {% endblock %}
@@ -17,16 +16,18 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="../view/dashboard.html">Dashboard</a>
+					<a href="{{ path('dashboard') }}">Dashboard</a>
 				</li>
-				<img src="../asset/media/icon/fleche.svg" alt="fleche">
+				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
 				<li class="breadcrumb-item active" aria-current="page">Réservation</li>
 			</ol>
 		</nav>
 		<div class="container-rental">
 			<div class="card-rental">
+				<i id="heart" class="heart fa-regular fa-heart"></i>
+
 				<div class="img-card-rental">
-					<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet image" class="size-img-rental-card">
+					<img src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="chalet image" class="size-img-rental-card">
 				</div>
 				<div class="content-rental-card">
 					<div class="title-prince">
@@ -60,16 +61,14 @@
 						<button id="reserver" type="submit">reserver</button>
 					</form>
 					<!-- <form action="">
-															                        <button id="wait" type="submit">En cours</button>
-															                    </form>
-															                    <form action="">
-															                        <button id="annuler" type="submit">annuler</button>
-															                    </form> -->
+					                        <button id="wait" type="submit">En cours</button>
+					                    </form>
+					                    <form action="">
+					                        <button id="annuler" type="submit">annuler</button>
+					                    </form> -->
 
 				</div>
 			</div>
-
 		</div>
 	</section>
-
 {% endblock %}
