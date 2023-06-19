@@ -9,9 +9,9 @@
 				</div>
 				<!-- newsletter -->
 				<div class="container-newsletter">
-					<form action="" id="form-newsletter">
-						<label for="newsletter" id="label-newsletter">Newsletter</label>
-						<input type="text" id="input-newsletter">
+					<form action="{{ path('newsletter') }}"  method="POST" id="form-newsletter">
+						<label for="mail" id="label-newsletter">Newsletter</label>
+						<input type="mail" name="mail" id="input-newsletter">
 						<button type="submit" id="footer-submit-button">envoyer</button>
 					</form>
 				</div>
