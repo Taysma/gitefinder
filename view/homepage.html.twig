@@ -18,7 +18,9 @@
 					<i id="heart" class="heart fa-regular fa-heart"></i>
 					<div class="img-card">
 						<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
-							<img src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
+							{% for picture in rental.pictures %}
+    							<img src="{{ asset(picture.title) }}" alt="gite en Foret">
+							{% endfor %}
 						</a>
 					</div>
 					<div class="txt-card">
