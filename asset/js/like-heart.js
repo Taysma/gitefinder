@@ -1,77 +1,50 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var heartIcon = document.getElementById('heart');
-    var likeCount = 0;
+    var heartIcons = document.getElementsByClassName('heart');
 
-    heartIcon.addEventListener('click', function () {
-        likeCount++;
+    for (var i = 0; i < heartIcons.length; i++) {
+        var heartIcon = heartIcons[i];
+        var likeCount = 0;
 
-        if (likeCount % 2 === 1) {
-            heartIcon.classList.remove('fa-regular');
-            heartIcon.classList.add('fa-solid');
-            heartIcon.classList.add('filled');
-            heartIcon.classList.remove('empty');
-        } else {
-            heartIcon.classList.add('fa-regular');
-            heartIcon.classList.remove('fa-solid');
-            heartIcon.classList.remove('filled');
-            heartIcon.classList.add('empty');
-        }
+        heartIcon.addEventListener('click', function () {
+            likeCount++;
 
-        // Envoi de la requête AJAX au serveur
-        fetch('update-like.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'likeCount=' + likeCount
-        })
-            .then(function (response) {
-                if (response.ok) {
-                    // Requête réussie
-                    console.log('Le like a été mis à jour avec succès');
-                } else {
-                    // Erreur lors de la requête
-                    console.log('Une erreur s\'est produite lors de la mise à jour du like');
-                }
+            if (likeCount % 2 === 1) {
+                this.classList.remove('fa-regular');
+                this.classList.add('fa-solid');
+                this.classList.add('filled');
+                this.classList.remove('empty');
+            } else {
+                this.classList.add('fa-regular');
+                this.classList.remove('fa-solid');
+                this.classList.remove('filled');
+                this.classList.add('empty');
+            }
+
+            // Envoi de la requête AJAX au serveur
+            fetch('update-like.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'likeCount=' + likeCount
             })
-            .catch(function (error) {
-                // Erreur lors de la requête
-                console.log('Une erreur s\'est produite lors de la mise à jour du like :', error);
-            });
-    });
+                .then(function (response) {
+                    if (response.ok) {
+                        // Requête réussie
+                        console.log('Le like a été mis à jour avec succès');
+                    } else {
+                        // Erreur lors de la requête
+                        console.log('Une erreur s\'est produite lors de la mise à jour du like');
+                    }
+                })
+                .catch(function (error) {
+                    // Erreur lors de la requête
+                    console.log('Une erreur s\'est produite lors de la mise à jour du like :', error);
+                });
+        });
+    }
 });
 
 
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     var heartIcon = document.getElementById('heart');
-//     var isLiked = false;
-
-//     heartIcon.addEventListener('click', function () {
-//         isLiked = !isLiked;
-//         heartIcon.classList.toggle('red');
-
-//         // Envoi de la requête AJAX au serveur
-//         fetch('update-like.php', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/x-www-form-urlencoded'
-//             },
-//             body: 'liked=' + (isLiked ? 'true' : 'false')
-//         })
-//             .then(function (response) {
-//                 if (response.ok) {
-//                     // Requête réussie
-//                     console.log('Le like a été mis à jour avec succès');
-//                 } else {
-//                     // Erreur lors de la requête
-//                     console.log('Une erreur s\'est produite lors de la mise à jour du like');
-//                 }
-//             })
-//             .catch(function (error) {
-//                 // Erreur lors de la requête
-//                 console.log('Une erreur s\'est produite lors de la mise à jour du like :', error);
-//             });
-//     });
-// });

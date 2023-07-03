@@ -1452,6 +1452,50 @@ body .rental .container-rental .card-rental .btn-rental-card form #annuler {
 body .rental .container-rental .card-rental .btn-rental-card form #wait {
   background: #FAC800;
 }
+body .messenger {
+  width: 100%;
+  height: 100%;
+}
+body .messenger .container-messenger {
+  width: auto;
+  height: 100%;
+  max-width: 1440px;
+}
+body .messenger .container-messenger .search-message-contact {
+  width: 300px;
+  border: 1px solid black;
+}
+body .messenger .container-messenger .search-message-contact .search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.018);
+  border: 1px solid rgba(0, 0, 0, 0.041);
+}
+body .messenger .container-messenger .search-message-contact .search .icon-search {
+  width: 35px;
+  height: 30px;
+  display: flex;
+  gap: 10px;
+  margin: auto 10px;
+  justify-content: space-between;
+}
+body .messenger .container-messenger .search-message-contact .search .icon-search img {
+  width: 100%;
+}
+body .messenger .container-messenger .search-message-contact .search .input-search {
+  width: 100%;
+  max-width: 300px;
+}
+body .messenger .container-messenger .search-message-contact .search .input-search #search {
+  border: none;
+  padding: 10px;
+}
+body .messenger .container-messenger .user-online-send-messages {
+  width: 100%;
+}
 body footer {
   width: 100%;
   display: flex;

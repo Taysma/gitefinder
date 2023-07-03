@@ -1,6 +1,7 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Post{% endblock %}
+{% block title %}Post
+{% endblock %}
 
 {% block header %}
 	{% include 'header.html.twig' with {'categories' : cats } %}
@@ -229,6 +230,8 @@
 
 								<input name="depart" id="date-depart" placeholder="Date depart">
 							</div>
+							<div id="calendar"></div>
+
 							<div class="guest-input">
 								<select id="input-select">
 									<option value="1">1 Personne</option>
@@ -243,8 +246,6 @@
 							</div>
 						</div>
 
-
-						<div id="calendar"></div>
 
 						<div class="btn-reservation">
 							<button type="submit" id="search-button">Reserver</button>
