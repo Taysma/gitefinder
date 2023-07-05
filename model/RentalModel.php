@@ -106,7 +106,7 @@ class RentalModel extends Model
             $rentalData[] = $row;
         }
 
-        var_dump($row);
+        
 
         
     
