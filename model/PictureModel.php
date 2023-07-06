@@ -86,4 +86,19 @@ public function delete(int $id){
             }
     }
 
+
+    public function getPicturesByRentalId($rentalId) {
+        $req = $this->getDb()->prepare("SELECT `id_picture`, `id_rental`, `title` FROM `picture` WHERE `id_rental` = :rentalId");
+        $req->bindParam(":rentalId", $rentalId, PDO::PARAM_INT);
+        $req->execute();
+        $pictures = [];
+    
+        while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
+            $pictures[] = new Picture($row);
+        }
+    
+        return $pictures;
+    }
+    
+
 }

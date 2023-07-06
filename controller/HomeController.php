@@ -3,12 +3,10 @@
 class HomeController extends Controller
 {
     public function home(){
-        $Rentalmodel = new RentalModel();
-        $rentals = $Rentalmodel->getAllrentals();
-        
-        var_dump($rentals);
-       
-            echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
+        $rentalModel = new RentalModel();
+    $rentals = $rentalModel->getAllRentals();
+
+    echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
         
 
         
