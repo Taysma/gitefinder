@@ -1543,7 +1543,6 @@ body .messenger .container-messenger .user-online-send-messages .message-contain
   height: 100%;
   max-height: 60%;
   flex-direction: column;
-  max-width: 500px;
   margin: 0 auto;
   padding: 10px;
   background-color: #f5f5f5;
@@ -1553,6 +1552,7 @@ body .messenger .container-messenger .user-online-send-messages .message-contain
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  max-width: 500px;
 }
 body .messenger .container-messenger .user-online-send-messages .message-container .sent {
   background-color: lightblue;
