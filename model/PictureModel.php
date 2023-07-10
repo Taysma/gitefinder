@@ -87,11 +87,12 @@ public function delete(int $id){
     }
 
 
-    public function getPicturesByRentalId($rentalId) {
-        $req = $this->getDb()->prepare("SELECT `id_picture`, `id_rental`, `title` FROM `picture` WHERE `id_rental` = :rentalId");
-        $req->bindParam(":rentalId", $rentalId, PDO::PARAM_INT);
-        $req->execute();
+    public function getPicturesByRentalId($id_rental) {
         $pictures = [];
+        $req = $this->getDb()->prepare("SELECT `id_picture`, `id_rental`, `title` FROM `picture` WHERE `id_rental` = :id_rental");
+        $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
+        $req->execute();
+        
     
         while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
             $pictures[] = new Picture($row);
