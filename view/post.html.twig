@@ -1,8 +1,6 @@
 {% extends "template.html.twig" %}
 
-{% block title %}
-	Post
-{% endblock %}
+{% block title %}Post{% endblock %}
 
 
 {% block header %}
@@ -231,6 +229,8 @@
 								<input type="date" name="arrivee" id="date-arrive">
 								<input type="date" name="depart" id="date-depart">
 							</div>
+							<div id="calendar"></div>
+
 							<div class="guest-input">
 								<select id="input-select">
 									<option value="1">1 Personne</option>
@@ -253,8 +253,6 @@
 							<label for="departure">Date de départ:</label>
 							<input type="text" id="departure"/>
 						</div>
-
-						<div id="calendar"></div>
 
 						<div class="btn-reservation">
 							<button type="submit" id="search-button">Reserver</button>

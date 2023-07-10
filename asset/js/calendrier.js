@@ -1,83 +1,157 @@
+// $(document).ready(function () {
+//     var arrivalDate;
+//     var departureDate;
+
+//     $('#date-arrive').click(function () {
+//         $('#calendar').show();
+//     });
+
+//     $('#date-depart').click(function () {
+//         $('#calendar').show();
+//     });
+
+//     function initializeCalendar() {
+//         // Include the Moment.js library with French locale
+//         $.getScript('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js', function () {
+//             // Load the French locale
+//             moment.locale('fr');
+
+//             // Initialize the calendar
+//             $('#calendar').fullCalendar({
+//                 header: {
+//                     left: 'prev,next',
+//                     center: 'title',
+//                     right: 'month,agendaWeek'
+//                 },
+//                 defaultView: 'month',
+//                 selectable: true,
+//                 select: function (start, end) {
+//                     arrivalDate = moment(start);
+//                     departureDate = moment(end);
+
+//                     $('#date-arrive').val(arrivalDate.format('YYYY-MM-DD'));
+//                     $('#date-depart').val(departureDate.format('YYYY-MM-DD'));
+
+//                     updateCalendar();
+//                     $('#calendar').hide();
+//                 },
+//                 dayRender: function (date, cell) {
+//                     if (arrivalDate && departureDate && date.isBetween(arrivalDate, departureDate, 'day', '[]')) {
+//                         cell.addClass('selected-range');
+//                     }
+//                 },
+//                 unselect: function () {
+//                     arrivalDate = null;
+//                     departureDate = null;
+
+//                     $('.selected-range').removeClass('selected-range');
+
+//                     $('#calendar').hide();
+//                 },
+//                 events: []
+//             });
+
+//             // Hide the calendar on initialization
+//             $('#calendar').hide();
+//         });
+//     }
+
+//     function updateCalendar() {
+//         $('.selected-range').removeClass('selected-range');
+
+//         if (arrivalDate && departureDate) {
+//             var currentDate = moment(arrivalDate);
+//             while (currentDate.isSameOrBefore(departureDate)) {
+//                 var dateCell = $('.fc-day[data-date="' + currentDate.format('YYYY-MM-DD') + '"]');
+//                 dateCell.addClass('selected-range');
+//                 currentDate.add(1, 'day');
+//             }
+//         }
+//     }
+
+//     // Call initializeCalendar() once the DOM is ready
+//     initializeCalendar();
+// });
+
+
+
+
 $(document).ready(function () {
-    var arrivalDate = $('#date-arrive');
-    var departureDate = $('#date-depart');
-    var calendar = $('#calendar');
-    var selectedRangeCells = $('.selected-range');
+    var arrivalDate;
+    var departureDate;
 
-    calendar.hide(); // Cacher le calendrier initialement
-
-    arrivalDate.click(function (e) {
-        e.stopPropagation();
-        calendar.show();
+    $('#date-arrive').click(function () {
+        $('#calendar').show();
     });
 
-    departureDate.click(function (e) {
-        e.stopPropagation();
-        calendar.show();
-    });
-
-    $(document).click(function () {
-        calendar.hide();
-    });
-
-    calendar.click(function (e) {
-        e.stopPropagation();
+    $('#date-depart').click(function () {
+        $('#calendar').show();
+        $('#calendar').addClass('departure-mode'); // Ajouter une classe pour indiquer que le calendrier est en mode de sélection de date de départ
     });
 
     function initializeCalendar() {
-        calendar.fullCalendar({
-            header: {
-                left: 'prev,next',
-                center: 'title',
-                right: 'month,agendaWeek'
-            },
-            defaultView: 'month',
-            selectable: true,
-            select: function (start, end) {
-                arrivalDate.val(moment(start).format('YYYY-MM-DD'));
-                departureDate.val(moment(end).format('YYYY-MM-DD'));
+        // Inclure la bibliothèque Moment.js avec la locale française
+        $.getScript('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js', function () {
+            // Charger la locale française
+            moment.locale('fr');
 
-                updateCalendar();
-                calendar.hide();
-            },
-            dayRender: function (date, cell) {
-                if (arrivalDate.val() && departureDate.val() && date.isBetween(arrivalDate.val(), departureDate.val(), 'day', '[]')) {
-                    cell.toggleClass('selected-range', true);
-                }
-            },
-            unselect: function () {
-                arrivalDate.val('');
-                departureDate.val('');
+            // Initialiser le calendrier
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'month,agendaWeek'
+                },
+                defaultView: 'month',
+                selectable: true,
+                select: function (start, end) {
+                    if ($('#calendar').hasClass('departure-mode')) { // Vérifier si le calendrier est en mode de sélection de date de départ
+                        departureDate = moment(end);
+                        $('#date-depart').val(departureDate.format('YYYY-MM-DD'));
+                    } else {
+                        arrivalDate = moment(start);
+                        $('#date-arrive').val(arrivalDate.format('YYYY-MM-DD'));
+                    }
 
-                selectedRangeCells.removeClass('selected-range');
+                    updateCalendar();
+                    $('#calendar').hide();
+                    $('#calendar').removeClass('departure-mode'); // Retirer la classe indiquant que le calendrier est en mode de sélection de date de départ
+                },
+                dayRender: function (date, cell) {
+                    if (arrivalDate && departureDate && date.isBetween(arrivalDate, departureDate, 'day', '[]')) {
+                        cell.addClass('selected-range');
+                    }
+                },
+                unselect: function () {
+                    arrivalDate = null;
+                    departureDate = null;
 
-                calendar.hide();
-            },
-            events: []
+                    $('.selected-range').removeClass('selected-range');
+
+                    $('#calendar').hide();
+                    $('#calendar').removeClass('departure-mode'); // Retirer la classe indiquant que le calendrier est en mode de sélection de date de départ
+                },
+                events: []
+            });
+
+            // Masquer le calendrier lors de l'initialisation
+            $('#calendar').hide();
         });
     }
 
     function updateCalendar() {
-        selectedRangeCells.removeClass('selected-range');
+        $('.selected-range').removeClass('selected-range');
 
-        var currentDate = moment(arrivalDate.val());
-        var endDate = moment(departureDate.val());
-
-        while (currentDate.isSameOrBefore(endDate)) {
-            var dateCell = $('.fc-day[data-date="' + currentDate.format('YYYY-MM-DD') + '"]');
-            dateCell.toggleClass('selected-range', true);
-            currentDate.add(1, 'day');
+        if (arrivalDate && departureDate) {
+            var currentDate = moment(arrivalDate);
+            while (currentDate.isSameOrBefore(departureDate)) {
+                var dateCell = $('.fc-day[data-date="' + currentDate.format('YYYY-MM-DD') + '"]');
+                dateCell.addClass('selected-range');
+                currentDate.add(1, 'day');
+            }
         }
     }
 
-    // Appeler la fonction initializeCalendar une fois que le DOM est prêt
+    // Appeler initializeCalendar() lorsque le DOM est prêt
     initializeCalendar();
 });
-
-
-
-
-
-
-
-

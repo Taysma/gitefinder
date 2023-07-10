@@ -37,31 +37,7 @@ class RentalModel extends Model
 
         return $rentals;
     }
-////////////////////////////////////////////////////////
-    // public function getAllrentals(){
-    //     $rentals = [];
 
-    // $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `country`
-    //     FROM `rental`
-    //     ORDER BY `id_rental` DESC');
-
-    // while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
-    //     $id_rental = $rental['id_rental'];
-    //     $rentalData = $this->getRentalPicture($id_rental);
-    //     $pictures = [];
-        
-    //     foreach ($rentalData as $row) {
-    //         $picture = new Picture($row);
-    //         $pictures[] = $picture;
-    //     }
-        
-    //     $rental['pictures'] = $pictures;
-    //     $rentals[] = new Rental($rental);
-    // }
-
-    // return $rentals;
-    // }
-/////////////////////////////////////////////////////////
     public function getOneRental(int $id_rental){
 
         $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `country` FROM `rental` WHERE `id_rental`= :id');
@@ -72,7 +48,7 @@ class RentalModel extends Model
 
         return $rental;
     }
-////////////////////////////////////////////////////
+
     public function getUserrentals(int $id_user){
         $rentals = [];
 
@@ -91,31 +67,6 @@ class RentalModel extends Model
         $req->closeCursor();
         return $rentals;
     }
-
-    // public function getRentalPicture($id_rental){
-    //     $rentalData = [];
-    //     $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`, `rental`.`country`, `rental`.`price`, `picture`.`id_picture`, `picture`.`id_rental`, `picture`.`title`
-    //         FROM `rental`
-    //         INNER JOIN `picture`
-    //         ON `rental`.`id_rental` = `picture`.`id_rental`
-    //         WHERE `rental`.`id_rental` = :id_rental');
-    //     $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
-    //     $req->execute();
-        
-    //     while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
-    //         $rentalData[] = $row;
-    //     }
-
-        
-
-        
-    
-    //     $req->closeCursor();
-    //     return $rentalData;
-    // }
-    
-
-    
 
     public function updateRental(rental $rental) {
         $id_rental = $rental->getId_rental();
@@ -141,7 +92,6 @@ class RentalModel extends Model
 
         $req->execute();
     }
-
 
     public function deleteRental(int $id)
     {
@@ -169,28 +119,19 @@ class RentalModel extends Model
         }
     }
 
-
-
     public function getAllRentals() {
         $rentals = [];
     
-        $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `country`
-            FROM `rental`
-            ORDER BY `id_rental` DESC');
+        $req = $this->getDb()->query('SELECT id_rental, id_user, title, capacity, surface_area, content, cover, city, address, country
+            FROM rental
+            ORDER BY id_rental DESC');
     
         while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
-            $id_rental = $rental['id_rental'];
-            $pictureModel = new PictureModel();
-            $pictures = $pictureModel->getPicturesByRentalId($id_rental);
-            $rental['pictures'] = $pictures;
             $rentals[] = new Rental($rental);
         }
     
         return $rentals;
     }
-    
-
-    
 }
 
 
