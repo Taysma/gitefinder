@@ -5,6 +5,7 @@ class Rental{
     private $id_user;
     private $title;
     private $content;
+    private $cover;
     private $capacity;
     private $surface_area;
     private $city;
@@ -41,6 +42,10 @@ class Rental{
 
     public function getContent(){
         return $this->content;
+    }
+
+    public function getCover(){
+        return $this->cover;
     }
 
     public function getCapacity(){
@@ -83,6 +88,10 @@ class Rental{
 
     public function setContent(String $content){
         $this->content=$content;
+    }
+
+    public function setCover(String $cover){
+        $this->cover=$cover;
     }
 
     public function setCapacity(int $capacity){

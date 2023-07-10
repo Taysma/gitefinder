@@ -174,18 +174,17 @@ class RentalModel extends Model
     public function getAllRentals() {
         $rentals = [];
     
-        $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `country`
-            FROM `rental`
-            ORDER BY `id_rental` DESC');
+        $req = $this->getDb()->query('SELECT id_rental, id_user, title, capacity, surface_area, content, cover, city, address, country
+            FROM rental
+            ORDER BY id_rental DESC');
     
         while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
-            $id_rental = $rental['id_rental'];
-            $pictureModel = new PictureModel();
-            $pictures = $pictureModel->getPicturesByRentalId($id_rental);
-            $rental['pictures'] = $pictures;
+        
+            
+           
             $rentals[] = new Rental($rental);
         }
-    var_dump($pictureModel);
+    
         return $rentals;
     }
     
