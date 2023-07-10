@@ -185,7 +185,7 @@ class RentalModel extends Model
             $rental['pictures'] = $pictures;
             $rentals[] = new Rental($rental);
         }
-    
+    var_dump($pictureModel);
         return $rentals;
     }
     
