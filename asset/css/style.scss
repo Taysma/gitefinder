@@ -286,6 +286,7 @@ body {
 
                         @media screen and (max-width:900px) {
                             width: auto;
+                            display: contents;
                         }
 
                         @media screen and (max-width:768px) {
@@ -1968,7 +1969,7 @@ body {
             //message user
             .user-online-send-messages {
                 width: 100%;
-                height: auto;
+                height: 100%;
                 // background-color: #0056b3;
 
                 .container-online-user {
@@ -2073,6 +2074,9 @@ body {
 
                 .message-form {
                     display: flex;
+                    width: 100%;
+                    padding: 20px;
+                    gap: 10px;
                     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
                     border: 1px solid #ccc;
                     margin-top: auto;
@@ -2084,8 +2088,10 @@ body {
                         gap: 20px;
                         justify-content: space-between;
 
+
                         input#file-input {
                             border: none;
+                            display: none;
                         }
 
                         label.file-input-label {
@@ -2244,10 +2250,7 @@ body {
                             list-style-type: none;
                             white-space: nowrap;
 
-                            @media screen and (max-width:845px) {
-                                flex-direction: column;
 
-                            }
 
 
 
