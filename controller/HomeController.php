@@ -13,14 +13,14 @@ class HomeController extends Controller
     
 
     public function getOne($id_rental){
-        global $router;
+        
         $Rentalmodel = new RentalModel();
         $article = $Rentalmodel->getOneRental($id_rental);
-        $oneRental = $router->generate('baseRental');
-
-        var_dump($article);
         
-        echo self::getRender('post.html.twig', ['rental' => $article, 'oneRental' => $oneRental]);
+
+        
+        var_dump($article);
+        echo self::getRender('rental.html.twig', ['rental' => $article]);
     }
 
 
