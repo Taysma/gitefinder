@@ -1631,6 +1631,8 @@ body footer {
   z-index: 999;
 }
 body footer .footer-container {
+  width: -moz-fit-content;
+  width: fit-content;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -1643,6 +1645,11 @@ body footer .footer-container {
 body footer .footer-container .footer-limit-size {
   display: flex;
   margin: 0 auto;
+}
+@media screen and (max-width: 852px) {
+  body footer .footer-container .footer-limit-size {
+    flex-direction: column;
+  }
 }
 body footer .footer-container .footer-limit-size .footer-container-help {
   align-items: center;
@@ -1723,6 +1730,7 @@ body footer .footer-container .footer-limit-size .footer-container-help .footer-
 body footer .footer-container .footer-limit-size .container-footer-language-devise-help {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 body footer .footer-container .footer-limit-size .container-footer-language-devise-help .footer-button,
 body footer .footer-container .footer-limit-size .container-footer-language-devise-help .footer-button-asistance {
@@ -1871,7 +1879,6 @@ body footer .modal .link-list li a {
   color: #333;
 }
 body footer #openModalButton {
-  position: fixed;
   bottom: 20px;
   right: 20px;
   padding: 10px 20px;

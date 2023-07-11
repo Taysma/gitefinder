@@ -2154,6 +2154,7 @@ body {
 
 
         .footer-container {
+            width: fit-content;
             display: flex;
             align-items: center;
             margin: 0 auto;
@@ -2166,6 +2167,11 @@ body {
             .footer-limit-size {
                 display: flex;
                 margin: 0 auto;
+
+                @media screen and (max-width:852px) {
+                    flex-direction: column;
+
+                }
 
 
 
@@ -2275,6 +2281,7 @@ body {
                 .container-footer-language-devise-help {
                     display: flex;
                     align-items: center;
+                    justify-content: center;
 
 
                     .footer-button,
@@ -2454,7 +2461,6 @@ body {
         }
 
         #openModalButton {
-            position: fixed;
             bottom: 20px;
             right: 20px;
             padding: 10px 20px;
