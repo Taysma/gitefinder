@@ -10,28 +10,39 @@
 	<!-- filter -->
 	<section class="filter">
 		<div class="container-btn-filter">
+
 			<div class="btn-right">
 				<button class="btn-right">
 					<img src="{{ asset('/media/icon/circle_chevron_left_icon_199382.png')}}" alt="tourner à gauche">
 				</button>
 			</div>
 			<div class="container-filter">
-				<div class="img-title">
-					<div class="img-filter">
-						<img src="{{ asset('/media/icon/facebook.svg')}}" alt="">
-					</div>
-					<div class="title">
-						<span>hello</span>
-					</div>
-				</div>
+				{% for categories in category %}
+					<div class="img-title">
+						<div class="img-filter">
+							<a href="{{ path('baseCats') ~ category.id_category }}">
+
+								<img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="gite en Foret">
 
 
+							</a>
+
+						</div>
+						<div class="title">
+							<a href="{{ path('baseCats') ~ category.id_category }}">
+								<span>{{ categories.name }}</span>
+							</a>
+						</div>
+					</div>
+
+				{% endfor %}
 			</div>
 			<div class="btn-left">
 				<button class="btn-left">
 					<img src="{{ asset('/media/icon/circle_chevron_right_icon_199381.png')}}" alt="tourner à droite">
 				</button>
 			</div>
+
 		</div>
 	</section>
 
