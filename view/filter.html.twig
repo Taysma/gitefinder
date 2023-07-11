@@ -17,7 +17,7 @@
 				</button>
 			</div>
 			<div class="container-filter">
-				{% for categories in category %}
+				{% for category in cats %}
 					<div class="img-title">
 						<div class="img-filter">
 							<a href="{{ path('baseCats') ~ category.id_category }}">
@@ -30,7 +30,7 @@
 						</div>
 						<div class="title">
 							<a href="{{ path('baseCats') ~ category.id_category }}">
-								<span>{{ categories.name }}</span>
+								<span>{{ category.name }}</span>
 							</a>
 						</div>
 					</div>
