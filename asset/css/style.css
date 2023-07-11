@@ -211,6 +211,7 @@ body header .header-limit-size .search-bar-form .search-bar .date-inputs {
 @media screen and (max-width: 900px) {
   body header .header-limit-size .search-bar-form .search-bar .date-inputs {
     width: auto;
+    display: contents;
   }
 }
 @media screen and (max-width: 768px) {
@@ -1499,7 +1500,7 @@ body .messenger .container-messenger .search-message-contact .search .input-sear
 }
 body .messenger .container-messenger .user-online-send-messages {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 body .messenger .container-messenger .user-online-send-messages .container-online-user {
   width: 100%;
@@ -1571,6 +1572,9 @@ body .messenger .container-messenger .user-online-send-messages .message-contain
 }
 body .messenger .container-messenger .user-online-send-messages .message-form {
   display: flex;
+  width: 100%;
+  padding: 20px;
+  gap: 10px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid #ccc;
   margin-top: auto;
@@ -1583,6 +1587,7 @@ body .messenger .container-messenger .user-online-send-messages .message-form .f
 }
 body .messenger .container-messenger .user-online-send-messages .message-form .file-input-container input#file-input {
   border: none;
+  display: none;
 }
 body .messenger .container-messenger .user-online-send-messages .message-form .file-input-container label.file-input-label {
   display: flex;
@@ -1626,6 +1631,8 @@ body footer {
   z-index: 999;
 }
 body footer .footer-container {
+  width: -moz-fit-content;
+  width: fit-content;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -1638,6 +1645,11 @@ body footer .footer-container {
 body footer .footer-container .footer-limit-size {
   display: flex;
   margin: 0 auto;
+}
+@media screen and (max-width: 852px) {
+  body footer .footer-container .footer-limit-size {
+    flex-direction: column;
+  }
 }
 body footer .footer-container .footer-limit-size .footer-container-help {
   align-items: center;
@@ -1705,11 +1717,6 @@ body footer .footer-container .footer-limit-size .footer-container-help .footer-
   list-style-type: none;
   white-space: nowrap;
 }
-@media screen and (max-width: 845px) {
-  body footer .footer-container .footer-limit-size .footer-container-help .footer-span-ol ol {
-    flex-direction: column;
-  }
-}
 body footer .footer-container .footer-limit-size .footer-container-help .footer-span-ol ol .footer-li {
   text-decoration: underline;
   margin: auto 5px;
@@ -1723,6 +1730,7 @@ body footer .footer-container .footer-limit-size .footer-container-help .footer-
 body footer .footer-container .footer-limit-size .container-footer-language-devise-help {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 body footer .footer-container .footer-limit-size .container-footer-language-devise-help .footer-button,
 body footer .footer-container .footer-limit-size .container-footer-language-devise-help .footer-button-asistance {
@@ -1871,7 +1879,6 @@ body footer .modal .link-list li a {
   color: #333;
 }
 body footer #openModalButton {
-  position: fixed;
   bottom: 20px;
   right: 20px;
   padding: 10px 20px;
