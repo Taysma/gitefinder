@@ -11,12 +11,22 @@
 
 {% block content %}
 
-	<section>
+<section id="signup">
+	<div class="container">
+		<div class="signup-content">
+			div
+		</div>
+	</div>
+</section>
+
+<section id="signin">
+
+</section>
+
+	{# <section>
 		<div class="cont">
 			<div class="form sign-in">
-
-				<h2>Ravi de vous revoir,<br>
-					User</h2>
+				<h2>Ravi de vous revoir</h2>
 
 				<form action="{{ path('login') }}" method="POST">
 					<label for="mail">
@@ -73,7 +83,6 @@
 				</div>
 
 				<div class="form sign-up">
-
 					<form action="{{ path('register') }}" method="POST">
 
 						<label for="lastname">
@@ -125,5 +134,5 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> #}
 {% endblock %}
