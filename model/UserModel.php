@@ -47,7 +47,7 @@ class UserModel extends Model {
         return $users;
     }
 
-    public function getUser(int $id_user){
+    public function getUserById(int $id_user){
         $req = $this->getDb()->prepare('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles` FROM `user` WHERE `id_user` = :id');
         $req->bindParam('id',$id_user,PDO::PARAM_INT);
         $req->execute();
