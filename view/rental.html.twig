@@ -33,7 +33,7 @@
 
 							<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
 
-
+							 <span>{{ rental.content }}</span> {#mettre un z-index dans l'inspecteur pour voir le texte #}
 					
 					</div>
 					<div class="content-rental-card">
@@ -43,22 +43,25 @@
 								<span>{{ rental.city }}</span>
 								<span>,</span>
 								<span>{{ rental.country }}</span>
+								
 							</div>
 							<div class="prince">
 								 <span>{{ rental.price }}</span>
-								<span>€</span> 
+								<span>€ par nuit</span> 
 							</div>
 						</div>
 						<div class="personne">
-							{# <span>pour de
+							 <span>capacitées
 							</span>
-							<span>2 personnes</span> #}
+							<span> {{ rental.capacity }}personnes</span> 
 						</div>
 						<div class="date-rental">
 							{# <span>Date :</span>
 							<span class="date-arrivee">14/06/2023</span>
 							<span>au</span>
 							<span class="date-depart">07/07/2023</span> #}
+
+							<span>infos proprio {{ rental.id_user }} </span>
 						</div>
 
 					</div>
@@ -68,12 +71,12 @@
 					<form action="#">
 						<button id="reserver" type="submit">reserver</button>
 					</form>
-					<!-- <form action="">
+					 <form action="">
 										                        <button id="wait" type="submit">En cours</button>
 										                    </form>
 										                    <form action="">
 										                        <button id="annuler" type="submit">annuler</button>
-										                    </form> -->
+										                    </form> 
 
 				</div>
 				

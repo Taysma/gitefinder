@@ -12,7 +12,7 @@
 	{# section post article #}
 	<section class="article">
 		<div class="container-article-img">
-			{% for rental in rentals %}
+			
 			<div class="title-article">
 				<h1 class="h1-title-article">{{ rental.title }}</h1>
 			</div>
@@ -27,7 +27,7 @@
 					</span>
 				</div>
 				<div class="location">
-					<span>Chamigny, Île-de-France, France</span>
+					<span>{{ rental.address }}, {{ rental.city }},{{ rental.country }}</span>
 				</div>
 				<!-- share -->
 				<div class="share">
@@ -47,7 +47,7 @@
 
 			</div>
 			<div class="img-article">
-				<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="">
+				<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
 			</div>
 		</div>
 
@@ -63,7 +63,7 @@
 						</div>
 						<div class="profil-span">
 							<span>Proposé par
-								<span class="profil-user">Zen</span>
+								<span class="profil-user">{{ rental.id_user }}</span>
 							</span>
 							<span class="date-profil">Menbre depuis
 								<span>janvier 2019</span>
@@ -75,8 +75,8 @@
 					<div class="content-article">
 						<div class="title-star-rating">
 							<div class="title-article">
-								<h1 class="h1-title-article">Cabane perchée</h1>
-								<h2 class="h2-content-article">2 voyageurs · 1 lit Demi-salle de bain</h2>
+								<h1 class="h1-title-article">{{ rental.title }}</h1>
+								<h2 class="h2-content-article">{{ rental.capacity }} voyageurs · 1 lit Demi-salle de bain</h2>
 							</div>
 							<div class="star-rating">
 								<div class="rating-img">
@@ -92,10 +92,7 @@
 
 						<!-- description article -->
 						<div class="content-paragragraphe-article">
-							<p class="content-p">Un arbre au centre de la cabane, vous serez à 5 mètres du sol avec de multiples fenêtres pour une vue panoramique sur la forêt.
-								<br>
-								<br>
-								Le chant des oiseaux et peut être un écureuil viendra vous saluer. Le logement Un arbre au centre de la cabane, vous serez à 5 mètres du sol avec de multiples fenêtres
+							<p class="content-p">{{ rental.content }}
 							</p>
 							<!-- annonce info -->
 							<div class="user-location-condition">
@@ -205,7 +202,7 @@
 					<div class="card-reservation">
 						<div class="prince-rating-comment">
 							<div class="prince-device">
-								<span class="prince">110</span>
+								<span class="prince">{{ rental.price }}</span>
 								<span class="devise">€</span>
 								<span class='night-card-reservation'>par nuit</span>
 							</div>
@@ -264,7 +261,7 @@
 					<div class="prince-card-reservation">
 						<div class="day-prince">
 							<div class="prince-for-day">
-								<span>110€</span>
+								<span>{{ rental.price }}</span>
 								<span>x</span>
 								<span>
 									5
@@ -272,14 +269,14 @@
 								<span>nuits</span>
 							</div>
 							<div class="prince">
-								<span>550</span>
+								<span>?</span>
 								<span>€</span>
 							</div>
 						</div>
 						<hr>
 						<div class="total-prince">
 							<span class="span-prince">total</span>
-							<span class="prince-total-span">550
+							<span class="prince-total-span">?
 								<span class="device-total-span">€</span>
 							</span>
 						</div>
@@ -322,7 +319,7 @@
 			</div>
 			
 		</div>
-		{% endfor %}
+		
 	</div>
 </section>
 {% endblock %}
