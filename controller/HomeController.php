@@ -12,15 +12,17 @@ class HomeController extends Controller
 
     
 
-    public function getOne($id_rental){
+    public function getOne($id_rental, $id_user){
         
         $Rentalmodel = new RentalModel();
         $article = $Rentalmodel->getOneRental($id_rental);
+        $UserModel = new UserModel();
+        $proprio = $UserModel->getUser($id_user);
         
 
         
-        
-        echo self::getRender('post.html.twig', ['rental' => $article]);
+        var_dump($proprio);
+        echo self::getRender('post.html.twig', ['rental' => $article, 'user' => $proprio]);
     }
 
 

@@ -9,12 +9,13 @@ $router->setBasePath('/projets/gitefinder');
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
+
 $router->map('GET','/category/','','baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
 // ARTICLE - POST
 $router->map('GET', '/rental/', '', 'baseRental');
-$router->map('GET', '/rental/[i:id_rental]', 'HomeController#getOne', 'article');
+$router->map('GET', '/rental/[i:id_rental]/[i:id_user]', 'HomeController#getOne', 'article');
 
 // Connection form route
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
