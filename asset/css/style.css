@@ -432,11 +432,13 @@ body #homepage .gallery-grid .card .txt-card .note-card {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 1.3rem;
   color: #FF5722;
 }
 body #homepage .gallery-grid .card .txt-card .note-card p {
   font: 400;
+  padding: 5px;
 }
 body .filter {
   max-width: 1440px;
