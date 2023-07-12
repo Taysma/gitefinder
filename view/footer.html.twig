@@ -9,7 +9,7 @@
 				</div>
 				<!-- newsletter -->
 				<div class="container-newsletter">
-					<form action="{{ path('newsletter') }}"  method="POST" id="form-newsletter">
+					<form action="{{ path('newsletter') }}" method="POST" id="form-newsletter">
 						<label for="mail" id="label-newsletter">Newsletter</label>
 						<input type="mail" name="mail" id="input-newsletter">
 						<button type="submit" id="footer-submit-button">envoyer</button>
@@ -41,8 +41,9 @@
 						<span class="footer-button-span">EUR</span>
 					</div>
 				</div>
-
+				{# btn pour la modal #}
 				<div class="footer-button-asistance" id="openModalButton">
+
 					<span class="footer-button-span">Assistance et ressources</span>
 					<img class="footer-img" src="{{ asset('/media/icon/hate.svg') }}" alt="hat">
 				</div>
@@ -64,7 +65,7 @@
 		</div>
 	</div>
 
-	<!-- <button id="openModalButton">Ouvrir la modal</button> -->
+	{# <button id="openModalButton">Ouvrir la modal</button> #}
 
 	<div id="modal" class="modal">
 

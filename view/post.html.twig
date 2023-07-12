@@ -1,6 +1,7 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Post{% endblock %}
+{% block title %}Post
+{% endblock %}
 
 
 {% block header %}
@@ -12,7 +13,6 @@
 	{# section post article #}
 	<section class="article">
 		<div class="container-article-img">
-			{% for rental in rentals %}
 			<div class="title-article">
 				<h1 class="h1-title-article">{{ rental.title }}</h1>
 			</div>
@@ -27,7 +27,8 @@
 					</span>
 				</div>
 				<div class="location">
-					<span>Chamigny, Île-de-France, France</span>
+					<span>{{ rental.address }},
+						{{ rental.city }},{{ rental.country }}</span>
 				</div>
 				<!-- share -->
 				<div class="share">
@@ -47,7 +48,7 @@
 
 			</div>
 			<div class="img-article">
-				<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="">
+				<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
 			</div>
 		</div>
 
@@ -63,7 +64,7 @@
 						</div>
 						<div class="profil-span">
 							<span>Proposé par
-								<span class="profil-user">Zen</span>
+								<span class="profil-user">{{ user.firstname }}</span>
 							</span>
 							<span class="date-profil">Menbre depuis
 								<span>janvier 2019</span>
@@ -75,8 +76,9 @@
 					<div class="content-article">
 						<div class="title-star-rating">
 							<div class="title-article">
-								<h1 class="h1-title-article">Cabane perchée</h1>
-								<h2 class="h2-content-article">2 voyageurs · 1 lit Demi-salle de bain</h2>
+								<h1 class="h1-title-article">{{ rental.title }}</h1>
+								<h2 class="h2-content-article">{{ rental.capacity }}
+									voyageurs · 1 lit Demi-salle de bain</h2>
 							</div>
 							<div class="star-rating">
 								<div class="rating-img">
@@ -92,10 +94,7 @@
 
 						<!-- description article -->
 						<div class="content-paragragraphe-article">
-							<p class="content-p">Un arbre au centre de la cabane, vous serez à 5 mètres du sol avec de multiples fenêtres pour une vue panoramique sur la forêt.
-								<br>
-								<br>
-								Le chant des oiseaux et peut être un écureuil viendra vous saluer. Le logement Un arbre au centre de la cabane, vous serez à 5 mètres du sol avec de multiples fenêtres
+							<p class="content-p">{{ rental.content }}
 							</p>
 							<!-- annonce info -->
 							<div class="user-location-condition">
@@ -205,7 +204,7 @@
 					<div class="card-reservation">
 						<div class="prince-rating-comment">
 							<div class="prince-device">
-								<span class="prince">110</span>
+								<span class="prince">{{ rental.price }}</span>
 								<span class="devise">€</span>
 								<span class='night-card-reservation'>par nuit</span>
 							</div>
@@ -225,9 +224,15 @@
 				<div class="form-card-reservation">
 					<form action="#">
 						<div class="form-reservation">
+							<div class="label">
+								<label for="arrivee">date arrivée</label>
+								<label for="depart">Date depart</label>
+							</div>
+							<!-- calendrier -->
 							<div class="form-date-arrivee-depart">
-								<input type="date" name="arrivee" id="date-arrive">
-								<input type="date" name="depart" id="date-depart">
+								<input name="arrivee" id="date-arrive" placeholder="Date arrivée">
+
+								<input name="depart" id="date-depart" placeholder="Date depart">
 							</div>
 							<div id="calendar"></div>
 
@@ -244,15 +249,7 @@
 								</select>
 							</div>
 						</div>
-						<!-- calendrier -->
-						<div>
-							<label for="arrival">Date d'arrivée:</label>
-							<input type="text" id="arrival"/>
-						</div>
-						<div>
-							<label for="departure">Date de départ:</label>
-							<input type="text" id="departure"/>
-						</div>
+
 
 						<div class="btn-reservation">
 							<button type="submit" id="search-button">Reserver</button>
@@ -320,8 +317,6 @@
 				<p class="name">karim</p>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt quidem dolore ducimus provident aperiam delectus hic.</p>
 			</div>
-			{% endfor %}
 		</div>
 	</div>
-</section>
-{% endblock %}
+</section>{% endblock %}
