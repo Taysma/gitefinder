@@ -6,7 +6,7 @@ class HomeController extends Controller
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
        
-
+        var_dump($rentals);
         echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
     }
 
