@@ -1459,25 +1459,47 @@ body .messenger {
   overflow: hidden;
 }
 body .messenger .container-messenger {
-  width: auto;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   margin: 50px 0px;
+  /* Largeur de la barre de défilement */
+  /* Fond de la barre de défilement */
+  /* Couleur de la poignée de la barre de défilement */
+  /* Au survol de la poignée de la barre de défilement */
+}
+body .messenger .container-messenger ::-webkit-scrollbar {
+  width: 12px;
+}
+body .messenger .container-messenger ::-webkit-scrollbar-track {
+  background: #888;
+  height: 100%;
+}
+body .messenger .container-messenger ::-webkit-scrollbar-thumb {
+  background: rgba(231, 70, 70, 0.8941176471);
+  border-radius: 9px;
+}
+body .messenger .container-messenger ::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 body .messenger .container-messenger .search-message-contact {
-  width: 300px;
+  width: 350px;
   max-height: 695px;
+  overflow: scroll;
+  overflow-x: hidden;
+  border: none;
   border: 1px solid rgba(0, 0, 0, 0.227);
 }
 body .messenger .container-messenger .search-message-contact .search {
   width: 100%;
+  height: 85px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.018);
+  box-shadow: 0px 12px 28px 0px rgba(140, 149, 159, 0.095);
   border: 1px solid rgba(0, 0, 0, 0.041);
+  background-color: #f2f2f2;
 }
 body .messenger .container-messenger .search-message-contact .search .icon-search {
   width: 35px;
@@ -1498,15 +1520,76 @@ body .messenger .container-messenger .search-message-contact .search .input-sear
   border: none;
   padding: 10px;
 }
+body .messenger .container-messenger .search-message-contact .card-message {
+  width: 100%;
+  padding: 10px;
+  height: 80px;
+  display: flex;
+  margin: 5px auto;
+  align-items: center;
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+}
+body .messenger .container-messenger .search-message-contact .card-message .picture-username {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+body .messenger .container-messenger .search-message-contact .card-message .picture-username .picture-message {
+  width: 70px;
+  height: 70px;
+}
+body .messenger .container-messenger .search-message-contact .card-message .picture-username .picture-message .avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+}
+body .messenger .container-messenger .search-message-contact .card-message .username {
+  width: -moz-max-content;
+  width: max-content;
+  white-space: nowrap;
+}
+body .messenger .container-messenger .search-message-contact .card-message .username span {
+  font-size: 1.1rem;
+}
+@media screen and (max-width: 518) {
+  body .messenger .container-messenger .search-message-contact .card-message .username span {
+    font-size: 0.94rem;
+  }
+}
+body .messenger .container-messenger .search-message-contact .card-message .online-time {
+  width: 100%;
+}
+body .messenger .container-messenger .search-message-contact .card-message .online-time .stat-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+body .messenger .container-messenger .search-message-contact .card-message .online-time .stat-time .status {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+body .messenger .container-messenger .search-message-contact .card-message .online-time .stat-time .status.online {
+  width: 10px;
+  height: 10px;
+  background-color: green;
+}
 body .messenger .container-messenger .user-online-send-messages {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 body .messenger .container-messenger .user-online-send-messages .container-online-user {
   width: 100%;
   height: 100px;
   padding: 0px 20px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.207);
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
 }
 body .messenger .container-messenger .user-online-send-messages .container-online-user .user {
   display: flex;
@@ -1539,10 +1622,11 @@ body .messenger .container-messenger .user-online-send-messages .container-onlin
   background-color: green;
 }
 body .messenger .container-messenger .user-online-send-messages .message-container {
+  width: 99%;
   display: flex;
   overflow-y: auto;
   height: 100%;
-  max-height: 60%;
+  max-height: 63%;
   flex-direction: column;
   margin: 0 auto;
   padding: 10px;
@@ -1573,10 +1657,13 @@ body .messenger .container-messenger .user-online-send-messages .message-contain
 body .messenger .container-messenger .user-online-send-messages .message-form {
   display: flex;
   width: 100%;
-  padding: 20px;
+  position: absolute;
+  bottom: 120px;
+  padding: 10px;
+  background-color: #ffffff;
   gap: 10px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid #ccc;
+  border: 1px solid rgba(188, 182, 182, 0.4941176471);
   margin-top: auto;
 }
 body .messenger .container-messenger .user-online-send-messages .message-form .file-input-container {
@@ -1737,7 +1824,6 @@ body footer .footer-container .footer-limit-size .container-footer-language-devi
   display: flex;
   text-align: center;
   justify-content: space-evenly;
-  padding: 10px;
   margin: auto 15px;
   cursor: pointer;
 }
@@ -1881,7 +1967,7 @@ body footer .modal .link-list li a {
 body footer #openModalButton {
   bottom: 20px;
   right: 20px;
-  padding: 10px 20px;
+  padding: 10px;
   background-color: #007bff;
   color: white;
   border: none;
