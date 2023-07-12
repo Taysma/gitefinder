@@ -1,7 +1,7 @@
 <?php
 class UserModel extends Model {
 
-    public function createUser (User $user){
+    public function createUser ($user){
     
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
@@ -45,6 +45,16 @@ class UserModel extends Model {
 
         
         return $users;
+    }
+
+    public function getUser(int $id_user){
+        $req = $this->getDb()->prepare('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles` FROM `user` WHERE `id_user` = :id');
+        $req->bindParam('id',$id_user,PDO::PARAM_INT);
+        $req->execute();
+
+        $user = new User($req->fetch(PDO::FETCH_ASSOC));
+
+        return $user;
     }
 
 

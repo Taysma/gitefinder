@@ -50,6 +50,7 @@ abstract class Controller{
         $new = [
             'cats' => $cats,
             'categoryLink' => $categoryLink,
+            'articleLink' => $articleLink
         ] + $datas;
            
         
