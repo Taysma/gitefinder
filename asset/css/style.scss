@@ -556,13 +556,16 @@ body {
                         width: 100%;
                         height: auto;
                         margin-top: 20px;
+
                         display: flex;
                         justify-content: center;
+                        align-items: center;
                         font-size: 1.3rem;
                         color: #FF5722;
 
                         p {
                             font: 400;
+                            padding: 5px;
                         }
 
                     }
