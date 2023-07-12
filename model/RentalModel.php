@@ -2,7 +2,7 @@
 class RentalModel extends Model
 {
 
-    public function createRental (Rental $rental){
+    public function createRental ($rental){
         $id_user = $rental->getId_user();
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
@@ -38,9 +38,23 @@ class RentalModel extends Model
         return $rentals;
     }
 
+    public function getAllRentals() {
+        $rentals = [];
+    
+        $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,  `city`, `address`, `country`, `price`
+            FROM rental
+            ORDER BY id_rental DESC');
+    
+        while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rentals[] = new Rental($rental);
+        }
+    var_dump($rentals);
+        return $rentals;
+    }
+
     public function getOneRental(int $id_rental){
 
-        $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `country` FROM `rental` WHERE `id_rental`= :id');
+        $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,  `city`, `address`, `country`, `price` FROM `rental` WHERE `id_rental`= :id');
         $req->bindParam('id',$id_rental,PDO::PARAM_INT);
         $req->execute();
 
@@ -68,7 +82,7 @@ class RentalModel extends Model
         return $rentals;
     }
 
-    public function updateRental(rental $rental) {
+    public function updateRental($rental) {
         $id_rental = $rental->getId_rental();
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
@@ -119,19 +133,7 @@ class RentalModel extends Model
         }
     }
 
-    public function getAllRentals() {
-        $rentals = [];
     
-        $req = $this->getDb()->query('SELECT id_rental, id_user, title, capacity, surface_area, content, cover, city, address, country
-            FROM rental
-            ORDER BY id_rental DESC');
-    
-        while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
-            $rentals[] = new Rental($rental);
-        }
-    
-        return $rentals;
-    }
 }
 
 

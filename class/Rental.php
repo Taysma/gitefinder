@@ -78,8 +78,8 @@ class Rental{
         $this->id_rental=$id_rental;
     }
 
-    public function setId_user(int $id_rental){
-        $this->id_rental=$id_rental;
+    public function setId_user(int $id_user){
+        $this->id_user=$id_user;
     }
 
     public function setTitle(String $title){

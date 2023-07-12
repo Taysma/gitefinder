@@ -39,14 +39,18 @@ abstract class Controller{
         global $router;
 
         //LINKS
-        $cats = $router->generate('baseCats');
-        $art = $router->generate('baseRental');        
+        $categoryLink = $router->generate('baseCats');
+        $articleLink = $router->generate('baseRental');        
+
+        // CATEGORIES
+        $categories  = new CategoryModel();
+        $cats  = $categories->getAllCategory();
 
         // LINKS TABLE + NEW ONES
         $new = [
-            //'categorieslink' => $link,
-            'link4' => $cats,
-            'linkart' => $art
+            'cats' => $cats,
+            'categoryLink' => $categoryLink,
+            'articleLink' => $articleLink
         ] + $datas;
            
         
