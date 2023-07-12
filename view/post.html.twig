@@ -1,6 +1,7 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Post{% endblock %}
+{% block title %}Post
+{% endblock %}
 
 
 {% block header %}
@@ -12,7 +13,6 @@
 	{# section post article #}
 	<section class="article">
 		<div class="container-article-img">
-			
 			<div class="title-article">
 				<h1 class="h1-title-article">{{ rental.title }}</h1>
 			</div>
@@ -222,9 +222,15 @@
 				<div class="form-card-reservation">
 					<form action="#">
 						<div class="form-reservation">
+							<div class="label">
+								<label for="arrival">date arrivée</label>
+								<label for="departure">Date depart</label>
+							</div>
+							<!-- calendrier -->
 							<div class="form-date-arrivee-depart">
-								<input type="date" name="arrivee" id="date-arrive">
-								<input type="date" name="depart" id="date-depart">
+								<input name="arrivee" id="date-arrive" placeholder="Date arrivée">
+
+								<input name="depart" id="date-depart" placeholder="Date depart">
 							</div>
 							<div id="calendar"></div>
 
@@ -241,15 +247,7 @@
 								</select>
 							</div>
 						</div>
-						<!-- calendrier -->
-						<div>
-							<label for="arrival">Date d'arrivée:</label>
-							<input type="text" id="arrival"/>
-						</div>
-						<div>
-							<label for="departure">Date de départ:</label>
-							<input type="text" id="departure"/>
-						</div>
+
 
 						<div class="btn-reservation">
 							<button type="submit" id="search-button">Reserver</button>
@@ -317,9 +315,6 @@
 				<p class="name">karim</p>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt quidem dolore ducimus provident aperiam delectus hic.</p>
 			</div>
-			
 		</div>
-		
 	</div>
-</section>
-{% endblock %}
+</section>{% endblock %}

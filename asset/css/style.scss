@@ -1914,29 +1914,67 @@ body {
     .messenger {
         width: 100%;
         height: 85vh;
-        // background-color: #0056b3;
         overflow: hidden;
 
         .container-messenger {
-            width: auto;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             margin: 50px 0px;
 
+            /* Largeur de la barre de défilement */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            /* Fond de la barre de défilement */
+            ::-webkit-scrollbar-track {
+                background: #888;
+                height: 100%;
+
+
+            }
+
+            /* Couleur de la poignée de la barre de défilement */
+            ::-webkit-scrollbar-thumb {
+                background: #e74646e4;
+
+                border-radius: 9px;
+
+
+            }
+
+            /* Au survol de la poignée de la barre de défilement */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
             .search-message-contact {
-                width: 300px;
+                width: 350px;
                 max-height: 695px;
+                overflow: scroll;
+                overflow-x: hidden;
+                border: none;
                 border: 1px solid rgba(0, 0, 0, 0.227);
 
+
+
+
+
+                // barre de recherche
                 .search {
                     width: 100%;
+                    height: 85px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 10px;
-                    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.018);
+                    // padding: 10px;
+                    // box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.018);
+                    box-shadow: 0px 12px 28px 0px rgba(140, 149, 159, 0.095);
                     border: 1px solid rgba(0, 0, 0, 0.041);
+
+                    background-color: #f2f2f2;
 
                     .icon-search {
                         width: 35px;
@@ -1964,19 +2002,104 @@ body {
 
                 }
 
+                .card-message {
+                    width: 100%;
+
+                    padding: 10px;
+                    height: 80px;
+                    display: flex;
+                    margin: 5px auto;
+                    align-items: center;
+                    box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+
+                    .picture-username {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        gap: 10px;
+                        flex-wrap: nowrap;
+                        align-items: center;
+
+
+                        .picture-message {
+                            width: 70px;
+                            height: 70px;
+
+
+
+
+                            .avatar {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 999px;
+                            }
+
+                        }
+
+
+
+                    }
+
+                    .username {
+                        width: max-content;
+                        white-space: nowrap;
+
+                        span {
+                            font-size: 1.1rem;
+
+                            @media screen and (max-width:518) {
+                                font-size: 0.94rem;
+
+                            }
+                        }
+                    }
+
+                    .online-time {
+                        width: 100%;
+
+                        .stat-time {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-evenly;
+                            // gap: 10px;
+                            // padding: 5px;
+
+
+                            .status {
+                                width: 10px;
+                                height: 10px;
+                                background-color: gray;
+                                border-radius: 50%;
+                                margin-left: 10px;
+
+                                &.online {
+                                    width: 10px;
+                                    height: 10px;
+                                    background-color: green;
+                                }
+                            }
+
+
+
+                        }
+                    }
+                }
+
             }
 
             //message user
             .user-online-send-messages {
                 width: 100%;
                 height: 100%;
+                position: relative;
                 // background-color: #0056b3;
 
                 .container-online-user {
                     width: 100%;
                     height: 100px;
                     padding: 0px 20px;
-                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                    border: 1px solid rgba(128, 128, 128, 0.207);
+                    box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
 
 
                     .user {
@@ -2021,7 +2144,8 @@ body {
                 }
 
                 //container message to receive and to send 
-                // $message-container-max-width: 500px;
+                $message-container-max-width: 99%;
+                $message-container-max-heigth: 63%;
                 $message-container-bg-color: #f5f5f5;
                 $message-container-border-radius: 10px;
                 $message-padding: 10px;
@@ -2032,12 +2156,12 @@ body {
                 $received-message-bg-color: lightgray;
 
                 .message-container {
+                    width: $message-container-max-width;
                     display: flex;
                     overflow-y: auto;
                     height: 100%;
-                    max-height: 60%;
+                    max-height: $message-container-max-heigth;
                     flex-direction: column;
-                    // max-width: $message-container-max-width;
                     margin: 0 auto;
                     padding: $message-padding;
                     background-color: $message-container-bg-color;
@@ -2075,10 +2199,13 @@ body {
                 .message-form {
                     display: flex;
                     width: 100%;
-                    padding: 20px;
+                    position: absolute;
+                    bottom: 120px;
+                    padding: 10px;
+                    background-color: #ffffff;
                     gap: 10px;
                     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-                    border: 1px solid #ccc;
+                    border: 1px solid #bcb6b67e;
                     margin-top: auto;
 
 
@@ -2141,6 +2268,7 @@ body {
     }
 
     //footer
+
     footer {
 
         width: 100%;
@@ -2289,7 +2417,6 @@ body {
                         display: flex;
                         text-align: center;
                         justify-content: space-evenly;
-                        padding: 10px;
                         margin: auto 15px;
                         cursor: pointer;
 
@@ -2463,7 +2590,7 @@ body {
         #openModalButton {
             bottom: 20px;
             right: 20px;
-            padding: 10px 20px;
+            padding: 10px;
             background-color: #007bff;
             color: white;
             border: none;
