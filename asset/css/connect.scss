@@ -1,6 +1,6 @@
 section#connection {
     background: #f8f8f8;
-    padding: 50px 0;
+    padding: 50px;
     font-family: Arial, sans-serif;
 
     &>div.container {
@@ -24,14 +24,12 @@ section#connection {
                 &>h2 {
                     margin: 0;
                     padding: 0;
-                    font-weight: 700;
                     color: #222;
                     display: block;
                     font-size: 1.5em;
                     margin-block-start: 0.83em;
                     margin-inline-start: 0px;
                     margin-inline-end: 0px;
-                    font-weight: bold;
                     text-align: center;
                 }
 
@@ -39,7 +37,7 @@ section#connection {
                     display: block;
                     margin-bottom: 33px;
                     text-align: center;
-                    font-size: x-small;
+                    font-size: small;
                     color: #222;
                     cursor: pointer;
                     text-decoration: underline;
@@ -48,7 +46,6 @@ section#connection {
                 &>form#register-form {
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
                     align-self: center;
 
                     &>div.form-group {
@@ -69,13 +66,12 @@ section#connection {
                                 position: relative;
                                 top: 0%;
                                 transform: translateY(0);
+                                font-size: medium;
                             }
 
-                            &>a {
+                            &>a.term-service {
                                 font-size: medium;
-                                color: #222;
                                 cursor: pointer;
-                                text-decoration: underline;
                             }
                         }
 
@@ -91,7 +87,8 @@ section#connection {
 
                         &>input[type=text],
                         &>input[type=mail],
-                        &>input[type=password] {
+                        &>input[type=password],
+                        &>input[type=date] {
                             border-bottom: 1px solid #999;
                         }
 
@@ -116,18 +113,15 @@ section#connection {
                             display: inline-block;
                             width: auto;
                         }
+                    }
 
-                        // &>input[type=checkbox]:not {
-                        //     width: 2em;
-                        //     margin: 0;
-                        //     padding: 0;
-                        //     font-size: 1em;
-                        //     display: none;
-                        //     appearance: checkbox;
-                        //     line-height: 1.5em;
-                        //     margin-top: 6px;
-
-                        // }
+                    &>a {
+                        display: block;
+                        margin-bottom: 33px;
+                        font-size: x-small;
+                        color: #222;
+                        cursor: pointer;
+                        text-decoration: underline;
                     }
                 }
             }
@@ -150,304 +144,7 @@ section#connection {
                         display: block;
                     }
                 }
-
-                &>a {
-                    position: absolute;
-                    top: 50%;
-                    left: 40%;
-                    z-index: 1;
-                }
             }
-
         }
     }
 }
-
-
-
-
-
-
-
-
-
-// $primary: #f7953c;
-// $secondary: #b54f2c;
-// $new: #ebded5;
-// $mainfont: 'Sora';
-
-// *,
-// *:before,
-// *:after {
-//     box-sizing: border-box;
-//     margin: 0;
-//     padding: 0;
-// }
-
-// input,
-// button {
-//     border: none;
-//     outline: none;
-//     background: none;
-//     font-family: $mainfont;
-// }
-
-// @mixin signUpActive {
-//     .cont.s--signup & {
-//         @content;
-//     }
-// }
-
-// .cont {
-//     overflow: hidden;
-//     position: relative;
-//     width: 900px;
-//     height: 550px;
-//     margin: 0 auto 100px;
-//     background: #fff;
-// }
-
-// .form {
-//     position: relative;
-//     display: grid;
-//     justify-items: center;
-//     width: 600px;
-//     height: 100%;
-//     transition: transform 1.2s ease-in-out;
-//     padding: 50px 30px 0;
-// }
-
-// .sub-cont {
-//     overflow: hidden;
-//     position: absolute;
-//     left: 640px;
-//     top: 0;
-//     width: 900px;
-//     height: 100%;
-//     padding-left: 260px;
-//     background: #fff;
-//     transition: transform 1.2s ease-in-out;
-
-//     @include signUpActive {
-//         transform: translate3d(640px * -1, 0, 0);
-//     }
-// }
-
-// button {
-//     display: block;
-//     margin: 10px auto;
-//     width: 260px;
-//     height: 40px;
-//     border-radius: 30px;
-//     color: #fff;
-//     font-size: 15px;
-//     cursor: pointer;
-
-//     &>a{
-//       text-decoration: none;
-//     }
-// }
-
-// .img {
-//     overflow: hidden;
-//     z-index: 2;
-//     position: absolute;
-//     left: 0;
-//     top: 0;
-//     width: 260px;
-//     height: 100%;
-//     padding-top: 360px;
-
-//     &:before {
-//         content: '';
-//         position: absolute;
-//         right: 0;
-//         top: 0;
-//         width: 900px;
-//         height: 100%;
-//         //background-image: url(./media/images/couchedesoleillumineux.jpg);
-//         background-size: cover;
-//         transition: transform 1.2s ease-in-out;
-//     }
-
-//     &:after {
-//         content: '';
-//         position: absolute;
-//         left: 0;
-//         top: 0;
-//         width: 100%;
-//         height: 100%;
-//         background: rgba(0, 0, 0, 0.6);
-//     }
-
-//     @include signUpActive {
-//         &:before {
-//             transform: translate3d(640px, 0, 0);
-//         }
-//     }
-
-//     &__text {
-//         z-index: 2;
-//         position: absolute;
-//         left: 0;
-//         top: 50px;
-//         width: 100%;
-//         padding: 0 20px;
-//         text-align: center;
-//         color: #fff;
-//         transition: transform 1.2s ease-in-out;
-
-//         h2 {
-//             margin-bottom: 10px;
-//             font-size: 1.8rem;
-//             font-weight: normal;
-//         }
-
-//         p {
-//           margin-top: 40px;
-//             font-size: 1.2rem;
-//             line-height: 1.5;
-//         }
-
-//         &.m--up {
-
-//             @include signUpActive {
-//                 transform: translateX(260px *2);
-//             }
-//         }
-
-//         &.m--in {
-//             transform: translateX(260px * -2);
-
-//             @include signUpActive {
-//                 transform: translateX(0);
-//             }
-//         }
-//     }
-
-//     &__btn {
-//         overflow: hidden;
-//         z-index: 2;
-//         position: relative;
-//         width: 120px;
-//         height: 36px;
-//         margin: 0 auto;
-//         background: transparent;
-//         color: #fff;
-//         text-transform: uppercase;
-//         font-size: 15px;
-//         cursor: pointer;
-
-//         &:after {
-//             content: '';
-//             z-index: 2;
-//             position: absolute;
-//             left: 0;
-//             top: 0;
-//             width: 100%;
-//             height: 100%;
-//             border: 2px solid #fff;
-//             border-radius: 30px;
-//         }
-
-//         span {
-//             position: absolute;
-//             left: 0;
-//             top: 0;
-//             display: flex;
-//             justify-content: center;
-//             align-items: center;
-//             width: 100%;
-//             height: 100%;
-//             transition: transform 1.2s;
-
-//             &.m--in {
-//                 transform: translateY(36px *-2);
-
-//                 @include signUpActive {
-//                     transform: translateY(0);
-//                 }
-//             }
-
-//             &.m--up {
-//                 @include signUpActive {
-//                     transform: translateY(36px *2);
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// h2 {
-//     width: 100%;
-//     font-size: 26px;
-//     text-align: center;
-// }
-
-// label {
-//     display: block;
-//     width: 260px;
-//     margin: 25px auto 0;
-//     text-align: center;
-
-//     span {
-//         font-size: 12px;
-//         color: #cfcfcf;
-//         text-transform: uppercase;
-//     }
-// }
-
-// input {
-//     display: block;
-//     width: 100%;
-//     margin-top: 5px;
-//     padding-bottom: 5px;
-//     font-size: 16px;
-//     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-//     text-align: center;
-// }
-
-// .forgot-pass {
-//     margin-top: 15px;
-//     text-align: center;
-//     font-size: 12px;
-//     color: #cfcfcf;
-
-// }
-
-// .submit {
-//     margin-top: 40px;
-//     margin-bottom: 20px;
-//     background: $primary;
-//     text-transform: uppercase;
-// }
-
-// .fb-btn, .gmail-btn, .apple-btn {
-//     border: 2px solid #d3dae9;
-//     color: black;
-//     background-color: $new;
-
-
-//     span {
-//         font-weight: bold;
-//         color: $secondary;
-//     }
-// }
-
-// .sign-in {
-//     transition-timing-function: ease-out;
-
-//     @include signUpActive {
-//         transition-timing-function: ease-in-out;
-//         transition-duration: 1.2s;
-//         transform: translate3d(640px, 0, 0);
-//     }
-// }
-
-// .sign-up {
-//     transform: translate3d(900px * -1, 0, 0);
-
-//     @include signUpActive {
-//         transform: translate3d(0, 0, 0);
-//     }
-// }

@@ -19,7 +19,7 @@ $router->map('GET', '/rental/[i:id_rental]/[i:id_user]', 'HomeController#getOne'
 
 // Connection form route
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
-$router->map('POST', '/registration', 'UserController#register', 'register');
+$router->map('GET|POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER

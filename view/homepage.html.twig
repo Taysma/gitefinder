@@ -7,6 +7,10 @@
 	{% include 'header.html.twig' with {'categories' : cats } %}
 {% endblock %}
 
+{% block filters %}
+	{% include "filter.html.twig" %}
+{% endblock %}
+
 {% block content %}
 	<section id="homepage" class="limit-size">
 		<div class="gallery-grid">

@@ -22,10 +22,8 @@
 
 	<body>
 		{% block header %}{% endblock %}
-		{% block filters %}
-			{% include "filter.html.twig" %}
-		{% endblock %}
 
+		{% block filters %}{% endblock %}
 
 		<main>
 			{% block content %}{% endblock %}
@@ -38,7 +36,6 @@
 		<script src="{{ asset('/js/modal-footer.js') }}"></script>
 
 		<script src="{{ asset('/js/sharePopup.js') }}"></script>
-		<script src="{{ asset('/js/connect.js') }}"></script>
 		<script src="{{ asset('/js/like-heart.js') }}"></script>
 		<script src="{{ asset('/js/filter-slider.js') }}"></script>
 		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

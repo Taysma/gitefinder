@@ -1,124 +1,52 @@
 {% extends "template.html.twig" %}
 
-{% block header %}
-	{% include 'header.html.twig' with {'categories' : cats } %}
-{% endblock %}
-
 {% block stylesheet %}
 	<link rel="stylesheet" href="{{ asset('/css/connect.css') }}">
 {% endblock %}
 
+{% block header %}
+	{% include 'header.html.twig' with {'categories' : cats } %}
+{% endblock %}
+
 
 {% block content %}
+	<section id="connection">
+		<div class="container">
+			<div class="content">
+				<div class="form">
+					<h2 class="form-title">Se connecter</h2>
+					<a href="{{ path('register') }}">S'inscrire</a>
+					<form action="{{ path('login') }}" method="POST" class="register-form" id="register-form">
 
-	{# {% if message %}
-	<p>{{ message }}</p> #}
+						<div class="form-group">
+							<label for="mail">
+								<svg xmlns="http://www.w3.org/2000/svg" height="0.8em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 208.1L256 65.9 448 208.1v47.4L289.5 373c-9.7 7.2-21.4 11-33.5 11s-23.8-3.9-33.5-11L64 255.5V208.1zM256 0c-12.1 0-23.8 3.9-33.5 11L25.9 156.7C9.6 168.8 0 187.8 0 208.1V448c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V208.1c0-20.3-9.6-39.4-25.9-51.4L289.5 11C279.8 3.9 268.1 0 256 0z"/></svg>
+							</label>
+							<input type="mail" name="mail" id="mail" placeholder="E-mail">
+						</div>
+						<div class="form-group">
+							<label for="password">
+								<svg
+									xmlns="http://www.w3.org/2000/svg" height="0.8em" viewbox="0 0 448 512">
+									<!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+									<path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
+								</svg>
+							</label>
+							<input type="password" name="password" id="password" placeholder="Mot de passe">
 
-	<div class="cont">
-		<div id="sign-in" class="form">
+						</div>
 
-			<h2>Ravi de vous revoir,</h2>
+						<a href="#" class="forgot-pass">Mot de passe oublié ?</a>
 
-			<form action="{{ login }}" method="POST">
-				<label for="username">
-					<span>PSEUDO</span>
-				</label>
-				<input name="username" type="text"/>
-
-				<label for="password">
-					<span>MOT DE PASSE</span>
-				</label>
-				<input name="password" type="password"/>
-
-				<a href="#">
-					<p class="forgot-pass">Mot de passe oublié ?</p>
-				</a>
-
-				<button type="submit" class="submit">Se connecter</button>
-
-				<button type="button" class="fb-btn">
-					<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
-						<span>facebook</span>
-					</a>
-				</button>
-
-				<button type="button" class="gmail-btn">
-					<a href="https://www.google.com/intl/fr/gmail/about/">
-						Connexion avec
-						<span>Gmail</span>
-					</a>
-				</button>
-
-				<button type="button" class="apple-btn">
-					<a href="https://www.icloud.com/">Connexion avec
-						<span>Apple</span>
-					</a>
-				</button>
-			</form>
-		</div>
-
-		<div class="sub-cont">
-			<div class="img">
-				<div class="img__text m--up">
-					<h2>Nouveau?</h2>
-					<p>Rejoignez la team
-						<br>
-						GiteFinder!!!</p>
+						<div class="form-group">
+							<input type="submit" name="signup" id="signup" class="form-submit" value="Se connecter">
+						</div>
+					</form>
 				</div>
-				<div class="img__text m--in">
-					<h2>Déjà inscrit?</h2>
-					<p>Si vous possédez un compte!
-						<br>
-						C'est par ici !!</p>
-				</div>
-				<div class="img__btn">
-					<span class="m--up">Inscription</span>
-					<span class="m--in">Connexion</span>
+				<div class="image">
+					<figure><img src="{{ asset('/media/images/villawalesca.png') }}" alt="Couché de soleil lumineux"></figure>
 				</div>
 			</div>
-
-			<div id="sign-up" class="form">
-
-				<form action="{{ path('register') }}" method="POST">
-
-					<label for="username">
-						<span>PSEUDO</span>
-					</label>
-					<input name="username" type="text"/>
-
-
-					<label for="mail">
-						<span>MAIL</span>
-					</label>
-					<input name="mail" type="mail"/>
-
-					<label for="password">
-						<span>PASSWORD</span>
-					</label>
-					<input name="password" type="password"/>
-
-					<button type="submit" class="submit">S'inscrire</button>
-
-					<button type="button" class="fb-btn">
-						<a href="https://fr-fr.facebook.com/login/web/">Connexion avec
-							<span>facebook</span>
-						</a>
-					</button>
-
-					<button type="button" class="gmail-btn">
-						<a href="https://www.google.com/intl/fr/gmail/about/">Connexion avec
-							<span>Gmail</span>
-						</a>
-					</button>
-
-					<button type="button" class="apple-btn">
-						<a href="https://www.icloud.com/">Connexion avec
-							<span>Apple</span>
-						</a>
-					</button>
-
-				</form>
-			</div>
 		</div>
-	</div>
+	</section>
 {% endblock %}
