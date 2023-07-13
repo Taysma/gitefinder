@@ -119,6 +119,11 @@ body header .header-limit-size .search-bar-form:hover {
     display: none;
   }
 }
+@media screen and (max-width: 795px) {
+  body header .header-limit-size .search-bar-form {
+    max-width: 593px;
+  }
+}
 body header .header-limit-size .search-bar-form .search-bar {
   display: flex;
   top: 0;
@@ -202,6 +207,7 @@ body header .header-limit-size .search-bar-form .search-bar #location-input {
   }
 }
 body header .header-limit-size .search-bar-form .search-bar .date-inputs {
+  display: contents;
   width: auto;
   margin: 0 auto;
   align-items: center;
@@ -310,9 +316,8 @@ body header .header-limit-size .menu-burger-header {
   padding: 7px;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   border-radius: 99px;
-  box-shadow: 0px 5px 2px black;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
   right: 10px;
   margin: 0px 10px;
   cursor: pointer;
@@ -504,19 +509,22 @@ body .filter .container-btn-filter .container-filter {
   white-space: nowrap;
   scroll-behavior: smooth;
   overflow-x: scroll;
+  gap: 51px;
 }
 body .filter .container-btn-filter .container-filter::-webkit-scrollbar {
   display: none;
 }
 body .filter .container-btn-filter .container-filter .img-title {
-  margin: auto 20px;
+  margin: auto auto;
   cursor: pointer;
+  width: 100%;
 }
 body .filter .container-btn-filter .container-filter .img-title .img {
-  width: 64px;
+  width: 44px;
 }
 body .filter .container-btn-filter .container-filter .img-title .title {
-  color: #1a7fe4;
+  color: #FF385C;
+  font-size: 1rem;
 }
 body .article {
   width: 100%;
@@ -1487,7 +1495,7 @@ body .messenger .container-messenger ::-webkit-scrollbar-thumb:hover {
 }
 body .messenger .container-messenger .search-message-contact {
   width: 350px;
-  max-height: 695px;
+  max-height: 81%;
   overflow: scroll;
   overflow-x: hidden;
   border: none;
@@ -1513,6 +1521,11 @@ body .messenger .container-messenger .search-message-contact .search .icon-searc
 }
 body .messenger .container-messenger .search-message-contact .search .icon-search img {
   width: 100%;
+}
+@media screen and (max-width: 570px) {
+  body .messenger .container-messenger .search-message-contact .search .icon-search {
+    display: none;
+  }
 }
 body .messenger .container-messenger .search-message-contact .search .input-search {
   width: 100%;
@@ -1542,6 +1555,12 @@ body .messenger .container-messenger .search-message-contact .card-message .pict
 body .messenger .container-messenger .search-message-contact .card-message .picture-username .picture-message {
   width: 70px;
   height: 70px;
+}
+@media screen and (max-width: 825px) {
+  body .messenger .container-messenger .search-message-contact .card-message .picture-username .picture-message {
+    width: 40px;
+    height: 40px;
+  }
 }
 body .messenger .container-messenger .search-message-contact .card-message .picture-username .picture-message .avatar {
   width: 100%;
@@ -1628,7 +1647,7 @@ body .messenger .container-messenger .user-online-send-messages .message-contain
   display: flex;
   overflow-y: auto;
   height: 100%;
-  max-height: 63%;
+  max-height: 58%;
   flex-direction: column;
   margin: 0 auto;
   padding: 10px;
@@ -1668,6 +1687,31 @@ body .messenger .container-messenger .user-online-send-messages .message-form {
   border: 1px solid rgba(188, 182, 182, 0.4941176471);
   margin-top: auto;
 }
+@media screen and (max-width: 1370px) {
+  body .messenger .container-messenger .user-online-send-messages .message-form {
+    bottom: 142px;
+  }
+}
+@media screen and (max-width: 936px) {
+  body .messenger .container-messenger .user-online-send-messages .message-form {
+    bottom: 182px;
+  }
+}
+@media screen and (max-width: 936px) {
+  body .messenger .container-messenger .user-online-send-messages .message-form {
+    bottom: 182px;
+  }
+}
+@media screen and (max-width: 800px) {
+  body .messenger .container-messenger .user-online-send-messages .message-form {
+    bottom: 177px;
+  }
+}
+@media screen and (max-width: 768px) {
+  body .messenger .container-messenger .user-online-send-messages .message-form {
+    bottom: 140px;
+  }
+}
 body .messenger .container-messenger .user-online-send-messages .message-form .file-input-container {
   display: flex;
   align-items: center;
@@ -1698,7 +1742,6 @@ body .messenger .container-messenger .user-online-send-messages .message-form te
 }
 body .messenger .container-messenger .user-online-send-messages .message-form button#send-button {
   width: auto;
-  margin-top: 10px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -1735,7 +1778,7 @@ body footer .footer-container .footer-limit-size {
   display: flex;
   margin: 0 auto;
 }
-@media screen and (max-width: 852px) {
+@media screen and (max-width: 896px) {
   body footer .footer-container .footer-limit-size {
     flex-direction: column;
   }
