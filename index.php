@@ -17,7 +17,7 @@ $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 $router->map('GET', '/rental/', '', 'baseRental');
 $router->map('GET', '/rental/[i:id_rental]/[i:id_user]', 'HomeController#getOne', 'article');
 
-// Connection form route
+// CONNECTION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
 $router->map('GET|POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
@@ -29,7 +29,7 @@ $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'user
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 // $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
 
-// ajout d'abonnés a la newsletter
+// NEWSLETTER
 $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
 
 // CRUD Post
