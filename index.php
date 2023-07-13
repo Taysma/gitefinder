@@ -9,7 +9,6 @@ $router->setBasePath('/projets/gitefinder');
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
-
 $router->map('GET','/category/','','baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
@@ -43,11 +42,17 @@ $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter'
 $match = $router->match();
  //var_dump($match);
 
-if (is_array($match)) {
+ if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
     $obj = new $controller();
 
     if (is_callable(array($obj, $action))) {
         call_user_func_array(array($obj, $action), $match['params']);
+    } else {
+        $errorController = new ErrorController();
+        $errorController->handle404();
     }
-} // else { affichage de la page 404}
+} else {
+    $errorController = new ErrorController();
+    $errorController->handle404();
+}
