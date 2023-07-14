@@ -447,6 +447,10 @@ body #homepage .gallery-grid .card .txt-card .note-card p {
   font: 400;
   padding: 5px;
 }
+body .flatpickr-months,
+body .flatpickr-days {
+  font-size: 20x;
+}
 body .filter .filter-bar-container {
   position: relative;
   width: 100%;

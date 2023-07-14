@@ -48,35 +48,7 @@ hr {
     }
 }
 
-// input[type="date"] {
-//     padding: 10px;
-//     border: 2px solid #ccc;
 
-//     border-radius: 4px;
-//     font-size: 16px;
-//     color: #333;
-//     background-color: #f2f2f2;
-// }
-
-// input[type="date"]::-webkit-calendar-picker-indicator {
-//     color: #333;
-//     font-size: 16px;
-// }
-
-// label {
-//     margin-right: 10px;
-//     font-size: 18px;
-//     color: #666;
-// }
-
-// .selected-range {
-//     background-color: #2d64bd !important;
-// }
-
-// #calendar {
-//     display: none;
-//     margin-top: 20px;
-// }
 
 body {
     scroll-behavior: smooth;
@@ -584,115 +556,32 @@ body {
 
     }
 
-    // filter
-    // .filter {
-    //     max-width: 1440px;
-    //     margin: auto;
-    //     width: 100%;
-
-    //     .container-btn-filter {
-    //         width: 100%;
-    //         display: flex;
-    //         height: auto;
-    //         align-items: center;
-
-    //         border-top: none;
-
-    //         .btn-right,
-    //         .btn-left {
-    //             background-color: #c4080800;
-    //             border: none;
-    //             border-radius: 999px;
-    //             margin: auto;
-    //             width: 60px;
-    //             display: flex;
-    //             justify-content: center;
-    //             align-items: center;
-
-    //             img {
-    //                 width: 100%;
-    //             }
-
-    //         }
-
-    //         .img-title {
-    //             width: 236px;
-    //             height: 100px;
-    //             display: flex;
-    //             flex-direction: column;
-    //             justify-content: space-between;
-    //             height: 100%;
-    //             border: 1px solid rgba(0, 0, 0, 0.089);
-    //             border-bottom: none;
-    //             border-top: none;
-
-    //             .img-filter {
-    //                 cursor: pointer;
-    //                 display: flex;
-    //                 margin: auto;
-
-    //                 img {
-    //                     margin: auto;
-    //                     width: 28px;
-    //                 }
-    //             }
-
-    //             .title {
-    //                 padding: 5px;
-    //                 text-align: center;
-
-    //                 span {
-    //                     font-size: 1.2rem;
-    //                     color: #E74646;
-    //                 }
-    //             }
-    //         }
-
-    //         // container-filter icon name
-    //         .container-filter {
-    //             width: 100%;
-    //             max-width: 900px;
-    //             height: 100px;
-    //             display: flex;
-    //             align-items: center;
-    //             justify-content: center;
-    //             overflow: scroll;
-    //             white-space: nowrap;
-    //             scroll-behavior: smooth;
-    //             overflow-x: scroll;
-    //             // gap: 51px;
-
-    //             &::-webkit-scrollbar {
-    //                 display: none;
-    //             }
-
-
-
-    //             .img-title {
-    //                 margin: auto auto;
-    //                 cursor: pointer;
-    //                 width: 140px;
-    //                 display: flex;
-    //                 justify-content: space-between;
-
-
-    //                 .img {
-    //                     width: 44px;
-    //                     // padding: 10px
-
-    //                 }
-
-    //                 .title {
-    //                     color: #FF385C;
-    //                     font-size: 1rem;
-    //                     white-space: initial;
-    //                     margin: inherit;
-    //                 }
-    //             }
-
-    //         }
-    //     }
+    //callendar
+    // .flatpickr-calendar {
+    //     width: 500px;
     // }
+
+    .flatpickr-months,
+    .flatpickr-days {
+        font-size: 20x;
+    }
+
+    // .flatpickr-innerContainer {
+    //     width: 100%;
+    // }
+
+    // .flatpickr-calendar {
+    //     width: 35%;
+    // }
+
+    // .flatpickr-days {
+    //     width: 100%;
+    // }
+
+
+
+
+
     .filter {
         .filter-bar-container {
             position: relative;
