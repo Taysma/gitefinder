@@ -582,109 +582,205 @@ body {
     }
 
     // filter
+    // .filter {
+    //     max-width: 1440px;
+    //     margin: auto;
+    //     width: 100%;
+
+    //     .container-btn-filter {
+    //         width: 100%;
+    //         display: flex;
+    //         height: auto;
+    //         align-items: center;
+
+    //         border-top: none;
+
+    //         .btn-right,
+    //         .btn-left {
+    //             background-color: #c4080800;
+    //             border: none;
+    //             border-radius: 999px;
+    //             margin: auto;
+    //             width: 60px;
+    //             display: flex;
+    //             justify-content: center;
+    //             align-items: center;
+
+    //             img {
+    //                 width: 100%;
+    //             }
+
+    //         }
+
+    //         .img-title {
+    //             width: 236px;
+    //             height: 100px;
+    //             display: flex;
+    //             flex-direction: column;
+    //             justify-content: space-between;
+    //             height: 100%;
+    //             border: 1px solid rgba(0, 0, 0, 0.089);
+    //             border-bottom: none;
+    //             border-top: none;
+
+    //             .img-filter {
+    //                 cursor: pointer;
+    //                 display: flex;
+    //                 margin: auto;
+
+    //                 img {
+    //                     margin: auto;
+    //                     width: 28px;
+    //                 }
+    //             }
+
+    //             .title {
+    //                 padding: 5px;
+    //                 text-align: center;
+
+    //                 span {
+    //                     font-size: 1.2rem;
+    //                     color: #E74646;
+    //                 }
+    //             }
+    //         }
+
+    //         // container-filter icon name
+    //         .container-filter {
+    //             width: 100%;
+    //             max-width: 900px;
+    //             height: 100px;
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //             overflow: scroll;
+    //             white-space: nowrap;
+    //             scroll-behavior: smooth;
+    //             overflow-x: scroll;
+    //             // gap: 51px;
+
+    //             &::-webkit-scrollbar {
+    //                 display: none;
+    //             }
+
+
+
+    //             .img-title {
+    //                 margin: auto auto;
+    //                 cursor: pointer;
+    //                 width: 140px;
+    //                 display: flex;
+    //                 justify-content: space-between;
+
+
+    //                 .img {
+    //                     width: 44px;
+    //                     // padding: 10px
+
+    //                 }
+
+    //                 .title {
+    //                     color: #FF385C;
+    //                     font-size: 1rem;
+    //                     white-space: initial;
+    //                     margin: inherit;
+    //                 }
+    //             }
+
+    //         }
+    //     }
+    // }
     .filter {
-        max-width: 1440px;
-        margin: auto;
-        width: 100%;
-
-        .container-btn-filter {
+        .filter-bar-container {
+            position: relative;
             width: 100%;
-            display: flex;
-            height: auto;
-            align-items: center;
+            max-width: 900px;
+            margin: auto;
+            overflow: hidden;
+            // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-            border-top: none;
 
-            .btn-right,
-            .btn-left {
-                background-color: #c4080800;
-                border: none;
-                border-radius: 999px;
-                margin: auto;
-                width: 60px;
+
+            .filter-bar {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-
-                img {
-                    width: 100%;
-                }
-
-            }
-
-            .img-title {
-                width: 100px;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                height: 100%;
-                // border: 1px solid rgba(0, 0, 0, 0.089);
-                border-bottom: none;
-                border-top: none;
-
-                .img-filter {
-                    cursor: pointer;
-                    display: flex;
-
-                    img {
-                        margin: auto;
-                        width: 48px;
-                    }
-                }
-
-                .title {
-                    padding: 5px;
-                    text-align: center;
-
-                    span {
-                        font-size: 1.2rem;
-                        color: #E74646;
-                    }
-                }
-            }
-
-            // container-filter icon name
-            .container-filter {
-                width: 100%;
-                max-width: 900px;
-                height: 100px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: scroll;
-                white-space: nowrap;
-                scroll-behavior: smooth;
-                overflow-x: scroll;
-                gap: 51px;
+                gap: 10px;
+                padding: 10px;
+                margin: auto 40px;
+                height: 140px;
+                // background-color: #fff;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
 
                 &::-webkit-scrollbar {
                     display: none;
                 }
 
-
-
-                .img-title {
-                    margin: auto auto;
+                .filter {
+                    padding: 0px 20px;
+                    // border: 1px solid #ddd;
+                    // border-radius: 30px;
+                    // background-color: #fff;
                     cursor: pointer;
+                    transition: all 0.2s;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    scroll-snap-align: start;
                     width: 100%;
+                    max-width: 118px;
+                    height: 100%;
 
-
-                    .img {
-                        width: 44px;
-                        // padding: 10px
-
+                    img {
+                        width: 20px;
+                        margin-bottom: 5px;
                     }
 
-                    .title {
-                        color: #FF385C;
-                        font-size: 1rem;
+                    .img-category {
+                        width: fit-content;
+                    }
+
+                    .name-category {
+                        text-align: center;
+                        height: 100%;
+                    }
+
+                    &:hover {
+                        box-shadow: rgba(240, 46, 170, 0.3) 0px 1px, rgba(240, 46, 170, 0.2) 0px 2px
+                    }
+
+                    &:active {
+                        background-color: #f0f0f0;
+                        box-shadow: rgba(46, 75, 240, 0.3) 0px 1px, rgba(120, 46, 240, 0.2) 0px 2px
                     }
                 }
+            }
 
+            .arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(255, 255, 255, 0.7);
+                border-radius: 999px;
+                border: none;
+                font-size: 1.5em;
+                padding: 10px;
+                cursor: pointer;
+                z-index: 1;
+
+                &.left {
+                    left: 10px;
+
+                }
+
+                &.right {
+                    right: 10px;
+                }
             }
         }
     }
+
+
 
     //article post
     .article {

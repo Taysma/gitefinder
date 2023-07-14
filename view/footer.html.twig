@@ -7,12 +7,11 @@
 						<a href="#" class="footer-logo-span">2023 GiteFinder, Inc</a>
 					</span>
 				</div>
-				<!-- newsletter -->
 				<div class="container-newsletter">
 					<form action="{{ path('newsletter') }}" method="POST" id="form-newsletter">
 						<label for="mail" id="label-newsletter">Newsletter</label>
-						<input type="mail" name="mail" id="input-newsletter">
-						<button type="submit" id="footer-submit-button">envoyer</button>
+						<input type="email" name="mail" id="input-newsletter">
+						<button type="submit" id="footer-submit-button">Envoyer</button>
 					</form>
 				</div>
 				<span class="footer-span-ol">
@@ -29,20 +28,15 @@
 					</ol>
 				</span>
 			</div>
-
 			<div class="container-footer-language-devise-help">
-
 				<div class="footer-button">
-					<span class="footer-button-span">
-						Francais</span>
+					<span class="footer-button-span">Français</span>
 					<div class="footer-button">
 						<span class="footer-button-span">€</span>
 						<span class="footer-button-span">EUR</span>
 					</div>
 				</div>
-				{# btn pour la modal #}
 				<div class="footer-button-asistance" id="openModalButton">
-
 					<span class="footer-button-span">Assistance et ressources</span>
 					<img class="footer-img" src="{{ asset('/media/icon/hate.svg') }}" alt="hat">
 				</div>
@@ -52,11 +46,11 @@
 	<div class="footer-mobile">
 		<div class="mobile-footer-explore">
 			<img src="{{ asset('/media/icon/magnifying-glass-solid.svg') }}" alt="explorer" class="footer-img">
-			<P class="txt-footer">Explorer</P>
+			<p class="txt-footer">Explorer</p>
 		</div>
 		<div class="mobile-footer-favoris">
 			<img src="{{ asset('/media/icon/coeur (1).png') }}" alt="Favoris" class="footer-img">
-			<P class="txt-footer">Favoris</P>
+			<p class="txt-footer">Favoris</p>
 		</div>
 		<div class="mobile-footer-user">
 			<img src="{{ asset('/media/icon/user-solid.svg') }}" alt="user" class="footer-user">
@@ -64,10 +58,7 @@
 		</div>
 	</div>
 
-	{# <button id="openModalButton">Ouvrir la modal</button> #}
-
 	<div id="modal" class="modal">
-
 		<div class="modal-content">
 			<img class="close-footer" src="{{ asset('/media/icon/x-solid.svg') }}" alt="close">
 			<div class="footer-modal-ul">
@@ -151,6 +142,4 @@
 			</ul>
 		</div>
 	</div>
-
-
 </footer>

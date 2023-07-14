@@ -9,41 +9,27 @@
 
 	<!-- filter -->
 	<section class="filter">
-		<div class="container-btn-filter">
-
+		<div class="filter-bar-container">
 			<div class="btn-right">
-				<button class="btn-right">
-					<img src="{{ asset('/media/icon/circle_chevron_left_icon_199382.png')}}" alt="tourner à gauche">
-				</button>
+				<button class="arrow left">
+					&lt;</button>
 			</div>
-			<div class="container-filter">
+			<div class="filter-bar" id="filter-bar">
 				{% for category in cats %}
-					<div class="img-title">
-						<div class="img-filter">
-							<a href="{{ path('baseCats') ~ category.id_category }}">
-
-								<img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="gite en Foret">
-
-
-							</a>
-
-						</div>
-						<div class="title">
-							<a href="{{ path('baseCats') ~ category.id_category }}">
-								<span class='title'>{{ category.name }}</span>
-							</a>
-						</div>
+					<div class="filter">
+						<a href="{{ path('baseCats') ~ category.id_category }}">
+							<div class="img-category">
+								<img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></div>
+							<div class="name-category">
+								<span>{{ category.name }}</span>
+							</div>
+						</a>
 					</div>
-
 				{% endfor %}
 			</div>
 			<div class="btn-left">
-				<button class="btn-left">
-					<img src="{{ asset('/media/icon/circle_chevron_right_icon_199381.png')}}" alt="tourner à droite">
-				</button>
+				<button class="arrow right">&gt;</button>
 			</div>
-
 		</div>
-	</section>
-
-{% endblock %}
+	</div>
+</section>{% endblock %}

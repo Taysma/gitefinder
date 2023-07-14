@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Code JavaScript pour la fonctionnalité du slider
-    const container = document.querySelector('.container-filter');
-    const btnRight = document.querySelector('.btn-right');
-    const btnLeft = document.querySelector('.btn-left');
+    var filterBar = document.getElementById('filter-bar');
 
-    btnRight.addEventListener('click', () => {
-        container.scrollLeft -= 200; // Défiler vers la droite (ajuster la valeur selon vos besoins)
-    });
+    // Get the width of a single filter element, including margins
+    var filterWidth = filterBar.querySelector('.filter').offsetWidth;
+    var filterStyle = window.getComputedStyle(filterBar.querySelector('.filter'));
+    var filterMargin = parseFloat(filterStyle.marginLeft) + parseFloat(filterStyle.marginRight);
+    var scrollWidth = filterWidth + filterMargin;
 
-    btnLeft.addEventListener('click', () => {
-        container.scrollLeft += 200; // Défiler vers la gauche (ajuster la valeur selon vos besoins)
-    });
+    function scrollLeft() {
+        filterBar.scrollBy({ left: -scrollWidth, behavior: 'smooth' });
+    }
+
+    function scrollRight() {
+        filterBar.scrollBy({ left: scrollWidth, behavior: 'smooth' });
+    }
+
+    document.querySelector('.arrow.left').addEventListener('click', scrollLeft);
+    document.querySelector('.arrow.right').addEventListener('click', scrollRight);
 });
