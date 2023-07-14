@@ -88,7 +88,6 @@ body header .header-limit-size .button-search {
     border-radius: 999px;
     background-color: #FF385C;
     z-index: 99;
-    margin-top: 100px;
     align-items: center;
     justify-content: center;
   }
@@ -114,6 +113,7 @@ body header .header-limit-size .search-bar-form:hover {
 }
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form {
+    background: rgba(255, 255, 255, 0);
     position: absolute;
     width: 100%;
     display: none;
@@ -201,8 +201,8 @@ body header .header-limit-size .search-bar-form .search-bar #location-input {
 }
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form .search-bar #location-input {
-    width: 60%;
-    margin-top: 10px;
+    width: 80%;
+    margin-top: 29px;
     border-radius: 14px;
   }
 }
@@ -223,7 +223,7 @@ body header .header-limit-size .search-bar-form .search-bar .date-inputs {
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form .search-bar .date-inputs {
     margin-top: 10px;
-    width: 60%;
+    width: 80%;
     flex-direction: column;
     border-radius: 14px;
   }
@@ -255,6 +255,7 @@ body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
     margin-top: 10px;
+    width: 80%;
     border-radius: 14px;
   }
 }
@@ -286,7 +287,7 @@ body header .header-limit-size .search-bar-form .search-bar #guests-input {
 }
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form .search-bar #guests-input {
-    width: 60%;
+    width: 80%;
     margin-top: 10px;
     border-radius: 14px;
   }
@@ -357,7 +358,7 @@ body #homepage {
 }
 body #homepage .gallery-grid {
   max-width: 1440px;
-  margin: 100px auto;
+  margin: 10px auto;
   list-style-type: none;
   justify-content: center;
   display: grid;
@@ -415,6 +416,7 @@ body #homepage .gallery-grid .card .txt-card {
 body #homepage .gallery-grid .card .txt-card .title-card {
   display: flex;
   width: 100%;
+  justify-content: space-between;
   align-items: center;
 }
 body #homepage .gallery-grid .card .txt-card .title-card .h1-card {
@@ -455,16 +457,15 @@ body .filter .filter-bar-container {
 body .filter .filter-bar-container .filter-bar {
   display: flex;
   gap: 10px;
-  padding: 10px;
-  margin: auto 40px;
-  height: 140px;
+  margin: 10px 40px;
+  height: 120px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
 body .filter .filter-bar-container .filter-bar::-webkit-scrollbar {
   display: none;
 }
-body .filter .filter-bar-container .filter-bar .filter {
+body .filter .filter-bar-container .filter-bar .filter-image-name {
   padding: 0px 20px;
   cursor: pointer;
   transition: all 0.2s;
@@ -474,39 +475,51 @@ body .filter .filter-bar-container .filter-bar .filter {
   align-items: center;
   scroll-snap-align: start;
   width: 100%;
-  max-width: 118px;
-  height: 100%;
+  height: 82%;
 }
-body .filter .filter-bar-container .filter-bar .filter img {
+body .filter .filter-bar-container .filter-bar .filter-image-name img {
   width: 20px;
   margin-bottom: 5px;
 }
-body .filter .filter-bar-container .filter-bar .filter .img-category {
+body .filter .filter-bar-container .filter-bar .filter-image-name .img-category {
   width: -moz-fit-content;
   width: fit-content;
 }
-body .filter .filter-bar-container .filter-bar .filter .name-category {
+body .filter .filter-bar-container .filter-bar .filter-image-name .name-category {
   text-align: center;
   height: 100%;
 }
-body .filter .filter-bar-container .filter-bar .filter:hover {
+body .filter .filter-bar-container .filter-bar .filter-image-name:hover {
   box-shadow: rgba(240, 46, 170, 0.3) 0px 1px, rgba(240, 46, 170, 0.2) 0px 2px;
 }
-body .filter .filter-bar-container .filter-bar .filter:active {
+body .filter .filter-bar-container .filter-bar .filter-image-name:active {
   background-color: #f0f0f0;
   box-shadow: rgba(46, 75, 240, 0.3) 0px 1px, rgba(120, 46, 240, 0.2) 0px 2px;
 }
+body .filter .filter-bar-container .filter-bar .filter-image-name .name-category {
+  width: 100%;
+  height: 95%;
+}
+body .filter .filter-bar-container .filter-bar .filter-image-name .name-category .name-span-category {
+  color: #191825;
+  font-size: 0.95rem;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: block;
+}
 body .filter .filter-bar-container .arrow {
   position: absolute;
-  top: 50%;
+  top: 36%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgb(255, 255, 255);
   border-radius: 999px;
   border: none;
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding: 10px;
   cursor: pointer;
   z-index: 1;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 1px;
 }
 body .filter .filter-bar-container .arrow.left {
   left: 10px;
@@ -1885,6 +1898,74 @@ body footer .footer-container .footer-limit-size .container-footer-language-devi
   width: 20px;
   font-weight: bolder;
 }
+body footer .modal {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #f7f7f7;
+}
+body footer .modal .modal-content {
+  border-radius: 5px;
+  max-height: 50vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  border: 1px solid black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+body footer .modal .modal-content .img-close {
+  width: 90px;
+}
+body footer .modal .modal-content .img-close .close-footer {
+  width: 20px;
+  top: 20px;
+  left: 25px;
+  position: absolute;
+  cursor: pointer;
+}
+body footer .modal .modal-content .footer-modal-ul {
+  display: flex;
+  row-gap: 20px;
+}
+body footer .modal .link-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 20px;
+}
+body footer .modal .link-list h3 {
+  margin-bottom: 10px;
+}
+body footer .modal .link-list h3 a {
+  color: #191825;
+  text-decoration: none;
+  text-transform: none;
+  list-style-type: none;
+}
+body footer .modal .link-list li {
+  margin-bottom: 10px;
+}
+body footer .modal .link-list li a {
+  text-decoration: none;
+  color: #333;
+}
+body footer #openModalButton {
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+body footer #openModalButton:hover {
+  background-color: #0056b3;
+}
 body footer .footer-mobile {
   width: 100%;
   display: none;
@@ -1943,72 +2024,6 @@ body footer .footer-mobile .mobile-footer-explore .txt-footer:hover,
 body footer .footer-mobile .mobile-footer-favoris .txt-footer:hover,
 body footer .footer-mobile .mobile-footer-user .txt-footer:hover {
   color: #F7F7F7;
-}
-body footer .modal {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-color: #f7f7f7;
-}
-body footer .modal .modal-content {
-  border-radius: 5px;
-  max-height: 50vh;
-  overflow-y: auto;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  position: relative;
-  border: 1px solid black;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-}
-body footer .modal .modal-content .close-footer {
-  width: 20px;
-  top: 20px;
-  left: 25px;
-  position: absolute;
-  cursor: pointer;
-}
-body footer .modal .modal-content .footer-modal-ul {
-  display: flex;
-  row-gap: 20px;
-}
-body footer .modal .link-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 20px;
-}
-body footer .modal .link-list h3 {
-  margin-bottom: 10px;
-}
-body footer .modal .link-list h3 a {
-  color: #191825;
-  text-decoration: none;
-  text-transform: none;
-  list-style-type: none;
-}
-body footer .modal .link-list li {
-  margin-bottom: 10px;
-}
-body footer .modal .link-list li a {
-  text-decoration: none;
-  color: #333;
-}
-body footer #openModalButton {
-  bottom: 20px;
-  right: 20px;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-body footer #openModalButton:hover {
-  background-color: #0056b3;
 }
 body .breadcrumb {
   background-color: #f5f5f5;

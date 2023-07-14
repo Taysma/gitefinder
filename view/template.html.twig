@@ -1,29 +1,29 @@
-{% set style = '/projets/gitefinder/asset/' %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Trouver le gîte idéal pour vos vacances ou séjours."> {% block stylesheet %}{% endblock %}
-		<link rel="stylesheet" href="{{ asset('/css/font.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+		<meta name="description" content="Trouver le gîte idéal pour vos vacances ou séjours.">
 
-		<script src="https://kit.fontawesome.com/d81be7d66b.js" crossorigin="anonymous"></script>
+		{% block stylesheet %}
+			<link rel="stylesheet" href="{{ asset('/css/font.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"/>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+		{% endblock %}
 
 		<title>
 			{% block title %}{% endblock %}
 		</title>
-
 	</head>
-
 	<body>
 		{% block header %}{% endblock %}
+
 		{% block filters %}
-			{% include "filter.html.twig" %}
+			{% include 'filter.html.twig' %}
+
 		{% endblock %}
 
 
@@ -33,21 +33,17 @@
 
 		{% include 'footer.html.twig' %}
 
-
 		{% block javascript %}
-			<script src="{{ asset('/js/main.js') }}"></script>
-
-			<script src="{{ asset('/js/sharePopup.js') }}"></script>
-			{# // <script src="{{ asset('/js/connect.js') }}"></script> #}
-			<script src="{{ asset('/js/like-heart.js') }}"></script>
-			<script src="{{ asset('/js/filter-slider.js') }}"></script>
+			<script src="https://kit.fontawesome.com/d81be7d66b.js" crossorigin="anonymous"></script>
 			<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-			<script src="{{ asset('/js/calendrier.js') }}"></script>
-			<script src="{{ asset('/js/modal-footer.js') }}"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-
-
+			<script src="{{ asset('/js/main.js') }}"></script>
+			<script src="{{ asset('/js/modal-footer.js') }}"></script>
+			<script src="{{ asset('/js/sharePopup.js') }}"></script>
+			<script src="{{ asset('/js/like-heart.js') }}"></script>
+			<script src="{{ asset('/js/filter-slider.js') }}"></script>
+			<script src="{{ asset('/js/calendrier.js') }}"></script>
 		{% endblock %}
 	</body>
 </html>

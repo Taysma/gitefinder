@@ -36,31 +36,18 @@
 						<span class="footer-button-span">EUR</span>
 					</div>
 				</div>
-				<div class="footer-button-asistance" id="openModalButton">
+				<div id="openModalButton" class="footer-button-asistance">
 					<span class="footer-button-span">Assistance et ressources</span>
 					<img class="footer-img" src="{{ asset('/media/icon/hate.svg') }}" alt="hat">
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="footer-mobile">
-		<div class="mobile-footer-explore">
-			<img src="{{ asset('/media/icon/magnifying-glass-solid.svg') }}" alt="explorer" class="footer-img">
-			<p class="txt-footer">Explorer</p>
-		</div>
-		<div class="mobile-footer-favoris">
-			<img src="{{ asset('/media/icon/coeur (1).png') }}" alt="Favoris" class="footer-img">
-			<p class="txt-footer">Favoris</p>
-		</div>
-		<div class="mobile-footer-user">
-			<img src="{{ asset('/media/icon/user-solid.svg') }}" alt="user" class="footer-user">
-			<p class="txt-footer">Connection</p>
-		</div>
-	</div>
-
-	<div id="modal" class="modal">
+	<div class="modal">
 		<div class="modal-content">
-			<img class="close-footer" src="{{ asset('/media/icon/x-solid.svg') }}" alt="close">
+			<div class="img-close">
+				<img class="close-footer" src="{{ asset('/media/icon/x-solid.svg') }}" alt="close">
+			</div>
 			<div class="footer-modal-ul">
 				<ul class="link-list">
 					<h3>
@@ -142,4 +129,22 @@
 			</ul>
 		</div>
 	</div>
+
+	{# footer-mobile #}
+	<div class="footer-mobile">
+		<div class="mobile-footer-explore">
+			<img src="{{ asset('/media/icon/magnifying-glass-solid.svg') }}" alt="explorer" class="footer-img">
+			<p class="txt-footer">Explorer</p>
+		</div>
+		<div class="mobile-footer-favoris">
+			<img src="{{ asset('/media/icon/coeur (1).png') }}" alt="Favoris" class="footer-img">
+			<p class="txt-footer">Favoris</p>
+		</div>
+		<div class="mobile-footer-user">
+			<img src="{{ asset('/media/icon/user-solid.svg') }}" alt="user" class="footer-user">
+			<p class="txt-footer">Connection</p>
+		</div>
+	</div>
+
+
 </footer>
