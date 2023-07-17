@@ -460,6 +460,7 @@ body {
     #homepage {
         width: 100%;
         max-width: 1440px;
+        margin-bottom: 80px;
 
         .gallery-grid {
             max-width: 1440px;
@@ -625,7 +626,7 @@ body {
         opacity: 1;
     }
 
-
+    //filter
     .filter {
         .filter-bar-container {
             position: relative;

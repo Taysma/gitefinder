@@ -375,6 +375,7 @@ body header #burger-menu-modal .loginRegister {
 body #homepage {
   width: 100%;
   max-width: 1440px;
+  margin-bottom: 80px;
 }
 body #homepage .gallery-grid {
   max-width: 1440px;
