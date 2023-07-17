@@ -82,10 +82,12 @@ class UserController extends Controller {
     public function getUserFavoris(){
         $wishlistmodel = new WishlistModel();
         $favoris = $wishlistmodel->getAllWishlist();
+        $rentalModel = new RentalModel();
+        $rentals = $rentalModel->getAllRentals();
         
-        var_dump($favoris);
+        var_dump($rentals);
 
-        echo self::getRender('favoris.html.twig', ['wishlist' => $favoris]);
+        echo self::getRender('favoris.html.twig', ['wishlist' => $favoris, 'rentals' => $rentals]);
     }
 
     public function getUserReservation(){

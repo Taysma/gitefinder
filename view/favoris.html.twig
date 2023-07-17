@@ -30,7 +30,7 @@
 				<div class="img-card">
 					<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
 
-							<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
+							<img src="{{ asset('/media/images/' ~ wishlist.id_rental ~ '/' ~ rental.cover) }}" alt="gite en Foret">
 
 
 						</a>
@@ -40,12 +40,12 @@
 					<div class="title-prince">
 						<div class="h1-title-card">
 						
-							<h1>Paradise Beach, Bantayan Island {{ wishlist.id_user }}
+							<h1>Paradise Beach, Bantayan Island {{  rental.title }}
 							</h1>
 						</div>
 						<div class="prince">
 
-							<span>150</span>
+							<span>{{ rental.price }}</span>
 							<span>€</span>
 						</div>
 					</div>
