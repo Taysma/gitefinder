@@ -7,15 +7,13 @@
 						<a href="#" class="footer-logo-span">2023 GiteFinder, Inc</a>
 					</span>
 				</div>
-				<!-- newsletter -->
 				<div class="container-newsletter">
 					<form action="{{ path('newsletter') }}" method="POST" id="form-newsletter">
 						<label for="mail" id="label-newsletter">Newsletter</label>
-						<input type="mail" name="mail" id="input-newsletter">
-						<button type="submit" id="footer-submit-button">envoyer</button>
+						<input type="email" name="mail" id="input-newsletter">
+						<button type="submit" id="footer-submit-button">Envoyer</button>
 					</form>
 				</div>
-
 				<span class="footer-span-ol">
 					<ol>
 						<li class="footer-li">
@@ -30,47 +28,26 @@
 					</ol>
 				</span>
 			</div>
-
 			<div class="container-footer-language-devise-help">
-
 				<div class="footer-button">
-					<span class="footer-button-span">
-						Francais</span>
+					<span class="footer-button-span">Français</span>
 					<div class="footer-button">
 						<span class="footer-button-span">€</span>
 						<span class="footer-button-span">EUR</span>
 					</div>
 				</div>
-				{# btn pour la modal #}
-				<div class="footer-button-asistance" id="openModalButton">
-
+				<div id="openModalButton" class="footer-button-asistance">
 					<span class="footer-button-span">Assistance et ressources</span>
 					<img class="footer-img" src="{{ asset('/media/icon/hate.svg') }}" alt="hat">
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="footer-mobile">
-		<div class="mobile-footer-explore">
-			<img src="{{ asset('/media/icon/magnifying-glass-solid.svg') }}" alt="explorer" class="footer-img">
-			<P class="txt-footer">Explorer</P>
-		</div>
-		<div class="mobile-footer-favoris">
-			<img src="{{ asset('/media/icon/coeur (1).png') }}" alt="Favoris" class="footer-img">
-			<P class="txt-footer">Favoris</P>
-		</div>
-		<div class="mobile-footer-user">
-			<img src="{{ asset('/media/icon/user-solid.svg') }}" alt="user" class="footer-user">
-			<p class="txt-footer">Connection</p>
-		</div>
-	</div>
-
-	{# <button id="openModalButton">Ouvrir la modal</button> #}
-
-	<div id="modal" class="modal">
-
+	<div class="modal">
 		<div class="modal-content">
-			<img class="close-footer" src="{{ asset('/media/icon/x-solid.svg') }}" alt="close">
+			<div class="img-close">
+				<img class="close-footer" src="{{ asset('/media/icon/x-solid.svg') }}" alt="close">
+			</div>
 			<div class="footer-modal-ul">
 				<ul class="link-list">
 					<h3>
@@ -150,6 +127,22 @@
 					<a href="#">Cartes cadeaux</a>
 				</li>
 			</ul>
+		</div>
+	</div>
+
+	{# footer-mobile #}
+	<div class="footer-mobile">
+		<div class="mobile-footer-explore">
+			<img src="{{ asset('/media/icon/magnifying-glass-solid.svg') }}" alt="explorer" class="footer-img">
+			<p class="txt-footer">Explorer</p>
+		</div>
+		<div class="mobile-footer-favoris">
+			<img src="{{ asset('/media/icon/coeur (1).png') }}" alt="Favoris" class="footer-img">
+			<p class="txt-footer">Favoris</p>
+		</div>
+		<div class="mobile-footer-user">
+			<img src="{{ asset('/media/icon/user-solid.svg') }}" alt="user" class="footer-user">
+			<p class="txt-footer">Connection</p>
 		</div>
 	</div>
 

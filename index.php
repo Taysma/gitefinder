@@ -9,7 +9,6 @@ $router->setBasePath('/projets/gitefinder');
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
-
 $router->map('GET','/category/','','baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
@@ -17,20 +16,21 @@ $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 $router->map('GET', '/rental/', '', 'baseRental');
 $router->map('GET', '/rental/[i:id_rental]/[i:id_user]', 'HomeController#getOne', 'article');
 
-// Connection form route
+// CONNECTION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
-$router->map('POST', '/registration', 'UserController#register', 'register');
+$router->map('GET|POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // USER
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
-$router->map('GET', '/dashboard/favoris/', 'UserController#getUserFavoris', 'userFavoris');
+$router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
+$router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 
 // $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
 
-// ajout d'abonnés a la newsletter
+// NEWSLETTER
 $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
 
 // CRUD Post
@@ -44,11 +44,17 @@ $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter'
 $match = $router->match();
  //var_dump($match);
 
-if (is_array($match)) {
+ if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
     $obj = new $controller();
 
     if (is_callable(array($obj, $action))) {
         call_user_func_array(array($obj, $action), $match['params']);
+    } else {
+        $errorController = new ErrorController();
+        $errorController->handle404();
     }
-} // else { affichage de la page 404}
+} else {
+    $errorController = new ErrorController();
+    $errorController->handle404();
+}

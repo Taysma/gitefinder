@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../asset/css/connect.css">
+    <title>S'inscrire</title>
+</head>
+
+<body>
+    <section id="connection">
+
+
+        
+        <div class="container">
+            <div class="content">
+                <div class="form">
+                    <h2 class="form-title">S'inscrire</h2>
+                    <a href="{{ path('login') }}">Se connecter</a>
+                    
+                    <form action="{{ path('register') }}" method="POST" class="register-form" id="register-form">
+                        <div class="form-group">
+                            <label for="lastname"><svg xmlns="http://www.w3.org/2000/svg" height="0.8em"
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                </svg></label>
+                            <input type="text" name="lastname" id="lastname" placeholder="Nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname"><svg xmlns="http://www.w3.org/2000/svg" height="0.8em"
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                </svg></label>
+                            <input type="text" name="fisrtname" id="firstname" placeholder="Prénom">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate"><svg xmlns="http://www.w3.org/2000/svg" height="0.8em"
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192H400V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192z" />
+                                </svg></label>
+                            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance">
+                        </div>
+                        <div class="form-group">
+                            <label for="mail"><svg xmlns="http://www.w3.org/2000/svg" height="0.8em"
+                                    viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M215.4 96H144 107.8 96v8.8V144v40.4 89L.2 202.5c1.6-18.1 10.9-34.9 25.7-45.8L48 140.3V96c0-26.5 21.5-48 48-48h76.6l49.9-36.9C232.2 3.9 243.9 0 256 0s23.8 3.9 33.5 11L339.4 48H416c26.5 0 48 21.5 48 48v44.3l22.1 16.4c14.8 10.9 24.1 27.7 25.7 45.8L416 273.4v-89V144 104.8 96H404.2 368 296.6 215.4zM0 448V242.1L217.6 403.3c11.1 8.2 24.6 12.7 38.4 12.7s27.3-4.4 38.4-12.7L512 242.1V448v0c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64v0zM176 160H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H176c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H176c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                                </svg></label>
+                            <input type="mail" name="mail" id="mail" placeholder="E-mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><svg xmlns="http://www.w3.org/2000/svg" height="0.8em"
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z" />
+                                </svg></label>
+                            <input type="password" name="password" id="password" placeholder="Mot de passe">
+                        </div>
+                        <div class="form-group">
+                            <label for="re-pass"><svg xmlns="http://www.w3.org/2000/svg" height="0.8em"
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z" />
+                                </svg></label>
+                            <input type="password" name="re_pass" id="re_pass" placeholder="Confirmer mot de passe">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
+                            <label for="agree-term" class="label-agree-term">J'accepte les <a href="#" class="term-service">règles de confidentialité et conditions d'utilisation</a></label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register">
+                        </div>
+                    </form>
+                </div>
+                <div class="image">
+                    <figure><img src="../../asset/media/images/couchedesoleillumineux.jpg" alt="sing up image"></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

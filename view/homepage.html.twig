@@ -7,18 +7,19 @@
 	{% include 'header.html.twig' with {'categories' : cats } %}
 {% endblock %}
 
+{% block filters %}
+	{% include "filter.html.twig" %}
+{% endblock %}
+
 {% block content %}
 	<section id="homepage" class="limit-size">
 		<div class="gallery-grid">
 			{% for rental in rentals %}
 				<div class="card">
-					<i id="heart" class="heart fa-regular fa-heart"></i>
+					<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ gite.id }}"></i>
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
-
 							<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
-
-
 						</a>
 					</div>
 					<div class="txt-card">
@@ -28,7 +29,6 @@
 									<h1>{{ rental.title }}</h1>
 								</div>
 								<p>{{ rental.price }}€</p>
-
 							</div>
 							<h2 class="h2-card">{{ rental.country }}</h2>
 							<div class="note-card">
