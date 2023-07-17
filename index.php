@@ -25,6 +25,7 @@ $router->map('GET', '/logout', 'UserController#logout', 'logout');
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
+$router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 // $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
 

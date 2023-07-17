@@ -57,7 +57,6 @@ class UserModel extends Model {
         return $user;
     }
 
-
     public function updateUser(User $user){
         $id_user = $user->getId_user();
         $firstname = $user->getFirstname();
@@ -130,5 +129,8 @@ class UserModel extends Model {
             $this->getDb()->rollBack();
             throw $e;  // or handle it in another way depending on your needs
         }
-}
+    }
+
+    
+
 }
