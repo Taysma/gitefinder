@@ -34,14 +34,20 @@ class WishlistModel extends Model {
 
     }
     public function getAllWishlist(){
+        $id_user = $_SESSION['id_user'];
         $wishlists = [];
 
-        $req = $this->getDb()->query('SELECT `id_wishlist`, `id_user`, `id_rental` FROM `wishlist`');
+        $req = $this->getDb()->prepare('SELECT `id_wishlist` , `id_user`,`id_rental` FROM `wishlist` WHERE `id_user`= :id_user');
+        $req->bindParam('id_user',$id_user,PDO::PARAM_INT);
+        $req->execute();
 
         while($wishlist = $req->fetch(PDO::FETCH_ASSOC)){
             $wishlists[] = new Wishlist($wishlist);
+            
         }
+        
         return $wishlists;
+        
     }
 
     public function getOneWishlist(int $id_wishlist){
