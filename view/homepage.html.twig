@@ -16,14 +16,10 @@
 		<div class="gallery-grid">
 			{% for rental in rentals %}
 				<div class="card">
-
 					<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ gite.id }}"></i>
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
-
 							<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
-
-
 						</a>
 					</div>
 					<div class="txt-card">
@@ -33,7 +29,6 @@
 									<h1>{{ rental.title }}</h1>
 								</div>
 								<p>{{ rental.price }}€</p>
-
 							</div>
 							<h2 class="h2-card">{{ rental.country }}</h2>
 							<div class="note-card">
