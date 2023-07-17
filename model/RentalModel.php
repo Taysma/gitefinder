@@ -2,7 +2,8 @@
 class RentalModel extends Model
 {
 
-    public function createRental ($rental){
+    public function createRental($rental)
+    {
         $id_user = $rental->getId_user();
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
@@ -26,36 +27,39 @@ class RentalModel extends Model
         $req->execute();
     }
 
-    public function getLastTenPost(){
+    public function getLastTenPost()
+    {
         $rentals = [];
 
         $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content`, `country` FROM `rental` ORDER BY `id` DESC LIMIT 50');
 
-        while($rental = $req->fetch(PDO::FETCH_ASSOC)){
-            $rentals[] = new Rental($rental);
-        }
-
-        return $rentals;
-    }
-
-    public function getAllRentals() {
-        $rentals = [];
-    
-        $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,  `city`, `address`, `country`, `price`
-            FROM rental
-            ORDER BY id_rental DESC');
-    
         while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
             $rentals[] = new Rental($rental);
         }
-    
+
         return $rentals;
     }
 
-    public function getOneRental(int $id_rental){
+    public function getAllRentals()
+    {
+        $rentals = [];
+
+        $req = $this->getDb()->query('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,  `city`, `address`, `country`, `price`
+            FROM rental
+            ORDER BY id_rental DESC');
+
+        while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rentals[] = new Rental($rental);
+        }
+
+        return $rentals;
+    }
+
+    public function getOneRental(int $id_rental)
+    {
 
         $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,  `city`, `address`, `country`, `price` FROM `rental` WHERE `id_rental`= :id');
-        $req->bindParam('id',$id_rental,PDO::PARAM_INT);
+        $req->bindParam('id', $id_rental, PDO::PARAM_INT);
         $req->execute();
 
         $rental = new Rental($req->fetch(PDO::FETCH_ASSOC));
@@ -63,7 +67,8 @@ class RentalModel extends Model
         return $rental;
     }
 
-    public function getUserrentals(int $id_user){
+    public function getUserrentals(int $id_user)
+    {
         $rentals = [];
 
         $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`,`rental`.`country`, `user`.`id_user`, `user`.`firstname`, `user`.`lastname`, `user`.`mail`, `user`.`birthdate`, `user`.`password`, `user`.`content`, `user`.`roles`
@@ -82,7 +87,8 @@ class RentalModel extends Model
         return $rentals;
     }
 
-    public function updateRental($rental) {
+    public function updateRental($rental)
+    {
         $id_rental = $rental->getId_rental();
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
@@ -132,23 +138,4 @@ class RentalModel extends Model
             throw $e;  // or handle it in another way depending on your needs
         }
     }
-
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

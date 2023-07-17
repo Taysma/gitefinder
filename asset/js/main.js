@@ -59,3 +59,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+
+//menu burger
+let btnBurger = document.getElementsByClassName('img-burger')[0];
+let menuModal = document.getElementById('burger-menu-modal');
+
+btnBurger.addEventListener('click', function () {
+    menuModal.style.display = 'block';
+});
+
+
+// slider image post
+
+document.addEventListener('DOMContentLoaded', function () {
+    var sliderImages = document.getElementsByClassName('sliderImage');
+    var mainImage = document.getElementById('mainImage');
+
+    for (var i = 0; i < sliderImages.length; i++) {
+        sliderImages[i].addEventListener('click', function () {
+            var tempSrc = mainImage.src;  // Stocker temporairement l'image principale
+            mainImage.src = this.src;  // Changer l'image principale
+            this.src = tempSrc;  // Changer l'image du slider
+        });
+    }
+});
+
+

@@ -145,8 +145,8 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    let arrivalInput = document.getElementById("date-arrive");
-    let departureInput = document.getElementById("date-depart");
+    let arrivalInput = document.getElementsByClassName("date-arrive");
+    let departureInput = document.getElementsByClassName("date-depart");
 
     flatpickr(arrivalInput, {
         mode: "range",

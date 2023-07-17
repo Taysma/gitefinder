@@ -352,6 +352,26 @@ body header .header-limit-size .menu-burger-header .border-user {
     display: none;
   }
 }
+body header #burger-menu-modal {
+  display: none;
+  width: 100%;
+  max-width: 200px;
+  height: 100px;
+  top: 80px;
+  box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.204);
+  padding: 10px;
+  position: absolute;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+body header #burger-menu-modal .loginRegister {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: auto;
+}
 body #homepage {
   width: 100%;
   max-width: 1440px;
@@ -449,7 +469,36 @@ body #homepage .gallery-grid .card .txt-card .note-card p {
 }
 body .flatpickr-months,
 body .flatpickr-days {
+  width: 100%;
   font-size: 20x;
+}
+body .star.fas {
+  color: yellow;
+  /* Changez la couleur comme vous voulez */
+}
+body .flatpickr-calendar.open,
+body .flatpickr-calendar.inline {
+  width: 450px;
+}
+body .flatpickr-rContainer {
+  width: 100%;
+}
+body .dayContainer {
+  padding: 0;
+  outline: 0;
+  text-align: left;
+  width: 307.875px;
+  min-width: 100%;
+  max-width: 307.875px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 215px;
+  display: flex;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  justify-content: space-around;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 body .filter .filter-bar-container {
   position: relative;
@@ -534,11 +583,12 @@ body .filter .filter-bar-container .arrow.right {
 body .article {
   width: 100%;
   height: auto;
-  margin: 100px auto;
+  margin: auto;
   max-width: 1440px;
 }
 body .article .container-article-img {
   width: 100%;
+  max-width: 1100px;
   margin: auto;
 }
 body .article .container-article-img .title-article {
@@ -551,7 +601,7 @@ body .article .container-article-img .title-article .h1-title-article {
 }
 body .article .container-article-img .img-article {
   width: 100%;
-  max-width: 900px;
+  height: 500px;
   display: flex;
   justify-content: center;
   margin: 10px auto;
@@ -565,6 +615,17 @@ body .article .container-article-img .img-article {
 body .article .container-article-img .img-article img {
   width: 100%;
   image-rendering: pixelated;
+}
+body .article .container-article-img #sliderContainer {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: 150px;
+  overflow: scroll;
+}
+body .article .container-article-img #sliderContainer .sliderImage {
+  width: 90px;
+  height: 90px;
 }
 body .article .container-article-img .rating-comment-location-share-like {
   display: flex;
@@ -675,7 +736,8 @@ body .article .profil-content-reservation-map .row-limit-size-flex {
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article {
   align-items: center;
   gap: 20px;
-  width: auto;
+  width: 100%;
+  max-width: 600px;
   padding: 10px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article {
@@ -741,7 +803,11 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .title-star-rating {
   display: flex;
   position: relative;
+  justify-content: space-evenly;
   padding: 20px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .star-rating {
+  white-space: nowrap;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article {
   display: flex;
@@ -846,6 +912,10 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   color: #191825;
   font-size: 1rem;
 }
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .prince-rating-comment .fa-solid {
+  color: #FAC800;
+  font-size: 24px;
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .prince-rating-comment .star-rating .rating-img {
   width: auto;
 }
@@ -920,7 +990,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
 body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart {
   display: flex;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-arrive {
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart .date-arrive {
   width: 100%;
   border: none;
   border-right: 2px solid black;
@@ -928,10 +998,10 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
   font-size: 1rem;
   padding: 10px;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-arrive .calendrier {
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart .date-arrive .calendrier {
   background-color: #FF385C;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart #date-depart {
+body .article .profil-content-reservation-map .row-limit-size-flex .card-map-article .card-reservation .form-card-reservation form .form-reservation .form-date-arrivee-depart .date-depart {
   border: none;
   background-color: none;
   font-size: 1rem;

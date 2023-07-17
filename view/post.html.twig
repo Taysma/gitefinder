@@ -47,8 +47,17 @@
 
 
 			</div>
-			<div class="img-article">
-				<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+			<!-- Image principale -->
+			<div class="img-article" id="mainImageContainer">
+				<img id="mainImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+			</div>
+			<!-- Slider d'images -->
+			<div id="sliderContainer">
+				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
+				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
+				<img
+				class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+			<!-- Ajoutez plus d'images de slider si nécessaire -->
 			</div>
 		</div>
 
@@ -81,14 +90,11 @@
 									voyageurs · 1 lit Demi-salle de bain</h2>
 							</div>
 							<div class="star-rating">
-								<div class="rating-img">
-									<img src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
-									<img src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
-									<img src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
-									<img
-									src="../asset/media/icon/etoile.svg" alt="star rating" class="rating-img">
-								<!-- <span class="rating-text">4.83 (64 avis)</span> -->
-								</div>
+								<i class="far fa-star star" id="star0" data-gite-id="{{ gite.id }}" data-user-id="{{ app.user.id }}"></i>
+								<i class="far fa-star star" id="star1" data-gite-id="{{ gite.id }}" data-user-id="{{ app.user.id }}"></i>
+								<i class="far fa-star star" id="star2" data-gite-id="{{ gite.id }}" data-user-id="{{ app.user.id }}"></i>
+								<i class="far fa-star star" id="star3" data-gite-id="{{ gite.id }}" data-user-id="{{ app.user.id }}"></i>
+								<i class="far fa-star star" id="star4" data-gite-id="{{ gite.id }}" data-user-id="{{ app.user.id }}"></i>
 							</div>
 						</div>
 
@@ -209,7 +215,7 @@
 								<span class='night-card-reservation'>par nuit</span>
 							</div>
 							<div class="star-rating">
-								<img class="rating-img" src="../asset/media/icon/etoile.svg" alt="star-rating">
+								<i class="fa-solid fa-star"></i>
 								<span class="rating">4.83
 								</span>
 							</div>
@@ -230,9 +236,9 @@
 							</div>
 							<!-- calendrier -->
 							<div class="form-date-arrivee-depart">
-								<input name="arrivee" id="date-arrive" placeholder="Date arrivée">
+								<input name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée">
 
-								<input name="depart" id="date-depart" placeholder="Date depart">
+								<input name="depart" class="date-depart" id="date-depart" placeholder="Date depart">
 							</div>
 							<div id="calendar"></div>
 
@@ -288,7 +294,8 @@
 			<!-- map -->
 			<div class="map-container">
 				<div class="map">
-					<img src="../asset/media/images/location.png" alt="map">
+					<div id="map"></div>
+
 				</div>
 			</div>
 

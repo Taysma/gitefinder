@@ -7,21 +7,36 @@ document.addEventListener('DOMContentLoaded', function () {
             var starId = this.id;
             var starIndex = parseInt(starId.substr(4)); // Extrait l'index de l'ID de l'étoile
 
-            // Mettre à jour la sélection des étoiles
-            for (var j = 0; j < stars.length; j++) {
-                if (j <= starIndex) {
-                    stars[j].classList.add('filled');
-                    stars[j].classList.remove('fa-regular');
-                    stars[j].classList.add('fa-solid');
-                } else {
-                    stars[j].classList.remove('filled');
-                    stars[j].classList.add('fa-regular');
-                    stars[j].classList.remove('fa-solid');
+            // Si l'utilisateur clique sur l'étoile déjà sélectionnée, réinitialisez toutes les étoiles et le rating
+            if (starIndex + 1 === rating) {
+                for (var j = 0; j < stars.length; j++) {
+                    stars[j].classList.add('far', 'empty');
+                    stars[j].classList.remove('fas', 'filled');
                 }
+                rating = 0;
+            } else {
+                // Mettre à jour la sélection des étoiles
+                for (var j = 0; j < stars.length; j++) {
+                    if (j <= starIndex) {
+                        stars[j].classList.add('fas', 'filled');
+                        stars[j].classList.remove('far', 'empty');
+                    } else {
+                        stars[j].classList.add('far', 'empty');
+                        stars[j].classList.remove('fas', 'filled');
+                    }
+                }
+                // Mettre à jour le niveau d'évaluation
+                rating = starIndex + 1;
             }
 
-            // Mettre à jour le niveau d'évaluation
-            rating = starIndex + 1;
+            // Obtenir userId et giteId
+            var userId = this.getAttribute('data-user-id');
+            var giteId = this.getAttribute('data-gite-id');
+
+            if (!userId || !giteId) {
+                console.error('Erreur : userId ou giteId non définis.');
+                return;
+            }
 
             // Envoi de la requête AJAX au serveur
             fetch('update-rating.php', {
@@ -29,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'rating=' + rating
+                body: 'userId=' + userId + '&giteId=' + giteId + '&rating=' + rating
             })
                 .then(function (response) {
                     if (response.ok) {
