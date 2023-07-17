@@ -16,7 +16,8 @@
 		<div class="gallery-grid">
 			{% for rental in rentals %}
 				<div class="card">
-					<i id="heart" class="heart fa-regular fa-heart"></i>
+
+					<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ gite.id }}"></i>
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
 

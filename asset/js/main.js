@@ -1,79 +1,89 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let buttonSearch = document.getElementsByClassName('button-search')[0];
-    let searchBar = document.getElementsByClassName('search-bar-form')[0];
+    const buttonSearch = document.querySelector('.button-search');
+    const searchBar = document.querySelector('.search-bar-form');
+    const menuBurger = document.querySelector('.menu-burger-header');
     let isSearchBarVisible = false;
+    let isAboveThreshold = window.innerWidth > 769;
 
     buttonSearch.addEventListener('click', function (event) {
         event.stopPropagation();
+        isSearchBarVisible = !isSearchBarVisible;
+
         if (isSearchBarVisible) {
-            searchBar.animate([
-                { opacity: 1, transform: 'translateY(0)' },
-                { opacity: 0, transform: 'translateY(-10px)' }
-            ], {
-                duration: 500,
-                easing: 'ease-out',
-                fill: 'both'
-            });
-            buttonSearch.innerHTML = '<img src="../asset/media/icon/magnifying-glass-solid.svg" alt="">';
+            searchBar.style.display = 'flex';
+            searchBar.animate(
+                [
+                    { opacity: 0, transform: 'translateY(-10px)' },
+                    { opacity: 1, transform: 'translateY(0)' },
+                ],
+                {
+                    duration: 500,
+                    easing: 'ease-out',
+                    fill: 'both',
+                }
+            );
+            buttonSearch.innerHTML =
+                '<img src="/projets/gitefinder/asset/media/icon/x-solid.svg" alt="">';
+            menuBurger.style.display = 'none';
+        } else {
+            searchBar.animate(
+                [
+                    { opacity: 1, transform: 'translateY(0)' },
+                    { opacity: 0, transform: 'translateY(-10px)' },
+                ],
+                {
+                    duration: 500,
+                    easing: 'ease-out',
+                    fill: 'both',
+                }
+            );
 
             setTimeout(function () {
                 searchBar.style.display = 'none';
-            }, 500); // Attendre la fin de l'animation avant de masquer complètement la zone de recherche
-        } else {
-            searchBar.style.display = 'flex';
-            searchBar.animate([
-                { opacity: 0, transform: 'translateY(-10px)' },
-                { opacity: 1, transform: 'translateY(0)' }
-            ], {
-                duration: 500,
-                easing: 'ease-out',
-                fill: 'both'
-            });
-            buttonSearch.innerHTML = '<img src="../asset/media/icon/x-solid.svg" alt="">';
-        }
-        isSearchBarVisible = !isSearchBarVisible;
-    });
-
-    document.addEventListener('click', function (event) {
-        if (window.innerWidth <= 750) {
-            if (!searchBar.contains(event.target) && event.target !== buttonSearch) {
-                searchBar.animate([
-                    { opacity: 1, transform: 'translateY(0)' },
-                    { opacity: 0, transform: 'translateY(-10px)' }
-                ], {
-                    duration: 500,
-                    easing: 'ease-out',
-                    fill: 'both'
-                });
-                buttonSearch.innerHTML = '<img src="../asset/media/icon/magnifying-glass-solid.svg" alt="">';
-
-                setTimeout(function () {
-                    searchBar.style.display = 'none';
-                }, 500); // Attendre la fin de l'animation avant de masquer complètement la zone de recherche
-
-                isSearchBarVisible = false;
-            } else {
-                searchBar.style.display = 'flex';
-                searchBar.animate([
-                    { opacity: 0, transform: 'translateY(-10px)' },
-                    { opacity: 1, transform: 'translateY(0)' }
-                ], {
-                    duration: 500,
-                    easing: 'ease-out',
-                    fill: 'both'
-                });
-                buttonSearch.innerHTML = '<img src="../asset/media/icon/x-solid.svg" alt="">';
-            }
-            isSearchBarVisible = !isSearchBarVisible;
+                buttonSearch.innerHTML =
+                    '<img src="/projets/gitefinder/asset/media/icon/magnifying-glass-solid.svg" alt="">';
+                menuBurger.style.display = 'block';
+            }, 500);
         }
     });
 
     window.addEventListener('resize', function () {
-        if (window.innerWidth === 750) {
-            document.body.style.width = '100%';
-            location.reload(); // Actualiser la page
+        const currentWidth = window.innerWidth;
+        const isThresholdExceeded = currentWidth == 769;
+
+        if (isThresholdExceeded !== isAboveThreshold) {
+            isAboveThreshold = isThresholdExceeded;
+            if (isAboveThreshold) {
+                location.reload(); // Actualiser la page sans recharger
+            }
         }
     });
+});
+
+
+
+//menu burger
+let btnBurger = document.getElementsByClassName('img-burger')[0];
+let menuModal = document.getElementById('burger-menu-modal');
+
+btnBurger.addEventListener('click', function () {
+    menuModal.style.display = 'block';
+});
+
+
+// slider image post
+
+document.addEventListener('DOMContentLoaded', function () {
+    var sliderImages = document.getElementsByClassName('sliderImage');
+    var mainImage = document.getElementById('mainImage');
+
+    for (var i = 0; i < sliderImages.length; i++) {
+        sliderImages[i].addEventListener('click', function () {
+            var tempSrc = mainImage.src;  // Stocker temporairement l'image principale
+            mainImage.src = this.src;  // Changer l'image principale
+            this.src = tempSrc;  // Changer l'image du slider
+        });
+    }
 });
 
 

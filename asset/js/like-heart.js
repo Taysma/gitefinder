@@ -1,11 +1,20 @@
+// Vérifiez si le cookie 'userLoggedIn' est défini
+var isLoggedIn = document.cookie.split(';').some((item) => item.trim().startsWith('userLoggedIn='));
+
 document.addEventListener('DOMContentLoaded', function () {
     var heartIcons = document.getElementsByClassName('heart');
 
     for (var i = 0; i < heartIcons.length; i++) {
         var heartIcon = heartIcons[i];
-        var likeCount = 0;
 
         heartIcon.addEventListener('click', function () {
+            // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
+            if (!isLoggedIn) {
+                window.location.href = '/projets/gitefinder/login';
+                return;
+            }
+
+            var likeCount = this.dataset.likeCount ? Number(this.dataset.likeCount) : 0;
             likeCount++;
 
             if (likeCount % 2 === 1) {
@@ -20,13 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.classList.add('empty');
             }
 
+            this.dataset.likeCount = likeCount;
+
             // Envoi de la requête AJAX au serveur
-            fetch('update-like.php', {
+            fetch('WishlistModel.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'likeCount=' + likeCount
+                body: 'userId=' + userId + '&giteId=' + this.dataset.giteId
             })
                 .then(function (response) {
                     if (response.ok) {
@@ -44,7 +55,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
-
-
-
