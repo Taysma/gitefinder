@@ -54,9 +54,9 @@ class UserController extends Controller
                     $_SESSION['firstname'] = $user->getFirstname();
                     $_SESSION['connect'] = true;
 
-                    global $router;
-                    header('Location: ' . $router->generate('dashboard')); // add condition "if" pour les 3 routes si role match host/guest/admin
-                    exit();
+                global $router;
+                header('Location: ' . $router->generate('dashboard')); // add condition "if" pour les 3 routes si role match host/guest/admin
+                exit();
                 } else {
                     echo 'Email / password incorrect !';
                 }
@@ -88,9 +88,13 @@ class UserController extends Controller
         echo self::getRender('profil.html.twig', []);
     }
 
-    public function getUserFavoris()
-    {
-        echo self::getRender('favoris.html.twig', []);
+    public function getUserFavoris(){
+        $wishlistmodel = new WishlistModel();
+        $favoris = $wishlistmodel->getAllWishlist();
+        
+        var_dump($favoris);
+
+        echo self::getRender('favoris.html.twig', ['wishlist' => $favoris]);
     }
 
     public function getUserReservation()
