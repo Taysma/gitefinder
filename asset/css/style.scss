@@ -199,7 +199,7 @@ body {
 
                     input {
                         padding: 8px;
-                        border: 2px solid #FF385C;
+                        border: 1px solid #FF385C;
                         ;
                         height: 40px;
 
@@ -222,7 +222,7 @@ body {
 
 
                         &:hover:focus {
-                            border: 2px solid #FF385C;
+                            border: 1px solid #FF385C;
                         }
 
 
@@ -304,9 +304,8 @@ body {
                     }
 
                     .date-inputs input {
-                        // width: 100%;
-                        // height: auto;
-                        border: 2px solid #FF385C;
+                        border-top: 0.1em solid #FF385C;
+                        border-bottom: 0.1em solid #FF385C;
 
                         @media screen and (max-width:850px) {
                             // margin-top: 10px;
@@ -345,7 +344,7 @@ body {
                     #guests-input {
                         // width: 150px;
                         padding: 8px;
-                        border: 2px solid #FF385C;
+                        border: 1px solid #FF385C;
                         height: 40px;
                         border-top-right-radius: 14px;
                         border-bottom-right-radius: 14px;
@@ -389,78 +388,114 @@ body {
             }
 
 
-            .menu-burger-header {
-                width: 90px;
-                height: 50px;
+            .burger-profil {
+                width: 100%;
+                max-width: 200px;
                 display: flex;
-                padding: 7px;
                 align-items: center;
-                justify-content: center;
-                // border: 1px solid black;
-                border-radius: 99px;
-                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-                right: 10px;
-                margin: 0px 10px;
-                cursor: pointer;
+                justify-content: space-evenly;
 
-                @media screen and (max-width:768px) {
-                    border: none;
-                    box-shadow: none;
+
+
+
+                .raise:hover,
+                .raise:focus {
+                    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+                    transform: translateY(-0.01em);
                 }
 
-                .img-burger {
-                    width: 19px;
-                    height: 32px;
-
-                    @media screen and (max-width:768px) {
-                        width: 100%;
-                    }
-                }
-
-                .border-user {
-                    width: 40px;
-                    height: 40px;
-                    margin-left: 10px;
-                    background-color: #1918257b;
-                    border: 1px solid rgb(0, 0, 0);
-                    padding: 5px;
+                .menu-burger-header {
+                    width: auto;
+                    height: auto;
+                    display: flex;
+                    padding: 7px;
+                    align-items: center;
+                    justify-content: center;
+                    // border: 1px solid black;
                     border-radius: 99px;
+                    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+                    right: 10px;
+                    margin: 0px 10px;
+                    cursor: pointer;
+                    transition: circle-out-center 0.6s all;
+                    animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-down both;
+
+                    @keyframes wipe-in-down {
+                        from {
+                            clip-path: inset(0 0 100% 0);
+                        }
+
+                        to {
+                            clip-path: inset(0 0 0 0);
+                        }
+                    }
+
+
+
+                    &:hover {
+                        box-shadow: none;
+
+
+                    }
 
                     @media screen and (max-width:768px) {
-                        display: none;
+                        border: none;
+                        box-shadow: none;
+                    }
+
+                    .img-burger {
+                        width: 19px;
+                        height: 32px;
+
+                        @media screen and (max-width:768px) {
+                            width: 100%;
+                        }
+                    }
+
+                    .border-user {
+                        width: 40px;
+                        height: 40px;
+                        margin-left: 10px;
+                        background-color: #1918257b;
+                        border: 1px solid rgb(0, 0, 0);
+                        padding: 5px;
+                        border-radius: 99px;
+
+                        @media screen and (max-width:768px) {
+                            display: none;
+                        }
                     }
                 }
-            }
 
-            .img-username {
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                align-items: center;
-                padding: 5px;
+                .img-username {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 5px;
 
-                .img-profile {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 999px;
-                    overflow: hidden;
-                    background-color: #a8b0b7a8;
-                    // padding: 2px;
-                    z-index: 1;
-
-                    img {
+                    .img-profile {
                         width: 50px;
                         height: 50px;
                         border-radius: 999px;
                         overflow: hidden;
-                        z-index: 3;
-                        width: 100%;
-                        height: 100%;
+                        background-color: #a8b0b7a8;
+                        // padding: 2px;
+                        z-index: 1;
+
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 999px;
+                            overflow: hidden;
+                            z-index: 3;
+                            width: 100%;
+                            height: 100%;
+                        }
                     }
+
                 }
-
             }
-
         }
 
         #burger-menu-modal {
@@ -778,12 +813,14 @@ body {
             margin: auto;
 
             .title-article {
-                margin: 20px;
+
                 position: relative;
 
                 .h1-title-article {
-                    font-size: 1.2rem;
+                    font-size: 1.8rem;
+                    font-weight: 800;
                     color: #191825;
+                    font-variant-caps: petite-caps;
                 }
             }
 
@@ -802,7 +839,6 @@ body {
                 img {
                     width: 100%;
                     image-rendering: pixelated;
-                    // height: 50vh;
                 }
 
             }
@@ -813,6 +849,10 @@ body {
                 width: 100%;
                 height: 150px;
                 overflow: scroll;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
 
                 .sliderImage {
                     width: 90px;
@@ -828,9 +868,8 @@ body {
             .rating-comment-location-share-like {
                 display: flex;
                 gap: 20px;
-                justify-content: center;
+                justify-content: right;
                 width: 100%;
-                // column-gap: 50px;
                 align-items: center;
 
                 @media screen and (max-width:850px) {
@@ -976,10 +1015,12 @@ body {
 
                         .h1-title-article {
                             font-size: 1rem;
+                            white-space: nowrap;
                         }
 
                         .h2-content-article {
                             font-size: 0.95rem;
+                            white-space: nowrap;
                         }
                     }
 
@@ -1439,6 +1480,7 @@ body {
         .comment-container {
             width: 100%;
             margin: auto;
+            margin-bottom: 50px;
             height: auto;
             padding: 50px;
             max-width: 1440px;

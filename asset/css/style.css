@@ -166,7 +166,7 @@ body header .header-limit-size .search-bar-form .search-bar {
 }
 body header .header-limit-size .search-bar-form .search-bar input {
   padding: 8px;
-  border: 2px solid #FF385C;
+  border: 1px solid #FF385C;
   height: 40px;
 }
 @media screen and (max-width: 1010px) {
@@ -182,7 +182,7 @@ body header .header-limit-size .search-bar-form .search-bar input {
   }
 }
 body header .header-limit-size .search-bar-form .search-bar input:hover:focus {
-  border: 2px solid #FF385C;
+  border: 1px solid #FF385C;
 }
 body header .header-limit-size .search-bar-form .search-bar #location-input {
   border-top-left-radius: 14px;
@@ -250,7 +250,8 @@ body header .header-limit-size .search-bar-form .search-bar .date-inputs .calend
   cursor: pointer;
 }
 body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
-  border: 2px solid #FF385C;
+  border-top: 0.1em solid #FF385C;
+  border-bottom: 0.1em solid #FF385C;
 }
 @media screen and (max-width: 768px) {
   body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
@@ -270,7 +271,7 @@ body header .header-limit-size .search-bar-form .search-bar #departure-input {
 }
 body header .header-limit-size .search-bar-form .search-bar #guests-input {
   padding: 8px;
-  border: 2px solid #FF385C;
+  border: 1px solid #FF385C;
   height: 40px;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
@@ -310,9 +311,21 @@ body header .header-limit-size .search-bar-form .search-bar button:hover {
     margin-top: 30px;
   }
 }
-body header .header-limit-size .menu-burger-header {
-  width: 90px;
-  height: 50px;
+body header .header-limit-size .burger-profil {
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+body header .header-limit-size .burger-profil .raise:hover,
+body header .header-limit-size .burger-profil .raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.01em);
+}
+body header .header-limit-size .burger-profil .menu-burger-header {
+  width: auto;
+  height: auto;
   display: flex;
   padding: 7px;
   align-items: center;
@@ -322,23 +335,38 @@ body header .header-limit-size .menu-burger-header {
   right: 10px;
   margin: 0px 10px;
   cursor: pointer;
+  transition: circle-out-center 0.6s all;
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-down both;
+}
+@keyframes wipe-in-down {
+  from {
+    -webkit-clip-path: inset(0 0 100% 0);
+            clip-path: inset(0 0 100% 0);
+  }
+  to {
+    -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+  }
+}
+body header .header-limit-size .burger-profil .menu-burger-header:hover {
+  box-shadow: none;
 }
 @media screen and (max-width: 768px) {
-  body header .header-limit-size .menu-burger-header {
+  body header .header-limit-size .burger-profil .menu-burger-header {
     border: none;
     box-shadow: none;
   }
 }
-body header .header-limit-size .menu-burger-header .img-burger {
+body header .header-limit-size .burger-profil .menu-burger-header .img-burger {
   width: 19px;
   height: 32px;
 }
 @media screen and (max-width: 768px) {
-  body header .header-limit-size .menu-burger-header .img-burger {
+  body header .header-limit-size .burger-profil .menu-burger-header .img-burger {
     width: 100%;
   }
 }
-body header .header-limit-size .menu-burger-header .border-user {
+body header .header-limit-size .burger-profil .menu-burger-header .border-user {
   width: 40px;
   height: 40px;
   margin-left: 10px;
@@ -348,18 +376,18 @@ body header .header-limit-size .menu-burger-header .border-user {
   border-radius: 99px;
 }
 @media screen and (max-width: 768px) {
-  body header .header-limit-size .menu-burger-header .border-user {
+  body header .header-limit-size .burger-profil .menu-burger-header .border-user {
     display: none;
   }
 }
-body header .header-limit-size .img-username {
+body header .header-limit-size .burger-profil .img-username {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   padding: 5px;
 }
-body header .header-limit-size .img-username .img-profile {
+body header .header-limit-size .burger-profil .img-username .img-profile {
   width: 50px;
   height: 50px;
   border-radius: 999px;
@@ -367,7 +395,7 @@ body header .header-limit-size .img-username .img-profile {
   background-color: rgba(168, 176, 183, 0.6588235294);
   z-index: 1;
 }
-body header .header-limit-size .img-username .img-profile img {
+body header .header-limit-size .burger-profil .img-username .img-profile img {
   width: 50px;
   height: 50px;
   border-radius: 999px;
@@ -617,12 +645,13 @@ body .article .container-article-img {
   margin: auto;
 }
 body .article .container-article-img .title-article {
-  margin: 20px;
   position: relative;
 }
 body .article .container-article-img .title-article .h1-title-article {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
+  font-weight: 800;
   color: #191825;
+  font-variant-caps: petite-caps;
 }
 body .article .container-article-img .img-article {
   width: 100%;
@@ -648,6 +677,9 @@ body .article .container-article-img #sliderContainer {
   height: 150px;
   overflow: scroll;
 }
+body .article .container-article-img #sliderContainer::-webkit-scrollbar {
+  display: none;
+}
 body .article .container-article-img #sliderContainer .sliderImage {
   width: 90px;
   height: 90px;
@@ -655,7 +687,7 @@ body .article .container-article-img #sliderContainer .sliderImage {
 body .article .container-article-img .rating-comment-location-share-like {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: right;
   width: 100%;
   align-items: center;
 }
@@ -781,9 +813,11 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article .h1-title-article {
   font-size: 1rem;
+  white-space: nowrap;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article .h2-content-article {
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .profil-user-article {
   display: flex;
@@ -1112,6 +1146,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .card-map-art
 body .article .comment-container {
   width: 100%;
   margin: auto;
+  margin-bottom: 50px;
   height: auto;
   padding: 50px;
   max-width: 1440px;
