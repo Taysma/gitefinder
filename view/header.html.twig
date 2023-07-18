@@ -39,11 +39,11 @@
 			{% if session.connect %}
 				<div class="burger-profil">
 					<div class="menu-burger-header raise">
-						<a href="#"><img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger"></a>
+						<a href="{{ path('dashboard') }}"><img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger"></a>
 					</div>
 					<div class="img-username">
 						<div class="img-profile">
-							<a href="{{ path('dashboard') }}">
+							<a href="{{ path('userProfil') }}">
 								<img src="{{ asset('/media/icon/WaNom.png') }}" alt=""></a>
 						</div>
 						<span>{{ session.firstname }}</span>
