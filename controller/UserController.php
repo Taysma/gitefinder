@@ -54,9 +54,9 @@ class UserController extends Controller
                     $_SESSION['firstname'] = $user->getFirstname();
                     $_SESSION['connect'] = true;
 
-                global $router;
-                header('Location: ' . $router->generate('dashboard')); // add condition "if" pour les 3 routes si role match host/guest/admin
-                exit();
+                    global $router;
+                    header('Location: ' . $router->generate('dashboard')); // add condition "if" pour les 3 routes si role match host/guest/admin
+                    exit();
                 } else {
                     echo 'Email / password incorrect !';
                 }
@@ -80,7 +80,14 @@ class UserController extends Controller
     // Dashboard
     public function getUserDashboard()
     {
-        echo self::getRender('dashboard.html.twig', []);
+        if (!isset($_SESSION['connect']) || $_SESSION['connect'] !== true) {
+            global $router;
+            header('Location: ' . $router->generate('login'));
+            exit();
+        } else {
+
+            echo self::getRender('dashboard.html.twig', []);
+        }
     }
 
     public function getUserProfil()
@@ -88,17 +95,23 @@ class UserController extends Controller
         echo self::getRender('profil.html.twig', []);
     }
 
-    public function getUserFavoris(){
+    public function getUserFavoris()
+    {
         $wishlistmodel = new WishlistModel();
         $favoris = $wishlistmodel->getAllWishlist();
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
-        
-        // var_dump($favoris);
-        // var_dump($rentals);
 
         echo self::getRender('favoris.html.twig', ['wishlist' => $favoris, 'rentals' => $rentals]);
     }
+
+    // public function getUserChat()
+    // {
+    //     $model = new MessagerieModel();
+    //     $chat = $model->readMessage();
+
+    //     echo self::getRender('messenger.html.twig', ['chat' => $chat]);
+    // }
 
     public function getUserReservation()
     {
