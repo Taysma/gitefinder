@@ -501,18 +501,19 @@ body {
         }
 
         #burger-menu-modal {
-            display: block;
+            display: none;
             width: 100%;
             max-width: 200px;
             height: 100px;
-            top: 80px;
+            top: 100px;
             box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.204);
             padding: 10px;
             position: absolute;
+            z-index: 999;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             text-align: center;
-            background-color: #db1111;
+            background-color: #ffffff;
 
             .loginRegister {
                 display: flex;
@@ -521,6 +522,7 @@ body {
                 margin: auto;
             }
         }
+
     }
 
     //homePage gallery-grid
@@ -1624,7 +1626,6 @@ body {
                         width: auto;
                         height: 100%;
                         border-radius: 999px;
-
                     }
 
                     .btn-edit-delete {
@@ -1649,19 +1650,14 @@ body {
                             background-color: #FF385C;
                         }
                     }
-
-
                 }
-
-
             }
 
-            .profil-information {
+            form.profil-information {
                 width: fit-content;
                 display: flex;
                 flex-direction: column;
                 margin: auto;
-
 
                 .name-lastname {
                     width: 100%;
@@ -1670,58 +1666,50 @@ body {
                     gap: 10px;
                     padding: 10px;
 
-
-
-
-
-                    #span-information {
+                    label {
                         font-size: 1.3rem;
-
                     }
 
-                    .input-btn {
+                    input {
                         display: flex;
                         justify-content: center;
                         margin: 10px auto;
+                        width: 300px;
+                        height: 40px;
+                        border: 1px solid #191825;
+                        border-radius: 7px;
+
+                        &:focus {
+                            border: 5px solid #007bff;
+                        }
 
                         @media screen and (max-width:750px) {
-                            flex-direction: column;
+                            margin: auto;
                         }
 
-                        #input-profil {
-                            width: 300px;
-                            margin: auto 10px;
-                            height: 40px;
-                            border: 1px solid #191825;
-
-                            border-radius: 7px;
-
-                            &:focus {
-                                border: 5px solid #007bff;
-                            }
-
-
-                        }
-
-                        #edit {
-                            width: fit-content;
-                            background-color: #007bff;
-                            color: #F7F7F7;
-                            font-size: 1rem;
-                            border: none;
-                            margin: 10px auto;
-                            border-radius: 5px;
-                            padding: 10px;
-                            cursor: pointer;
-                        }
                     }
 
+                    .file {
+                        border: none;
+                        padding: 10px;
+                    }
                 }
 
-
+                #save-changes-btn {
+                    width: fit-content;
+                    background-color: #007bff;
+                    color: #F7F7F7;
+                    font-size: 1rem;
+                    border: none;
+                    margin: 10px auto;
+                    border-radius: 5px;
+                    padding: 10px;
+                    cursor: pointer;
+                }
             }
         }
     }
+
 
     //favoris
     .favoris {

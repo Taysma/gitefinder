@@ -63,12 +63,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //menu burger
-let btnBurger = document.getElementsByClassName('img-burger')[0];
+let btnBurger = document.querySelector('.menu-burger-header .img-burger');
 let menuModal = document.getElementById('burger-menu-modal');
+let menuOpen = false; // Booléen pour garder une trace de l'état du menu
 
-btnBurger.addEventListener('click', function () {
-    menuModal.style.display = 'block';
-});
+if (btnBurger && menuModal) {
+    btnBurger.addEventListener('click', function (event) {
+        event.stopPropagation();
+        if (menuOpen) {
+            menuModal.style.display = 'none';
+            menuOpen = false;
+        } else {
+            menuModal.style.display = 'block';
+            menuOpen = true;
+        }
+    });
+
+    document.addEventListener('click', function () {
+        if (menuOpen) {
+            menuModal.style.display = 'none';
+            menuOpen = false;
+        }
+    });
+}
+
 
 
 // slider image post
