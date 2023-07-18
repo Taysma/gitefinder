@@ -145,20 +145,25 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    let arrivalInput = document.getElementsByClassName("date-arrive");
-    let departureInput = document.getElementsByClassName("date-depart");
+    let arrivalInputs = document.getElementsByClassName("date-arrive");
+    let departureInputs = document.getElementsByClassName("date-depart");
 
-    flatpickr(arrivalInput, {
-        mode: "range",
-        minDate: "today",
-        dateFormat: "Y-m-d",
-        onClose: function (selectedDates) {
-            let [start, end] = selectedDates;
-            arrivalInput.value = start ? start.toISOString().split('T')[0] : '';
-            departureInput.value = end ? end.toISOString().split('T')[0] : '';
-        }
-    });
+    for (let i = 0; i < arrivalInputs.length; i++) {
+        flatpickr(arrivalInputs[i], {
+            mode: "range",
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            onClose: function (selectedDates) {
+                let [start, end] = selectedDates;
+                arrivalInputs[i].value = start ? start.toISOString().split('T')[0] : '';
+                if (departureInputs[i]) {
+                    departureInputs[i].value = end ? end.toISOString().split('T')[0] : '';
+                }
+            }
+        });
+    }
 });
+
 
 
 
