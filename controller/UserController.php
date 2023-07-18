@@ -121,6 +121,6 @@ class UserController extends Controller
 
     public function getUserRental()
     {
-        echo self::getRender('.html.twig', []);
+        echo self::getRender('addrental.html.twig', []);
     }
 }

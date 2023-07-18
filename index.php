@@ -38,8 +38,8 @@ $router->map('GET', '/dashboard/profil/update', 'UserController#userProfilUpdate
 $router->map('GET', '/dashboard/profil/delete', 'UserController#userProfilDelete', 'userProfilDelete');
 // USER - FAVORIS
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
-$router->map('GET', '', 'UserController#addToWishlist', 'userFavorisUpdate');
-$router->map('GET', '', 'UserController#deleteFromWishlist', 'userFavorisDelete');
+// $router->map('GET', '', 'UserController#addToWishlist', 'userFavorisUpdate');
+// $router->map('GET', '', 'UserController#deleteFromWishlist', 'userFavorisDelete');
 // USER - MESSAGERIE
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 // USER - RESERVATION
