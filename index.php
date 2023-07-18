@@ -9,7 +9,7 @@ $router->setBasePath('/projets/gitefinder');
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
-$router->map('GET','/category/','','baseCats');
+$router->map('GET', '/category/', '', 'baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
 // ARTICLE - POST
@@ -24,29 +24,28 @@ $router->map('GET', '/logout', 'UserController#logout', 'logout');
 // USER
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
+$router->map('GET', '/dashboard/profil/update', 'UserController#userProfilUpdate', 'userProfilUpdate');
+$router->map('GET', '/dashboard/profil/delete', 'UserController#userProfilDelete', 'userProfilDelete');
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
-
-
-
 // $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
+
+// CRUD Article
+$router->map('GET|POST', '/newpost', 'RentalController#createPost', 'addPost');
+$router->map('GET|POST', '/post/edit/[i:id]', 'RentalController#edit', 'editPost');
+$router->map('POST|DELETE', '/post/delete/[i:id]', 'RentalController#delete', 'deletePost');
 
 // NEWSLETTER
 $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
-
-// CRUD Post
-// $router->map('GET|POST', '/newpost', 'PostController#createPost', 'addPost');
-// $router->map('GET|POST', '/post/edit/[i:id]', 'PostController#edit', 'editPost');
-// $router->map('POST|DELETE', '/post/delete/[i:id]', 'PostController#delete', 'deletePost');
 
 // // SEARCH
 // $router->map('GET', '/search', 'SearchController#searchResult', 'search');
 
 $match = $router->match();
- var_dump($match);
+// var_dump($match);
 
- if (is_array($match)) {
+if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
     $obj = new $controller();
 
