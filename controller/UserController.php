@@ -94,7 +94,8 @@ class UserController extends Controller
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
         
-        var_dump($rentals);
+        // var_dump($favoris);
+        // var_dump($rentals);
 
         echo self::getRender('favoris.html.twig', ['wishlist' => $favoris, 'rentals' => $rentals]);
     }

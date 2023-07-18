@@ -24,46 +24,53 @@
 			</ol>
 		</nav>
 		<div class="container-favoris">
-			{% for wishlist in wishlist %}
-			<div class="card">
-				<i id="heart" class="heart fa-regular fa-heart"></i>
-				<div class="img-card">
-					<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
+		{% if wishlist|length > 0 %}
+			{% for wish in wishlist %}
+				{% for rental in rentals %}
+					{% if rental.id_rental == wish.id_rental %}
+						<div class="card">
+							<i id="heart" class="heart fa-regular fa-heart"></i>
+							<div class="img-card">
+								<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
 
-							<img src="{{ asset('/media/images/' ~ wishlist.id_rental ~ '/' ~ rental.cover) }}" alt="gite en Foret">
+									<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
 
 
-						</a>
-				</div>
-				<div class="content-card">
-				
-					<div class="title-prince">
-						<div class="h1-title-card">
-						
-							<h1>Paradise Beach, Bantayan Island {{  rental.title }}
-							</h1>
+								</a>
+							</div>
+							<div class="content-card">
+
+								<div class="title-prince">
+									<div class="h1-title-card">
+
+										<h1>
+											{{  rental.title }}
+										</h1>
+									</div>
+									<div class="prince">
+
+										<span>{{ rental.price }}</span>
+										<span>€</span>
+									</div>
+								</div>
+								<div class="location-card">
+									<span class="city">{{ rental.city }}</span>
+									<span>,</span>
+									<span class="country">{{ rental.country }}</span>
+								</div>
+								<div class="rating-card">
+									<span class="rating">4.8</span>
+									<span>
+										<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
+									</span>
+								</div>
+
+							</div>
 						</div>
-						<div class="prince">
-
-							<span>{{ rental.price }}</span>
-							<span>€</span>
-						</div>
-					</div>
-					<div class="location-card">
-						<span class="city">Rome</span>
-						<span>,</span>
-						<span class="country">Italy</span>
-					</div>
-					<div class="rating-card">
-						<span class="rating">4.8</span>
-						<span>
-							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-						</span>
-					</div>
-					
-				</div>
-			</div>
+					{% endif %}
+				{% endfor %}
 			{% endfor %}
+			{% endif %}
 		</div>
 	</section>
 {% endblock %}
