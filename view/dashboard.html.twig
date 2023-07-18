@@ -1,109 +1,118 @@
+
+
 {% extends "template.html.twig" %}
 
-{% block title %}Dashboard
-{% endblock %}
+	{% block title %}Dashboard
+	{% endblock %}
 
 
-{% block header %}
-	{% include 'header.html.twig' with {'categories' : cats } %}
-{% endblock %}
+	{% block header %}
+		{% include 'header.html.twig' with {'categories' : cats } %}
+	{% endblock %}
 
-{% block content %}
+	{% block content %}
 
-	<!-- dashboard -->
-	<section class="dashboard">
+		<!-- dashboard -->
+		<section class="dashboard">
 
-		<div class="container-dashboard">
-			<div class="card-dashboard">
-				<a href="{{ path('userProfil') }}">
-					<div class="img-dashboard">
-						<img src="{{ asset('/media/icon/user.svg') }}" alt="compte">
-					</div>
-					<div class="content-dashboard">
-						<div class="title">
-							<a href="{{ path('userProfil') }}"><p>Compte</p></a>
+			<div class="container-dashboard">
+				<div class="card-dashboard">
+					<a href="{{ path('userProfil') }}">
+						<div class="img-dashboard">
+							<img src="{{ asset('/media/icon/user.svg') }}" alt="compte">
 						</div>
-						<p class="p-card-dashboard">vos informations personnelles Lorem ipsum dolor sit amet consectetur
-																					                            adipisicing elit. Aspernatur officiis</p>
-					</div>
-				</a>
-			</div>
-			<div class="card-dashboard">
-				<a href="{{ path('userFavoris') }}">
-					<div class="img-dashboard">
-						<img src="{{ asset('/media/icon/coeur.svg') }}" alt="compte">
-
-					</div>
-					<div class="content-dashboard">
-						<div class="title">
-							<a href="{{ path('userFavoris') }}"><p>Favoris</p></a>
+						<div class="content-dashboard">
+							<div class="title">
+								<a href="{{ path('userProfil') }}">
+									<p>Compte</p>
+								</a>
+							</div>
+							<p class="p-card-dashboard">vos informations personnelles Lorem ipsum dolor sit amet consectetur
+																													                            adipisicing elit. Aspernatur officiis</p>
 						</div>
-						<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
-																					                            adipisicing elit. Aspernatur officiis</p>
-					</div>
-				</a>
-			</div>
-			<div class="card-dashboard">
-				<a href="../view/rental.html">
-					<div class="img-dashboard">
-						<img src="{{ asset('/media/icon/messenger.svg') }}" alt="compte">
+					</a>
+				</div>
+				<div class="card-dashboard">
+					<a href="{{ path('userFavoris') }}">
+						<div class="img-dashboard">
+							<img src="{{ asset('/media/icon/coeur.svg') }}" alt="compte">
 
-					</div>
-					<div class="content-dashboard">
-						<div class="title">
-							<a href="{{ path('userReservations') }}"><p>Reservation</p></a>
 						</div>
-						<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
-																					                            adipisicing elit. Aspernatur officiis</p>
-					</div>
-				</a>
-			</div>
-			<div class="card-dashboard">
-				<a href="#">
-					<div class="img-dashboard">
-						<img src="{{ asset('/media/icon/user.svg') }}" alt="compte">
-					</div>
-					<div class="content-dashboard">
-						<div class="title">
-							<p>Propriétés</p>
+						<div class="content-dashboard">
+							<div class="title">
+								<a href="{{ path('userFavoris') }}">
+									<p>Favoris</p>
+								</a>
+							</div>
+							<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
+																													                            adipisicing elit. Aspernatur officiis</p>
 						</div>
-						<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
-																					                            adipisicing elit. Aspernatur officiis</p>
-					</div>
-				</a>
-			</div>
-			<div class="card-dashboard">
-				<a href="{{ path('userMessagerie') }}"> 
-					<div class="img-dashboard">
-						<img src="{{ asset('/media/icon/messenger.svg') }}" alt="compte">
+					</a>
+				</div>
+				<div class="card-dashboard">
+					<a href="../view/rental.html">
+						<div class="img-dashboard">
+							<img src="{{ asset('/media/icon/messenger.svg') }}" alt="compte">
 
-
-					</div>
-					<div class="content-dashboard">
-						<div class="title">
-							<p>Messageries</p>
 						</div>
-						<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
-																					                            adipisicing elit. Aspernatur officiis</p>
-					</div>
-				</a>
-			</div>
-			<div class="card-dashboard">
-				<a href="">
-					<div class="img-dashboard">
-						<img src="{{ asset('/media/icon/coeur.svg') }}" alt="compte">
-
-					</div>
-					<div class="content-dashboard">
-						<div class="title">
-							<p>(Vide)</p>
+						<div class="content-dashboard">
+							<div class="title">
+								<a href="{{ path('userReservations') }}">
+									<p>Reservation</p>
+								</a>
+							</div>
+							<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
+																													                            adipisicing elit. Aspernatur officiis</p>
 						</div>
-						<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur officiis</p>
-					</div>
-				</a>
+					</a>
+				</div>
+				<div class="card-dashboard">
+					<a href="#">
+						<div class="img-dashboard">
+							<img src="{{ asset('/media/icon/user.svg') }}" alt="compte">
+						</div>
+						<div class="content-dashboard">
+							<div class="title">
+								<p>Propriétés</p>
+							</div>
+							<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
+																													                            adipisicing elit. Aspernatur officiis</p>
+						</div>
+					</a>
+				</div>
+				<div class="card-dashboard">
+					<a href="{{ path('userMessagerie') }}">
+						<div class="img-dashboard">
+							<img src="{{ asset('/media/icon/messenger.svg') }}" alt="compte">
+
+
+						</div>
+						<div class="content-dashboard">
+							<div class="title">
+								<p>Messageries</p>
+							</div>
+							<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur
+																													                            adipisicing elit. Aspernatur officiis</p>
+						</div>
+					</a>
+				</div>
+				<div class="card-dashboard">
+					<a href="">
+						<div class="img-dashboard">
+							<img src="{{ asset('/media/icon/coeur.svg') }}" alt="compte">
+
+						</div>
+						<div class="content-dashboard">
+							<div class="title">
+								<p>(Vide)</p>
+							</div>
+							<p class="p-card-dashboard">vos information personnelle Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur officiis</p>
+						</div>
+					</a>
+				</div>
 			</div>
-		</div>
 
-	</section>
+		</section>
 
-{% endblock %}
+
+	{% endblock %}
