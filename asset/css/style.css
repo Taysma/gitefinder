@@ -1619,7 +1619,6 @@ body .addrental .form-cart {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #1FAB71;
 }
 body .addrental .form-cart h2 {
   font-size: 1.2rem;
@@ -1673,7 +1672,7 @@ body .addrental .form-cart .profil-information .name-lastname .file {
   padding: 10px;
 }
 body .addrental .form-cart .profil-information .name-lastname .latitude-logitude {
-  overflow: hidden;
+  visibility: hidden;
 }
 body .addrental .form-cart .profil-information #save-changes-btn {
   width: -moz-fit-content;

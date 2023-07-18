@@ -2079,7 +2079,7 @@ body {
             width: 100%;
             display: flex;
             justify-content: center;
-            background-color: #1FAB71;
+            // background-color: #1FAB71;
 
             h2 {
                 font-size: 1.2rem;
@@ -2137,7 +2137,8 @@ body {
                     }
 
                     .latitude-logitude {
-                        overflow: hidden;
+                        visibility: hidden;
+
                     }
 
                 }
