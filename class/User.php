@@ -7,6 +7,7 @@ class User {
     private $mail;
     private $birthdate;
     private $password;
+    private $phone;
     private $content;
     private $roles;
 
@@ -49,6 +50,10 @@ class User {
         return $this->password;
     } 
 
+    public function getPhone(){
+        return $this->phone;
+    } 
+
     public function getContent(){
         return $this->content;
     }
@@ -80,6 +85,10 @@ class User {
 
     public function setPassword(String $password){
         $this->password=$password;
+    } 
+
+    public function setPhone(int $phone){
+        $this->phone=$phone;
     } 
 
     public function setContent($content){

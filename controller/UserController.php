@@ -99,6 +99,42 @@ class UserController extends Controller
         echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
+    public function userProfilUpdate(){
+
+        if (!$_POST) {
+            echo self::getRender('homepage.html.twig', []);
+        } else {
+
+            global $router;
+            $model = new UserModel();
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $firstname = $_SESSION['firstname'];
+                $lastname = $_SESSION['lastname'];
+                $mail = filter_var($_SESSION["mail"]);
+                $birthdate = $_SESSION['birthdate'];
+                $rawPass = $_SESSION['password'];
+                $password = password_hash($rawPass, PASSWORD_DEFAULT);
+                $phone = $_SESSION['phone'];
+
+                $user = new User([
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'mail' => $mail,
+                    'birthdate' => $birthdate,
+                    'password' => $password,
+                    'phone' => $phone,
+
+                ]);
+
+                $model->updateUser();
+                header('Location: ' . $router->generate('userProfilUpdate'));
+            } else {
+                echo self::getRender('homepage.html.twig', []);
+            }
+        }
+    }
+
     public function getUserFavoris()
     {
         $wishlistmodel = new WishlistModel();
