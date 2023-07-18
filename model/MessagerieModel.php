@@ -26,18 +26,9 @@ class MessagerieModel extends Model
     public function readMessage(Chat $chat)
     {
         $id_chat = $chat->getId_chat();
-        $id_user = $chat->getId_user();
-        $id_rental = $chat->getId_rental();
-        $content = $chat->getContent();
-        $send_at = $chat->getSendAt();
 
         $req = $this->getDb()->prepare("SELECT `id_chat`, `id_user`, `id_rental`, `content`, `send_at` FROM `chat` WHERE `id_chat` = :id_chat");
-
         $req->bindParam(":id_chat", $id_chat, PDO::PARAM_INT);
-        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
-        $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
-        $req->bindParam(":content", $content, PDO::PARAM_STR);
-        $req->bindParam(":send_at", $send_at, PDO::PARAM_STR);
 
         $req->execute();
     }

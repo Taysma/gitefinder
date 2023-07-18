@@ -105,10 +105,10 @@ class UserController extends Controller
         echo self::getRender('favoris.html.twig', ['wishlist' => $favoris, 'rentals' => $rentals]);
     }
 
-    // public function getUserChat()
+    // public function getUserMessagerie($chat)
     // {
     //     $model = new MessagerieModel();
-    //     $chat = $model->readMessage();
+    //     $chat = $model->readMessage($chat);
 
     //     echo self::getRender('messenger.html.twig', ['chat' => $chat]);
     // }
