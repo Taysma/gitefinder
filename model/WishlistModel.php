@@ -1,14 +1,12 @@
 <?php
 class WishlistModel extends Model {
     public function createWishlist(wishlist $wishlist){
-        $id_wishlist = $wishlist->getId_wishlist();
         $id_user = $wishlist->getId_user();
         $id_rental = $wishlist->getId_rental();
 
 
-        $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_wishlist`, `id_user`, `id_rental`) VALUES (:id_wishlist, :id_user, :id_rental)");
+        $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_user`, `id_rental`) VALUES (:id_wishlist, :id_user, :id_rental)");
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
-        $req->bindParam(":id_wishlist", $id_wishlist, PDO::PARAM_INT);
         $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
 
         $req->execute();

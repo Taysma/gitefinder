@@ -28,6 +28,8 @@ $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'user
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 
+
+
 // $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
 
 // NEWSLETTER
