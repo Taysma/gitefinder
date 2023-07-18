@@ -1,16 +1,13 @@
 <?php
 class UserModel extends Model {
 
-    public function createUser ($user){
+    public function createUser (User $user){
     
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
         $mail = $user->getMail();
         $birthdate = $user->getBirthdate();
         $password = $user->getPassword();
-        
-        
-        
 
         $req = $this->getDb()->prepare("INSERT INTO `user` ( `firstname`, `lastname`, `mail`, `birthdate`, `password`) VALUES (:firstname, :lastname, :mail, :birthdate, :password)");
         $req->bindParam(":firstname", $firstname, PDO::PARAM_STR);
@@ -18,12 +15,8 @@ class UserModel extends Model {
         $req->bindParam(":mail", $mail, PDO::PARAM_STR);
         $req->bindParam(":birthdate", $birthdate, PDO::PARAM_STR);
         $req->bindParam(":password", $password, PDO::PARAM_STR);
-        
-        
 
         $req->execute();
-
-        
     }
 
     public function getUserByEmail(string $mail){
@@ -32,19 +25,6 @@ class UserModel extends Model {
         $req->execute();
 
         return $req->rowCount() === 1 ? new User($req->fetch(PDO::FETCH_ASSOC)) : false;
-    }
-
-    public function getAllUsers(){
-        $users = [];
-
-        $req = $this->getDb()->query('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles` FROM `user`');
-
-        while ($user = $req->fetch(PDO::FETCH_ASSOC)) {
-            $users[] = new User($user);
-        }
-
-        
-        return $users;
     }
 
     public function getUserById(int $id_user){

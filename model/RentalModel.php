@@ -50,8 +50,9 @@ class RentalModel extends Model
         $address = $rental->getAddress();
         $content = $rental->getContent();
         $country = $rental->getCountry();
+        $price = $rental->getPrice();
 
-        $req = $this->getDb()->prepare('INSERT INTO `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content`, `country` ) VALUES (:id_rental, :id_user, :title, :capacity, :surface_area, :city, :address, :content, :country )');
+        $req = $this->getDb()->prepare('INSERT INTO `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content`, `country`, `price`) VALUES (:id_rental, :id_user, :title, :capacity, :surface_area, :city, :address, :content, :country, :price )');
 
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
@@ -61,6 +62,7 @@ class RentalModel extends Model
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);
         $req->bindParam(':country', $country, PDO::PARAM_STR);
+        $req->bindParam(':price', $price, PDO::PARAM_INT);
 
         $req->execute();
     }
@@ -75,8 +77,9 @@ class RentalModel extends Model
         $address = $rental->getAddress();
         $content = $rental->getContent();
         $country = $rental->getCountry();
+        $price = $rental->getPrice();
 
-        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area, `city` = :city, `address` = :address,`content` = :content, `country` = :country WHERE `id_rental` = :id');
+        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area, `city` = :city, `address` = :address,`content` = :content, `country` = :country, , `price` = :price WHERE `id_rental` = :id');
 
         $req->bindParam(':id', $id_rental, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
@@ -86,7 +89,7 @@ class RentalModel extends Model
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);
         $req->bindParam(':country', $country, PDO::PARAM_STR);
-
+        $req->bindParam(':price', $price, PDO::PARAM_INT);
 
         $req->execute();
     }
