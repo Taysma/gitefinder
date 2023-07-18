@@ -55,8 +55,23 @@
 				</div>
 			{% else %}
 				<div class="menu-burger-header">
-					<a href="{{ path('dashboard') }}"><img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger"></a>
+					<img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger">
 					<a href="{{ path('login') }}"><img class="img-burger border-user" src="{{ asset('/media/icon/user-solid.svg') }}" alt="Connexion et inscription"></a>
+					<div id="burger-menu-modal">
+						<ul>
+							<div class="loginRegister">
+								<li>
+									<a href="{{path('login')}}">Login</a>
+								</li>
+								<li>
+									<a href="{{path('register')}}">s'inscrire</a>
+								</li>
+							</div>
+							<li>
+								<a href="/page3">Page 3</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 
 			{% endif %}
