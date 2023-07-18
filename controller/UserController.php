@@ -101,20 +101,17 @@ class UserController extends Controller
         $favoris = $wishlistmodel->getAllWishlist();
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
-        
-        // var_dump($favoris);
-        // var_dump($rentals);
 
-        echo self::getRender('favoris.html.twig', ['wishlist' => $favoris]);
+        echo self::getRender('favoris.html.twig', ['wishlist' => $favoris, 'rentals' => $rentals]);
     }
 
-    public function getUserChat()
-    {
-        $model = new MessagerieModel();
-        $chat = $model->readMessage();
+    // public function getUserChat()
+    // {
+    //     $model = new MessagerieModel();
+    //     $chat = $model->readMessage();
 
-        echo self::getRender('messenger.html.twig', ['chat' => $chat]);
-    }
+    //     echo self::getRender('messenger.html.twig', ['chat' => $chat]);
+    // }
 
     public function getUserReservation()
     {
