@@ -34,9 +34,7 @@ class  Picture{
     }
 
 
-
     //SETTERS
-
     public function setId_picture(int $id_picture){
         $this->id_picture=$id_picture;
     }
@@ -48,6 +46,4 @@ class  Picture{
     public function setTitle(String $title){
         $this->title=$title;
     }
-
-    
 }

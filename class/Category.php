@@ -39,26 +39,20 @@ class Category {
     }
 
 
-
     //SETTERS
-
-    public function setId(int $id_category){
-        $this->id_category=$id_category;
+    public function setId_category(int $id_category){
+        $this->id_category = $id_category;
     }
 
     public function setTag(String $tag){
-        $this->tag=$tag;
+        $this->tag = $tag;
     }
 
-    
-
     public function setName(String $name){
-        $this->name=$name;
+        $this->name = $name;
     }
 
     public function setSlug(String $slug){
-        $this->slug=$slug;
+        $this->slug = $slug;
     }
-
-   
 }

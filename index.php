@@ -6,12 +6,11 @@ require_once './vendor/autoload.php';
 $router = new AltoRouter();
 $router->setBasePath('/projets/gitefinder');
 
-
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
 $router->map('GET', '/category/', '', 'baseCats');
-$router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
+$router->map('GET', '/category/[i:id_category]', 'CategoryController#getOne', '');
 
 // CONNECTION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
