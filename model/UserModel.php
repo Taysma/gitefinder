@@ -57,6 +57,21 @@ class UserModel extends Model {
         return $user;
     }
 
+    public function getUserRentals(int $id_user)
+    {
+        $rentals = [];
+
+        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`,`rental`.`country`, `user`.`id_user`, `user`.`firstname`, `user`.`lastname`, `user`.`mail`, `user`.`birthdate`, `user`.`password`, `user`.`content`, `user`.`roles` FROM `rental` INNER JOIN `user` ON `rental`.`id_user` = `user`.`id_user` WHERE `rental`.`id_user` = :id');
+        $req->bindParam(':id', $id_user, PDO::PARAM_INT);
+        $req->execute();
+
+        while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rentals[] = new Rental($rental);
+        }
+
+        return $rentals;
+    }
+
     public function updateUser(User $user){
         $id_user = $user->getId_user();
         $firstname = $user->getFirstname();
@@ -130,7 +145,4 @@ class UserModel extends Model {
             throw $e;  // or handle it in another way depending on your needs
         }
     }
-
-    
-
 }

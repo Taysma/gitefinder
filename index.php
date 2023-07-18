@@ -44,7 +44,7 @@ $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie',
 // USER - RESERVATION
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 // USER - PROPRIETE
-$router->map('GET', '/dashboard/propriete', 'UserController#getUserRental', 'userRental');
+$router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
 
 
 // // SEARCH
