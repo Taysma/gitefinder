@@ -318,12 +318,12 @@ body header .header-limit-size .burger-profil {
   align-items: center;
   justify-content: space-evenly;
 }
-body header .header-limit-size .burger-profil .raise:hover,
-body header .header-limit-size .burger-profil .raise:focus {
+body header .header-limit-size .raise:hover,
+body header .header-limit-size .raise:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.01em);
 }
-body header .header-limit-size .burger-profil .menu-burger-header {
+body header .header-limit-size .menu-burger-header {
   width: auto;
   height: auto;
   display: flex;
@@ -348,25 +348,24 @@ body header .header-limit-size .burger-profil .menu-burger-header {
             clip-path: inset(0 0 0 0);
   }
 }
-body header .header-limit-size .burger-profil .menu-burger-header:hover {
+body header .header-limit-size .menu-burger-header:hover {
   box-shadow: none;
 }
 @media screen and (max-width: 768px) {
-  body header .header-limit-size .burger-profil .menu-burger-header {
+  body header .header-limit-size .menu-burger-header {
     border: none;
     box-shadow: none;
   }
 }
-body header .header-limit-size .burger-profil .menu-burger-header .img-burger {
-  width: 19px;
-  height: 32px;
+body header .header-limit-size .menu-burger-header .img-burger {
+  height: 28px;
 }
 @media screen and (max-width: 768px) {
-  body header .header-limit-size .burger-profil .menu-burger-header .img-burger {
+  body header .header-limit-size .menu-burger-header .img-burger {
     width: 100%;
   }
 }
-body header .header-limit-size .burger-profil .menu-burger-header .border-user {
+body header .header-limit-size .menu-burger-header .border-user {
   width: 40px;
   height: 40px;
   margin-left: 10px;
@@ -376,18 +375,18 @@ body header .header-limit-size .burger-profil .menu-burger-header .border-user {
   border-radius: 99px;
 }
 @media screen and (max-width: 768px) {
-  body header .header-limit-size .burger-profil .menu-burger-header .border-user {
+  body header .header-limit-size .menu-burger-header .border-user {
     display: none;
   }
 }
-body header .header-limit-size .burger-profil .img-username {
+body header .header-limit-size .img-username {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   padding: 5px;
 }
-body header .header-limit-size .burger-profil .img-username .img-profile {
+body header .header-limit-size .img-username .img-profile {
   width: 50px;
   height: 50px;
   border-radius: 999px;
@@ -395,7 +394,7 @@ body header .header-limit-size .burger-profil .img-username .img-profile {
   background-color: rgba(168, 176, 183, 0.6588235294);
   z-index: 1;
 }
-body header .header-limit-size .burger-profil .img-username .img-profile img {
+body header .header-limit-size .img-username .img-profile img {
   width: 50px;
   height: 50px;
   border-radius: 999px;
@@ -1922,7 +1921,7 @@ body footer .footer-container .footer-limit-size .footer-container-help {
   align-items: center;
   display: flex;
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1350px) {
   body footer .footer-container .footer-limit-size .footer-container-help {
     flex-wrap: wrap;
     justify-content: center;
