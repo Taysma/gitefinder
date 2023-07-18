@@ -38,9 +38,6 @@
 
 			{% if session.connect %}
 				<div class="burger-profil">
-					<div class="menu-burger-header raise">
-						<a href="{{ path('dashboard') }}"><img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger"></a>
-					</div>
 					<div class="img-username">
 						<div class="img-profile">
 							<a href="{{ path('userProfil') }}">
@@ -48,15 +45,10 @@
 						</div>
 						<span>{{ session.firstname }}</span>
 					</div>
+					<div class="menu-burger-header raise">
+						<img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger">
 
-					<a href="{{ path('logout') }}">
-						<svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewbox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#FF385C" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
-					</a>
-				</div>
-			{% else %}
-				<div class="menu-burger-header">
-					<img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger">
-					<a href="{{ path('login') }}"><img class="img-burger border-user" src="{{ asset('/media/icon/user-solid.svg') }}" alt="Connexion et inscription"></a>
+					</div>
 					<div id="burger-menu-modal">
 						<ul>
 							<div class="loginRegister">
@@ -68,11 +60,30 @@
 								</li>
 							</div>
 							<li>
-								<a href="/page3">Page 3</a>
+								<a href="/">dashboard</a>
+							</li>
+							<li>
+								<a href="/">Favoris</a>
+							</li>
+							<li>
+								<a href="/">Réservation</a>
 							</li>
 						</ul>
 					</div>
+
+
+					<a href="{{ path('logout') }}">
+						<svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewbox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#FF385C" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+					</a>
 				</div>
+
+			{% else %}
+				<div
+					class="menu-burger-header">
+					{# <img class="img-burger" src="{{ asset('/media/icon/bars-solid.svg') }}" alt="menu burger"> #}
+					<a href="{{ path('login') }}"><img class="img-burger border-user" src="{{ asset('/media/icon/user-solid.svg') }}" alt="Connexion et inscription"></a>
+				</div>
+
 
 			{% endif %}
 

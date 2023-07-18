@@ -404,18 +404,19 @@ body header .header-limit-size .img-username .img-profile img {
   height: 100%;
 }
 body header #burger-menu-modal {
-  display: block;
+  display: none;
   width: 100%;
   max-width: 200px;
   height: 100px;
-  top: 80px;
+  top: 100px;
   box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.204);
   padding: 10px;
   position: absolute;
+  z-index: 999;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   text-align: center;
-  background-color: #db1111;
+  background-color: #ffffff;
 }
 body header #burger-menu-modal .loginRegister {
   display: flex;
@@ -1275,44 +1276,45 @@ body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .
 body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit-delete .btn-delete {
   background-color: #FF385C;
 }
-body .profil .container-profil .profil-information {
+body .profil .container-profil form.profil-information {
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
   flex-direction: column;
   margin: auto;
 }
-body .profil .container-profil .profil-information .name-lastname {
+body .profil .container-profil form.profil-information .name-lastname {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
 }
-body .profil .container-profil .profil-information .name-lastname #span-information {
+body .profil .container-profil form.profil-information .name-lastname label {
   font-size: 1.3rem;
 }
-body .profil .container-profil .profil-information .name-lastname .input-btn {
+body .profil .container-profil form.profil-information .name-lastname input {
   display: flex;
   justify-content: center;
   margin: 10px auto;
-}
-@media screen and (max-width: 750px) {
-  body .profil .container-profil .profil-information .name-lastname .input-btn {
-    flex-direction: column;
-  }
-}
-body .profil .container-profil .profil-information .name-lastname .input-btn #input-profil {
   width: 300px;
-  margin: auto 10px;
   height: 40px;
   border: 1px solid #191825;
   border-radius: 7px;
 }
-body .profil .container-profil .profil-information .name-lastname .input-btn #input-profil:focus {
+body .profil .container-profil form.profil-information .name-lastname input:focus {
   border: 5px solid #007bff;
 }
-body .profil .container-profil .profil-information .name-lastname .input-btn #edit {
+@media screen and (max-width: 750px) {
+  body .profil .container-profil form.profil-information .name-lastname input {
+    margin: auto;
+  }
+}
+body .profil .container-profil form.profil-information .name-lastname .file {
+  border: none;
+  padding: 10px;
+}
+body .profil .container-profil form.profil-information #save-changes-btn {
   width: -moz-fit-content;
   width: fit-content;
   background-color: #007bff;
