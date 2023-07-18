@@ -14,7 +14,10 @@ $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
 // ARTICLE - POST
 $router->map('GET', '/rental/', '', 'baseRental');
-$router->map('GET', '/rental/[i:id_rental]/[i:id_user]', 'HomeController#getOne', 'article');
+$router->map('GET', '/rental/[i:id_rental]', 'RentalController#getOne', 'article');
+$router->map('GET|POST', '/nouveau', 'RentalController#createPost', 'addPost');
+$router->map('GET|POST', '/post/edit/[i:id]', 'RentalController#edit', 'updatePost');
+$router->map('POST|DELETE', '/post/delete/[i:id]', 'RentalController#delete', 'deletePost');
 
 // CONNECTION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
@@ -30,11 +33,6 @@ $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'user
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 // $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
-
-// CRUD Article
-$router->map('GET|POST', '/newpost', 'RentalController#createPost', 'addPost');
-$router->map('GET|POST', '/post/edit/[i:id]', 'RentalController#edit', 'editPost');
-$router->map('POST|DELETE', '/post/delete/[i:id]', 'RentalController#delete', 'deletePost');
 
 // NEWSLETTER
 $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
