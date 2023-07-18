@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulaire d'ajout de location</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <div class="header-limit-size">
+            <div class="logo">
+                <a href="">
+                    <h1>GiteFinder</h1>
+                </a>
+            </div>
+            <div class="button-search">
+                <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="Search in GiteFinder">
+            </div>
+            <!-- search bar -->
+            <form action="#" method="post" class="search-bar-form">
+                <div class="search-bar ">
+
+                    <input type=" text" id="location-input" placeholder="Location">
+                    <div class="date-inputs">
+                        <input type="text" name="dateArrivee" id="dateArrivee" placeholder="Date d'arrivée" required />
+                        <input type="text" name="dateDepart" id="dateDepart" placeholder="Date de départ" required />
+                        <div id='calendar'></div>
+                    </div>
+
+                    <select id="guests-input">
+                        <option value="1">1 Personne</option>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes</option>
+                        <option value="5">5 Personnes</option>
+                        <option value="6">6 Personnes</option>
+                        <option value="7">7 Personnes</option>
+                        <option value="8">8 Personnes</option>
+                    </select>
+                    <button type="submit" id="search-button">Search</button>
+
+                </div>
+            </form>
+
+            <div class="menu-burger-header">
+                <a href="#">
+                    <img class="img-burger" src="../asset/media/icon/bars-solid.svg" alt="Connexion et inscription">
+                    <img class="img-burger border-user" src="../asset/media/icon/user-solid.svg" alt="menu burger">
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- addrental -->
+    <section class="addrental">
+        <nav class="breadcrumb" aria-label="breadcrumb">
+            <ol class="ol-breadcrumb">
+                <li class="breadcrumb-item"><a href="../view/dashboard.html">Dashboard</a></li>
+                <img src="../asset/media/icon/fleche.svg" alt="fleche">
+                <li class="breadcrumb-item active" aria-current="page">Propriete</li>
+            </ol>
+        </nav>
+        <div class="form-cart">
+
+            <form action="" method="post" class="profil-information">
+                <h2>Formulaire d'ajout de location</h2>
+                <div class="name-lastname">
+                    <div class="label-input">
+                        <div class="name">
+                            <label for="title">Nom de la location:</label>
+                            <input type="text" id="name" name="title" value="">
+                        </div>
+                        <div class="address">
+                            <label for="address">Adresse:</label>
+                            <input type="text" id="address" name="address" value="">
+                        </div>
+                    </div>
+                    <div class="label-input">
+                        <div class="name">
+                            <label for="city">ville:</label>
+                            <input type="text" id="city" name="city" value="">
+                        </div>
+                        <div class="address">
+                            <label for="country">pays:</label>
+                            <input type="text" id="country" name="country" value="">
+                        </div>
+                    </div>
+
+                    <label for="price">Prix:</label>
+                    <input type="text" id="price" name="price" value="">
+                    <div class="latitude-logitude">
+                        <label for="latitude"></label>
+                        <input type="text" id="latitude" name="latitude" value="">
+                        <label for="longitude">Prix:</label>
+                        <input type="text" id="longitude" name="longitude" value="">
+                    </div>
+
+                    <label for="content">Description:</label>
+                    <textarea id="description" name="content"></textarea>
+                    <label for="image">photos du bien</label>
+                    <input type="file" id="image" name="image" value="" class="file">
+                </div>
+                <input type="submit" value="Ajouter la location" id="save-changes-btn">
+            </form>
+
+            <div class="cart">
+
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
