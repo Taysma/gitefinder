@@ -9,7 +9,7 @@ $router->setBasePath('/projets/gitefinder');
 // HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');
 
-$router->map('GET','/category/','','baseCats');
+$router->map('GET', '/category/', '', 'baseCats');
 $router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
 
 // ARTICLE - POST
@@ -44,7 +44,7 @@ $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter'
 $match = $router->match();
 // var_dump($match);
 
- if (is_array($match)) {
+if (is_array($match)) {
     list($controller, $action) = explode('#', $match['target']);
     $obj = new $controller();
 

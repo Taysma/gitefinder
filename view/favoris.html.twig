@@ -19,7 +19,7 @@
 				<li class="breadcrumb-item">
 					<a href="{{ path('dashboard') }}">Dashboard</a>
 				</li>
-				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
+				<span>></span>
 				<li class="breadcrumb-item active" aria-current="page">Favoris</li>
 			</ol>
 		</nav>
@@ -33,9 +33,7 @@
 								<div class="img-card">
 									<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
 
-										<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
-
-
+										<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
 									</a>
 								</div>
 								<div class="content-card">
