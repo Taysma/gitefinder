@@ -6,25 +6,18 @@ class HomeController extends Controller
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
        
-     
         echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
     }
 
     public function addSubscribes(){
+        
         global $router;
         $model = new NewsletterModel();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $mail = $_POST['mail'];
-            
-            
-            $subscribe = new Newsletter([
-                
-                'mail' => $mail,
-                
-                
-            ]);
+            $subscribe = new Newsletter([ 'mail' => $mail ]);
 
             $model->createNewSubscribe($subscribe);
             header('Location: ' . $router->generate('home'));
@@ -32,17 +25,5 @@ class HomeController extends Controller
             echo self::getRender('homepage.html.twig', []);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

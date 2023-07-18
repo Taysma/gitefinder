@@ -1,7 +1,6 @@
 <?php
 class UserController extends Controller
 {
-
     // Connection utilisateur
     public function register()
     {
@@ -95,15 +94,17 @@ class UserController extends Controller
         echo self::getRender('profil.html.twig', []);
     }
 
-    public function getUserFavoris()
+    public function getUserWishlist($id)
     {
-        $wishlistmodel = new WishlistModel();
-        $favoris = $wishlistmodel->getAllWishlist();
-        $rentalModel = new RentalModel();
-        $rentals = $rentalModel->getAllRentals();
+        // $wishlistmodel = new WishlistModel();
+        // $favoris = $wishlistmodel->getWish($id);
 
-        echo self::getRender('favoris.html.twig', ['wishlist' => $favoris, 'rentals' => $rentals]);
+        echo self::getRender('favoris.html.twig', []);
     }
+
+    public function addToWishlist(){}
+
+    public function deleteFromWishlist(){}
 
     // public function getUserMessagerie($chat)
     // {
@@ -120,6 +121,6 @@ class UserController extends Controller
 
     public function getUserRental()
     {
-        echo self::getRender('', []);
+        echo self::getRender('.html.twig', []);
     }
 }

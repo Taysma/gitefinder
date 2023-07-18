@@ -18,12 +18,12 @@
 				<div class="card">
 					<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ gite.id }}"></i>
 					<div class="img-card">
-						<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
+						<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
 							<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
 						</a>
 					</div>
 					<div class="txt-card">
-						<a href="{{ path('baseRental') ~ rental.id_rental ~ '/' ~ rental.id_user }}">
+						<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
 							<div class="title-card">
 								<div class="h1-card">
 									<h1>{{ rental.title }}</h1>

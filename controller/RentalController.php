@@ -2,13 +2,13 @@
 class RentalController extends Controller
 {
 
-    public function getOne($id_rental){
+    public function getOne(int $id_rental){
 
         global $router;
         $model = new RentalModel();
-        $article = $model->getOneRental($id_rental);
+        $rental = $model->getOneRental($id_rental);
         $oneRental = $router->generate('baseRental');
-        echo self::getRender('post.html.twig', ['rental' => $article, 'oneRental' => $oneRental]);
+        echo self::getRender('post.html.twig', ['rental' => $rental, 'oneRental' => $oneRental]);
     }
 
     public function retrieveLastAdditions()
