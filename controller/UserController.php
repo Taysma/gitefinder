@@ -90,9 +90,13 @@ class UserController extends Controller
         }
     }
 
-    public function getUserProfil()
-    {
-        echo self::getRender('profil.html.twig', []);
+    public function getUserProfil(){
+
+        $userModel = new UserModel();
+        $personnalData = $userModel->getUserById();
+        
+        var_dump($personnalData);
+        echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
     public function getUserFavoris()
