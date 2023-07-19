@@ -3,6 +3,7 @@
     "@fullcalendar/core": "^6.1.8",
     "@fullcalendar/daygrid": "^6.1.8",
     "@fullcalendar/interaction": "^6.1.8",
-    "fullcalendar": "^6.1.8"
+    "fullcalendar": "^6.1.8",
+    "places.js": "^1.19.0"
   }
 }

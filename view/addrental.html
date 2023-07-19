@@ -4,8 +4,12 @@
 <head>
     <title>Formulaire d'ajout de location</title>
     <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/places@1.19.1/dist/cdn/places.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/places.js@1.19.0/dist/cdn/places.min.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
 </head>
 
 <body>
@@ -107,6 +111,9 @@
             </form>
 
             <div class="cart">
+                <input type="search" id="address-input" placeholder="Where are we going?" />
+
+
                 <div id="mapid"></div>
 
 
@@ -120,6 +127,13 @@
             maxZoom: 19,
         }).addTo(map);
     </script>
+    <script>
+        var places = require('places.js');
+        var placesAutocomplete = places({
+            appId: '8L7OTUZD07',
+            apiKey: '3175c8fe2be26794e9b318ff908bf3ba',
+            container: document.querySelector('#address-input')
+        });</script>
 </body>
 
 </html>
