@@ -33,7 +33,7 @@ $router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', '');
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
 // USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
-$router->map('GET', '/dashboard/profil/update', 'UserController#userProfilUpdate', 'userProfilUpdate');
+$router->map('GET|POST', '/dashboard/profil/update', 'UserController#userProfilUpdate', 'userProfilUpdate');
 $router->map('GET', '/dashboard/profil/delete', 'UserController#userProfilDelete', 'userProfilDelete');
 // USER - PROPRIETE
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');

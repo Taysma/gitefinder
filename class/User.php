@@ -10,6 +10,8 @@ class User {
     private $phone;
     private $content;
     private $roles;
+    private $avatar;
+
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -62,6 +64,10 @@ class User {
         return $this->roles;
     }
 
+    public function getAvatar(){
+        return $this->avatar;
+    }
+
     //SETTERS
     public function setId_user(int $id_user){
         $this->id_user=$id_user;
@@ -97,5 +103,9 @@ class User {
 
     public function setRoles($roles){
         $this->roles=$roles;
+    }
+
+    public function setAvatar(String $avatar){
+        $this->avatar=$avatar;
     }
 }

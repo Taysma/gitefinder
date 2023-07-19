@@ -2,8 +2,9 @@
 class UserModel extends Model
 {
 
-    public function createUser (User $user){
-    
+    public function createUser(User $user)
+    {
+
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
         $mail = $user->getMail();
@@ -22,7 +23,7 @@ class UserModel extends Model
 
     public function getUserByEmail(string $mail)
     {
-        $req = $this->getDb()->prepare("SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles` FROM `user` WHERE `mail` = :mail");
+        $req = $this->getDb()->prepare("SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles`, `avatar` FROM `user` WHERE `mail` = :mail");
         $req->bindParam(":mail", $mail, PDO::PARAM_STR);
         $req->execute();
 
@@ -32,7 +33,7 @@ class UserModel extends Model
     public function getUserById()
     {
         $id_user = $_SESSION['id_user'];
-        $req = $this->getDb()->prepare('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `phone`,`content`, `roles` FROM `user` WHERE `id_user` = :id');
+        $req = $this->getDb()->prepare('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `phone`,`content`, `roles`, `avatar` FROM `user` WHERE `id_user` = :id');
         $req->bindParam('id', $id_user, PDO::PARAM_INT);
         $req->execute();
 
@@ -41,20 +42,7 @@ class UserModel extends Model
         return $user;
     }
 
-    public function getUserRentals(int $id_user)
-    {
-        $rentals = [];
 
-        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`,`rental`.`country`, `user`.`id_user`, `user`.`firstname`, `user`.`lastname`, `user`.`mail`, `user`.`birthdate`, `user`.`password`, `user`.`content`, `user`.`roles` FROM `rental` INNER JOIN `user` ON `rental`.`id_user` = `user`.`id_user` WHERE `rental`.`id_user` = :id');
-        $req->bindParam(':id', $id_user, PDO::PARAM_INT);
-        $req->execute();
-
-        while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
-            $rentals[] = new Rental($rental);
-        }
-
-        return $rentals;
-    }
 
     public function getUserRentals(int $id_user)
     {
@@ -71,39 +59,26 @@ class UserModel extends Model
         return $rentals;
     }
 
-    public function updateUser()
+    public function updateUser(User $user)
     {
 
         $id_user = $_SESSION['id_user'];
+        $firstname = $user->getFirstname();
+        $lastname = $user->getLastname();
+        $mail = $user->getMail();
+        $phone = $user->getPhone();
 
-        $firstname = $_SESSION['firstname'];
-        $lastname = $_SESSION['lastname'];
-        $mail = $_SESSION['mail'];
-        $birthdate = $_SESSION['birthdate'];
-        $password = $_SESSION['password'];
-        $phone = $_SESSION['phone'];
-        $content = $_SESSION['content'];
-        $roles = $_SESSION['roles'];
-
-        
-
-
-        $req = $this->getDb()->prepare("UPDATE `user` SET `id_user`=:id_user,`firstname`=:firstname,`lastname`=:lastname,`mail`=:mail,`birthdate`=:birthdate,`password`=:password, `phone`=:phone,`content`=:content,`roles`=:roles ");
+        $req = $this->getDb()->prepare("UPDATE `user` SET `firstname`=:firstname, `lastname`=:lastname, `mail`=:mail, `phone`=:phone WHERE `id_user`=:id_user");
 
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
         $req->bindParam(":firstname", $firstname, PDO::PARAM_STR);
         $req->bindParam(":lastname", $lastname, PDO::PARAM_STR);
         $req->bindParam(":mail", $mail, PDO::PARAM_STR);
-        $req->bindParam(":birthdate", $birthdate, PDO::PARAM_STR);
-        $req->bindParam(":password", $password, PDO::PARAM_STR);
         $req->bindParam(":phone", $phone, PDO::PARAM_INT);
-        $req->bindParam(":content", $content, PDO::PARAM_STR);
-        $req->bindParam(":roles", $roles, PDO::PARAM_STR);
-
 
         $req->execute();
 
-        // return $user;
+
     }
 
     public function deleteUser(int $id)

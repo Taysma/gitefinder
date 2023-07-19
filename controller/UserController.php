@@ -106,28 +106,22 @@ class UserController extends Controller
 
             global $router;
             $model = new UserModel();
-
+                var_dump($_POST);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $firstname = $_SESSION['firstname'];
-                $lastname = $_SESSION['lastname'];
-                $mail = filter_var($_SESSION["mail"]);
-                $birthdate = $_SESSION['birthdate'];
-                $rawPass = $_SESSION['password'];
-                $password = password_hash($rawPass, PASSWORD_DEFAULT);
-                $phone = $_SESSION['phone'];
+                $firstname = $_POST['firstname'];
+                $lastname = $_POST['lastname'];
+                $mail = $_POST["mail"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
+                $phone = $_POST['phone'];
 
                 $user = new User([
                     'firstname' => $firstname,
                     'lastname' => $lastname,
                     'mail' => $mail,
-                    'birthdate' => $birthdate,
-                    'password' => $password,
-                    'phone' => $phone,
-
+                    'phone' => $phone
                 ]);
 
-                $model->updateUser();
-                header('Location: ' . $router->generate('userProfilUpdate'));
+                $model->updateUser($user);
+                header('Location: ' . $router->generate('home'));
             } else {
                 echo self::getRender('homepage.html.twig', []);
             }
