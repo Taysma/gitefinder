@@ -1788,6 +1788,12 @@ body .messenger .container-messenger .search-message-contact .card-message .pict
     height: 40px;
   }
 }
+@media screen and (max-width: 500px) {
+  body .messenger .container-messenger .search-message-contact .card-message .picture-username .picture-message {
+    width: 30px;
+    height: 30px;
+  }
+}
 body .messenger .container-messenger .search-message-contact .card-message .picture-username .picture-message .avatar {
   width: 100%;
   height: 100%;
@@ -1801,7 +1807,7 @@ body .messenger .container-messenger .search-message-contact .card-message .user
 body .messenger .container-messenger .search-message-contact .card-message .username span {
   font-size: 1.1rem;
 }
-@media screen and (max-width: 518) {
+@media screen and (max-width: 825px) {
   body .messenger .container-messenger .search-message-contact .card-message .username span {
     font-size: 0.94rem;
   }
@@ -1826,6 +1832,19 @@ body .messenger .container-messenger .search-message-contact .card-message .onli
   height: 10px;
   background-color: green;
 }
+body .messenger .container-messenger .search-message-contact .card-message .online-time .stat-time .time {
+  font-size: 1rem;
+}
+@media screen and (max-width: 825px) {
+  body .messenger .container-messenger .search-message-contact .card-message .online-time .stat-time .time {
+    font-size: 0.94rem;
+  }
+}
+@media screen and (max-width: 605px) {
+  body .messenger .container-messenger .search-message-contact .card-message .online-time .stat-time .time {
+    font-size: 0.7rem;
+  }
+}
 body .messenger .container-messenger .user-online-send-messages {
   width: 100%;
   height: 100%;
@@ -1834,6 +1853,7 @@ body .messenger .container-messenger .user-online-send-messages {
 body .messenger .container-messenger .user-online-send-messages .container-online-user {
   width: 100%;
   height: 100px;
+  display: flex;
   padding: 0px 20px;
   border: 1px solid rgba(128, 128, 128, 0.207);
   box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
@@ -1849,6 +1869,12 @@ body .messenger .container-messenger .user-online-send-messages .container-onlin
   border-radius: 50%;
   margin: 10px 10px;
 }
+@media screen and (max-width: 500px) {
+  body .messenger .container-messenger .user-online-send-messages .container-online-user .user .avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
 body .messenger .container-messenger .user-online-send-messages .container-online-user .user .avatar img {
   width: 100%;
   height: 100%;
@@ -1857,6 +1883,11 @@ body .messenger .container-messenger .user-online-send-messages .container-onlin
 }
 body .messenger .container-messenger .user-online-send-messages .container-online-user .user .name {
   font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+  body .messenger .container-messenger .user-online-send-messages .container-online-user .user .name {
+    font-size: 0.8rem;
+  }
 }
 body .messenger .container-messenger .user-online-send-messages .container-online-user .user .status {
   width: 10px;
@@ -1885,6 +1916,19 @@ body .messenger .container-messenger .user-online-send-messages .message-contain
   border-radius: 5px;
   margin-bottom: 10px;
   max-width: 500px;
+}
+body .messenger .container-messenger .user-online-send-messages .message-container .message .p-message {
+  font-size: 1rem;
+}
+@media screen and (max-width: 768px) {
+  body .messenger .container-messenger .user-online-send-messages .message-container .message .p-message {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 508px) {
+  body .messenger .container-messenger .user-online-send-messages .message-container .message .p-message {
+    font-size: 0.8rem;
+  }
 }
 body .messenger .container-messenger .user-online-send-messages .message-container .sent {
   background-color: lightblue;
@@ -2001,6 +2045,7 @@ body footer .footer-container {
   }
 }
 body footer .footer-container .footer-limit-size {
+  width: 100%;
   display: flex;
   margin: 0 auto;
 }
