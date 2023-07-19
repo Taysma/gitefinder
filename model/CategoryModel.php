@@ -29,7 +29,7 @@ class CategoryModel extends Model
     public function getRentalsByCategory(int $id_category) {
         $rentals = [];
 
-        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content` 
+        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`, `rental`.`price` 
         FROM `rental` 
         INNER JOIN `rental_category` 
         ON `rental_category`.`id_rental` = `rental`.`id_rental` 
