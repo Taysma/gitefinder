@@ -3,6 +3,7 @@
 {% block title %}Messageries
 {% endblock %}
 
+
 {% block header %}
 	{% include 'header.html.twig'%}
 {% endblock %}
@@ -14,9 +15,9 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="{{ path('dashboard') }}">Dashboard</a>
+					<a href="../view/dashboard.html">Dashboard</a>
 				</li>
-				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
+				<img src="../asset/media/icon/fleche.svg" alt="fleche">
 				<li class="breadcrumb-item active" aria-current="page">Favoris</li>
 			</ol>
 		</nav>
@@ -35,6 +36,7 @@
 					<div class="icon-search">
 						<img src="../asset/media/icon/search-fleche.svg" alt="fleche search">
 					</div>
+
 				</div>
 				<!-- message with contact -->
 				<div class="card-message">
@@ -53,7 +55,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 			<div class="user-online-send-messages">
 				<div class="container-online-user">
@@ -68,27 +70,14 @@
 
 				<div class="message-container">
 					<div class="message sent">
-						<p>hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quam cupiditate
-														                            unde
-														                            reiciendis atque corrupti impedit. Distinctio
+						<p class='p-message'>hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quam cupiditate reiciendis atque corrupti impedit. Distinctio
 						</p>
 					</div>
 					<div class="message received">
-						<p>hey Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis non
-														                            dicta,
-														                            cumque quo doloribus illum exercitationem consequatur maxime sunt, temporibus enim
-														                            consequuntur omnis dignissimos modi, nihil ea deserunt laudantium?</p>
+						<p class='p-message'>hey Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis nondict cumque quo doloribus illum exercitationem consequatur maxime sunt, temporibus consequuntur omnis dignissimos modi, nihil ea deserunt laudantium?</p>
 						<i id="heart" class="heart fa-regular fa-heart"></i>
 					</div>
-					<div class="message sent">
-						<p>ca va ?</p>
-					</div>
-					<div class="message received">
-						<p>oui et toi ?</p>
-					</div>
-					<div class="message sent">
-						<p>ca va...</p>
-					</div>
+
 				</div>
 				<form class="message-form">
 					<div class="file-input-container">
