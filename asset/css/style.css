@@ -1700,7 +1700,6 @@ body .messenger .container-messenger {
   height: 100%;
   display: flex;
   justify-content: center;
-  margin: 50px 0px;
   /* Largeur de la barre de défilement */
   /* Fond de la barre de défilement */
   /* Couleur de la poignée de la barre de défilement */
@@ -1722,7 +1721,7 @@ body .messenger .container-messenger ::-webkit-scrollbar-thumb:hover {
 }
 body .messenger .container-messenger .search-message-contact {
   width: 350px;
-  max-height: 81%;
+  max-height: 84%;
   overflow: scroll;
   overflow-x: hidden;
   border: none;
