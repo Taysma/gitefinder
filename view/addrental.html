@@ -4,6 +4,12 @@
 <head>
     <title>Formulaire d'ajout de location</title>
     <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/places@1.19.1/dist/cdn/places.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/places.js@1.19.0/dist/cdn/places.min.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
 </head>
 
 <body>
@@ -92,7 +98,7 @@
                     <div class="latitude-logitude">
                         <label for="latitude"></label>
                         <input type="text" id="latitude" name="latitude" value="">
-                        <label for="longitude">Prix:</label>
+                        <label for="longitude"></label>
                         <input type="text" id="longitude" name="longitude" value="">
                     </div>
 
@@ -105,11 +111,29 @@
             </form>
 
             <div class="cart">
+                <input type="search" id="address-input" placeholder="Where are we going?" />
+
+
+                <div id="mapid"></div>
 
 
             </div>
         </div>
     </section>
+    <script>
+        var map = L.map('mapid').setView([51.505, -0.09], 13); // Position de départ
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+    </script>
+    <script>
+        var places = require('places.js');
+        var placesAutocomplete = places({
+            appId: '8L7OTUZD07',
+            apiKey: '3175c8fe2be26794e9b318ff908bf3ba',
+            container: document.querySelector('#address-input')
+        });</script>
 </body>
 
 </html>

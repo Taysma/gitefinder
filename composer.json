@@ -5,6 +5,7 @@
     "require": {
         "altorouter/altorouter": "1.1.0",
         "twig/twig":"^3.0",
-        "symfony/asset": "^6.0"
+        "symfony/asset": "^6.0",
+        "algolia/algoliasearch-client-php": "^3.3"
     }
 }

@@ -25,7 +25,8 @@
 					<span>commentaires</span>
 				</div>
 				<div class="location">
-					<span>{{ rental.address }}, {{ rental.city }},{{ rental.country }}</span>
+					<span>{{ rental.address }},
+						{{ rental.city }},{{ rental.country }}</span>
 				</div>
 				<!-- share -->
 				<div class="share">
@@ -49,14 +50,16 @@
 			<div id="sliderContainer">
 				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
 				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
-				<img class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+				<img
+				class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
 			<!-- Ajoutez plus d'images de slider si nécessaire -->
 			</div>
 		</div>
 
 		<!-- profil-content-reservation-map -->
 		<div class="profil-content-reservation-map">
-			<div class="row-limit-size-flex">
+			<div
+				class="row-limit-size-flex">
 				<!-- profil-article-content -->
 				<div class="profil-article">
 					<div class="profil-user-article">
@@ -64,8 +67,10 @@
 							<img src="../asset/media/icon/instagram.svg" alt="">
 						</div>
 						<div class="profil-span">
-							<span>Proposé par<span class="profil-user">{{ user.firstname }}</span></span>
-							<span class="date-profil">Menbre depuis<span>janvier 2019</span></span>
+							<span>Proposé par<span class="profil-user">{{ user.firstname }}</span>
+							</span>
+							<span class="date-profil">Menbre depuis<span>janvier 2019</span>
+							</span>
 						</div>
 						<button id="btn-profil">Contacter l'hote</button>
 					</div>
@@ -74,7 +79,8 @@
 						<div class="title-star-rating">
 							<div class="title-article">
 								<h1 class="h1-title-article">{{ rental.title }}</h1>
-								<h2 class="h2-content-article">{{ rental.capacity }} voyageurs · 1 lit Demi-salle de bain</h2>
+								<h2 class="h2-content-article">{{ rental.capacity }}
+									voyageurs · 1 lit Demi-salle de bain</h2>
 							</div>
 							<div class="star-rating">
 								<i class="far fa-star star" id="star0" data-gite-id="{{ gite.id }}" data-user-id="{{ app.user.id }}"></i>
@@ -193,90 +199,107 @@
 						</div>
 					</div>
 					<div class="form-card-reservation">
-					<form action="#">
-						<div class="form-reservation">
-							<div class="label">
-								<label for="arrivee">date arrivée</label>
-								<label for="depart">Date depart</label>
+						<form action="#">
+							<div class="form-reservation">
+								<div class="label">
+									<label for="arrivee">date arrivée</label>
+									<label for="depart">Date depart</label>
+								</div>
+								<!-- calendrier -->
+								<div class="form-date-arrivee-depart">
+									<input name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée">
+									<input name="depart" class="date-depart" id="date-depart" placeholder="Date depart">
+								</div>
+								<div id="calendar"></div>
+								<div class="guest-input">
+									<select id="input-select">
+										<option value="1">1 Personne</option>
+										<option value="2">2 Personnes</option>
+										<option value="3">3 Personnes</option>
+										<option value="4">4 Personnes</option>
+										<option value="5">5 Personnes</option>
+										<option value="6">6 Personnes</option>
+										<option value="7">7 Personnes</option>
+										<option value="8">8 Personnes</option>
+									</select>
+								</div>
 							</div>
-							<!-- calendrier -->
-							<div class="form-date-arrivee-depart">
-								<input name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée">
-								<input name="depart" class="date-depart" id="date-depart" placeholder="Date depart">
+							<div class="btn-reservation">
+								<button type="submit" id="search-button">Reserver</button>
 							</div>
-							<div id="calendar"></div>
-							<div class="guest-input">
-								<select id="input-select">
-									<option value="1">1 Personne</option>
-									<option value="2">2 Personnes</option>
-									<option value="3">3 Personnes</option>
-									<option value="4">4 Personnes</option>
-									<option value="5">5 Personnes</option>
-									<option value="6">6 Personnes</option>
-									<option value="7">7 Personnes</option>
-									<option value="8">8 Personnes</option>
-								</select>
+						</form>
+						<div class="card-span-reservation">
+							<span class="span-card">Aucun montant ne vous sera débité pour le moment</span>
+						</div>
+						<div class="prince-card-reservation">
+							<div class="day-prince">
+								<div class="prince-for-day">
+									<span>110€</span>
+									<span>x</span>
+									<span>5</span>
+									<span>nuits</span>
+								</div>
+								<div class="prince">
+									<span>550</span>
+									<span>€</span>
+								</div>
+							</div>
+							<hr>
+							<div class="total-prince">
+								<span class="span-prince">total</span>
+								<span class="prince-total-span">550
+									<span class="device-total-span">€</span>
+								</span>
 							</div>
 						</div>
-						<div class="btn-reservation">
-							<button type="submit" id="search-button">Reserver</button>
-						</div>
-					</form>
-					<div class="card-span-reservation">
-						<span class="span-card">Aucun montant ne vous sera débité pour le moment</span>
-					</div>
-					<div class="prince-card-reservation">
-						<div class="day-prince">
-							<div class="prince-for-day">
-								<span>{{ rental.price }}€</span>
-								<span>x</span>
-								<span>5</span>
-								<span>nuits</span>
-							</div>
-							<div class="prince">
-								<span>550</span>
-								<span>€</span>
-							</div>
-						</div>
-						<hr>
-						<div class="total-prince">
-							<span class="span-prince">total</span>
-							<span class="prince-total-span">550
-								<span class="device-total-span">€</span>
-							</span>
-						</div>
-					</div>
 					</div>
 				</div>
 				<!-- map -->
 				<div class="map-container">
-				<div class="map">
-					<div id="map"></div>
-				</div>
+					<div class="map">
+						<div id="map"></div>
+					</div>
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="comment-container">
+			<div class="comment">
+				<h3>commentaire</h3>
+			</div>
+
 			<div class="star-comment">
 				<div class="star">
 					<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star">
 					<span>4.83</span>
 				</div>
-			</div>	
-			<div class="comment">
-				<span>64</span>
-				<span>Comments</span>
+
+				<div class="comment">
+					<span>64</span>
+					<span>Comments</span>
+				</div>
 			</div>
 		</div>
 
 		<!-- comment img and p -->
 		<div class="comment-flex">
 			<div class="comment-img-p">
-				<img src="{{ asset('/media/icon/instagram.png') }}" alt="">
+				<div class="img-comment">
+					<img src="../asset/media/icon/instagram.png" alt="">
+				</div>
 				<div class="name-comment-p">
-					<p class="name">karim</p>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt quidem dolore ducimus provident aperiam delectus hic.</p>
+					<div class="name-rating">
+						<div class="name-comment">
+							<p class="name">karim</p>
+						</div>
+						<div class="note-card">
+							<span>4</span>
+							<img class='img-note-card' src="{{ asset('/media/icon/etoile.svg') }}" alt="">
+						</div>
+					</div>
+					<div class="p-comment">
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt quidem dolore ducimus provident aperiam delectus hic.</p>
+					</div>
 				</div>
 			</div>
 		</div>

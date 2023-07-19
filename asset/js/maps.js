@@ -37,3 +37,32 @@ function geocodeAddress(geocoder, resultsMap, address) {
         }
     });
 }
+
+
+
+
+//code map
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+function initialize() {
+    var input = document.getElementById('address');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var place = autocomplete.getPlace();
+        document.getElementById('latitude').value = place.geometry.location.lat();
+        document.getElementById('longitude').value = place.geometry.location.lng();
+
+        // Update Leaflet map
+        map.setView([place.geometry.location.lat(), place.geometry.location.lng()], 13);
+    });
+}
+
+var map = L.map('mapid').setView([51.505, -0.09], 13); // Initial position
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+}).addTo(map);
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
