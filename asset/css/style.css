@@ -1688,7 +1688,7 @@ body .addrental .form-cart .profil-information #save-changes-btn {
 }
 body .addrental .form-cart .cart {
   width: 100%;
-  background-color: #007bff;
+  border: 1px solid red;
 }
 body .messenger {
   width: 100%;

@@ -4,6 +4,8 @@
 <head>
     <title>Formulaire d'ajout de location</title>
     <link rel="stylesheet" href="../asset/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 
 <body>
@@ -105,11 +107,19 @@
             </form>
 
             <div class="cart">
+                <div id="mapid"></div>
 
 
             </div>
         </div>
     </section>
+    <script>
+        var map = L.map('mapid').setView([51.505, -0.09], 13); // Position de départ
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+    </script>
 </body>
 
 </html>
