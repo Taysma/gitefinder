@@ -774,8 +774,10 @@ body .article .container-article-img .rating-comment-location-share-like .share 
 }
 body .article .profil-content-reservation-map {
   width: 100%;
+  height: 100%;
   display: flex;
-  margin: 0 auto;
+  flex-direction: column;
+  margin-bottom: 100px;
   justify-content: center;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex {
@@ -1153,32 +1155,52 @@ body .article .comment-container {
   max-width: 1440px;
 }
 body .article .comment-container .star-comment {
-  display: inline-flex;
+  display: flex;
   gap: 20px;
   font-size: 1.5rem;
-  margin: 50px auto;
+  margin: 20px auto;
 }
-body .article .comment-container .comment-flex {
+body .article .comment-flex {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 45px;
 }
-body .article .comment-container .comment-flex .comment-img-p {
+body .article .comment-flex .comment-img-p {
   display: flex;
   width: 450px;
   justify-content: space-around;
   align-items: center;
   gap: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 12px;
+  padding: 5px;
 }
-body .article .comment-container .comment-flex .comment-img-p img {
+body .article .comment-flex .comment-img-p img {
   width: 70px;
 }
-body .article .comment-container .comment-flex .comment-img-p .name-comment-p {
+body .article .comment-flex .comment-img-p .name-comment-p {
   width: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+body .article .comment-flex .comment-img-p .name-comment-p .name-rating {
+  display: flex;
+  gap: 10px;
+}
+body .article .comment-flex .comment-img-p .name-comment-p .name-rating .name-comment .name {
+  font-size: 1.2rem;
+}
+body .article .comment-flex .comment-img-p .name-comment-p .name-rating .note-card {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  align-items: center;
+  gap: 5px;
+}
+body .article .comment-flex .comment-img-p .name-comment-p .name-rating .note-card .img-note-card {
+  width: 20px;
 }
 body .dashboard {
   width: 100%;
