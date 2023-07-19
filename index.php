@@ -33,15 +33,16 @@ $router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', '');
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
 // USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
-$router->map('GET', '/dashboard/profil/update', 'UserController#userProfilUpdate', 'userProfilUpdate');
-$router->map('GET', '/dashboard/profil/delete', 'UserController#userProfilDelete', 'userProfilDelete');
+$router->map('GET|POST', '/dashboard/profil/edit/[i:id]', 'UserController#userProfilUpdate', 'editUserProfil');
+$router->map('GET|DELETE', '/dashboard/profil/delete/[i:id]', 'UserController#userProfilDelete', 'deleteUserProfil');
 // USER - PROPRIETE
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
 $router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'addProperty');
+$router->map('GET|POST', '/dashboard/update/[i:id]', 'UserController#addProperty', 'editProperty');
+$router->map('GET|DELETE', '/dashboard/delete/[i:id]', 'UserController#addProperty', 'addProperty');
 // USER - FAVORIS
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
-// $router->map('GET', '', 'UserController#addToWishlist', 'userFavorisUpdate');
-// $router->map('GET', '', 'UserController#deleteFromWishlist', 'userFavorisDelete');
+// $router->map('GET', '/dashboard/favoris/delete/[i:id]', 'UserController#deleteFromWishlist', 'userFavorisDelete');
 // USER - MESSAGERIE
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 // USER - RESERVATION
