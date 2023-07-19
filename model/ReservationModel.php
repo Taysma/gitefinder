@@ -3,7 +3,7 @@ class ReservationModel extends Model
 {
 
 
-    public function createReservation(Reservation $reservation)
+    public function addReservation(Reservation $reservation)
     {
 
         $id_reservation = $reservation->getId_reservation();

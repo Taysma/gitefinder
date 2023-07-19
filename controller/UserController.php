@@ -102,9 +102,13 @@ class UserController extends Controller
         echo self::getRender('favoris.html.twig', []);
     }
 
-    public function addToWishlist(){}
+    public function addToWishlist()
+    {
+    }
 
-    public function deleteFromWishlist(){}
+    public function deleteFromWishlist()
+    {
+    }
 
     public function getUserMessagerie()
     {
@@ -118,6 +122,16 @@ class UserController extends Controller
 
     public function getUserProperty()
     {
+        // if ($_SESSION['connect']) {
+        //  $id_user = $_SESSION['id_user'];
+
+        //  $model = new RentalModel();
+        //  $userRental = $model->getUserRentals($id_user);
+
+        //  global $router;
+        //  echo self::getRender('dashboard.html.twig', ['rental' => $userRental]);
+        // }
+
         echo self::getRender('property.html.twig', []);
     }
 
