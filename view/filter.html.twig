@@ -1,5 +1,4 @@
 {% block filters %}
-
 	<!-- filter -->
 	<section class="filter">
 		<div class="filter-bar-container">
@@ -8,9 +7,9 @@
 					&lt;</button>
 			</div>
 			<div class="filter-bar" id="filter-bar">
-				{% for category in cats %}
+				{% for category in categories %}
 					<div class="filter-image-name">
-						<a href="{{ path('baseCats') ~ category.id_category }}">
+						<a href="{{ categorieslink }}{{ category.id_category }}">
 							<div class="img-category">
 								<img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></div>
 							<div class="name-category">
@@ -25,5 +24,4 @@
 			</div>
 		</div>
 	</section>
-
 {% endblock %}

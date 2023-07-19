@@ -28,11 +28,8 @@ class  Newsletter{
         return $this->mail;
     }
 
-    
-
 
     //SETTERS
-
     public function setId_newsletter(int $id_newsletter){
         $this->id_newsletter=$id_newsletter;
     }
@@ -40,6 +37,4 @@ class  Newsletter{
     public function setMail(String $mail){
         $this->mail=$mail;
     }
-
-    
 }

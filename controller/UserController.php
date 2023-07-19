@@ -1,7 +1,6 @@
 <?php
 class UserController extends Controller
 {
-
     // Connection utilisateur
     public function register()
     {
@@ -135,31 +134,72 @@ class UserController extends Controller
         }
     }
 
-    public function getUserFavoris()
+    public function getUserWishlist($id)
     {
-        $wishlistmodel = new WishlistModel();
-        $favoris = $wishlistmodel->getAllWishlist();
-        $rentalModel = new RentalModel();
-        $rentals = $rentalModel->getAllRentals();
+        // $wishlistmodel = new WishlistModel();
+        // $favoris = $wishlistmodel->getWish($id);
 
-        echo self::getRender('favoris.html.twig', ['wishlist' => $favoris, 'rentals' => $rentals]);
+        echo self::getRender('favoris.html.twig', []);
     }
 
-    // public function getUserChat()
-    // {
-    //     $model = new MessagerieModel();
-    //     $chat = $model->readMessage();
+    public function addToWishlist(){}
 
-    //     echo self::getRender('messenger.html.twig', ['chat' => $chat]);
-    // }
+    public function deleteFromWishlist(){}
+
+    public function getUserMessagerie()
+    {
+        echo self::getRender('messenger.html.twig', []);
+    }
 
     public function getUserReservation()
     {
         echo self::getRender('rental.html.twig', []);
     }
 
-    public function getUserRental()
+    public function getUserProperty()
     {
-        echo self::getRender('', []);
+        echo self::getRender('property.html.twig', []);
+    }
+
+    public function addProperty()
+    {
+        if (!$_POST) {
+            echo self::getRender('addproperty.html.twig', []);
+        } else {
+
+            global $router;
+            $model = new RentalModel();
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id_user = $_SESSION['id_user'];
+                $title = $_POST['title'];
+                $capacity = $_POST['capacity'];
+                $surface_area = $_POST['surface_area'];
+                $city = $_POST['city'];
+                $address = $_POST['password'];
+                $content = $_POST['content'];
+                $country = $_POST['country'];
+                $price = $_POST['price'];
+                // add latitude & longitude later
+
+                $rental = new Rental([
+                    'id_user' => $id_user,
+                    'title' => $title,
+                    'capacity' => $capacity,
+                    'surface_area' => $surface_area,
+                    'city' => $city,
+                    'address' => $address,
+                    'content' => $content,
+                    'country' => $country,
+                    'price' => $price
+                ]);
+
+                $model->addRental($rental);
+                header('Location: ' . $router->generate('home'));
+            } else {
+                $message = "Veillez remplir tout les champs";
+                echo self::getRender('addproperty.html.twig', ['message' => $message]);
+            }
+        }
     }
 }

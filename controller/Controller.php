@@ -37,14 +37,12 @@ abstract class Controller
         return self::$twig;
     }
 
-    protected static function setRender(string $template, $datas)
-    {
+    protected static function setRender(string $template, $datas){
 
         global $router;
 
         //LINKS
-        $categoryLink = $router->generate('baseCats');
-        $articleLink = $router->generate('baseRental');
+        $categorieslink = $router->generate('baseCats');
 
         // CATEGORIES
         $categories  = new CategoryModel();
@@ -53,11 +51,9 @@ abstract class Controller
         // LINKS TABLE + NEW ONES
         $new = [
             'cats' => $cats,
-            'categoryLink' => $categoryLink,
-            'articleLink' => $articleLink
+            'categorieslink' => $categorieslink,
         ] + $datas;
-
-
+        
         echo self::getTwig()->render($template, $new);
     }
 

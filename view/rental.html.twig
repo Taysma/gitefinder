@@ -1,11 +1,9 @@
 {% extends "template.html.twig" %}
 
-{% block title %}
-	rental
-{% endblock %}
+{% block title %}Reservation{% endblock %}
 
 {% block header %}
-	{% include 'header.html.twig' with {'categories' : cats } %}
+	{% include 'header.html.twig'%}
 {% endblock %}
 
 {% block content %}
@@ -25,61 +23,66 @@
 		<div class="container-rental">
 
 			<div class="card-rental">
-					
-				
-					<i id="heart" class="heart fa-regular fa-heart"></i>
 
-					<div class="img-card-rental">
-				
-							<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
 
-							 <span>{{ rental.content }}</span> {#mettre un z-index dans l'inspecteur pour voir le texte #}
-					
+				<i id="heart" class="heart fa-regular fa-heart"></i>
+
+				<div class="img-card-rental">
+
+					<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
+
+					<span>{{ rental.content }}</span>
+					{#mettre un z-index dans l'inspecteur pour voir le texte #}
+
+				</div>
+				<div class="content-rental-card">
+					<div class="title-prince">
+						<div class="title">
+							<h1>{{ rental.title }}</h1>
+							<span>{{ rental.city }}</span>
+							<span>,</span>
+							<span>{{ rental.country }}</span>
+
+						</div>
+						<div class="prince">
+							<span>{{ rental.price }}</span>
+							<span>€ par nuit</span>
+						</div>
 					</div>
-					<div class="content-rental-card">
-						<div class="title-prince">
-							<div class="title">
-								<h1>{{ rental.title }}</h1>
-								<span>{{ rental.city }}</span>
-								<span>,</span>
-								<span>{{ rental.country }}</span>
-								
-							</div>
-							<div class="prince">
-								 <span>{{ rental.price }}</span>
-								<span>€ par nuit</span> 
-							</div>
-						</div>
-						<div class="personne">
-							 <span>capacitées
-							</span>
-							<span> {{ rental.capacity }}personnes</span> 
-						</div>
-						<div class="date-rental">
-							{# <span>Date :</span>
-							<span class="date-arrivee">14/06/2023</span>
-							<span>au</span>
-							<span class="date-depart">07/07/2023</span> #}
-
-							<span>infos proprio {{ rental.id_user }} </span>
-						</div>
-
+					<div class="personne">
+						<span>capacitées
+						</span>
+						<span>
+							{{ rental.capacity }}personnes</span>
 					</div>
-				
+					<div
+						class="date-rental">
+						{# <span>Date :</span>
+													<span class="date-arrivee">14/06/2023</span>
+													<span>au</span>
+													<span class="date-depart">07/07/2023</span> #}
+
+						<span>infos proprio
+							{{ rental.id_user }}
+						</span>
+					</div>
+
+				</div>
+
 				<!-- button reserver wait annuler -->
 				<div class="btn-rental-card">
 					<form action="#">
 						<button id="reserver" type="submit">reserver</button>
 					</form>
-					 <form action="">
-										                        <button id="wait" type="submit">En cours</button>
-										                    </form>
-										                    <form action="">
-										                        <button id="annuler" type="submit">annuler</button>
-										                    </form> 
+					<form action="">
+						<button id="wait" type="submit">En cours</button>
+					</form>
+					<form action="">
+						<button id="annuler" type="submit">annuler</button>
+					</form>
 
 				</div>
-				
+
 			</div>
 		</div>
 	</section>

@@ -1,11 +1,10 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Post
+{% block title %}Annonce
 {% endblock %}
 
-
 {% block header %}
-	{% include 'header.html.twig' with {'categories' : cats } %}
+	{% include 'header.html.twig' %}
 {% endblock %}
 
 {% block content %}
@@ -23,19 +22,16 @@
 				</div>
 				<div class="comment">
 					<span>64</span>
-					<span>commentaires
-					</span>
+					<span>commentaires</span>
 				</div>
 				<div class="location">
-					<span>{{ rental.address }},
-						{{ rental.city }},{{ rental.country }}</span>
+					<span>{{ rental.address }}, {{ rental.city }},{{ rental.country }}</span>
 				</div>
 				<!-- share -->
 				<div class="share">
 					<img class="img-share sharePopup" src="{{ asset('/media/icon/Font_Awesome_5_solid_share.svg.png') }}" alt="share article" onclick="toggleSharePopup()">
 					<button class="share-button" onclick="toggleSharePopup()">
 						Partager
-
 						<!-- Bouton de Partage avec Icônes -->
 						<div class="share-popup" id="sharePopup">
 							<img class="icon-img" src="{{ asset('/media/icon/facebook.png') }}" alt="Facebook" onclick="shareOnFacebook()">
@@ -44,8 +40,6 @@
 						</div>
 					</button>
 				</div>
-
-
 			</div>
 			<!-- Image principale -->
 			<div class="img-article" id="mainImageContainer">
@@ -55,16 +49,14 @@
 			<div id="sliderContainer">
 				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
 				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
-				<img
-				class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+				<img class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
 			<!-- Ajoutez plus d'images de slider si nécessaire -->
 			</div>
 		</div>
 
 		<!-- profil-content-reservation-map -->
 		<div class="profil-content-reservation-map">
-			<div
-				class="row-limit-size-flex">
+			<div class="row-limit-size-flex">
 				<!-- profil-article-content -->
 				<div class="profil-article">
 					<div class="profil-user-article">
@@ -72,12 +64,8 @@
 							<img src="../asset/media/icon/instagram.svg" alt="">
 						</div>
 						<div class="profil-span">
-							<span>Proposé par
-								<span class="profil-user">{{ user.firstname }}</span>
-							</span>
-							<span class="date-profil">Menbre depuis
-								<span>janvier 2019</span>
-							</span>
+							<span>Proposé par<span class="profil-user">{{ user.firstname }}</span></span>
+							<span class="date-profil">Menbre depuis<span>janvier 2019</span></span>
 						</div>
 						<button id="btn-profil">Contacter l'hote</button>
 					</div>
@@ -86,8 +74,7 @@
 						<div class="title-star-rating">
 							<div class="title-article">
 								<h1 class="h1-title-article">{{ rental.title }}</h1>
-								<h2 class="h2-content-article">{{ rental.capacity }}
-									voyageurs · 1 lit Demi-salle de bain</h2>
+								<h2 class="h2-content-article">{{ rental.capacity }} voyageurs · 1 lit Demi-salle de bain</h2>
 							</div>
 							<div class="star-rating">
 								<i class="far fa-star star" id="star0" data-gite-id="{{ gite.id }}" data-user-id="{{ app.user.id }}"></i>
@@ -100,64 +87,48 @@
 
 						<!-- description article -->
 						<div class="content-paragragraphe-article">
-							<p class="content-p">{{ rental.content }}
-							</p>
+							<p class="content-p">{{ rental.content }}</p>
 							<!-- annonce info -->
 							<div class="user-location-condition">
 								<div class="condition">
 									<div class="condition-img-span">
 										<div class="img-p">
 											<img src="{{ asset('/media/icon/location-dot-solid.svg') }}" alt="location">
-
 										</div>
 										<div class="condition-p">
-											<p class='content-p'>Idéalement situé
-											</p>
-											<p class='content-p'>100 % des voyageurs ont attribué 5 étoiles à l'emplacement du logement.
-											</p>
+											<p class='content-p'>Idéalement situé</p>
+											<p class='content-p'>100 % des voyageurs ont attribué 5 étoiles à l'emplacement du logement.</p>
 										</div>
 									</div>
-
 								</div>
 								<hr>
 								<div class="condition">
 									<div class="condition-img-span">
 										<div class="img-p">
 											<img src="{{ asset('/media/icon/key-solid.svg') }}" alt="location">
-
 										</div>
 										<div class="condition-p">
-											<p class='content-p'>Procédure d'arrivée irréprochable
-
-											</p>
-											<p class='content-p'>100 % des voyageurs ont attribué 5 étoiles à l'emplacement du logement.
-											</p>
+											<p class='content-p'>Procédure d'arrivée irréprochable</p>
+											<p class='content-p'>100 % des voyageurs ont attribué 5 étoiles à l'emplacement du logement.</p>
 										</div>
 									</div>
-
 								</div>
 								<hr>
 								<div class="condition">
 									<div class="condition-img-span">
 										<div class="img-p">
 											<img src="{{ asset('/media/icon/location-dot-solid.svg') }}" alt="location">
-
 										</div>
 										<div class="condition-p">
-											<p class='content-p'>Annulation gratuite avant le 30 juin.
-											</p>
-
+											<p class='content-p'>Annulation gratuite avant le 30 juin.</p>
 										</div>
 									</div>
-
 								</div>
 								<hr>
 								<!-- condition de prevention  -->
 								<div class="content-user-for-utulisateur">
 									<span class='content-p'>Pendant votre séjour :</span>
-									<p class="p-user-condition content-p">
-										Merci de prévenir de votre horaire d'arrivée par SMS. Parking privé et sécurisé. On vous aide à monter vos bagages avec une corde.Taux de réponse : 100% Délai de réponse : Moins d'une heure
-									</p>
+									<p class="p-user-condition content-p">Merci de prévenir de votre horaire d'arrivée par SMS. Parking privé et sécurisé. On vous aide à monter vos bagages avec une corde.Taux de réponse : 100% Délai de réponse : Moins d'une heure</p>
 								</div>
 							</div>
 							<hr>
@@ -170,7 +141,6 @@
 									<li>Brasero</li>
 									<li>Petit déjeuner</li>
 								</ul>
-
 								<ul class="ul-list">
 									<li>Petit déjeuner</li>
 									<li>Déjeuner</li>
@@ -180,7 +150,6 @@
 							</div>
 							<hr>
 							<div class="list-stuf-container-rental">
-
 								<div class="stuf-chambre">
 									<span class="title-liste">Equipements</span>
 									<span class="title-liste">Chambre et linge</span>
@@ -192,7 +161,6 @@
 										<li>Brasero</li>
 										<li>Petit déjeuner</li>
 									</ul>
-
 									<ul class="ul-list">
 										<li>Petit déjeuner</li>
 										<li>Déjeuner</li>
@@ -216,18 +184,15 @@
 							</div>
 							<div class="star-rating">
 								<i class="fa-solid fa-star"></i>
-								<span class="rating">4.83
-								</span>
+								<span class="rating">4.83</span>
 							</div>
 						</span>
 						<div class="comment">
-							<span class="number-comment">64
-							</span>
+							<span class="number-comment">64</span>
 							<span class="sapn-comment">Comments</span>
-						</span>
+						</div>
 					</div>
-				</div>
-				<div class="form-card-reservation">
+					<div class="form-card-reservation">
 					<form action="#">
 						<div class="form-reservation">
 							<div class="label">
@@ -237,11 +202,9 @@
 							<!-- calendrier -->
 							<div class="form-date-arrivee-depart">
 								<input name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée">
-
 								<input name="depart" class="date-depart" id="date-depart" placeholder="Date depart">
 							</div>
 							<div id="calendar"></div>
-
 							<div class="guest-input">
 								<select id="input-select">
 									<option value="1">1 Personne</option>
@@ -255,8 +218,6 @@
 								</select>
 							</div>
 						</div>
-
-
 						<div class="btn-reservation">
 							<button type="submit" id="search-button">Reserver</button>
 						</div>
@@ -269,9 +230,7 @@
 							<div class="prince-for-day">
 								<span>{{ rental.price }}€</span>
 								<span>x</span>
-								<span>
-									5
-								</span>
+								<span>5</span>
 								<span>nuits</span>
 							</div>
 							<div class="prince">
@@ -286,44 +245,40 @@
 								<span class="device-total-span">€</span>
 							</span>
 						</div>
-
+					</div>
 					</div>
 				</div>
-			</div>
-
-			<!-- map -->
-			<div class="map-container">
+				<!-- map -->
+				<div class="map-container">
 				<div class="map">
 					<div id="map"></div>
-
+				</div>
 				</div>
 			</div>
-
 		</div>
-	</div>
-</div>
-
-<div class="comment-container">
-	<div class="star-comment">
-		<div class="star">
-			<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star">
-			<span>4.83</span>
-		</div>
-		<div class="comment">
-			<span>64</span>
-			<span>Comments</span>
-		</div>
-	</div>
-
-
-	<!-- comment img and p -->
-	<div class="comment-flex">
-		<div class="comment-img-p">
-			<img src="{{ asset('/media/icon/instagram.png') }}" alt="">
-			<div class="name-comment-p">
-				<p class="name">karim</p>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt quidem dolore ducimus provident aperiam delectus hic.</p>
+	
+		<div class="comment-container">
+			<div class="star-comment">
+				<div class="star">
+					<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star">
+					<span>4.83</span>
+				</div>
+			</div>	
+			<div class="comment">
+				<span>64</span>
+				<span>Comments</span>
 			</div>
 		</div>
-	</div>
-</section>{% endblock %}
+
+		<!-- comment img and p -->
+		<div class="comment-flex">
+			<div class="comment-img-p">
+				<img src="{{ asset('/media/icon/instagram.png') }}" alt="">
+				<div class="name-comment-p">
+					<p class="name">karim</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt quidem dolore ducimus provident aperiam delectus hic.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

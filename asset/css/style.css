@@ -1610,6 +1610,87 @@ body .rental .container-rental .card-rental .btn-rental-card form #annuler {
 body .rental .container-rental .card-rental .btn-rental-card form #wait {
   background: #FAC800;
 }
+body .addrental {
+  width: 100%;
+  max-width: 1440px;
+  margin: 50px auto;
+}
+body .addrental .form-cart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #1FAB71;
+}
+body .addrental .form-cart h2 {
+  font-size: 1.2rem;
+}
+body .addrental .form-cart .profil-information {
+  width: 100%;
+}
+body .addrental .form-cart .profil-information .name-lastname {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+body .addrental .form-cart .profil-information .name-lastname label {
+  font-size: 1.3rem;
+  margin: 20px;
+}
+body .addrental .form-cart .profil-information .name-lastname .label-input {
+  display: flex;
+  margin: 10px auto;
+  gap: 10px;
+}
+body .addrental .form-cart .profil-information .name-lastname input,
+body .addrental .form-cart .profil-information .name-lastname textarea {
+  display: flex;
+  justify-content: center;
+  margin: 10px 20px;
+  width: 300px;
+  height: 40px;
+  border: 1px solid #191825;
+  border-radius: 7px;
+  resize: none;
+}
+body .addrental .form-cart .profil-information .name-lastname input:focus,
+body .addrental .form-cart .profil-information .name-lastname textarea:focus {
+  border: 5px solid #007bff;
+}
+@media screen and (max-width: 750px) {
+  body .addrental .form-cart .profil-information .name-lastname input,
+  body .addrental .form-cart .profil-information .name-lastname textarea {
+    margin: auto;
+  }
+}
+body .addrental .form-cart .profil-information .name-lastname textarea {
+  width: 90%;
+  height: 200px;
+}
+body .addrental .form-cart .profil-information .name-lastname .file {
+  border: none;
+  padding: 10px;
+}
+body .addrental .form-cart .profil-information .name-lastname .latitude-logitude {
+  overflow: hidden;
+}
+body .addrental .form-cart .profil-information #save-changes-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #007bff;
+  color: #F7F7F7;
+  font-size: 1rem;
+  border: none;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+body .addrental .form-cart .cart {
+  width: 100%;
+  background-color: #007bff;
+}
 body .messenger {
   width: 100%;
   height: 85vh;

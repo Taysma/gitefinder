@@ -24,7 +24,7 @@
 		{% block header %}{% endblock %}
 
 		{% block filters %}
-			{% include 'filter.html.twig' %}
+			{% include "filter.html.twig" with {'categories' : cats } %}
 		{% endblock %}
 
 		<main>

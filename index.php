@@ -10,34 +10,42 @@ $router->setBasePath('/projets/gitefinder');
 $router->map('GET', '/', 'HomeController#home', 'home');
 
 $router->map('GET', '/category/', '', 'baseCats');
-$router->map('GET', '/category/[i:id]', 'CategoryController#getOne', '');
-
-// ARTICLE - POST
-$router->map('GET', '/rental/', '', 'baseRental');
-$router->map('GET', '/rental/[i:id_rental]/[i:id_user]', 'HomeController#getOne', 'article');
+$router->map('GET', '/category/[i:id_category]', 'CategoryController#getOne', '');
 
 // CONNECTION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
 $router->map('GET|POST', '/registration', 'UserController#register', 'register');
 $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
+// NEWSLETTER
+$router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
+
+// ARTICLE - POST
+$router->map('GET', '/article/', '', 'baseRental');
+$router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', '');
+
+// ARTICLE - CRUD
+// $router->map('GET|POST', '/nouveau', 'RentalController#createPost', 'addPost');
+// $router->map('GET|POST', '/modifier/[i:id]', 'RentalController#edit', 'updatePost');
+// $router->map('POST|DELETE', '/supprimer/[i:id]', 'RentalController#delete', 'deletePost');
+
 // USER
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
+// USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
 $router->map('GET', '/dashboard/profil/update', 'UserController#userProfilUpdate', 'userProfilUpdate');
 $router->map('GET', '/dashboard/profil/delete', 'UserController#userProfilDelete', 'userProfilDelete');
+// USER - PROPRIETE
+$router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
+$router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'addProperty');
+// USER - FAVORIS
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
+// $router->map('GET', '', 'UserController#addToWishlist', 'userFavorisUpdate');
+// $router->map('GET', '', 'UserController#deleteFromWishlist', 'userFavorisDelete');
+// USER - MESSAGERIE
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
+// USER - RESERVATION
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
-// $router->map('GET', '/dashboard/propriete', '', 'userRental'); // ajouter un rental - view à faire
-
-// CRUD Article
-$router->map('GET|POST', '/newpost', 'RentalController#createPost', 'addPost');
-$router->map('GET|POST', '/post/edit/[i:id]', 'RentalController#edit', 'editPost');
-$router->map('POST|DELETE', '/post/delete/[i:id]', 'RentalController#delete', 'deletePost');
-
-// NEWSLETTER
-$router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
 
 // // SEARCH
 // $router->map('GET', '/search', 'SearchController#searchResult', 'search');
