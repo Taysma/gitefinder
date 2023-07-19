@@ -1176,7 +1176,7 @@ body .article .comment-flex .comment-img-p {
   justify-content: space-around;
   align-items: center;
   gap: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   border-radius: 12px;
   padding: 5px;
 }
