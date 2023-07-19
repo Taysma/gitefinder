@@ -502,13 +502,13 @@ body {
 
         #burger-menu-modal {
             display: none;
-            width: 100%;
-            max-width: 200px;
-            height: 100px;
+            width: fit-content;
+            // max-width: 200px;
             top: 100px;
-            box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.204);
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
             padding: 10px;
             position: absolute;
+            white-space: nowrap;
             z-index: 999;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
@@ -520,6 +520,13 @@ body {
                 justify-content: center;
                 gap: 7px;
                 margin: auto;
+            }
+
+            ul {
+
+                li {
+                    padding: 7px;
+                }
             }
         }
 
