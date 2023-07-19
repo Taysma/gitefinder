@@ -12,15 +12,15 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="../view/dashboard.html">Dashboard</a>
+					<a href="{{ path('dashboard') }}">Dashboard</a>
 				</li>
-				<img src="../asset/media/icon/fleche.svg" alt="fleche">
+				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
 				<li class="breadcrumb-item active" aria-current="page">Propriete</li>
 			</ol>
 		</nav>
 		<div class="form-cart">
 
-			<form action="" method="post" class="profil-information">
+			<form action="{{ path('addProperty') }}" method="POST" class="profil-information">
 				<h2>Formulaire d'ajout de location</h2>
 				<div class="name-lastname">
 					<div class="label-input">

@@ -1,10 +1,9 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Dashboard
-{% endblock %}
+{% block title %}Tableau de bord{% endblock %}
 
 {% block header %}
-	{% include 'header.html.twig' with {'categories' : cats } %}
+	{% include 'header.html.twig' %}
 {% endblock %}
 
 {% block content %}
@@ -54,7 +53,7 @@
 				</a>
 			</div>
 			<div class="card-dashboard">
-				<a href="{{ path('userRental') }}">
+				<a href="{{ path('addProperty') }}">
 					<div class="img-dashboard">
 						<img src="{{ asset('/media/icon/user.svg') }}" alt="compte">
 					</div>

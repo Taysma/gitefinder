@@ -38,10 +38,9 @@ class Chat {
         return $this->content;
     }
 
-    public function getSendAt(){
+    public function getSend_at(){
         return $this->send_at;
     }
-
 
 
     //SETTERS
@@ -62,7 +61,7 @@ class Chat {
         $this->content=$content;
     }
 
-    public function setSendAt(String $send_at){
+    public function setSend_at(String $send_at){
         $this->send_at=$send_at;
     }
 

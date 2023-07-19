@@ -1,14 +1,13 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Bienvenue sur la page d'accueil
-{% endblock %}
+{% block title %}Bienvenue sur GiteFinder{% endblock %}
 
 {% block header %}
-	{% include 'header.html.twig' with {'categories' : cats } %}
+	{% include 'header.html.twig' %}
 {% endblock %}
 
 {% block filters %}
-	{% include "filter.html.twig" %}
+	{% include "filter.html.twig" with {'categories' : cats } %}
 {% endblock %}
 
 {% block content %}

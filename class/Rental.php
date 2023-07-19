@@ -117,5 +117,4 @@ class Rental{
     public function setPrice(int $price){
         $this->price=$price;
     }
-
 }
