@@ -12,56 +12,106 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="{{ path('dashboard') }}">Dashboard</a>
+					<a href="../view/dashboard.html">Dashboard</a>
 				</li>
-				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
+				<img src="../asset/media/icon/fleche.svg" alt="fleche">
 				<li class="breadcrumb-item active" aria-current="page">Propriete</li>
 			</ol>
 		</nav>
-		<div class="form-cart">
+		{# container propriete #}
+		<div class="container-propriete">
+			<div class="btn-add">
+				<button id="btn-add">Ajouter un bien</button>
+			</div>
 
-			<form action="{{ path('addProperty') }}" method="POST" class="profil-information">
-				<h2>Formulaire d'ajout de location</h2>
-				<div class="name-lastname">
-					<div class="label-input">
-						<div class="name">
-							<label for="title">Nom de la location:</label>
-							<input type="text" id="name" name="title" value="">
-						</div>
-						<div class="address">
-							<label for="address">Adresse:</label>
-							<input type="text" id="address" name="address" value="">
-						</div>
-					</div>
-					<div class="label-input">
-						<div class="name">
-							<label for="city">ville:</label>
-							<input type="text" id="city" name="city" value="">
-						</div>
-						<div class="address">
-							<label for="country">pays:</label>
-							<input type="text" id="country" name="country" value="">
-						</div>
-					</div>
+			<div class="container-card-property">
+				<div class="card">
+					<div class="img-card">
+						<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet en foret" class="size-img">
 
-					<label for="price">Prix:</label>
-					<input type="text" id="price" name="price" value="">
-					<div class="latitude-logitude">
-						<label for="latitude"></label>
-						<input type="text" id="latitude" name="latitude" value="">
-						<label for="longitude">Prix:</label>
-						<input type="text" id="longitude" name="longitude" value="">
 					</div>
+					<div class="content-card">
+						<div class="title-prince">
+							<div class="h1-title-card">
+								<h1>Paradise Beach, Bantayan Island
+								</h1>
+							</div>
+							<div class="prince">
 
-					<label for="content">Description:</label>
-					<textarea id="description" name="content"></textarea>
-					<label for="image">photos de couverture</label>
-					<input type="file" id="image" name="image" value="" class="file">
+								<span>150</span>
+								<span>€</span>
+							</div>
+						</div>
+						<div class="location-card">
+							<span class="city">Rome</span>
+							<span>,</span>
+							<span class="country">Italy</span>
+						</div>
+
+
+					</div>
 				</div>
-				<input type="submit" value="Ajouter la location" id="save-changes-btn">
-			</form>
+			</div>
+			{# form add update delete #}
+			<div class="form-cart">
+				<form action="" method="post" class="profil-information">
+					<h2>Formulaire d'ajout de location</h2>
+					<div class="name-lastname">
+						<div class="label-input">
+							<div class="name">
+								<label for="title">Nom de la location:</label>
+								<input type="text" id="name" name="title" value="">
+							</div>
+							<div class="address">
+								<label for="address">Adresse:</label>
+								<input type="text" id="address" name="address" value="">
+								<div id="autocomplete-items"></div>
 
-			<div class="cart"></div>
-		</div>
-	</section>
-{% endblock %}
+							</div>
+						</div>
+						<div class="label-input">
+							<div class="name">
+								<label for="city">ville:</label>
+								<input type="text" id="city" name="city" value="">
+							</div>
+							<div class="address">
+								<label for="country">pays:</label>
+								<input type="text" id="country" name="country" value="">
+							</div>
+						</div>
+
+						<label for="price">Prix:</label>
+						<input type="text" id="price" name="price" value="">
+						<div class="latitude-logitude">
+							<label for="latitude"></label>
+							<input type="text" id="latitude" name="latitude" value="">
+							<label for="longitude"></label>
+							<input type="text" id="longitude" name="longitude" value="">
+						</div>
+
+						<label for="content">Description:</label>
+						<textarea id="description" name="content"></textarea>
+						<label for="image">photos du bien</label>
+						<input type="file" id="image" name="image" value="" class="file">
+					</div>
+					<div class="add-edit-delete">
+						<input type="submit" value="Ajouter la location" id="save-changes-btn">
+
+					</form>
+					<form action="">
+						<input type="submit" value="update" id="save-changes-btn">
+					</form>
+					<form action="">
+						<input type="submit" value="delete" id="delete-changes-btn">
+					</form>
+				</div>
+				<div class="cart">
+
+					<div id="mapid"></div>
+
+
+				</div>
+			</div>
+
+		</section>
+	{% endblock %}
