@@ -20,6 +20,7 @@ class  Picture{
         }
     }
 
+
     //GETTERS
     public function getId_picture(){
         return $this->id_picture;
@@ -36,14 +37,14 @@ class  Picture{
 
     //SETTERS
     public function setId_picture(int $id_picture){
-        $this->id_picture=$id_picture;
+        $this->id_picture = $id_picture;
     }
 
     public function setId_Rental(int $id_rental){
-        $this->id_rental=$id_rental;
+        $this->id_rental = $id_rental;
     }
 
     public function setTitle(String $title){
-        $this->title=$title;
+        $this->title = $title;
     }
 }

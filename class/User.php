@@ -27,6 +27,7 @@ class User {
         }
     }
 
+
     //GETTERS
     public function getId_user(){
         return $this->id_user;
@@ -68,44 +69,45 @@ class User {
         return $this->avatar;
     }
 
+
     //SETTERS
     public function setId_user(int $id_user){
-        $this->id_user=$id_user;
+        $this->id_user = $id_user;
     }
 
     public function setLastname(String $lastname){
-        $this->lastname=$lastname;
+        $this->lastname = $lastname;
     }
 
     public function setFirstname(String $firstname){
-        $this->firstname=$firstname;
+        $this->firstname = $firstname;
     }
 
     public function setMail(String $mail){
-        $this->mail=$mail;
+        $this->mail = $mail;
     }
 
     public function setBirthdate(String $birthdate){
-        $this->birthdate=$birthdate;
+        $this->birthdate = $birthdate;
     } 
 
     public function setPassword(String $password){
-        $this->password=$password;
+        $this->password = $password;
     } 
 
     public function setPhone(int $phone){
-        $this->phone=$phone;
+        $this->phone = $phone;
     } 
 
     public function setContent($content){
-        $this->content=$content;
+        $this->content = $content;
     }
 
     public function setRoles($roles){
-        $this->roles=$roles;
+        $this->roles = $roles;
     }
 
     public function setAvatar(String $avatar){
-        $this->avatar=$avatar;
+        $this->avatar = $avatar;
     }
 }

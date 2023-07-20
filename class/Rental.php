@@ -13,6 +13,7 @@ class Rental{
     private $country;
     private $price;
 
+
     public function __construct(array $datas){
         $this->hydrate($datas);
     }
@@ -27,6 +28,7 @@ class Rental{
         }
     }
 
+    
     //GETTERS
     public function getId_rental(){
         return $this->id_rental;
@@ -75,46 +77,46 @@ class Rental{
 
     //SETTERS
     public function setId_rental(int $id_rental){
-        $this->id_rental=$id_rental;
+        $this->id_rental = $id_rental;
     }
 
     public function setId_user(int $id_user){
-        $this->id_user=$id_user;
+        $this->id_user = $id_user;
     }
 
     public function setTitle(String $title){
-        $this->title=$title;
+        $this->title = $title;
     }
 
     public function setContent(String $content){
-        $this->content=$content;
+        $this->content = $content;
     }
 
     public function setCover(String $cover){
-        $this->cover=$cover;
+        $this->cover = $cover;
     }
 
     public function setCapacity(int $capacity){
-        $this->capacity=$capacity;
+        $this->capacity = $capacity;
     }
 
     public function setSurface_area(int $surface_area){
-        $this->surface_area=$surface_area;
+        $this->surface_area = $surface_area;
     }
 
     public function setCity(String $city){
-        $this->city=$city;
+        $this->city = $city;
     }
 
     public function setAddress(String $adress){
-        $this->address=$adress;
+        $this->address = $adress;
     }
 
     public function setCountry(String $country){
-        $this->country=$country;
+        $this->country = $country;
     }
 
     public function setPrice(int $price){
-        $this->price=$price;
+        $this->price = $price;
     }
 }

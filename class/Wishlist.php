@@ -20,6 +20,7 @@ class  Wishlist{
         }
     }
 
+
     //GETTERS
     public function getId_wishlist(){
         return $this->id_wishlist;
@@ -34,20 +35,18 @@ class  Wishlist{
     }
 
 
-
-
     //SETTERS
 
     public function setId_wishlist(int $id_wishlist){
-        $this->id_wishlist=$id_wishlist;
+        $this->id_wishlist = $id_wishlist;
     }
 
     public function setId_user(int $id_user){
-        $this->id_user=$id_user;
+        $this->id_user = $id_user;
     }
 
     public function setId_rental(int $id_rental){
-        $this->id_rental=$id_rental;
+        $this->id_rental = $id_rental;
     }
 
 }

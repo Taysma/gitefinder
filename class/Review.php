@@ -1,7 +1,6 @@
 <?php
 
 class  Review{
-
     private $id_review;
     private $id_user;
     private $id_rental;
@@ -23,6 +22,7 @@ class  Review{
             }
         }
     }
+
 
     //GETTERS
     public function getId_review(){
@@ -49,35 +49,29 @@ class  Review{
         return $this->created_at;
     }
 
-    
-
-
 
     //SETTERS
-
-    public function setId(int $id_review){
-        $this->id_review=$id_review;
+    public function setId_review(int $id_review){
+        $this->id_review = $id_review;
     }
 
     public function setId_user(int $id_user){
-        $this->id_user=$id_user;
+        $this->id_user = $id_user;
     } 
 
     public function setId_rental(int $id_rental){
-        $this->id_rental=$id_rental;
+        $this->id_rental = $id_rental;
     }
 
     public function setContent(String $content){
-        $this->content=$content;
+        $this->content = $content;
     }
 
     public function setRating(int $rating){
-        $this->rating=$rating;
+        $this->rating = $rating;
     }
 
-    public function setCreatedAt(String $created_at){
-        $this->created_at= $created_at;
+    public function setCreated_at(String $created_at){
+        $this->created_at = $created_at;
     }
-
-   
 }

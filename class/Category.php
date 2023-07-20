@@ -21,6 +21,7 @@ class Category {
         }
     }
 
+    
     //GETTERS
     public function getId_category(){
         return $this->id_category;

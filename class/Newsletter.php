@@ -19,6 +19,7 @@ class  Newsletter{
         }
     }
 
+    
     //GETTERS
     public function getId_newsletter(){
         return $this->id_newsletter;
@@ -31,10 +32,10 @@ class  Newsletter{
 
     //SETTERS
     public function setId_newsletter(int $id_newsletter){
-        $this->id_newsletter=$id_newsletter;
+        $this->id_newsletter = $id_newsletter;
     }
 
     public function setMail(String $mail){
-        $this->mail=$mail;
+        $this->mail = $mail;
     }
 }
