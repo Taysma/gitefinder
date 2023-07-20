@@ -89,7 +89,6 @@ class UserController extends Controller
         }
     }
 
-    //Dashboard - CRUD Profil User
     public function getUserProfil(){
 
         $userModel = new UserModel();
@@ -98,7 +97,8 @@ class UserController extends Controller
         echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
-    public function userProfilUpdate(){
+    public function userProfilUpdate()
+    {
 
         if (!$_POST) {
             echo self::getRender('homepage.html.twig', []);
@@ -106,7 +106,7 @@ class UserController extends Controller
 
             global $router;
             $model = new UserModel();
-                var_dump($_POST);
+            var_dump($_POST);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $firstname = $_POST['firstname-input'];
                 $lastname = $_POST['lastname-input'];
@@ -128,8 +128,25 @@ class UserController extends Controller
         }
     }
 
-    public function userProfilDelete(){
-        
+    public function userProfilDelete()
+    {
+       
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            global $router;
+            $model = new UserModel();
+
+
+            $id_user = $_SESSION['id_user'];
+
+            $model->deleteUser($id_user);
+            session_destroy();
+            $_SESSION = [];
+            header('Location: ' . $router->generate('home'));
+        } else {
+            echo self::getRender('connect.html.twig', []);
+
+        }
     }
 
     //Dashboard - CRUD Reservation User
@@ -153,13 +170,9 @@ class UserController extends Controller
         echo self::getRender('favoris.html.twig', [ 'wishlist' => $wishlist, 'rentals' => $rentals]);
     }
 
-    public function addToWishlist()
-    {
-    }
+    public function addToWishlist(){}
 
-    public function deleteFromWishlist()
-    {
-    }
+    public function deleteFromWishlist(){}
 
     //Dashboard - CRUD Messagerie User
     public function getUserMessagerie()
