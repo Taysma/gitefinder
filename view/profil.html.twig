@@ -37,22 +37,22 @@
 			<hr>
 
 			<!-- profil -->
-			<form action="{{ path('userProfilUpdate') }}" class="profil-information" method="POST">
+			<form action="{{ path('editUserProfil') }}" class="profil-information" method="POST">
     <div class="name-lastname profil-edit">
         <label for="lastname-input">Nom</label>
-        <input type="text" name="lastname" id="lastname-input" value="{{ dataP.lastname }}">
+        <input type="text" name="lastname-input" id="lastname-input" value="{{ dataP.lastname }}">
     </div>
     <div class="name-lastname profil-edit">
         <label for="name-input">Prénom</label>
-        <input type="text" name="firstname" id="name-input" value="{{ dataP.firstname }}">
+        <input type="text" name="firstname-input" id="name-input" value="{{ dataP.firstname }}">
     </div>
     <div class="name-lastname profil-edit">
-        <label for="email-input">Adresse e-mail</label>
-        <input type="email" name="mail" id="email-input" value="{{ dataP.mail }}">
+        <label for="mail-input">Adresse e-mail</label>
+        <input type="email" name="mail-input" id="mail-input" value="{{ dataP.mail }}">
     </div>
     <div class="name-lastname profil-edit">
         <label for="phone-input">Numéro de téléphone</label>
-        <input type="tel" name="phone" id="phone-input" value="{{ dataP.phone }}">
+        <input type="tel" name="phone-input" id="phone-input" value="{{ dataP.phone }}">
     </div>
     {# <div class="name-lastname profil-edit">
         <label for="id-card-input">Pièce d'identité officielle</label>

@@ -33,8 +33,8 @@ class UserModel extends Model
     public function getUserById()
     {
         $id_user = $_SESSION['id_user'];
-        $req = $this->getDb()->prepare('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `phone`,`content`, `roles`, `avatar` FROM `user` WHERE `id_user` = :id');
-        $req->bindParam('id', $id_user, PDO::PARAM_INT);
+        $req = $this->getDb()->prepare('SELECT `id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `phone`,`content`, `roles`, `avatar` FROM `user` WHERE `id_user` = :id_user');
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
         $req->execute();
 
         $user = new User($req->fetch(PDO::FETCH_ASSOC));
@@ -48,8 +48,8 @@ class UserModel extends Model
     {
         $rentals = [];
 
-        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`,`rental`.`country`, `user`.`id_user`, `user`.`firstname`, `user`.`lastname`, `user`.`mail`, `user`.`birthdate`, `user`.`password`, `user`.`content`, `user`.`roles` FROM `rental` INNER JOIN `user` ON `rental`.`id_user` = `user`.`id_user` WHERE `rental`.`id_user` = :id');
-        $req->bindParam(':id', $id_user, PDO::PARAM_INT);
+        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`,`rental`.`country`, `user`.`id_user`, `user`.`firstname`, `user`.`lastname`, `user`.`mail`, `user`.`birthdate`, `user`.`password`, `user`.`content`, `user`.`roles` FROM `rental` INNER JOIN `user` ON `rental`.`id_user` = `user`.`id_user` WHERE `rental`.`id_user` = :id_user');
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->execute();
 
         while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
@@ -81,7 +81,7 @@ class UserModel extends Model
 
     }
 
-    public function deleteUser(int $id)
+    public function deleteUser(int $id_user)
     {
         // Start a new transaction
         $this->getDb()->beginTransaction();
@@ -89,32 +89,32 @@ class UserModel extends Model
         try {
             // Delete links in chat table
             $req = $this->getDb()->prepare('DELETE FROM `chat` WHERE `id_user` = :id_user');
-            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
             $req->execute();
 
             // Delete links in rental table
             $req = $this->getDb()->prepare('DELETE FROM `rental` WHERE `id_user` = :id_user');
-            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
             $req->execute();
 
             // Delete links in reservation table
             $req = $this->getDb()->prepare('DELETE FROM `reservation` WHERE `id_user` = :id_user');
-            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
             $req->execute();
 
             // Delete links in review table
             $req = $this->getDb()->prepare('DELETE FROM `review` WHERE `id_user` = :id_user');
-            $req->bindParam('id', $id, PDO::PARAM_INT);
+            $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
             $req->execute();
 
             // Delete links in wishlist table
             $req = $this->getDb()->prepare('DELETE FROM `wishlist` WHERE `id_user` = :id_user');
-            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
             $req->execute();
 
             // Delete the user
             $req = $this->getDb()->prepare('DELETE FROM `user` WHERE `id_user` = :id_user');
-            $req->bindParam('id_user', $id, PDO::PARAM_INT);
+            $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
             $req->execute();
 
             // Commit the transaction if both operations succeeded

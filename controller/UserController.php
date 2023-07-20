@@ -108,10 +108,10 @@ class UserController extends Controller
             $model = new UserModel();
                 var_dump($_POST);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $mail = $_POST["mail"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
-                $phone = $_POST['phone'];
+                $firstname = $_POST['firstname-input'];
+                $lastname = $_POST['lastname-input'];
+                $mail = $_POST["mail-input"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
+                $phone = $_POST['phone-input'];
 
                 $user = new User([
                     'firstname' => $firstname,
@@ -126,6 +126,10 @@ class UserController extends Controller
                 echo self::getRender('homepage.html.twig', []);
             }
         }
+    }
+
+    public function userProfilDelete(){
+        
     }
 
     public function getUserWishlist($id)
