@@ -83,9 +83,10 @@ class UserModel extends Model
 
     public function deleteUser(int $id_user)
     {
+
         // Start a new transaction
         $this->getDb()->beginTransaction();
-
+        
         try {
             // Delete links in chat table
             $req = $this->getDb()->prepare('DELETE FROM `chat` WHERE `id_user` = :id_user');
