@@ -1363,7 +1363,12 @@ body .profil .container-profil form.profil-information .name-lastname .file {
 body .profil .container-profil form.profil-information .name-lastname .update-delete {
   display: flex;
 }
-body .profil .container-profil form.profil-information #save-changes-btn {
+body .profil .container-profil form.profil-information .update-delete {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+body .profil .container-profil form.profil-information .update-delete #save-changes-btn {
   width: -moz-fit-content;
   width: fit-content;
   background-color: #007bff;
@@ -1374,11 +1379,6 @@ body .profil .container-profil form.profil-information #save-changes-btn {
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
-}
-body .profil .container-profil form.profil-information .update-delete {
-  display: flex;
-  gap: 10px;
-  align-items: center;
 }
 body .profil .container-profil form.profil-information .update-delete #delete-changes-btn {
   width: -moz-fit-content;
@@ -1680,17 +1680,15 @@ body .addrental {
   width: 100%;
   max-width: 1440px;
   margin: 50px auto;
-}
-body .addrental .container-propriete {
   width: 100%;
 }
-body .addrental .container-propriete .btn {
+body .addrental .btn {
   width: 100%;
 }
-body .addrental .container-propriete .btn #btn-add {
+body .addrental .btn #btn-add {
   background-color: #0056b3;
 }
-body .addrental .container-propriete .container-card-property {
+body .addrental .container-card-property {
   width: 100%;
   margin: auto;
   max-width: 1440px;
@@ -1702,17 +1700,17 @@ body .addrental .container-propriete .container-card-property {
   display: none;
 }
 @media screen and (max-width: 450px) {
-  body .addrental .container-propriete .container-card-property {
+  body .addrental .container-card-property {
     grid-template-columns: repeat(auto-fill, 298px);
   }
 }
-body .addrental .container-propriete .container-card-property .btn-add {
+body .addrental .container-card-property .btn-add {
   width: 100%;
 }
-body .addrental .container-propriete .container-card-property .btn-add .btn-add {
+body .addrental .container-card-property .btn-add .btn-add {
   background-color: #FF385C;
 }
-body .addrental .container-propriete .container-card-property .card {
+body .addrental .container-card-property .card {
   width: 100%;
   height: 100%;
   height: auto;
@@ -1720,65 +1718,65 @@ body .addrental .container-propriete .container-card-property .card {
   border-bottom-right-radius: 13px;
   position: relative;
 }
-body .addrental .container-propriete .container-card-property .card .img-card {
+body .addrental .container-card-property .card .img-card {
   width: 100%;
   height: 300px;
   border-radius: 10px;
   position: relative;
 }
-body .addrental .container-propriete .container-card-property .card .img-card .size-img {
+body .addrental .container-card-property .card .img-card .size-img {
   width: 100%;
   height: 100%;
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
 }
-body .addrental .container-propriete .container-card-property .card .content-card {
+body .addrental .container-card-property .card .content-card {
   box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.101);
   padding: 10px;
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
   height: 175px;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .title-prince {
+body .addrental .container-card-property .card .content-card .title-prince {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .title-prince .h1-title-card {
+body .addrental .container-card-property .card .content-card .title-prince .h1-title-card {
   font-size: 1.1rem;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .title-prince .prince {
+body .addrental .container-card-property .card .content-card .title-prince .prince {
   display: flex;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .title-prince .prince span {
+body .addrental .container-card-property .card .content-card .title-prince .prince span {
   font-size: xx-large;
   color: #F85E9F;
   text-align: center;
   font: xx-large;
   padding: 3px;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .location-card {
+body .addrental .container-card-property .card .content-card .location-card {
   width: 100%;
   margin: 10px 0px;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .location-card span {
+body .addrental .container-card-property .card .content-card .location-card span {
   font-size: x-large;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .rating-card {
+body .addrental .container-card-property .card .content-card .rating-card {
   text-align: center;
   margin-top: 10px;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .rating-card .rating {
+body .addrental .container-card-property .card .content-card .rating-card .rating {
   font-size: 1.5rem;
   font-weight: bolder;
   color: #FF5722;
 }
-body .addrental .container-propriete .container-card-property .card .content-card .rating-card .size-img-star {
+body .addrental .container-card-property .card .content-card .rating-card .size-img-star {
   width: 24px;
 }
 body .addrental .form-cart {
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
 }
 body .addrental .form-cart h2 {
@@ -1854,7 +1852,7 @@ body .addrental .form-cart .add-edit-delete {
   max-width: 500px;
   align-items: center;
 }
-body .addrental .form-cart .add-edit-delete #delete-changes-btn {
+body .addrental .form-cart .add-edit-delete #edit-changes-btn {
   width: -moz-fit-content;
   width: fit-content;
   background-color: #fc0707;

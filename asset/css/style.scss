@@ -1763,22 +1763,24 @@ body {
                     }
                 }
 
-                #save-changes-btn {
-                    width: fit-content;
-                    background-color: #007bff;
-                    color: #F7F7F7;
-                    font-size: 1rem;
-                    border: none;
-                    margin: 10px auto;
-                    border-radius: 5px;
-                    padding: 10px;
-                    cursor: pointer;
-                }
+
 
                 .update-delete {
                     display: flex;
                     gap: 10px;
                     align-items: center;
+
+                    #save-changes-btn {
+                        width: fit-content;
+                        background-color: #007bff;
+                        color: #F7F7F7;
+                        font-size: 1rem;
+                        border: none;
+                        margin: 10px auto;
+                        border-radius: 5px;
+                        padding: 10px;
+                        cursor: pointer;
+                    }
 
                     #delete-changes-btn {
                         width: fit-content;
@@ -2164,134 +2166,132 @@ body {
         max-width: 1440px;
         margin: 50px auto;
 
-        .container-propriete {
+        width: 100%;
+
+        .btn {
             width: 100%;
 
-            .btn {
-                width: 100%;
-
-                #btn-add {
-                    background-color: #0056b3;
-                }
-
+            #btn-add {
+                background-color: #0056b3;
             }
 
-            .container-card-property {
-                width: 100%;
-                margin: auto;
-                max-width: 1440px;
-                display: grid;
-                grid-template-columns: repeat(auto-fill, 350px);
-                justify-content: center;
-                grid-gap: 55px;
-                grid-auto-rows: auto;
-                display: none;
+        }
 
-                @media screen and (max-width:450px) {
-                    grid-template-columns: repeat(auto-fill, 298px);
-                }
+        .container-card-property {
+            width: 100%;
+            margin: auto;
+            max-width: 1440px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 350px);
+            justify-content: center;
+            grid-gap: 55px;
+            grid-auto-rows: auto;
+            display: none;
+
+            @media screen and (max-width:450px) {
+                grid-template-columns: repeat(auto-fill, 298px);
+            }
+
+            .btn-add {
+                width: 100%;
 
                 .btn-add {
-                    width: 100%;
-
-                    .btn-add {
-                        background-color: #FF385C;
-                    }
+                    background-color: #FF385C;
                 }
+            }
 
-                .card {
+            .card {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                border-bottom-left-radius: 13px;
+                border-bottom-right-radius: 13px;
+                position: relative;
+
+
+                .img-card {
                     width: 100%;
-                    height: 100%;
-                    height: auto;
-                    border-bottom-left-radius: 13px;
-                    border-bottom-right-radius: 13px;
+                    height: 300px;
+                    border-radius: 10px;
                     position: relative;
 
-
-                    .img-card {
+                    .size-img {
                         width: 100%;
-                        height: 300px;
-                        border-radius: 10px;
-                        position: relative;
-
-                        .size-img {
-                            width: 100%;
-                            height: 100%;
-                            border-top-left-radius: 13px;
-                            border-top-right-radius: 13px;
-                        }
-                    }
-
-                    .content-card {
-                        box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.101);
-                        padding: 10px;
-                        border-bottom-left-radius: 13px;
-                        border-bottom-right-radius: 13px;
-                        height: 175px;
-
-
-
-                        .title-prince {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-
-
-
-                            .h1-title-card {
-                                font-size: 1.1rem;
-                            }
-
-                            .prince {
-                                display: flex;
-
-                                span {
-                                    font-size: xx-large;
-                                    color: #F85E9F;
-                                    text-align: center;
-                                    font: xx-large;
-                                    padding: 3px;
-
-                                }
-                            }
-
-
-                        }
-
-                        .location-card {
-                            width: 100%;
-                            margin: 10px 0px;
-
-                            span {
-
-                                font-size: x-large;
-                            }
-                        }
-
-                        .rating-card {
-                            text-align: center;
-                            margin-top: 10px;
-
-                            .rating {
-                                font-size: 1.5rem;
-                                font-weight: bolder;
-                                color: #FF5722;
-                            }
-
-                            .size-img-star {
-                                width: 24px;
-                            }
-
-                        }
+                        height: 100%;
+                        border-top-left-radius: 13px;
+                        border-top-right-radius: 13px;
                     }
                 }
 
+                .content-card {
+                    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.101);
+                    padding: 10px;
+                    border-bottom-left-radius: 13px;
+                    border-bottom-right-radius: 13px;
+                    height: 175px;
+
+
+
+                    .title-prince {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+
+
+                        .h1-title-card {
+                            font-size: 1.1rem;
+                        }
+
+                        .prince {
+                            display: flex;
+
+                            span {
+                                font-size: xx-large;
+                                color: #F85E9F;
+                                text-align: center;
+                                font: xx-large;
+                                padding: 3px;
+
+                            }
+                        }
+
+
+                    }
+
+                    .location-card {
+                        width: 100%;
+                        margin: 10px 0px;
+
+                        span {
+
+                            font-size: x-large;
+                        }
+                    }
+
+                    .rating-card {
+                        text-align: center;
+                        margin-top: 10px;
+
+                        .rating {
+                            font-size: 1.5rem;
+                            font-weight: bolder;
+                            color: #FF5722;
+                        }
+
+                        .size-img-star {
+                            width: 24px;
+                        }
+
+                    }
+                }
             }
+
         }
 
         .form-cart {
             width: 100%;
-            display: flex;
+            display: none;
             justify-content: center;
             // background-color: #1FAB71;
 
@@ -2378,7 +2378,7 @@ body {
                 max-width: 500px;
                 align-items: center;
 
-                #delete-changes-btn {
+                #edit-changes-btn {
                     width: fit-content;
                     background-color: #fc0707;
                     color: #F7F7F7;
