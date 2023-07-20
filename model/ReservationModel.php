@@ -1,7 +1,6 @@
 <?php
 class ReservationModel extends Model
 {
-
     //Create
     public function addReservation(Reservation $reservation)
     {
@@ -36,7 +35,6 @@ class ReservationModel extends Model
         $req->bindParam(":validation", $validation, PDO::PARAM_STR);
         $req->execute();
     }
-
 
     //Read
     public function readAllReservationUser(Reservation $reservation)

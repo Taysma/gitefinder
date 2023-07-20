@@ -2,15 +2,16 @@
 
 class HomeController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
        
         echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
     }
 
-    public function addSubscribes(){
-        
+    public function addSubscribes()
+    {
         global $router;
         $model = new NewsletterModel();
 

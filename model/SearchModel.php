@@ -2,8 +2,8 @@
 
 class SearchModel extends Model {
 
-    public function getSearchResult($searchTerm){
-
+    public function getSearchResult($searchTerm)
+    {
         $searchTerm = '%' . strtolower($searchTerm) . '%';
         
         $req = $this->getDb()->prepare("SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`,   

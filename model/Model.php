@@ -2,7 +2,8 @@
 abstract class Model {
     private static $db;
 
-    private static function setDb(){
+    private static function setDb()
+    {
         try {
             self::$db = new PDO('mysql:host=localhost;dbname=gitefinder;charset=UTF8', 'root');
         } catch(PDOException $e){
@@ -10,7 +11,8 @@ abstract class Model {
         }
     }
 
-    protected function getDb(){
+    protected function getDb()
+    {
         if(self::$db == null){
             self::setDb();
         }

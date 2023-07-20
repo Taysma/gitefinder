@@ -1,7 +1,6 @@
 <?php
 
 class Reservation{
-
     private $id_reservation;
     private $id_user;
     private $id_rental;
@@ -9,6 +8,7 @@ class Reservation{
     private $checkin_date;
     private $checkout_date;
     private $validation;
+
 
     public function __construct(array $post){
         $this->hydrate($post);
@@ -57,30 +57,30 @@ class Reservation{
 
     //SETTERS
     public function setId_reservation(int $id_reservation){
-        $this->id_reservation=$id_reservation;
+        $this->id_reservation = $id_reservation;
     }
 
     public function setId_user(int $id_user){
-        $this->id_user=$id_user;
+        $this->id_user = $id_user;
     }
 
     public function setId_rental(int $id_rental){
-        $this->id_rental=$id_rental;
+        $this->id_rental = $id_rental;
     }
 
     public function setAvailable(String $available){
-        $this->available=$available;
+        $this->available = $available;
     }
 
     public function setCheckin_date(String $checkin_date){
-        $this->checkin_date=$checkin_date;
+        $this->checkin_date = $checkin_date;
     }
 
     public function setCheckout_date(String $checkout_date){
-        $this->checkout_date=$checkout_date;
+        $this->checkout_date = $checkout_date;
     }
 
     public function setValidation(String $validation){
-        $this->validation=$validation;
+        $this->validation = $validation;
     }
 }

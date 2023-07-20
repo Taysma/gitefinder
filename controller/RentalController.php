@@ -4,7 +4,6 @@ class RentalController extends Controller
 
     public function getOne(int $id_rental)
     {
-
         global $router;
         $model = new RentalModel();
         $rental = $model->getOneRental($id_rental);
@@ -14,7 +13,6 @@ class RentalController extends Controller
 
     public function getOneCategory($id_category)
     {
-
         $model = new CategoryModel();
         $category = $model->getOneCategory($id_category);
         $rentals = $model->getRentalsByCategory($id_category);
@@ -32,8 +30,6 @@ class RentalController extends Controller
 
     public function newReservation($id_rental)
     {
-        
-
         global $router;
         if (!$_POST) {
             echo self::getRender('post.html.twig', []);

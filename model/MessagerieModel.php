@@ -1,7 +1,6 @@
 <?php
 class MessagerieModel extends Model
 {
-
     //Create
     public function createMessage(Chat $chat)
     {

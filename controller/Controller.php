@@ -7,7 +7,8 @@ abstract class Controller
 
     private static function getLoader()
     {
-        if (self::$loader === null) {
+        if (self::$loader === null) 
+        {
             self::$loader = new \Twig\Loader\FilesystemLoader('./view');
         }
         return self::$loader;
@@ -37,8 +38,8 @@ abstract class Controller
         return self::$twig;
     }
 
-    protected static function setRender(string $template, $datas){
-
+    protected static function setRender(string $template, $datas)
+    {
         global $router;
 
         //LINKS

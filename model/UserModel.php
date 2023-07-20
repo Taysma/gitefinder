@@ -1,10 +1,8 @@
 <?php
 class UserModel extends Model
 {
-
     public function createUser(User $user)
     {
-
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
         $mail = $user->getMail();
@@ -59,7 +57,6 @@ class UserModel extends Model
 
     public function updateUser(User $user)
     {
-
         $id_user = $_SESSION['id_user'];
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
@@ -75,13 +72,10 @@ class UserModel extends Model
         $req->bindParam(":phone", $phone, PDO::PARAM_INT);
 
         $req->execute();
-
-
     }
 
     public function deleteUser(int $id_user)
     {
-
         // Start a new transaction
         $this->getDb()->beginTransaction();
         

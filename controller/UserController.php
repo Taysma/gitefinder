@@ -7,7 +7,6 @@ class UserController extends Controller
         if (!$_POST) {
             echo self::getRender('register.html.twig', []);
         } else {
-
             global $router;
             $model = new UserModel();
 
@@ -89,21 +88,19 @@ class UserController extends Controller
         }
     }
 
-    public function getUserProfil(){
-
+    public function getUserProfil()
+    {
         $userModel = new UserModel();
         $personnalData = $userModel->getUserById();
         
         echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
-    public function userProfilUpdate()
+    public function editProfil()
     {
-
         if (!$_POST) {
             echo self::getRender('homepage.html.twig', []);
         } else {
-
             global $router;
             $model = new UserModel();
             var_dump($_POST);
@@ -128,14 +125,12 @@ class UserController extends Controller
         }
     }
 
-    public function userProfilDelete()
+    public function deleteProfil()
     {
-       
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             global $router;
             $model = new UserModel();
-
 
             $id_user = $_SESSION['id_user'];
 
@@ -145,7 +140,6 @@ class UserController extends Controller
             header('Location: ' . $router->generate('home'));
         } else {
             echo self::getRender('connect.html.twig', []);
-
         }
     }
 
@@ -195,7 +189,6 @@ class UserController extends Controller
 
         echo self::getRender('property.html.twig', []);
     }
-
 
     public function addProperty()
     {

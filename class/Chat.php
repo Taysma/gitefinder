@@ -7,6 +7,7 @@ class Chat {
     private $content;
     private $send_at;
     
+
     public function __construct(array $post){
         $this->hydrate($post);
     }
@@ -21,6 +22,7 @@ class Chat {
         }
     }
 
+    
     //GETTERS
     public function getId_chat(){
         return $this->id_chat;
@@ -44,25 +46,24 @@ class Chat {
 
 
     //SETTERS
-
     public function setId_chat(int $id_chat){
-        $this->id_chat=$id_chat;
+        $this->id_chat = $id_chat;
     }
 
     public function setId_user(int $id_user){
-        $this->id_user=$id_user;
+        $this->id_user = $id_user;
     }
 
     public function setId_rental(int $id_rental){
-        $this->id_rental=$id_rental;
+        $this->id_rental = $id_rental;
     }
 
     public function setContent(String $content){
-        $this->content=$content;
+        $this->content = $content;
     }
 
     public function setSend_at(String $send_at){
-        $this->send_at=$send_at;
+        $this->send_at = $send_at;
     }
 
 }
