@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 18 juil. 2023 à 09:43
+-- Généré le : jeu. 20 juil. 2023 à 09:10
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.2.0
 
@@ -201,7 +201,7 @@ INSERT INTO `rental` (`id_rental`, `id_user`, `title`, `content`, `cover`, `capa
 (1, 1, 'villa walesca', 'Découvrez la Villa Walesca, une vieille demeure de 100 ans en bord de mer. Son architecture d\'époque vous transporte dans un autre temps, tandis que les vues panoramiques et les jardins paisibles créent une atmosphère enchanteresse. Profitez de l\'élégance intemporelle, de l\'authenticité préservée et d\'une expérience inoubliable dans ce havre de charme et de tranquillité', 'villawalesca.png', 15, 300, '99001 palavasse les flots', '3 rue du coquillage', 'France', 300),
 (2, 2, 'boat karim', 'Offrez-vous une expérience unique en mer avec la location du BoatKarim ! Profitez de nuits magiques, bercé par les vagues, dans un cadre tranquille et magnifique. Réveillez-vous chaque matin avec une vue imprenable sur l\'horizon marin. Réservez dès maintenant et embarquez pour des souvenirs mémorables en mer.', 'boatkarim.png', 22, 500, 'Kuala lumpur', '2 rue duché kuala', 'France', 5000),
 (3, 3, 'les grottes sombre', 'Dormez au cœur de la nature dans notre gîte unique en grotte. Vivez une expérience insolite et magique. Réservez dès maintenant pour des vacances inoubliables loin de tout.......absolument tout', 'grotte.png', 16, 130, 'sables d\'olonne', '666 impasse du non retour', 'France', 666),
-(4, 1, 'cabane perché', 'Découvrez notre cabane perchée, l\'endroit idéal pour échapper au quotidien ! Perdez vos enfants en toute tranquillité ou amusez-vous à les traquer à vue avec notre fameuse phrase : \"Ha bah c\'était pas un sanglier\". Profitez de la nature, du calme et de l\'aventure dans notre cabane unique en son genre. Réservez dès maintenant pour des moments inoubliables en famille !', 'cabanearbre.jpg', 500, 2000, '[promenons nous dans les bois ]', 'un coin isolé 00000', 'Neverland', 999);
+(4, 1, 'cabane perché', 'Découvrez notre cabane perchée, l\'endroit idéal pour échapper au quotidien ! Perdez vos enfants en toute tranquillité ou amusez-vous à les traquer à vue avec notre fameuse phrase : \"Ha bah c\'était pas un sanglier\". Profitez de la nature, du calme et de l\'aventure dans notre cabane unique en son genre. Réservez dès maintenant pour des moments inoubliables en famille !', 'cabanearbre.jpg', 500, 2000, 'NoWayCity', 'lieu dit: la malchance 00000', 'Nerverland', 999);
 
 -- --------------------------------------------------------
 
@@ -304,22 +304,24 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mail` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `birthdate` date NOT NULL,
   `password` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` int NOT NULL,
   `content` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `roles` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `avatar` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `content`, `roles`) VALUES
-(1, 'waleska', '', 'walesca@gintefinder.fr', '1900-01-01', 'cheffe', 'c\'est la cheffe donc elle fait la cheffe quand elle fait la cheffe', 'cheffe'),
-(2, 'karim', '', 'karim@gintefinder.fr', '1900-02-01', 'frontend', 'il developpa ses faculté d\'observation a un niveau si élever qu\'uon appella cette technique le karim des rois ', 'middle boss'),
-(3, 'dimitri', '', 'dimitri@gintefinder.fr', '1900-03-01', '123456789', 'travailleur de lombre il veille au bon grain sous la direction de LA cheffe parce que tout le monde aime la cheffe', 'roublard'),
-(4, 'dimitri', 'johan', 'orikham@hotmail.fr', '1989-10-21', '$2y$10$kIp0OMWUouEPfpJ.fXStMeeJra.Hj0kvoV6Cb3f6BwNEfHLlNCM5i', 'travailleur de lombre il veille au bon grain sous la direction de LA cheffe parce que tout le monde aime la cheffe', 'roublard'),
-(5, 'walesca', 'commanderinchief', 'walesca@hotmail.fr', '2023-06-01', '$2y$10$N3.CsYSoJdXjZ/hhLRUo4.3M76kzSP.tL5GkMS2zWOHPhFuLcdYmG', 'c\'est la cheffe donc elle fait la cheffe quand elle fait la cheffe', 'cheffe'),
-(6, 'titi', 'tata', 'toto@toto.fr', '2023-06-29', '$2y$10$UOhZf/0/OOw4UGNfBwPkVutE3MmJ9jM6vwQX9JnGv.7VtISGdIy2C', NULL, NULL);
+INSERT INTO `user` (`id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `phone`, `content`, `roles`, `avatar`) VALUES
+(1, 'waleska', '', 'walesca@gintefinder.fr', '1900-01-01', 'cheffe', 606060606, 'c\'est la cheffe donc elle fait la cheffe quand elle fait la cheffe', 'cheffe', ''),
+(2, 'karim', '', 'karim@gintefinder.fr', '1900-02-01', 'frontend', 606060606, 'il developpa ses faculté d\'observation a un niveau si élever qu\'uon appella cette technique le karim des rois ', 'middle boss', ''),
+(3, 'dimitri', '', 'dimitri@gintefinder.fr', '1900-03-01', '123456789', 606060606, 'travailleur de lombre il veille au bon grain sous la direction de LA cheffe parce que tout le monde aime la cheffe', 'roublard', ''),
+(4, 'dimitri', 'johan', 'orikham@hotmail.fr', '1989-10-21', '$2y$10$kIp0OMWUouEPfpJ.fXStMeeJra.Hj0kvoV6Cb3f6BwNEfHLlNCM5i', 606060606, 'travailleur de lombre il veille au bon grain sous la direction de LA cheffe parce que tout le monde aime la cheffe', 'roublard', 'profilDimitri'),
+(5, 'walesca', 'commanderinchief', 'walesca@hotmail.fr', '2023-06-01', '$2y$10$N3.CsYSoJdXjZ/hhLRUo4.3M76kzSP.tL5GkMS2zWOHPhFuLcdYmG', 606060606, 'c\'est la cheffe donc elle fait la cheffe quand elle fait la cheffe', 'cheffe', 'profilWalesca'),
+(6, 'titi', 'tata', 'toto@toto.fr', '2023-06-29', '$2y$10$UOhZf/0/OOw4UGNfBwPkVutE3MmJ9jM6vwQX9JnGv.7VtISGdIy2C', 606060606, NULL, NULL, 'profilKarim');
 
 -- --------------------------------------------------------
 
