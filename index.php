@@ -10,7 +10,7 @@ $router->setBasePath('/projets/gitefinder');
 $router->map('GET', '/', 'HomeController#home', 'home');
 
 $router->map('GET', '/category/', '', 'baseCats');
-$router->map('GET', '/category/[i:id_category]', 'CategoryController#getOne', '');
+$router->map('GET', '/category/[i:id_category]', 'RentalController#getOneCategory', '');
 
 // CONNECTION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
@@ -42,7 +42,7 @@ $router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'ad
 $router->map('GET|POST', '/dashboard/update/[i:id]', 'UserController#addProperty', 'editProperty');
 $router->map('GET|DELETE', '/dashboard/delete/[i:id]', 'UserController#addProperty', 'deleteProperty');
 // USER - FAVORIS
-$router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
+$router->map('GET', '/dashboard/favoris', 'UserController#getUserWishlist', 'userFavoris');
 // $router->map('GET', '/dashboard/favoris/delete/[i:id]', 'UserController#deleteFromWishlist', 'deleteFavoris');
 // USER - MESSAGERIE
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');

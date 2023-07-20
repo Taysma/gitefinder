@@ -9,7 +9,7 @@ class MessagerieModel extends Model
         $id_user = $chat->getId_user();
         $id_rental = $chat->getId_rental();
         $content = $chat->getContent();
-        $send_at = $chat->getSendAt();
+        $send_at = $chat->getSend_at();
 
         $req = $this->getDb()->prepare("INSERT INTO `chat` (`id_chat`, `id_user`, `id_rental`, `content`, `send_at`) VALUES (:id_chat, :id_user, :id_rental, :content, :send_at)");
 
@@ -40,7 +40,7 @@ class MessagerieModel extends Model
         $id_user = $chat->getId_user();
         $id_rental = $chat->getId_rental();
         $content = $chat->getContent();
-        $send_at = $chat->getSendAt();
+        $send_at = $chat->getSend_at();
 
         $req = $this->getDb()->prepare("UPDATE `chat` SET `id_chat`=':id_chat',`id_user`=':id_user',`id_rental`=':id_rental',`content`=':content',`send_at`=':send_at' ");
 
@@ -52,7 +52,6 @@ class MessagerieModel extends Model
 
         $req->execute();
     }
-
 
     //Delete
     public function deleteMessage(int $id)

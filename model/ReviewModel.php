@@ -88,5 +88,4 @@ class ReviewModel extends Model
             throw $e; // or handle it in another way depending on your needs
         }
     }
-
 }

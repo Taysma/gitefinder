@@ -89,12 +89,12 @@ class UserController extends Controller
         }
     }
 
+    //Dashboard - CRUD Profil User
     public function getUserProfil(){
 
         $userModel = new UserModel();
         $personnalData = $userModel->getUserById();
         
-        var_dump($personnalData);
         echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
@@ -132,12 +132,22 @@ class UserController extends Controller
         
     }
 
-    public function getUserWishlist($id)
+    //Dashboard - CRUD Reservation User
+    public function getUserReservation()
     {
-        // $wishlistmodel = new WishlistModel();
-        // $favoris = $wishlistmodel->getWish($id);
+        echo self::getRender('rental.html.twig', []);
+    }
 
-        echo self::getRender('favoris.html.twig', []);
+    //Dashboard - CRUD Wishlist User
+    public function getUserWishlist()
+    {
+        $model = new WishlistModel();
+        $wishlist = $model->getWish();
+
+        $rentalModel = new RentalModel();
+        $rentals = $rentalModel->getAllRentals();
+
+        echo self::getRender('favoris.html.twig', [ 'wishlist' => $wishlist, 'rentals' => $rentals]);
     }
 
     public function addToWishlist()
@@ -148,16 +158,13 @@ class UserController extends Controller
     {
     }
 
+    //Dashboard - CRUD Messagerie User
     public function getUserMessagerie()
     {
         echo self::getRender('messenger.html.twig', []);
     }
 
-    public function getUserReservation()
-    {
-        echo self::getRender('rental.html.twig', []);
-    }
-
+    //Dashboard - CRUD Propriétés User
     public function getUserProperty()
     {
         // if ($_SESSION['connect']) {
@@ -172,6 +179,7 @@ class UserController extends Controller
 
         echo self::getRender('property.html.twig', []);
     }
+
 
     public function addProperty()
     {

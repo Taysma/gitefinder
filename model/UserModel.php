@@ -42,8 +42,6 @@ class UserModel extends Model
         return $user;
     }
 
-
-
     public function getUserRentals(int $id_user)
     {
         $rentals = [];
