@@ -42,7 +42,7 @@
 			<hr>
 
 			<!-- profil -->
-			<form method="POST" action="{{ path('editUserProfil') }}" class="profil-information">
+			<form class="profil-information" method="POST" action="{{ path('editUserProfil') }}" >
 				<div class="name-lastname profil-edit">
 					<label for="lastname-input">Nom</label>
 					<input type="text" id="lastname-input" value="{{ dataP.lastname }}">
@@ -63,6 +63,7 @@
 					<label for="id-card-input">Pièce d'identité officielle</label>
 					<input type="file" id="id-card-input" class="file">
 				</div>
+			<div class="update-delete">	
 				<div>
 					<button type="submit" id="save-changes-btn">Enregistrer les modifications</button>
 				</div>

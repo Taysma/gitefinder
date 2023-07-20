@@ -1780,6 +1780,18 @@ body {
                     gap: 10px;
                     align-items: center;
 
+                    #save-changes-btn {
+                        width: fit-content;
+                        background-color: #007bff;
+                        color: #F7F7F7;
+                        font-size: 1rem;
+                        border: none;
+                        margin: 10px auto;
+                        border-radius: 5px;
+                        padding: 10px;
+                        cursor: pointer;
+                    }
+
                     #delete-changes-btn {
                         width: fit-content;
                         background-color: #fc0707;

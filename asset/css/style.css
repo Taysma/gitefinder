@@ -1380,6 +1380,18 @@ body .profil .container-profil form.profil-information .update-delete {
   gap: 10px;
   align-items: center;
 }
+body .profil .container-profil form.profil-information .update-delete #save-changes-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #007bff;
+  color: #F7F7F7;
+  font-size: 1rem;
+  border: none;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
 body .profil .container-profil form.profil-information .update-delete #delete-changes-btn {
   width: -moz-fit-content;
   width: fit-content;
