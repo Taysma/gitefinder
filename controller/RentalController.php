@@ -35,19 +35,19 @@ class RentalController extends Controller
             echo self::getRender('post.html.twig', []);
         } else {
             if (isset($_POST['submit'])) {
-                $id_rental = $_GET['id_rental'];
                 $id_user = $_SESSION['id_user'];
-                $title = $_POST['title'];
-                $duration = $_POST['duration'];
-                $content = $_POST['content'];
-                $author = $_SESSION['uid'];
+                $id_rental = $_GET['id_rental'];
+                //$available = ;
+                $checkin_date = $_POST['arrivee'];
+                $checkout_date = $_POST['duration'];
+                $validation = $_POST['content'];
 
-                $reservation = new Reservation([
-
-                    'title' => $title,
-                    'duration' => $duration,
-                    'content' => $content,
-                    'author' => $author,
+                $reservation = new Reservation
+                ([
+                    // 'title' => $title,
+                    // 'duration' => $duration,
+                    // 'content' => $content,
+                    // 'author' => $author,
                 ]);
                 
                 $model = new ReservationModel();
