@@ -4,11 +4,27 @@
 <head>
     <title>Formulaire d'ajout de location</title>
     <link rel="stylesheet" href="../asset/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/places@1.19.1/dist/cdn/places.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/places.js@1.19.0/dist/cdn/places.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+    <style>
+        #mapid {
+            height: 180px;
+        }
+
+        #autocomplete-items {
+            /* position: absolute; */
+            max-width: 250px;
+            background-color: #ffffff;
+            width: 100%;
+            z-index: 99;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #d4d4d4;
+        }
+    </style>
+
+
 
 </head>
 
@@ -68,7 +84,6 @@
             </ol>
         </nav>
         <div class="form-cart">
-
             <form action="" method="post" class="profil-information">
                 <h2>Formulaire d'ajout de location</h2>
                 <div class="name-lastname">
@@ -80,6 +95,8 @@
                         <div class="address">
                             <label for="address">Adresse:</label>
                             <input type="text" id="address" name="address" value="">
+                            <div id="autocomplete-items"></div>
+
                         </div>
                     </div>
                     <div class="label-input">
@@ -111,29 +128,79 @@
             </form>
 
             <div class="cart">
-                <input type="search" id="address-input" placeholder="Where are we going?" />
-
 
                 <div id="mapid"></div>
 
 
             </div>
         </div>
+
     </section>
+
+
+    <!-- <label for="address">Adresse:</label>
+    <input type="text" id="address" name="address" value=""> -->
+    <div id="autocomplete-items"></div>
+    <div id="mapid"></div>
+
     <script>
         var map = L.map('mapid').setView([51.505, -0.09], 13); // Position de départ
+        var marker;
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
         }).addTo(map);
+
+        var timeout = null;
+
+        // Écoute les événements 'input' sur le champ d'adresse
+        $('#address').on('input', function () {
+            var address = $(this).val();
+
+            // Annule la précédente requête d'autocomplétion si elle n'est pas encore terminée
+            clearTimeout(timeout);
+
+            // Commence une nouvelle requête d'autocomplétion après un délai
+            timeout = setTimeout(function () {
+                fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address))
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error("Erreur de géocodage");
+                        }
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        // Affiche les suggestions d'adresse
+                        var suggestions = data.map(function (item) {
+                            return {
+                                name: item.display_name,
+                                lat: item.lat,
+                                lon: item.lon
+                            };
+                        });
+
+                        var suggestionBox = $('#autocomplete-items');
+                        suggestionBox.empty();  // Nettoie les anciennes suggestions
+
+                        // Crée un élément pour chaque suggestion
+                        for (var i = 0; i < suggestions.length; i++) {
+                            var item = $('<div></div>').text(suggestions[i].name);
+                            item.click((function (i) {
+                                return function () {
+                                    $('#address').val(suggestions[i].name);  // Met à jour le champ d'adresse
+                                    suggestionBox.empty();  // Nettoie les suggestions
+                                    map.setView([suggestions[i].lat, suggestions[i].lon], 13);  // Met à jour la carte
+                                };
+                            })(i));
+                            suggestionBox.append(item);
+                        }
+                    })
+                    .catch(function (error) {
+                        alert("Une erreur est survenue lors du géocodage : " + error);
+                    });
+            }, 200);  // Durée du délai en millisecondes
+        });
     </script>
-    <script>
-        var places = require('places.js');
-        var placesAutocomplete = places({
-            appId: '8L7OTUZD07',
-            apiKey: '3175c8fe2be26794e9b318ff908bf3ba',
-            container: document.querySelector('#address-input')
-        });</script>
 </body>
 
 </html>
