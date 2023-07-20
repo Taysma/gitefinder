@@ -45,7 +45,7 @@ $('#address').on('input', function () {
 
                     // Crée un élément pour chaque suggestion
                     for (var i = 0; i < suggestions.length; i++) {
-                        var item = $('<div></div>').text(suggestions[i].name);
+                        var item = $("<div class='data'></div>").text(suggestions[i].name);
                         item.click((function (i) {
                             return function () {
                                 $('#address').val(suggestions[i].name);  // Met à jour le champ d'adresse
@@ -70,3 +70,14 @@ $('#address').on('input', function () {
         }, 200);  // Durée du délai en millisecondes
     }
 });
+
+
+document.getElementById('address').addEventListener('input', function () {
+    var divContent = this.value;
+    var myArray = divContent.split(',');
+    console.log(myArray);
+});
+
+
+
+
