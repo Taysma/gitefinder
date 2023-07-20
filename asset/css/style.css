@@ -1681,6 +1681,101 @@ body .addrental {
   max-width: 1440px;
   margin: 50px auto;
 }
+body .addrental .container-propriete {
+  width: 100%;
+}
+body .addrental .container-propriete .btn {
+  width: 100%;
+}
+body .addrental .container-propriete .btn #btn-add {
+  background-color: #0056b3;
+}
+body .addrental .container-propriete .container-card-property {
+  width: 100%;
+  margin: auto;
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 350px);
+  justify-content: center;
+  grid-gap: 55px;
+  grid-auto-rows: auto;
+  display: none;
+}
+@media screen and (max-width: 450px) {
+  body .addrental .container-propriete .container-card-property {
+    grid-template-columns: repeat(auto-fill, 298px);
+  }
+}
+body .addrental .container-propriete .container-card-property .btn-add {
+  width: 100%;
+}
+body .addrental .container-propriete .container-card-property .btn-add .btn-add {
+  background-color: #FF385C;
+}
+body .addrental .container-propriete .container-card-property .card {
+  width: 100%;
+  height: 100%;
+  height: auto;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  position: relative;
+}
+body .addrental .container-propriete .container-card-property .card .img-card {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  position: relative;
+}
+body .addrental .container-propriete .container-card-property .card .img-card .size-img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+body .addrental .container-propriete .container-card-property .card .content-card {
+  box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.101);
+  padding: 10px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  height: 175px;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .title-prince {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .title-prince .h1-title-card {
+  font-size: 1.1rem;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .title-prince .prince {
+  display: flex;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .title-prince .prince span {
+  font-size: xx-large;
+  color: #F85E9F;
+  text-align: center;
+  font: xx-large;
+  padding: 3px;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .location-card {
+  width: 100%;
+  margin: 10px 0px;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .location-card span {
+  font-size: x-large;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .rating-card {
+  text-align: center;
+  margin-top: 10px;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .rating-card .rating {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: #FF5722;
+}
+body .addrental .container-propriete .container-card-property .card .content-card .rating-card .size-img-star {
+  width: 24px;
+}
 body .addrental .form-cart {
   width: 100%;
   display: flex;
