@@ -1752,6 +1752,37 @@ body .addrental .form-cart .profil-information #save-changes-btn {
   padding: 10px;
   cursor: pointer;
 }
+body .addrental .form-cart .add-edit-delete {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  max-width: 500px;
+  align-items: center;
+}
+body .addrental .form-cart .add-edit-delete #delete-changes-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #fc0707;
+  color: #F7F7F7;
+  font-size: 1rem;
+  border: none;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+body .addrental .form-cart .add-edit-delete #delete-changes-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #fc0707;
+  color: #F7F7F7;
+  font-size: 1rem;
+  border: none;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
 body .addrental .form-cart .cart {
   width: 100%;
   border: 1px solid red;

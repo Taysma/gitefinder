@@ -2245,6 +2245,39 @@ body {
                 }
             }
 
+            .add-edit-delete {
+                display: flex;
+
+                width: 100%;
+                gap: 20px;
+                max-width: 500px;
+                align-items: center;
+
+                #delete-changes-btn {
+                    width: fit-content;
+                    background-color: #fc0707;
+                    color: #F7F7F7;
+                    font-size: 1rem;
+                    border: none;
+                    margin: 10px auto;
+                    border-radius: 5px;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+
+                #delete-changes-btn {
+                    width: fit-content;
+                    background-color: #fc0707;
+                    color: #F7F7F7;
+                    font-size: 1rem;
+                    border: none;
+                    margin: 10px auto;
+                    border-radius: 5px;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+            }
+
             .cart {
                 width: 100%;
                 border: 1px solid red;
