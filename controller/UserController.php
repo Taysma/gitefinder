@@ -7,7 +7,6 @@ class UserController extends Controller
         if (!$_POST) {
             echo self::getRender('register.html.twig', []);
         } else {
-
             global $router;
             $model = new UserModel();
 
@@ -91,33 +90,103 @@ class UserController extends Controller
 
     public function getUserProfil()
     {
-        echo self::getRender('profil.html.twig', []);
+        $userModel = new UserModel();
+        $personnalData = $userModel->getUserById();
+        
+        echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
-    public function getUserWishlist($id)
+    public function editProfil()
     {
-        // $wishlistmodel = new WishlistModel();
-        // $favoris = $wishlistmodel->getWish($id);
+        if (!$_POST) {
+            echo self::getRender('homepage.html.twig', []);
+        } else {
+            global $router;
+            $model = new UserModel();
+            var_dump($_POST);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $firstname = $_POST['firstname-input'];
+                $lastname = $_POST['lastname-input'];
+                $mail = $_POST["mail-input"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
+                $phone = $_POST['phone-input'];
 
-        echo self::getRender('favoris.html.twig', []);
+                $user = new User([
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'mail' => $mail,
+                    'phone' => $phone
+                ]);
+
+                $model->updateUser($user);
+                header('Location: ' . $router->generate('home'));
+            } else {
+                echo self::getRender('homepage.html.twig', []);
+            }
+        }
+    }
+
+    public function deleteProfil()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            global $router;
+            $model = new UserModel();
+
+            $id_user = $_SESSION['id_user'];
+
+            $model->deleteUser($id_user);
+            session_destroy();
+            $_SESSION = [];
+            header('Location: ' . $router->generate('home'));
+        } else {
+            echo self::getRender('connect.html.twig', []);
+        }
+    }
+
+    //Dashboard - CRUD Reservation User
+    public function getUserReservation()
+    {
+        //$model = new ReservationModel();
+        //$rentals = $model->readAllReservationUser($reservation);
+
+        echo self::getRender('rental.html.twig', []);
+    }
+
+    //Dashboard - CRUD Wishlist User
+    public function getUserWishlist()
+    {
+        $model = new WishlistModel();
+        $wishlist = $model->getWish();
+
+        $rentalModel = new RentalModel();
+        $rentals = $rentalModel->getAllRentals();
+
+        echo self::getRender('favoris.html.twig', [ 'wishlist' => $wishlist, 'rentals' => $rentals]);
     }
 
     public function addToWishlist(){}
 
     public function deleteFromWishlist(){}
 
+    //Dashboard - CRUD Messagerie User
     public function getUserMessagerie()
     {
         echo self::getRender('messenger.html.twig', []);
     }
 
-    public function getUserReservation()
-    {
-        echo self::getRender('rental.html.twig', []);
-    }
-
+    //Dashboard - CRUD Propriétés User
     public function getUserProperty()
     {
+        // if ($_SESSION['connect']) {
+        //  $id_user = $_SESSION['id_user'];
+
+        //  $model = new RentalModel();
+        //  $userRental = $model->getUserRentals($id_user);
+
+        //  global $router;
+        //  echo self::getRender('dashboard.html.twig', ['rental' => $userRental]);
+        // }
+
         echo self::getRender('property.html.twig', []);
     }
 

@@ -10,7 +10,7 @@ $router->setBasePath('/projets/gitefinder');
 $router->map('GET', '/', 'HomeController#home', 'home');
 
 $router->map('GET', '/category/', '', 'baseCats');
-$router->map('GET', '/category/[i:id_category]', 'CategoryController#getOne', '');
+$router->map('GET', '/category/[i:id_category]', 'RentalController#getOneCategory', '');
 
 // CONNECTION
 $router->map('GET|POST', '/login', 'UserController#login', 'login');
@@ -23,6 +23,7 @@ $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter'
 // ARTICLE - POST
 $router->map('GET', '/article/', '', 'baseRental');
 $router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', '');
+$router->map('POST', '/article/[i:id_rental]', 'RentalController#newReservation', 'reserver');
 
 // ARTICLE - CRUD
 // $router->map('GET|POST', '/nouveau', 'RentalController#createPost', 'addPost');
@@ -33,15 +34,16 @@ $router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', '');
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
 // USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
-$router->map('GET', '/dashboard/profil/update', 'UserController#userProfilUpdate', 'userProfilUpdate');
-$router->map('GET', '/dashboard/profil/delete', 'UserController#userProfilDelete', 'userProfilDelete');
+$router->map('GET|POST', '/dashboard/profil/edit', 'UserController#editProfil', 'editUserProfil');
+$router->map('POST', '/dashboard/profil/delete', 'UserController#deleteProfil', 'deleteUserProfil');
 // USER - PROPRIETE
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
 $router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'addProperty');
+$router->map('GET|POST', '/dashboard/update/[i:id]', 'UserController#addProperty', 'editProperty');
+$router->map('GET|DELETE', '/dashboard/delete/[i:id]', 'UserController#addProperty', 'deleteProperty');
 // USER - FAVORIS
-$router->map('GET', '/dashboard/favoris', 'UserController#getUserFavoris', 'userFavoris');
-// $router->map('GET', '', 'UserController#addToWishlist', 'userFavorisUpdate');
-// $router->map('GET', '', 'UserController#deleteFromWishlist', 'userFavorisDelete');
+$router->map('GET', '/dashboard/favoris', 'UserController#getUserWishlist', 'userFavoris');
+// $router->map('GET', '/dashboard/favoris/delete/[i:id]', 'UserController#deleteFromWishlist', 'deleteFavoris');
 // USER - MESSAGERIE
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 // USER - RESERVATION

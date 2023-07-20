@@ -16,7 +16,6 @@ class CategoryModel extends Model
 
     public function getOneCategory(int $id_category)
     {
-
         $req = $this->getDb()->prepare('SELECT `id_category`, `tag`, `name`, `slug` FROM `category` WHERE `id_category` = :id_category');
         $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
         $req->execute();
@@ -26,10 +25,11 @@ class CategoryModel extends Model
         return $category;
     }
     
-    public function getRentalsByCategory(int $id_category) {
+    public function getRentalsByCategory(int $id_category) 
+    {
         $rentals = [];
 
-        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content` 
+        $req = $this->getDb()->prepare('SELECT `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`cover`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`city`, `rental`.`address`, `rental`.`content`, `rental`.`price` 
         FROM `rental` 
         INNER JOIN `rental_category` 
         ON `rental_category`.`id_rental` = `rental`.`id_rental` 

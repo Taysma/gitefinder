@@ -41,7 +41,7 @@
 					<div class="img-username">
 						<div class="img-profile">
 							<a href="{{ path('userProfil') }}">
-								<img src="{{ asset('/media/icon/WaNom.png') }}" alt=""></a>
+								<img src="{{ asset('/media/images/' ~ session.avatar  ) }}" alt=""></a>
 						</div>
 						<span>{{ session.firstname }}</span>
 					</div>

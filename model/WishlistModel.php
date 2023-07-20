@@ -1,7 +1,7 @@
 <?php
 class WishlistModel extends Model
 {
-    public function getWish(Wishlist $id)
+    public function getWish()
     {
         $id = $_SESSION['id_user'];
         $wishlists = [];
@@ -10,8 +10,8 @@ class WishlistModel extends Model
         $req->bindParam(':id_user', $id, PDO::PARAM_INT);
         $req->execute();
 
-        while ($wishlist = $req->fetch(PDO::FETCH_ASSOC)) {
-            $wishlists[] = new Wishlist($wishlist);
+        while ($wish = $req->fetch(PDO::FETCH_ASSOC)) {
+            $wishlists[] = new Wishlist($wish);
         }
 
         return $wishlists;
