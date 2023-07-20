@@ -21,7 +21,11 @@
 			</ol>
 		</nav>
 		<div class="container-favoris">
-			{% if wishlist|length > 0 %}
+			{% if wishlist|length == 0 %}
+
+				<p> ha bah c'est malin ta pas de favoris</p>
+
+				{% else %}
 				{% for wish in wishlist %}
 					{% for rental in rentals %}
 						{% if rental.id_rental == wish.id_rental %}

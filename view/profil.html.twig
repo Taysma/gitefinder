@@ -37,35 +37,38 @@
 			<hr>
 
 			<!-- profil -->
-			<form class="profil-information">
-				<div class="name-lastname profil-edit">
-					<label for="lastname-input">Nom</label>
-					<input type="text" id="lastname-input">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="name-input">prenom</label>
-					<input type="text" id="name-input">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="email-input">Adresse e-mail</label>
-					<input type="email" id="email-input">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="address-input">Adresse</label>
-					<input type="text" id="address-input">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="phone-input">Numéro de téléphone</label>
-					<input type="tel" id="phone-input">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="id-card-input">Pièce d'identité officielle</label>
-					<input type="file" id="id-card-input" class="file">
-				</div>
-				<div>
-					<button type="submit" id="save-changes-btn">Enregistrer les modifications</button>
-				</div>
-			</form>
+			<form action="{{ path('editUserProfil') }}" class="profil-information" method="POST">
+    <div class="name-lastname profil-edit">
+        <label for="lastname-input">Nom</label>
+        <input type="text" name="lastname-input" id="lastname-input" value="{{ dataP.lastname }}">
+    </div>
+    <div class="name-lastname profil-edit">
+        <label for="name-input">Prénom</label>
+        <input type="text" name="firstname-input" id="name-input" value="{{ dataP.firstname }}">
+    </div>
+    <div class="name-lastname profil-edit">
+        <label for="mail-input">Adresse e-mail</label>
+        <input type="email" name="mail-input" id="mail-input" value="{{ dataP.mail }}">
+    </div>
+    <div class="name-lastname profil-edit">
+        <label for="phone-input">Numéro de téléphone</label>
+        <input type="tel" name="phone-input" id="phone-input" value="{{ dataP.phone }}">
+    </div>
+    {# <div class="name-lastname profil-edit">
+        <label for="id-card-input">Pièce d'identité officielle</label>
+        <input type="file" id="id-card-input" class="file">
+    </div> #}
+    <div>
+        <button type="submit" id="save-changes-btn">Enregistrer les modifications</button>
+
+    </div>
+	
+</form>
+<form action="{{ path('deleteUserProfil') }}" class="profil-information" method="POST">
+	<div>
+        <button type="submit" id="save-changes-btn">supprimer profil</button>
+    </div>
+</form>
 		</div>
 	</section>
 {% endblock %}
