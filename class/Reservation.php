@@ -26,7 +26,6 @@ class Reservation{
 
 
     //GETTERS
-
     public function getId_reservation(){
         return $this->id_reservation;
     }
@@ -43,11 +42,11 @@ class Reservation{
         return $this->available;
     }
 
-    public function getCheckinDate(){
+    public function getCheckin_date(){
         return $this->checkin_date;
     }
 
-    public function getCheckoutDate(){
+    public function getCheckout_date(){
         return $this->checkout_date;
     }
 
@@ -56,9 +55,7 @@ class Reservation{
     }
 
 
-
     //SETTERS
-
     public function setId_reservation(int $id_reservation){
         $this->id_reservation=$id_reservation;
     }
@@ -75,11 +72,11 @@ class Reservation{
         $this->available=$available;
     }
 
-    public function setCheckinDate(String $checkin_date){
+    public function setCheckin_date(String $checkin_date){
         $this->checkin_date=$checkin_date;
     }
 
-    public function setCheckoutDate(String $checkout_date){
+    public function setCheckout_date(String $checkout_date){
         $this->checkout_date=$checkout_date;
     }
 

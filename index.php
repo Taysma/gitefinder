@@ -23,7 +23,7 @@ $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter'
 // ARTICLE - POST
 $router->map('GET', '/article/', '', 'baseRental');
 $router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', '');
-$router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', 'addRental');
+$router->map('POST', '/article/[i:id_rental]', 'RentalController#newReservation', 'reserver');
 
 // ARTICLE - CRUD
 // $router->map('GET|POST', '/nouveau', 'RentalController#createPost', 'addPost');
