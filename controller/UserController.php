@@ -135,6 +135,9 @@ class UserController extends Controller
     //Dashboard - CRUD Reservation User
     public function getUserReservation()
     {
+        //$model = new ReservationModel();
+        //$rentals = $model->readAllReservationUser($reservation);
+
         echo self::getRender('rental.html.twig', []);
     }
 

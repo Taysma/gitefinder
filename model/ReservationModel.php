@@ -26,7 +26,7 @@ class ReservationModel extends Model
     }
 
     //Create
-    public function acceptReservation(Reservation $reservation)
+    public function validationReservation(Reservation $reservation)
     {
         $validation = $reservation->getValidation();
 
