@@ -556,7 +556,7 @@ body .dayContainer {
 body .filter .filter-bar-container {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 1440px;
   margin: auto;
   overflow: hidden;
 }
@@ -583,8 +583,12 @@ body .filter .filter-bar-container .filter-bar .filter-image-name {
   width: 100%;
   height: 82%;
 }
+body .filter .filter-bar-container .filter-bar .filter-image-name a {
+  width: 100%;
+  height: 100%;
+}
 body .filter .filter-bar-container .filter-bar .filter-image-name img {
-  width: 20px;
+  width: 35px;
   margin-bottom: 5px;
 }
 body .filter .filter-bar-container .filter-bar .filter-image-name .img-category {
@@ -1172,12 +1176,15 @@ body .article .comment-flex .comment-img-p {
   justify-content: space-around;
   align-items: center;
   gap: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   border-radius: 12px;
   padding: 5px;
 }
 body .article .comment-flex .comment-img-p img {
   width: 70px;
+}
+body .article .comment-flex .comment-img-p .img-comment {
+  padding: 10px;
 }
 body .article .comment-flex .comment-img-p .name-comment-p {
   width: auto;
@@ -1720,8 +1727,11 @@ body .messenger {
 body .messenger .container-messenger {
   width: 100%;
   height: 100%;
+  max-width: 1440px;
+  margin: auto;
   display: flex;
   justify-content: center;
+  border-radius: 7px;
   /* Largeur de la barre de défilement */
   /* Fond de la barre de défilement */
   /* Couleur de la poignée de la barre de défilement */
@@ -1743,9 +1753,10 @@ body .messenger .container-messenger ::-webkit-scrollbar-thumb:hover {
 }
 body .messenger .container-messenger .search-message-contact {
   width: 350px;
-  max-height: 84%;
+  max-height: 87%;
   overflow: scroll;
   overflow-x: hidden;
+  border-radius: 15px;
   border: none;
   border: 1px solid rgba(0, 0, 0, 0.227);
 }
@@ -1870,6 +1881,7 @@ body .messenger .container-messenger .search-message-contact .card-message .onli
 body .messenger .container-messenger .user-online-send-messages {
   width: 100%;
   height: 100%;
+  border-radius: 15px;
   position: relative;
 }
 body .messenger .container-messenger .user-online-send-messages .container-online-user {
@@ -1879,6 +1891,7 @@ body .messenger .container-messenger .user-online-send-messages .container-onlin
   padding: 0px 20px;
   border: 1px solid rgba(128, 128, 128, 0.207);
   box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+  border-top-right-radius: 15px;
 }
 body .messenger .container-messenger .user-online-send-messages .container-online-user .user {
   display: flex;
@@ -1971,7 +1984,7 @@ body .messenger .container-messenger .user-online-send-messages .message-form {
   display: flex;
   width: 100%;
   position: absolute;
-  bottom: 120px;
+  bottom: 105px;
   padding: 10px;
   background-color: #ffffff;
   gap: 10px;
@@ -2053,6 +2066,7 @@ body footer {
   position: fixed;
   bottom: 0;
   z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 body footer .footer-container {
   width: -moz-fit-content;

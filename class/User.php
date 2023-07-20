@@ -7,8 +7,11 @@ class User {
     private $mail;
     private $birthdate;
     private $password;
+    private $phone;
     private $content;
     private $roles;
+    private $avatar;
+
 
     public function __construct(array $datas){
         $this->hydrate($datas);
@@ -49,12 +52,20 @@ class User {
         return $this->password;
     } 
 
+    public function getPhone(){
+        return $this->phone;
+    } 
+
     public function getContent(){
         return $this->content;
     }
 
     public function getRoles(){
         return $this->roles;
+    }
+
+    public function getAvatar(){
+        return $this->avatar;
     }
 
     //SETTERS
@@ -82,11 +93,19 @@ class User {
         $this->password=$password;
     } 
 
+    public function setPhone(int $phone){
+        $this->phone=$phone;
+    } 
+
     public function setContent($content){
         $this->content=$content;
     }
 
     public function setRoles($roles){
         $this->roles=$roles;
+    }
+
+    public function setAvatar(String $avatar){
+        $this->avatar=$avatar;
     }
 }

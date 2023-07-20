@@ -89,9 +89,47 @@ class UserController extends Controller
         }
     }
 
-    public function getUserProfil()
-    {
-        echo self::getRender('profil.html.twig', []);
+    public function getUserProfil(){
+
+        $userModel = new UserModel();
+        $personnalData = $userModel->getUserById();
+        
+        var_dump($personnalData);
+        echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
+    }
+
+    public function userProfilUpdate(){
+
+        if (!$_POST) {
+            echo self::getRender('homepage.html.twig', []);
+        } else {
+
+            global $router;
+            $model = new UserModel();
+                var_dump($_POST);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $firstname = $_POST['firstname-input'];
+                $lastname = $_POST['lastname-input'];
+                $mail = $_POST["mail-input"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
+                $phone = $_POST['phone-input'];
+
+                $user = new User([
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'mail' => $mail,
+                    'phone' => $phone
+                ]);
+
+                $model->updateUser($user);
+                header('Location: ' . $router->generate('home'));
+            } else {
+                echo self::getRender('homepage.html.twig', []);
+            }
+        }
+    }
+
+    public function userProfilDelete(){
+        
     }
 
     public function getUserWishlist($id)

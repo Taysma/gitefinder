@@ -700,20 +700,15 @@ body {
         .filter-bar-container {
             position: relative;
             width: 100%;
-            max-width: 900px;
+            max-width: 1440px;
             margin: auto;
             overflow: hidden;
-            // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-
 
             .filter-bar {
                 display: flex;
                 gap: 10px;
-                // padding: 10px;
                 margin: 10px 40px;
                 height: 120px;
-                // background-color: #fff;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
 
@@ -723,9 +718,6 @@ body {
 
                 .filter-image-name {
                     padding: 0px 20px;
-                    // border: 1px solid #ddd;
-                    // border-radius: 30px;
-                    // background-color: #fff;
                     cursor: pointer;
                     transition: all 0.2s;
                     display: flex;
@@ -737,8 +729,13 @@ body {
                     // max-width: 118px;
                     height: 82%;
 
+                    a {
+                        width: 100%;
+                        height: 100%;
+                    }
+
                     img {
-                        width: 20px;
+                        width: 35px;
                         margin-bottom: 5px;
                     }
 
@@ -1516,12 +1513,16 @@ body {
                 justify-content: space-around;
                 align-items: center;
                 gap: 20px;
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
                 border-radius: 12px;
                 padding: 5px;
 
                 img {
                     width: 70px;
+                }
+
+                .img-comment {
+                    padding: 10px;
                 }
 
                 .name-comment-p {
@@ -2209,8 +2210,11 @@ body {
         .container-messenger {
             width: 100%;
             height: 100%;
+            max-width: 1440px;
+            margin: auto;
             display: flex;
             justify-content: center;
+            border-radius: 7px;
             // margin: 50px 0px;
 
             /* Largeur de la barre de défilement */
@@ -2240,17 +2244,15 @@ body {
                 background: #555;
             }
 
+            //container search message contact
             .search-message-contact {
                 width: 350px;
-                max-height: 84%;
+                max-height: 87%;
                 overflow: scroll;
                 overflow-x: hidden;
+                border-radius: 15px;
                 border: none;
                 border: 1px solid rgba(0, 0, 0, 0.227);
-
-
-
-
 
                 // barre de recherche
                 .search {
@@ -2413,6 +2415,7 @@ body {
             .user-online-send-messages {
                 width: 100%;
                 height: 100%;
+                border-radius: 15px;
                 position: relative;
                 // background-color: #0056b3;
 
@@ -2423,6 +2426,7 @@ body {
                     padding: 0px 20px;
                     border: 1px solid rgba(128, 128, 128, 0.207);
                     box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+                    border-top-right-radius: 15px;
 
 
                     .user {
@@ -2547,7 +2551,7 @@ body {
                     display: flex;
                     width: 100%;
                     position: absolute;
-                    bottom: 120px;
+                    bottom: 105px;
                     padding: 10px;
                     background-color: #ffffff;
                     gap: 10px;
@@ -2653,6 +2657,7 @@ body {
         position: fixed;
         bottom: 0;
         z-index: 999;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 
 
         .footer-container {

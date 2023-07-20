@@ -34,8 +34,8 @@ $router->map('POST', '/article/[i:id_rental]', 'RentalController#newReservation'
 $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard');
 // USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
-$router->map('GET|POST', '/dashboard/profil/edit/[i:id]', 'UserController#userProfilUpdate', 'editUserProfil');
-$router->map('GET|DELETE', '/dashboard/profil/delete/[i:id]', 'UserController#userProfilDelete', 'deleteUserProfil');
+$router->map('GET|POST', '/dashboard/profil/edit', 'UserController#userProfilUpdate', 'editUserProfil');
+$router->map('GET|DELETE', '/dashboard/profil/delete', 'UserController#userProfilDelete', 'deleteUserProfil');
 // USER - PROPRIETE
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
 $router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'addProperty');

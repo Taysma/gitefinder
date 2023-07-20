@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'userId=' + userId + '&giteId=' + this.dataset.giteId
+                body: 'id_user=' + userId + '&id_rental=' + this.dataset.giteId
             })
                 .then(function (response) {
                     if (response.ok) {
