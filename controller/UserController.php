@@ -126,6 +126,11 @@ class UserController extends Controller
         }
     }
 
+    public function editAvatar(){
+
+        
+    }
+
     public function deleteProfil()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
