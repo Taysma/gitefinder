@@ -26,16 +26,12 @@
 				<h1>Mon Profil</h1>
 				<div class="img-btn-profil">
 					<div class="img">
-						<img src="{{ asset('/media/icon/instagram.png') }}" alt="photo de profil">
-					</div>
-					<div class="btn-edit-delete">
 						<form action="">
-							<button class="btn-edit">Modifier</button>
-						</form>
-						<form action="">
-							<button class="btn-delete">Supprimer</button>
+							<input type="file" id="profile-upload" accept="image/*" style="display: none;">
+							<label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/icon/instagram.png') }}')"></label>
 						</form>
 					</div>
+
 				</div>
 			</div>
 

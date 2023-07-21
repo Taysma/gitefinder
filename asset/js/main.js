@@ -105,6 +105,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// image profil
+
+// Sélectionnez l'élément de la photo de profil et l'input de téléchargement de fichier
+const profilePicture = document.getElementById('profile-picture');
+const profileUpload = document.getElementById('profile-upload');
+
+// Fonction pour mettre à jour l'image de profil
+function updatePicture(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function () {
+        profilePicture.style.backgroundImage = `url(${reader.result})`;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+// Ajoutez un événement de changement de fichier à l'input de téléchargement
+profileUpload.addEventListener('change', updatePicture);
+
+
 
 
 

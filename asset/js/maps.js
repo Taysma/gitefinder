@@ -1,5 +1,6 @@
 var map = L.map('mapid').setView([51.505, -0.09], 13); // Position de départ
 var marker;
+var chosenLocations = [];  // Tableau pour stocker les coordonnées choisies
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -59,6 +60,9 @@ $('#address').on('input', function () {
 
                                 // Ajoute un nouveau marqueur
                                 marker = L.marker([suggestions[i].lat, suggestions[i].lon]).addTo(map);
+
+                                // Ajoute la location au tableau
+                                chosenLocations.push([suggestions[i].lat, suggestions[i].lon]);
                             };
                         })(i));
                         suggestionBox.append(item);
@@ -71,13 +75,8 @@ $('#address').on('input', function () {
     }
 });
 
-
 document.getElementById('address').addEventListener('input', function () {
     var divContent = this.value;
     var myArray = divContent.split(',');
     console.log(myArray);
 });
-
-
-
-
