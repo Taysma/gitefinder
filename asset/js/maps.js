@@ -15,9 +15,11 @@ function hideSuggestionBox() {
 
 // Fonction pour imprimer les coordonnées sans les virgules et les guillemets
 function printCoordinates() {
-    const coordinates = chosenLocations.map(location => `${location[0]} ${location[1]}`);
-    const formattedCoordinates = JSON.stringify(coordinates).replace(/["']/g, '');
-    console.log(formattedCoordinates);
+    const latitudes = chosenLocations.map(location => location[0]);
+    const longitudes = chosenLocations.map(location => location[1]);
+
+    $('#latitude').val(latitudes);
+    $('#longitude').val(longitudes);
 }
 
 // Écoute les événements 'input' sur le champ d'adresse
@@ -32,6 +34,8 @@ $('#address').on('input', function () {
     if (address === '') {
         suggestionBox.css('display', 'none');
         chosenLocations = [];
+        $('#latitude').val('');
+        $('#longitude').val('');
     } else {
         // Sinon, affiche la boîte de suggestions
         suggestionBox.css('display', 'block');
