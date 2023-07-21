@@ -2,6 +2,35 @@
 class RentalModel extends Model
 {
 
+    public function addRental(Rental $rental)
+    {
+        $id_user = $rental->getId_user();
+        $title = $rental->getTitle();
+        $capacity = $rental->getCapacity();
+        $surface_area = $rental->getSurface_area();
+        $city = $rental->getCity();
+        $address = $rental->getAddress();
+        $content = $rental->getContent();
+        $cover = $rental->getCover();
+        $country = $rental->getCountry();
+        $price = $rental->getPrice();
+
+        $req = $this->getDb()->prepare('INSERT INTO `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover` `city`, `address`, `content`, `country`, `price`) VALUES ( :id_user, :title, :capacity, :surface_area, :city, :address, :content, :cover, :country, :price )');
+
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $req->bindParam(':title', $title, PDO::PARAM_STR);
+        $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
+        $req->bindParam(':surface_area', $surface_area, PDO::PARAM_INT);
+        $req->bindParam(':city', $city, PDO::PARAM_STR);
+        $req->bindParam(':address', $address, PDO::PARAM_STR);
+        $req->bindParam(':content', $content, PDO::PARAM_STR);
+        $req->bindParam(':cover', $cover, PDO::PARAM_STR);
+        $req->bindParam(':country', $country, PDO::PARAM_STR);
+        $req->bindParam(':price', $price, PDO::PARAM_INT);
+
+        $req->execute();
+    }
+
     public function getLastTenPost()
     {
         $rentals = [];
@@ -39,32 +68,7 @@ class RentalModel extends Model
         return $rental;
     }
 
-    public function addRental(Rental $rental)
-    {
-        $id_user = $rental->getId_user();
-        $title = $rental->getTitle();
-        $capacity = $rental->getCapacity();
-        $surface_area = $rental->getSurface_area();
-        $city = $rental->getCity();
-        $address = $rental->getAddress();
-        $content = $rental->getContent();
-        $country = $rental->getCountry();
-        $price = $rental->getPrice();
-
-        $req = $this->getDb()->prepare('INSERT INTO `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `city`, `address`, `content`, `country`, `price`) VALUES (:id_rental, :id_user, :title, :capacity, :surface_area, :city, :address, :content, :country, :price )');
-
-        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-        $req->bindParam(':title', $title, PDO::PARAM_STR);
-        $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
-        $req->bindParam(':surface_area', $surface_area, PDO::PARAM_INT);
-        $req->bindParam(':city', $city, PDO::PARAM_STR);
-        $req->bindParam(':address', $address, PDO::PARAM_STR);
-        $req->bindParam(':content', $content, PDO::PARAM_STR);
-        $req->bindParam(':country', $country, PDO::PARAM_STR);
-        $req->bindParam(':price', $price, PDO::PARAM_INT);
-
-        $req->execute();
-    }
+    
 
     public function updateRental(Rental $rental)
     {

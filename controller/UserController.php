@@ -206,8 +206,9 @@ class UserController extends Controller
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
                 $city = $_POST['city'];
-                $address = $_POST['password'];
+                $address = $_POST['address'];
                 $content = $_POST['content'];
+                $cover = $_POST['cover'];
                 $country = $_POST['country'];
                 $price = $_POST['price'];
                 // add latitude & longitude later
@@ -220,6 +221,7 @@ class UserController extends Controller
                     'city' => $city,
                     'address' => $address,
                     'content' => $content,
+                    'cover' => $cover,
                     'country' => $country,
                     'price' => $price
                 ]);
