@@ -68,7 +68,7 @@ class Reservation{
         $this->id_rental = $id_rental;
     }
 
-    public function setAvailable(String $available){
+    public function setAvailable(bool $available){
         $this->available = $available;
     }
 

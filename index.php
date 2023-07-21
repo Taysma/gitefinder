@@ -19,14 +19,11 @@ $router->map('GET', '/logout', 'UserController#logout', 'logout');
 
 // NEWSLETTER
 $router->map('POST', '/newsletter', 'HomeController#addSubscribes', 'newsletter');
-
 // ARTICLE - POST
 $router->map('GET', '/article/', '', 'baseRental');
-$router->map('GET', '/article/[i:id_rental]', 'RentalController#getOne', '');
-$router->map('POST', '/article/[i:id_rental]', 'RentalController#newReservation', 'reserver');
-
+$router->map('GET|POST', '/article/[i:id_rental]', 'RentalController#getOne', '');
 // ARTICLE - CRUD
-// $router->map('GET|POST', '/nouveau', 'RentalController#createPost', 'addPost');
+$router->map('GET|POST', '/nouveau', 'RentalController#newReservation', 'addReservation');
 // $router->map('GET|POST', '/modifier/[i:id]', 'RentalController#edit', 'updatePost');
 // $router->map('POST|DELETE', '/supprimer/[i:id]', 'RentalController#delete', 'deletePost');
 
@@ -35,7 +32,7 @@ $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard'
 // USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
 $router->map('GET|POST', '/dashboard/profil/edit', 'UserController#editProfil', 'editUserProfil');
-$router->map('POST', '/dashboard/profil/delete', 'UserController#deleteProfil', 'deleteUserProfil');
+$router->map('GET|DELETE', '/dashboard/profil/delete', 'UserController#deleteProfil', 'deleteUserProfil');
 // USER - PROPRIETE
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
 $router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'addProperty');

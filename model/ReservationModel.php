@@ -9,7 +9,7 @@ class ReservationModel extends Model
         $available = $reservation->getAvailable();
         $checkin_date = $reservation->getCheckin_date();
         $checkout_date = $reservation->getCheckout_date();
-        $validation = $reservation->getValidation();
+        
 
         $req = $this->getDb()->prepare("INSERT INTO `reservation` (`id_user`, `id_rental`, `available`, `checkin_date`, `checkout_date`, `validation`) 
         VALUES (:id_user, :id_rental, 1, :checkin_date, :checkout_date, NULL)");
@@ -19,7 +19,6 @@ class ReservationModel extends Model
         $req->bindParam(":available", $available, PDO::PARAM_STR);
         $req->bindParam(":checkin_date", $checkin_date, PDO::PARAM_STR);
         $req->bindParam(":checkout_date", $checkout_date, PDO::PARAM_STR);
-        $req->bindParam(":validation", $validation, PDO::PARAM_STR);
 
         $req->execute();
     }

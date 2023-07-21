@@ -28,38 +28,35 @@ class RentalController extends Controller
         echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
     }
 
-    public function newReservation($id_rental)
+    public function newReservation()
     {
-        $id_rental = $_GET['id_rental'];
-
         global $router;
-        if (!$_POST) {
-            echo self::getRender('post.html.twig', []);
-        } else {
-            if (isset($_POST['submit'])) {
-                $id_user = $_SESSION['id_user'];
-                $id = $id_rental;
-                //$available = ;
-                $checkin_date = $_POST['arrivee'];
-                $checkout_date = $_POST['duration'];
 
-                $reservation = new Reservation
-                ([
+        if (isset($_POST['submit'])) {
+            $id_user = $_SESSION['id_user'];
+            $id_rental = $_GET['id_rental'];;
+            $checkin_date = $_POST['arrivee'];
+            $checkout_date = $_POST['depart'];
+
+            $reservation = new Reservation([
                     'id_user' => $id_user,
-                    'id_rental' => $id,
-                    //'available' => $available,
+                    'id_rental' => $id_rental,
                     'checkin_date' => $checkin_date,
                     'checkout_date' => $checkout_date,
                 ]);
-                
-                $model = new ReservationModel();
-                $model->addReservation($reservation);
 
-                header('Location: ' . $router->generate('reserver'));
-            } else {
-                echo '<script>window.location.reload();</script>';
-                $message = 'Oops, something went wrong sorry. Try again later';
-            }
+            var_dump($reservation);
+
+            $model = new ReservationModel();
+            $model->addReservation($reservation);
+
+            
+            header('Location: ' . $router->generate('baseRental'));
+
+        } else {
+
+            $message = 'Veiller choisir une date de séjour.';
+            header('Location: ' . $router->generate('baseRental'));
         }
     }
 }
