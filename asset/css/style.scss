@@ -1661,62 +1661,46 @@ body {
             margin: 50px auto;
             width: 100%;
 
-            // .title-img-btn {
-            //     max-width: 700px;
-            //     margin: auto;
+            .title-img-btn {
+                max-width: 900px;
+                margin: auto;
 
-            //     h1 {
-            //         font-size: 1.8rem;
-            //         color: #191825;
-            //         margin: 20px;
-            //     }
+                h1 {
+                    font-size: 1.8rem;
+                    color: #191825;
+                    margin: 20px;
+                }
 
 
+                .img-btn-profil {
+                    width: 100%;
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 50px;
+                    margin: 20px;
+                    // box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                    border-radius: 8px;
 
-            //     .img-btn-profil {
-            //         width: 100%;
-            //         padding: 10px;
-            //         display: flex;
-            //         align-items: center;
-            //         gap: 50px;
-            //         margin: 20px;
-            //         // box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
-            //         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-            //         border-radius: 8px;
+                    .btn-edit,
+                    .btn-delete {
+                        border: none;
+                        padding: 10px;
+                        font-size: 1rem;
+                        color: #F7F7F7;
+                        width: 100%;
+                        cursor: pointer;
+                        border-radius: 4px;
+                    }
 
-            //         img {
-            //             width: auto;
-            //             height: 100%;
-            //             border-radius: 999px;
-            //         }
+                    .btn-edit {
+                        margin: 10px auto;
+                        background-color: #007bff;
+                    }
+                }
+            }
 
-            //         .btn-edit-delete {
-            //             display: flex;
-            //             flex-direction: column;
-            //             gap: 20px;
-
-            //             .btn-edit,
-            //             .btn-delete {
-            //                 border: none;
-            //                 padding: 10px;
-            //                 font-size: 1rem;
-            //                 color: #F7F7F7;
-            //                 width: 100%;
-            //                 cursor: pointer;
-            //                 border-radius: 4px;
-            //             }
-
-            //             .btn-edit {
-            //                 background-color: #007bff;
-            //             }
-
-            //             .btn-delete {
-
-            //                 background-color: #FF385C;
-            //             }
-            //         }
-            //     }
-            // }
             /* Assurez-vous d'ajuster les dimensions selon vos besoins */
             .profile-picture {
                 display: block;
@@ -1811,9 +1795,7 @@ body {
                         padding: 10px;
                     }
 
-                    .update-delete {
-                        display: flex;
-                    }
+
                 }
 
 
