@@ -1,6 +1,7 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Reservation{% endblock %}
+{% block title %}Reservation
+{% endblock %}
 
 {% block header %}
 	{% include 'header.html.twig'%}
@@ -50,19 +51,20 @@
 						</div>
 					</div>
 					<div class="personne">
-						<span>capacitées
+						<span>capacitées:
 						</span>
 						<span>
-							{{ rental.capacity }}personnes</span>
+							{{ rental.capacity }}
+						</span>
+						<span>personnes</span>
 					</div>
-					<div
-						class="date-rental">
-						{# <span>Date :</span>
-													<span class="date-arrivee">14/06/2023</span>
-													<span>au</span>
-													<span class="date-depart">07/07/2023</span> #}
+					<div class="date-rental">
+						<span>Date :</span>
+						<span class="date-arrivee">14/06/2023</span>
+						<span>au</span>
+						<span class="date-depart">07/07/2023</span>
 
-						<span>infos proprio
+						<span>
 							{{ rental.id_user }}
 						</span>
 					</div>
