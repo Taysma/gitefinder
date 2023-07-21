@@ -33,7 +33,7 @@
 							<button class="btn-edit">Modifier</button>
 						</form>
 						<form action="">
-							<button class="btn-delete">delete</button>
+							<button class="btn-delete">Supprimer</button>
 						</form>
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 			<hr>
 
 			<!-- profil -->
-			<form class="profil-information" method="POST" action="{{ path('editUserProfil') }}" >
+			<form class="profil-information" method="POST" action="{{ path('editUserProfil') }}">
 				<div class="name-lastname profil-edit">
 					<label for="lastname-input">Nom</label>
 					<input type="text" id="lastname-input" value="{{ dataP.lastname }}">
@@ -63,17 +63,17 @@
 					<label for="id-card-input">Pièce d'identité officielle</label>
 					<input type="file" id="id-card-input" class="file">
 				</div>
-			<div class="update-delete">	
-				<div>
-					<button type="submit" id="save-changes-btn">Enregistrer les modifications</button>
-				</div>
-			</form>
-			<form action="{{ path('deleteUserProfil') }}" method="POST">
-				<div>
-					<button type="submit" id="delete-changes-btn">Supprimer profil</button>
-				</div>
-			</form>
+				<div class="update-delete">
+					<div>
+						<button type="submit" id="save-changes-btn">Enregistrer les modifications</button>
+					</div>
+				</form>
+				<form action="{{ path('deleteUserProfil') }}" method="POST">
+					<div>
+						<button type="submit" id="delete-changes-btn">Supprimer profil</button>
+					</div>
+				</form>
 
-		</div>
-	</section>
-{% endblock %}
+			</div>
+		</section>
+	{% endblock %}
