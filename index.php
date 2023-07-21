@@ -49,6 +49,7 @@ $router->map('GET', '/dashboard/favoris', 'UserController#getUserWishlist', 'use
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 // USER - RESERVATION
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
+$router->map('GET|POST', '/dashboard/profil/edit/avatar', 'UserController#editAvatar', 'editUserAvatar');
 
 // // SEARCH
 // $router->map('GET', '/search', 'SearchController#searchResult', 'search');

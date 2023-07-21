@@ -1969,6 +1969,7 @@ body {
 
         }
 
+        // fichier propriete
         .container-card-property {
             width: 100%;
             margin: auto;
@@ -2100,6 +2101,13 @@ body {
                     flex-direction: column;
                     gap: 10px;
                     padding: 10px;
+
+                    .accommodation-types {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        /* 2 colonnes de largeur égale */
+                        gap: 10px
+                    }
 
                     label {
                         font-size: 1.3rem;
