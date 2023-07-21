@@ -35,7 +35,7 @@ $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard'
 // USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
 $router->map('GET|POST', '/dashboard/profil/edit', 'UserController#editProfil', 'editUserProfil');
-$router->map('GET|POST', '/dashboard/profil/edit', 'UserController#editAvatar', 'editUserAvatar');
+$router->map('GET|POST', '/dashboard/profil/edit/avatar', 'UserController#editAvatar', 'editUserAvatar');
 $router->map('POST', '/dashboard/profil/delete', 'UserController#deleteProfil', 'deleteUserProfil');
 // USER - PROPRIETE
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');

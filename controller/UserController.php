@@ -93,7 +93,7 @@ class UserController extends Controller
     {
         $userModel = new UserModel();
         $personnalData = $userModel->getUserById();
-        
+
         echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
@@ -106,10 +106,10 @@ class UserController extends Controller
             $model = new UserModel();
             var_dump($_POST);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $firstname = $_POST['firstname-input'];
-                $lastname = $_POST['lastname-input'];
-                $mail = $_POST["mail-input"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
-                $phone = $_POST['phone-input'];
+                $firstname = $_POST['firstname'];
+                $lastname = $_POST['lastname'];
+                $mail = $_POST["mail"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
+                $phone = $_POST['phone'];
 
                 $user = new User([
                     'firstname' => $firstname,
@@ -119,16 +119,44 @@ class UserController extends Controller
                 ]);
 
                 $model->updateUser($user);
-                header('Location: ' . $router->generate('home'));
+                header('Location: ' . $router->generate('userProfile'));
             } else {
-                echo self::getRender('homepage.html.twig', []);
+                echo self::getRender('profil.html.twig', []);
             }
         }
     }
 
-    public function editAvatar(){
+    public function editAvatar()
+    {
+        //var_dump($_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+                global $router;
+                $model = new UserModel();
+                $avatar = $_FILES['avatar']['name'];
+    
+                $queryAvatar = $model->modelAvatar($_SESSION['id_user'], $avatar);
+    
+                if ($queryAvatar) {
+                    $uploadImg = 'asset/media/images/';
+                    $uploadFile = $uploadImg . $_FILES['avatar']['name'];
+                    $controleUpload = move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadFile);
+    
+                    if (!$controleUpload) {
+                        header('Location: ' . $router->generate('uploadError'));
+                        exit;
+                    }
+                    var_dump($_FILES['avatar']['name']);
+                    echo self::getRender('profil.html.twig', ['avatar', $_FILES['avatar']['name']]);
+                    exit;
+                }
+                // header('Location: ' . $router->generate('userProfil'));
+            }
+        } else {
+            echo self::getRender('profil.html.twig', []);
+        }
 
-        
+
     }
 
     public function deleteProfil()
@@ -167,12 +195,16 @@ class UserController extends Controller
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
 
-        echo self::getRender('favoris.html.twig', [ 'wishlist' => $wishlist, 'rentals' => $rentals]);
+        echo self::getRender('favoris.html.twig', ['wishlist' => $wishlist, 'rentals' => $rentals]);
     }
 
-    public function addToWishlist(){}
+    public function addToWishlist()
+    {
+    }
 
-    public function deleteFromWishlist(){}
+    public function deleteFromWishlist()
+    {
+    }
 
     //Dashboard - CRUD Messagerie User
     public function getUserMessagerie()

@@ -26,9 +26,12 @@
 				<h1>Mon Profil</h1>
 				<div class="img-btn-profil">
 					<div class="img">
+					{{avatar}}
 						<form action="{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data">
 							<input type="file" name='avatar' id="profile-upload" accept="image/*" style="display: none;">
-							<label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/icon/instagram.png') }}')"></label>
+						
+							<label for="profile-upload" class="profile-picture" id="profile-picture" value="{{ avatar.avatar}}"></label>
+							<input type='submit' value="envoyer">
 						</form>
 					</div>
 
