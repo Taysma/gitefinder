@@ -3,7 +3,7 @@
 
 <head>
     <title>Formulaire d'ajout de location</title>
-    <link rel="stylesheet" href="../asset/css/style.css">
+    <!-- <link rel="stylesheet" href="../asset/css/style.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -31,59 +31,54 @@
 
 <body>
     <!-- header -->
-    <header>
-        <div class="header-limit-size">
-            <div class="logo">
-                <a href="">
-                    <h1>GiteFinder</h1>
-                </a>
-            </div>
-            <div class="button-search">
-                <img src="../asset/media/icon/magnifying-glass-solid.svg" alt="Search in GiteFinder">
-            </div>
-            <!-- search bar -->
-            <form action="#" method="post" class="search-bar-form">
-                <div class="search-bar ">
 
-                    <input type=" text" id="location-input" placeholder="Location">
-                    <div class="date-inputs">
-                        <input type="text" name="dateArrivee" id="dateArrivee" placeholder="Date d'arrivée" required />
-                        <input type="text" name="dateDepart" id="dateDepart" placeholder="Date de départ" required />
-                        <div id='calendar'></div>
-                    </div>
-
-                    <select id="guests-input">
-                        <option value="1">1 Personne</option>
-                        <option value="2">2 Personnes</option>
-                        <option value="3">3 Personnes</option>
-                        <option value="4">4 Personnes</option>
-                        <option value="5">5 Personnes</option>
-                        <option value="6">6 Personnes</option>
-                        <option value="7">7 Personnes</option>
-                        <option value="8">8 Personnes</option>
-                    </select>
-                    <button type="submit" id="search-button">Search</button>
-
-                </div>
-            </form>
-
-            <div class="menu-burger-header">
-                <a href="#">
-                    <img class="img-burger" src="../asset/media/icon/bars-solid.svg" alt="Connexion et inscription">
-                    <img class="img-burger border-user" src="../asset/media/icon/user-solid.svg" alt="menu burger">
-                </a>
-            </div>
-        </div>
-    </header>
     <!-- addrental -->
     <section class="addrental">
         <nav class="breadcrumb" aria-label="breadcrumb">
             <ol class="ol-breadcrumb">
-                <li class="breadcrumb-item"><a href="../view/dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item">
+                    <a href="../view/dashboard.html">Dashboard</a>
+                </li>
                 <img src="../asset/media/icon/fleche.svg" alt="fleche">
                 <li class="breadcrumb-item active" aria-current="page">Propriete</li>
             </ol>
         </nav>
+        {# container propriete #}
+        <div class="container-propriete">
+            <div class="btn-add">
+                <button id="btn-add">Ajouter un bien</button>
+            </div>
+            <div class="container-card-property">
+
+                <div class="card">
+                    <div class="img-card">
+                        <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet en foret" class="size-img">
+
+                    </div>
+                    <div class="content-card">
+                        <div class="title-prince">
+                            <div class="h1-title-card">
+                                <h1>Paradise Beach, Bantayan Island
+                                </h1>
+                            </div>
+                            <div class="prince">
+
+                                <span>150</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+                        <div class="location-card">
+                            <span class="city">Rome</span>
+                            <span>,</span>
+                            <span class="country">Italy</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# form add update delete #}
         <div class="form-cart">
             <form action="" method="post" class="profil-information">
                 <h2>Formulaire d'ajout de location</h2>
@@ -125,15 +120,22 @@
                     <label for="image">photos du bien</label>
                     <input type="file" id="image" name="image" value="" class="file">
                 </div>
-                <input type="submit" value="Ajouter la location" id="save-changes-btn">
+                <div class="add-edit-delete">
+                    <input type="submit" value="Ajouter la location" id="save-changes-btn">
+
             </form>
+            <form action="">
+                <input type="submit" value="update" id="save-changes-btn">
+            </form>
+            <form action="">
+                <input type="submit" value="delete" id="delete-changes-btn">
+            </form>
+        </div>
+        <div class="cart">
 
-            <div class="cart">
+            <div id="mapid"></div>
 
-                <div id="mapid"></div>
-
-
-            </div>
+        </div>
         </div>
 
     </section>

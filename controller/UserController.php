@@ -50,6 +50,7 @@ class UserController extends Controller
                 if (password_verify($password, $user->getPassword())) {
                     $_SESSION['id_user'] = $user->getId_user();
                     $_SESSION['firstname'] = $user->getFirstname();
+                    $_SESSION['avatar'] = $user->getAvatar();
                     $_SESSION['connect'] = true;
 
                     global $router;
