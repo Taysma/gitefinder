@@ -63,6 +63,9 @@ $('#address').on('input', function () {
 
                                 // Ajoute la location au tableau
                                 chosenLocations.push([suggestions[i].lat, suggestions[i].lon]);
+
+                                // Imprime le tableau chosenLocations dans la console
+                                console.log(chosenLocations);
                             };
                         })(i));
                         suggestionBox.append(item);
@@ -73,10 +76,4 @@ $('#address').on('input', function () {
                 });
         }, 200);  // Durée du délai en millisecondes
     }
-});
-
-document.getElementById('address').addEventListener('input', function () {
-    var divContent = this.value;
-    var myArray = divContent.split(',');
-    console.log(myArray);
 });
