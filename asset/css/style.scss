@@ -2252,7 +2252,7 @@ body {
     }
 
     //addrental
-    // .addrental {
+    // .rental {
     //     width: 100%;
     //     max-width: 1440px;
     //     margin: 50px auto;
@@ -2529,6 +2529,248 @@ body {
     //     }
     // }
 
+    //rental
+    .rental {
+        width: 100%;
+        max-width: 1440px;
+        margin: 50px auto;
+
+        .container-rental {
+
+            width: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+
+            @media screen and (max-width:750px) {
+                padding: 0px;
+            }
+
+            .card-rental {
+                width: 100%;
+                max-width: 1000px;
+                box-shadow: 5px 5px 16px #1918252a;
+                margin: 40px auto;
+                height: 309px;
+                display: flex;
+                position: relative;
+                border-radius: 13px;
+                gap: 20px;
+                align-items: center;
+
+                @media screen and (max-width:1046px) {
+                    gap: 30px;
+                }
+
+                @media screen and (max-width:912px) {
+                    gap: 10px;
+                }
+
+
+
+                @media screen and (max-width:750px) {
+                    flex-direction: column;
+                    height: auto;
+                    max-width: 350px;
+                }
+
+
+
+
+                // img card
+                .img-card-rental {
+                    // width: 100%;
+                    image-rendering: pixelated;
+                    height: 100%;
+
+                    @media screen and (max-width:750px) {
+                        font-size: 1.2rem;
+                    }
+
+                    .size-img-rental-card {
+                        width: 350px;
+                        height: 100%;
+                        border-top-left-radius: 13px;
+                        border-bottom-left-radius: 13px;
+                        background-size: cover;
+
+                        @media screen and (max-width:750px) {
+                            width: 100%;
+                            border-top-right-radius: 13px;
+                            border-bottom-left-radius: 0px;
+                        }
+
+
+                    }
+
+                }
+
+                // content card title prince personn date-rental
+                .content-rental-card {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 10px;
+                    width: 100%;
+                    height: 100%;
+
+                    justify-content: center;
+
+
+                    .title-prince {
+                        display: flex;
+                        width: 100%;
+                        align-items: center;
+                        gap: 8px;
+
+                        @media screen and (max-width:750px) {
+                            flex-direction: column;
+                        }
+
+
+
+
+                        .title {
+                            max-width: 100%;
+                            margin: 10px auto;
+
+
+                            @media screen and (max-width:750px) {
+                                margin: 0px auto;
+                            }
+
+
+
+                            h1 {
+                                font-size: 1.8rem;
+                                font: 900;
+                                margin: 5px auto;
+
+                                @media screen and (max-width:1020px) {
+                                    font-size: 1.6rem;
+                                }
+
+                                @media screen and (max-width:960px) {
+                                    font-size: 1.4rem;
+                                }
+                            }
+
+                            span {
+                                font-size: 1.3rem;
+                                margin: auto 2px;
+                            }
+                        }
+
+                        .prince {
+                            display: flex;
+                            gap: 5px;
+
+                            span {
+                                font: bolder;
+                                font-size: 1.7rem;
+                                color: #F85E9F;
+                                font: bolder;
+
+                                @media screen and (max-width:1020px) {
+                                    font-size: 1.4rem;
+                                }
+
+                                // @media screen and (max-width:960px) {
+                                //     font-size: 1.2rem;
+                                // }
+                            }
+                        }
+
+
+                    }
+
+                    .personne {
+                        width: auto;
+
+                        @media screen and (max-width:750px) {
+                            text-align: center;
+                        }
+
+
+                        span {
+                            font-size: 1.4rem;
+                        }
+
+                        .number-personne {
+                            font-size: 1.5rem;
+                            color: #191825;
+                            font-weight: xx;
+                        }
+                    }
+
+                    .date-rental {
+                        width: 100%;
+                        text-align: center;
+
+                        span {
+                            font-size: 1.4rem;
+                        }
+
+                        .date-arrivee,
+                        .date-depart {
+                            font-size: 1.7rem;
+                            font: bolder;
+                            margin: auto 2px;
+                            color: #0056b3;
+                        }
+                    }
+
+                }
+
+                .btn-rental-card {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px;
+
+                    form {
+                        margin: auto;
+                        width: 100%;
+
+                        #reserver,
+                        #annuler,
+                        #wait {
+
+                            padding: 10px;
+                            border-radius: 5px;
+                            border: none;
+                            max-width: 222px;
+                            // width: auto;
+                            font-size: 1.5rem;
+                            color: #f7f7f7;
+
+                            @media screen and (max-width:1060px) {
+                                width: auto;
+                            }
+
+                        }
+
+                        #reserver {
+                            background-color: #1FAB71;
+
+                        }
+
+                        #annuler {
+                            background-color: #E74646;
+                        }
+
+                        #wait {
+                            background: #FAC800;
+                        }
+
+                    }
+                }
+            }
+
+        }
+    }
 
     .messenger {
         width: 100%;
