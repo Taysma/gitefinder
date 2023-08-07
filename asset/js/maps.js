@@ -8,6 +8,20 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var timeout = null;
 
+// Fonction pour cacher la boîte de suggestions
+function hideSuggestionBox() {
+    $('#autocomplete-items').css('display', 'none');
+}
+
+// Fonction pour imprimer les coordonnées sans les virgules et les guillemets
+function printCoordinates() {
+    const latitudes = chosenLocations.map(location => location[0]);
+    const longitudes = chosenLocations.map(location => location[1]);
+
+    $('#latitude').val(latitudes);
+    $('#longitude').val(longitudes);
+}
+
 // Écoute les événements 'input' sur le champ d'adresse
 $('#address').on('input', function () {
     var address = $(this).val();
@@ -16,9 +30,12 @@ $('#address').on('input', function () {
     // Annule la précédente requête d'autocomplétion si elle n'est pas encore terminée
     clearTimeout(timeout);
 
-    // Si l'input est vide, cache la boîte de suggestions
+    // Si l'input est vide, cache la boîte de suggestions et vide le tableau chosenLocations
     if (address === '') {
         suggestionBox.css('display', 'none');
+        chosenLocations = [];
+        $('#latitude').val('');
+        $('#longitude').val('');
     } else {
         // Sinon, affiche la boîte de suggestions
         suggestionBox.css('display', 'block');
@@ -50,7 +67,7 @@ $('#address').on('input', function () {
                         item.click((function (i) {
                             return function () {
                                 $('#address').val(suggestions[i].name);  // Met à jour le champ d'adresse
-                                suggestionBox.empty();  // Nettoie les suggestions
+                                hideSuggestionBox(); // Appelle la fonction pour cacher la boîte de suggestions
                                 map.setView([suggestions[i].lat, suggestions[i].lon], 13);  // Met à jour la carte
 
                                 // Si un marqueur existait déjà, le supprime
@@ -58,14 +75,20 @@ $('#address').on('input', function () {
                                     map.removeLayer(marker);
                                 }
 
+                                // Réinitialise le tableau chosenLocations avant d'ajouter le nouveau choix
+                                chosenLocations = [];
+
                                 // Ajoute un nouveau marqueur
                                 marker = L.marker([suggestions[i].lat, suggestions[i].lon]).addTo(map);
 
                                 // Ajoute la location au tableau
                                 chosenLocations.push([suggestions[i].lat, suggestions[i].lon]);
 
-                                // Imprime le tableau chosenLocations dans la console
+                                // Imprime le dernier choix (tableau avec un seul élément) dans la console
                                 console.log(chosenLocations);
+
+                                // Appelle la fonction pour imprimer les coordonnées sans les virgules et les guillemets
+                                printCoordinates();
                             };
                         })(i));
                         suggestionBox.append(item);

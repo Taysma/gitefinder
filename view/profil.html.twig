@@ -27,11 +27,11 @@
 				<div class="img-btn-profil">
 					<div class="img">
 					{{avatar}}
-						<form action="{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data">
+						<form action="{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data">
 							<input type="file" name='avatar' id="profile-upload" accept="image/*" style="display: none;">
-						
-							<label for="profile-upload" class="profile-picture" id="profile-picture" value="{{ avatar.avatar}}"></label>
-							<input type='submit' value="envoyer">
+							<label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/icon/' ~ user.avatar) }}')"></label>
+							{# <input class="btn-edit" type="submit" value="Update"> #}
+							<button class="btn-edit" type="submit">Update</button>
 						</form>
 					</div>
 

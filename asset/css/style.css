@@ -1280,6 +1280,39 @@ body .profil .container-profil {
   /* Afficher le texte en mode survol */
   /* Style du bouton en mode survol */
 }
+body .profil .container-profil .title-img-btn {
+  max-width: 900px;
+  margin: auto;
+}
+body .profil .container-profil .title-img-btn h1 {
+  font-size: 1.8rem;
+  color: #191825;
+  margin: 20px;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 8px;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit,
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-delete {
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  color: #F7F7F7;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+}
+body .profil .container-profil .title-img-btn .img-btn-profil .btn-edit {
+  margin: 10px auto;
+  background-color: #007bff;
+}
 body .profil .container-profil .profile-picture {
   display: block;
   position: relative;
@@ -1362,9 +1395,6 @@ body .profil .container-profil form.profil-information .name-lastname input:focu
 body .profil .container-profil form.profil-information .name-lastname .file {
   border: none;
   padding: 10px;
-}
-body .profil .container-profil form.profil-information .name-lastname .update-delete {
-  display: flex;
 }
 body .profil .container-profil form.profil-information .update-delete {
   display: flex;
@@ -1595,6 +1625,12 @@ body .addrental .form-cart .profil-information .name-lastname {
   flex-direction: column;
   gap: 10px;
   padding: 10px;
+}
+body .addrental .form-cart .profil-information .name-lastname .accommodation-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 colonnes de largeur égale */
+  gap: 10px;
 }
 body .addrental .form-cart .profil-information .name-lastname label {
   font-size: 1.3rem;
