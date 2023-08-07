@@ -8,9 +8,7 @@ class Rental{
     private $cover;
     private $capacity;
     private $surface_area;
-    private $city;
     private $address;
-    private $country;
     private $price;
     private $latitude;
     private $longitude;
@@ -60,16 +58,8 @@ class Rental{
         return $this->surface_area;
     }
 
-    public function getCity(){
-        return $this->city;
-    }
-
     public function getAddress(){
         return $this->address;
-    }
-
-    public function getCountry(){
-        return $this->country;
     }
 
     public function getPrice(){
@@ -114,16 +104,8 @@ class Rental{
         $this->surface_area = $surface_area;
     }
 
-    public function setCity(String $city){
-        $this->city = $city;
-    }
-
     public function setAddress(String $adress){
         $this->address = $adress;
-    }
-
-    public function setCountry(String $country){
-        $this->country = $country;
     }
 
     public function setPrice(int $price){

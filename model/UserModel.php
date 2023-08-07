@@ -69,7 +69,7 @@ class UserModel extends Model
         $req->bindParam(":firstname", $firstname, PDO::PARAM_STR);
         $req->bindParam(":lastname", $lastname, PDO::PARAM_STR);
         $req->bindParam(":mail", $mail, PDO::PARAM_STR);
-        $req->bindParam(":phone", $phone, PDO::PARAM_INT);
+        $req->bindParam(":phone", $phone, PDO::PARAM_STR);
 
         $req->execute();
     }

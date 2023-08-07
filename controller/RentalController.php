@@ -16,9 +16,7 @@ class RentalController extends Controller
                 $cover = $_POST['cover'];
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
-                $city = $_POST['city'];
                 $address = $_POST['address'];
-                $country = $_POST['country'];
                 $price = $_POST['price'];
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
@@ -30,9 +28,7 @@ class RentalController extends Controller
                     'cover' => $cover,
                     'capacity' => $capacity,
                     'surface_area' => $surface_area,
-                    'city' => $city,
                     'address' => $address,
-                    'country' => $country,
                     'price' => $price,
                     'latitude' => $latitude,
                     'longitude' => $longitude
