@@ -4,30 +4,26 @@ class RentalModel extends Model
 
     public function addRental(Rental $rental)
     {
-        $id_user = $rental->getId_user();
+        $id_user = $_SESSION['id_user'];
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
         $surface_area = $rental->getSurface_area();
-
         $address = $rental->getAddress();
         $content = $rental->getContent();
         $cover = $rental->getCover();
-
         $price = $rental->getPrice();
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
 
-        $req = $this->getDb()->prepare('INSERT INTO `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`, `address`, `content`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area, :city, :address, :content, :cover, :country, :price, :latitude, :longitude )');
+        $req = $this->getDb()->prepare('INSERT INTO `rental` (`id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`, `address`, `content`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area, :city, :address, :content, :cover, :country, :price, :latitude, :longitude )');
 
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
         $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
         $req->bindParam(':surface_area', $surface_area, PDO::PARAM_INT);
-
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);
         $req->bindParam(':cover', $cover, PDO::PARAM_STR);
-
         $req->bindParam(':price', $price, PDO::PARAM_INT);
         $req->bindParam(':latitude', $latitude, PDO::PARAM_STR);
         $req->bindParam(':longitude', $longitude, PDO::PARAM_STR);

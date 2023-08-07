@@ -2,47 +2,7 @@
 class RentalController extends Controller
 {
 
-    public function addProperty(){
-        if (!$_POST) {
-            echo self::getRender('dashboard.html.twig', []);
-        } else {
-
-            global $router;
-            $model = new RentalModel();
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $title = $_POST['title'];
-                $content= $_POST['content'];
-                $cover = $_POST['cover'];
-                $capacity = $_POST['capacity'];
-                $surface_area = $_POST['surface_area'];
-                $address = $_POST['address'];
-                $price = $_POST['price'];
-                $latitude = $_POST['latitude'];
-                $longitude = $_POST['longitude'];
-               
-
-                $rental = new Rental([
-                    'title' => $title,
-                    'content' => $content,
-                    'cover' => $cover,
-                    'capacity' => $capacity,
-                    'surface_area' => $surface_area,
-                    'address' => $address,
-                    'price' => $price,
-                    'latitude' => $latitude,
-                    'longitude' => $longitude
-                    
-
-                ]);
-
-                $model->addRental($rental);
-                header('Location: ' . $router->generate('home'));
-            } else {
-                echo self::getRender('dashboard.html.twig', []);
-            }
-        }
-    }
+   
     public function getOne(int $id_rental)
     {
         global $router;
