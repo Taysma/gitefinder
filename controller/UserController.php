@@ -99,12 +99,10 @@ class UserController extends Controller
 
     public function editProfil()
     {
-        if (!$_POST) {
-            echo self::getRender('homepage.html.twig', []);
-        } else {
+        
             global $router;
             $model = new UserModel();
-            var_dump($_POST);
+            //var_dump($_POST);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $firstname = $_POST['firstname'];
                 $lastname = $_POST['lastname'];
@@ -119,11 +117,11 @@ class UserController extends Controller
                 ]);
 
                 $model->updateUser($user);
-                header('Location: ' . $router->generate('userProfile'));
+                header('Location: ' . $router->generate('userProfil'));
             } else {
                 echo self::getRender('profil.html.twig', []);
             }
-        }
+        
     }
 
     public function editAvatar()
@@ -146,13 +144,17 @@ class UserController extends Controller
                         header('Location: ' . $router->generate('uploadError'));
                         exit;
                     }
-                    var_dump($_FILES['avatar']['name']);
-                    echo self::getRender('profil.html.twig', ['avatar', $_FILES['avatar']['name']]);
+
+                    $_SESSION['avatar'] = $avatar;
+
+                    header('Location: ' . $router->generate('userProfil'));
+                   
                     exit;
                 }
-                // header('Location: ' . $router->generate('userProfil'));
+                
             }
         } else {
+          
             echo self::getRender('profil.html.twig', []);
         }
 

@@ -20,6 +20,8 @@ class RentalController extends Controller
                 $address = $_POST['address'];
                 $country = $_POST['country'];
                 $price = $_POST['price'];
+                $latitude = $_POST['latitude'];
+                $longitude = $_POST['longitude'];
                
 
                 $rental = new Rental([
@@ -31,7 +33,9 @@ class RentalController extends Controller
                     'city' => $city,
                     'address' => $address,
                     'country' => $country,
-                    'price' => $price
+                    'price' => $price,
+                    'latitude' => $latitude,
+                    'longitude' => $longitude
                     
 
                 ]);

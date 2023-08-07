@@ -12,6 +12,8 @@ class Rental{
     private $address;
     private $country;
     private $price;
+    private $latitude;
+    private $longitude;
 
 
     public function __construct(array $datas){
@@ -74,6 +76,14 @@ class Rental{
         return $this->price;
     }
 
+    public function getLatitude(){
+        return $this->latitude;
+    }
+
+    public function getLongitude(){
+        return $this->longitude;
+    }
+
 
     //SETTERS
     public function setId_rental(int $id_rental){
@@ -118,5 +128,13 @@ class Rental{
 
     public function setPrice(int $price){
         $this->price = $price;
+    }
+
+    public function setLatitude(String $latitude){
+        $this->latitude = $latitude;
+    }
+
+    public function setLongitude(String $longitude){
+        $this->longitude = $longitude;
     }
 }
