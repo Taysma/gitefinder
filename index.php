@@ -52,6 +52,8 @@ $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie',
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 //$router->map('GET|POST', '/dashboard/profil/edit/avatar', 'UserController#editAvatar', '');
 
+
+
 // // SEARCH
 // $router->map('GET', '/search', 'SearchController#searchResult', 'search');
 

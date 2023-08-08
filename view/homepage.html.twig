@@ -1,6 +1,7 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Bienvenue sur GiteFinder{% endblock %}
+{% block title %}Bienvenue sur GiteFinder
+{% endblock %}
 
 {% block header %}
 	{% include 'header.html.twig' %}
@@ -9,6 +10,7 @@
 {% block filters %}
 	{% include "filter.html.twig" with {'categories' : cats } %}
 {% endblock %}
+
 
 {% block content %}
 	<section id="homepage" class="limit-size">

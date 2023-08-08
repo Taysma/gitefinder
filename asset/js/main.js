@@ -132,6 +132,22 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// edit profil
+document.addEventListener("DOMContentLoaded", function () {
+    let btnIconEdit = document.getElementById('edit-icon');
+    let containerProfil = document.getElementsByClassName('profil-information')[0];
+    let containerInformationProfil = document.getElementsByClassName('name-lastname-email-number')[0];
+    let containerTitle = document.getElementsByClassName('title-img-btn')[0]; // Correction ici
+
+    btnIconEdit.addEventListener('click', function () {
+        containerProfil.style.display = "block";
+        containerInformationProfil.style.display = "none";
+        containerTitle.style = "margin:auto;";
+    });
+});
+
+
+
 
 
 

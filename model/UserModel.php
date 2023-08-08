@@ -96,7 +96,7 @@ class UserModel extends Model
     {
         // Start a new transaction
         $this->getDb()->beginTransaction();
-        
+
         try {
             // Delete links in chat table
             $req = $this->getDb()->prepare('DELETE FROM `chat` WHERE `id_user` = :id_user');
@@ -130,12 +130,26 @@ class UserModel extends Model
 
             // Commit the transaction if both operations succeeded
             $this->getDb()->commit();
-
         } catch (Exception $e) {
             // If any operation fails, an exception is thrown
             // Rollback the transaction
             $this->getDb()->rollBack();
             throw $e; // or handle it in another way depending on your needs
         }
+    }
+
+    public function modelAvatar($id_user, $avatar)
+    {
+
+        // $id_user = $_SESSION['id_user'];
+        // $avatar = $user->getAvatar();
+
+        $req = $this->getDb()->prepare("UPDATE user SET avatar=:avatar WHERE id_user=:id_user");
+
+        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+        $req->bindParam(":avatar", $avatar, PDO::PARAM_STR);
+
+        $queryAvatar = $req->execute();
+        return $queryAvatar;
     }
 }

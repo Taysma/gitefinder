@@ -68,7 +68,7 @@ class RentalModel extends Model
         return $rental;
     }
 
-
+    
 
     public function updateRental(Rental $rental)
     {

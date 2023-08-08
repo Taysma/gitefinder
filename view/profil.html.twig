@@ -14,64 +14,93 @@
 			<!-- fil d'ariane  breadcrumb -->
 			<nav class="breadcrumb" aria-label="breadcrumb">
 				<ol class="ol-breadcrumb">
+
 					<li class="breadcrumb-item">
-						<a href="{{ path('dashboard') }}">Dashboard</a>
+
+						<a href="{{ path('dashboard') }}">
+							&#x3008; Dashboard</a>
 					</li>
-					<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
-					<li class="breadcrumb-item active" aria-current="page">Profil</li>
+
+
 				</ol>
 			</nav>
 
 			<div class="title-img-btn">
 				<h1>Mon Profil</h1>
 				<div class="img-btn-profil">
-					<div class="img">
+
+					<div class="img-profil">
 						<form action="{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data">
 							<input type="file" name='avatar' id="profile-upload" accept="image/*" style="display: none;">
-						
 							<label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/images/' ~ session.avatar) }}')"></label>
-							<input type='submit' value="envoyer">
+							<input class="btn-edit" type="submit" value="Envoyer">
 						</form>
 					</div>
+					<div class="name-lastname-email-number ">
+						<div class="name-lasname">
+							<span>Nom Prenom :</span>
+							<ul>
+								<li>{{ dataP.lastname }}</li>
+								<li>{{ dataP.firstname }}</li>
+							</ul>
+						</div>
+						<div class="email">
+							<span>email :</span>
+							<ul>
+								<li>{{ dataP.mail }}</li>
 
+							</ul>
+						</div>
+						<div class="number">
+							<span>Numéro :</span>
+							<ul>
+
+								<li>{{ dataP.phone }}</li>
+							</ul>
+						</div>
+						<div class="icon-edit-profil">
+							<img id="edit-icon" src="{{asset('/media/icon/edit.svg')}}" alt="edit profil">
+						</div>
+					</div>
+					<form class="profil-information" method="POST" action="{{ path('editUserProfil') }}">
+						<div class="name-lastname profil-edit">
+							<label for="lastname-input">Nom</label>
+							<input name='lastname' type="text" id="lastname-input" value="{{ dataP.lastname }}" required>
+						</div>
+						<div class="name-lastname profil-edit">
+							<label for="name-input">Prénom</label>
+							<input name="firstname" type="text" id="name-input" value="{{ dataP.firstname }}" required>
+						</div>
+						<div class="name-lastname profil-edit">
+							<label for="mail-input">Adresse e-mail</label>
+							<input name="mail" type="email" id="mail-input" value="{{ dataP.mail }}" required>
+						</div>
+						<div class="name-lastname profil-edit">
+							<label for="phone-input">Numéro de téléphone</label>
+							<input name="phone" type="tel" id="phone-input" value="{{ dataP.phone }}" required>
+						</div>
+						<div class="name-lastname profil-edit">
+							<label for="id-card-input">Pièce d'identité officielle</label>
+							<input name="" type="file" id="id-card-input" class="file">
+						</div>
+						<div class="update-delete">
+							<div>
+								<button type="submit" id="save-changes-btn">Enregistrer les modifications</button>
+							</div>
+						</form>
+						<form action="{{ path('deleteUserProfil') }}" method="POST">
+							<div>
+								<button type="submit" id="delete-changes-btn">Supprimer profil</button>
+							</div>
+						</form>
+
+					</section>
 				</div>
+
 			</div>
 
-			<hr>
 
 			<!-- profil -->
-			<form class="profil-information" method="POST" action="{{ path('editUserProfil') }}">
-				<div class="name-lastname profil-edit">
-					<label for="lastname-input">Nom</label>
-					<input name='lastname' type="text" id="lastname-input" value="{{ dataP.lastname }}">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="name-input">Prénom</label>
-					<input name="firstname" type="text" id="name-input" value="{{ dataP.firstname }}">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="mail-input">Adresse e-mail</label>
-					<input name="mail" type="email" id="mail-input" value="{{ dataP.mail }}">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="phone-input">Numéro de téléphone</label>
-					<input name="phone" type="text" id="phone-input" value="{{ dataP.phone }}">
-				</div>
-				<div class="name-lastname profil-edit">
-					<label for="id-card-input">Pièce d'identité officielle</label>
-					<input name="" type="file" id="id-card-input" class="file">
-				</div>
-				<div class="update-delete">
-					<div>
-						<button type="submit" id="save-changes-btn">Enregistrer les modifications</button>
-					</div>
-				</form>
-				<form action="{{ path('deleteUserProfil') }}" method="POST">
-					<div>
-						<button type="submit" id="delete-changes-btn">Supprimer profil</button>
-					</div>
-				</form>
 
-			</div>
-		</section>
-	{% endblock %}
+
+		{% endblock %}

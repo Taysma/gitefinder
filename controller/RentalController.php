@@ -9,7 +9,12 @@ class RentalController extends Controller
         $model = new RentalModel();
         $rental = $model->getOneRental($id_rental);
         $oneRental = $router->generate('baseRental');
-        echo self::getRender('post.html.twig', ['rental' => $rental, 'oneRental' => $oneRental]);
+        echo self::getRender('post.html.twig', [
+            'rental' => $rental,
+            'oneRental' => $oneRental,
+            'latitude' => $rental->getLatitude(),
+            'longitude' => $rental->getLongitude(),
+        ]);
     }
 
     public function getOneCategory($id_category)
@@ -43,14 +48,13 @@ class RentalController extends Controller
                 $checkout_date = $_POST['duration'];
                 $validation = $_POST['content'];
 
-                $reservation = new Reservation
-                ([
+                $reservation = new Reservation([
                     // 'title' => $title,
                     // 'duration' => $duration,
                     // 'content' => $content,
                     // 'author' => $author,
                 ]);
-                
+
                 $model = new ReservationModel();
                 $model->addReservation($reservation);
 

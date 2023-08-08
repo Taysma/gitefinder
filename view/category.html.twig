@@ -10,7 +10,18 @@
 
 {% block content %}
 	<section id="homepage" class="limit-size">
-		<h2>{{ category.name }}</h2>
+		<nav class="breadcrumb" aria-label="breadcrumb">
+			<ol class="ol-breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{{ path('home') }}">Acceuille</a>
+				</li>
+				<img src="../asset/media/icon/fleche.svg" alt="fleche">
+				<li class="breadcrumb-item active" aria-current="page">
+					<h2>{{ category.name }}</h2>
+				</li>
+			</ol>
+		</nav>
+
 
 		{% if rentals is empty %}
 			<p>Pas de logement dans cette categorie.</p>

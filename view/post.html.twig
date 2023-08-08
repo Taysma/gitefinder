@@ -43,16 +43,18 @@
 				</div>
 			</div>
 			<!-- Image principale -->
-			<div class="img-article" id="mainImageContainer">
-				<img id="mainImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
-			</div>
-			<!-- Slider d'images -->
-			<div id="sliderContainer">
-				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
-				<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
-				<img
-				class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
-			<!-- Ajoutez plus d'images de slider si nécessaire -->
+			<div class="container-img">
+				<div class="img-article" id="mainImageContainer">
+					<img id="mainImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+				</div>
+				<!-- Slider d'images -->
+				<div id="sliderContainer">
+					<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
+					<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
+					<img
+					class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+				<!-- Ajoutez plus d'images de slider si nécessaire -->
+				</div>
 			</div>
 		</div>
 
@@ -199,21 +201,20 @@
 					</div>
 
 					<div class="form-card-reservation">
-
-						<form action="#" method="POST">
+						<form action="" method="POST">
 							<div class="form-reservation">
 								<div class="label">
 									<label for="arrivee">Date arrivée</label>
 									<label for="depart">Date depart</label>
 								</div>
-								<!-- calendrier -->
+
 								<div class="form-date-arrivee-depart">
-									<input name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée">
-									<input name="depart" class="date-depart" id="date-depart" placeholder="Date depart">
+									<input type="date" name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée">
+									<input type="date" name="depart" class="date-depart" id="date-depart" placeholder="Date depart">
 								</div>
-								<div id="calendar"></div>
+
 								<div class="guest-input">
-									<select id="input-select">
+									<select id="input-select" name="personnes">
 										<option value="1">1 Personne</option>
 										<option value="2">2 Personnes</option>
 										<option value="3">3 Personnes</option>
@@ -224,42 +225,72 @@
 										<option value="8">8 Personnes</option>
 									</select>
 								</div>
+
+								<!-- Les champs cachés -->
+								<input type="hidden" id="duration" name="duration">
+								<input type="hidden" id="total" name="total">
+								<input type="hidden" name="id_rental" value="{{ rental.id }}">
+
+
 							</div>
+
 							<div class="btn-reservation">
-								<button type="submit" id="search-button">Reserver</button>
+								<button type="submit" id="search-button" name="submit">Reserver</button>
 							</div>
 						</form>
 
 						<div class="card-span-reservation">
 							<span class="span-card">Aucun montant ne vous sera débité pour le moment</span>
 						</div>
+
 						<div class="prince-card-reservation">
+							<div id="price-per-night" data-price="{{ rental.price }}"></div>
+
 							<div class="day-prince">
 								<div class="prince-for-day">
-									<span>110€</span>
+									<span id="price-per-night-display">{{ rental.price }}€</span>
 									<span>x</span>
-									<span>5</span>
+									<span id="num-nights">5</span>
 									<span>nuits</span>
 								</div>
+
 								<div class="prince">
-									<span>550</span>
+									<span id="sub-total-span">550</span>
 									<span>€</span>
 								</div>
 							</div>
+
 							<hr>
+
+							<div class="tax-for-days">
+								<div class="tax-for-day">
+									<span>Taxe (5%)</span>
+								</div>
+
+								<div class="tax">
+									<span id="tax-total-span">0</span>
+									<span>€</span>
+								</div>
+							</div>
+
+							<hr>
+
 							<div class="total-prince">
 								<span class="span-prince">Total</span>
-								<span class="prince-total-span">550
-									<span class="device-total-span">€</span>
-								</span>
+								<span id="total-span">550</span>
+								<span class="device-total-span">€</span>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- map -->
 				<div class="map-container">
-					<div class="map">
-						<div style="height:280px;" id="mapid"></div>
+					<div
+						class="map">
+						{# <div id="mapid"></div> #}
+						<div style="height:280px;" id="mapid" data-latitude="{{ rental.latitude }}" data-longitude="{{ rental.longitude }}"></div>
+
+
 					</div>
 				</div>
 			</div>
@@ -306,4 +337,15 @@
 			</div>
 		</div>
 	</section>
+
+
+	{% block javascripts %}
+		{{ parent() }}
+		<script defer src="{{ asset('/js/rentalMaps.js') }}"></script>
+		<script defer src="{{ asset('/js/sharePopup.js') }}"></script>
+		<script defer src="{{ asset('/js/star.js') }}"></script>
+		<script defer src="{{ asset('/js/reservation.js') }}"></script>
+
+
+	{% endblock %}
 {% endblock %}

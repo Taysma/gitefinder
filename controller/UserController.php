@@ -121,7 +121,6 @@ class UserController extends Controller
             } else {
                 echo self::getRender('profil.html.twig', []);
             }
-        
     }
 
     public function editAvatar()
@@ -200,13 +199,9 @@ class UserController extends Controller
         echo self::getRender('favoris.html.twig', ['wishlist' => $wishlist, 'rentals' => $rentals]);
     }
 
-    public function addToWishlist()
-    {
-    }
+    public function addToWishlist(){}
 
-    public function deleteFromWishlist()
-    {
-    }
+    public function deleteFromWishlist(){}
 
     //Dashboard - CRUD Messagerie User
     public function getUserMessagerie()
@@ -273,4 +268,5 @@ class UserController extends Controller
             
         }
     }
-}
+    }
+
