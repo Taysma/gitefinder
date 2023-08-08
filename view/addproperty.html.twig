@@ -67,7 +67,7 @@
 		{# formulaire ajout #}
 		<div class="form-cart">
 
-			<form action="" method="post" class="profil-information">
+			<form action="{{ path('addProperty') }}" method="post" class="profil-information" enctype="multipart/form-data">
 				<h2>Formulaire d'ajout de location</h2>
 				<div class="name-lastname">
 					<div class="label-input">
@@ -84,20 +84,20 @@
 					</div>
 					<label for="capacity">Nombre de personne:</label>
 					<select name="capacity" id="capacity">
-						{% for num in 1..10 %}
-							<option value="{{ num }}">{{ num }}</option>
+						{% for num in 1..1000 %}
+							<option value="{{ num }}">{{ num }}</option> 
 						{% endfor %}
 					</select>
 					{# Surface_area #}
 					<label for="Surface_area">Surface:</label>
 					<input
-					type="text" id="Surface_area" name="Surface_area" value="" placeholder="Surface">
+					type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
 					{# prince #}
 					<label for="price">Prix:</label>
 					<input
 					type="text" id="price" name="price" value="">
 					{# Catégories de gîtes #}
-					<label>Catégories de gîtes:</label>
+					{# <label>Catégories de gîtes:</label>
 					<div class="accommodation-types">
 
 						{% for category in categories %}
@@ -107,10 +107,10 @@
 						{% endfor %}
 						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
 						<label for="">{{ category.name }}</label>
-					</div>
+					</div> #}
 
 					{# gps #}
-					<div class="latitude-longitude">
+					<div class="ltitude-longitude">
 						<label for="latitude">latitude</label>
 						<input type="text" id="latitude" name="latitude" readonly>
 						<label for="longitude">longitude</label>
@@ -122,7 +122,7 @@
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
-					<input type="file" id="image" name="image" value="" class="file"></div>
+					<input type="file" id="image" name="cover" value="" class="file"></div>
 				<div class="add-edit-delete">
 					<input type="submit" value="Ajouter la location" id="save-changes-btn">
 					<button type id="delete-changes-btn">Fermer</button>

@@ -99,28 +99,28 @@ class UserController extends Controller
 
     public function editProfil()
     {
-        
-            global $router;
-            $model = new UserModel();
-            //var_dump($_POST);
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $mail = $_POST["mail"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
-                $phone = $_POST['phone'];
 
-                $user = new User([
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'mail' => $mail,
-                    'phone' => $phone
-                ]);
+        global $router;
+        $model = new UserModel();
+        //var_dump($_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $mail = $_POST["mail"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
+            $phone = $_POST['phone'];
 
-                $model->updateUser($user);
-                header('Location: ' . $router->generate('userProfil'));
-            } else {
-                echo self::getRender('profil.html.twig', []);
-            }
+            $user = new User([
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'mail' => $mail,
+                'phone' => $phone
+            ]);
+
+            $model->updateUser($user);
+            header('Location: ' . $router->generate('userProfil'));
+        } else {
+            echo self::getRender('profil.html.twig', []);
+        }
     }
 
     public function editAvatar()
@@ -131,14 +131,14 @@ class UserController extends Controller
                 global $router;
                 $model = new UserModel();
                 $avatar = $_FILES['avatar']['name'];
-    
+
                 $queryAvatar = $model->modelAvatar($_SESSION['id_user'], $avatar);
-    
+
                 if ($queryAvatar) {
                     $uploadImg = 'asset/media/images/';
                     $uploadFile = $uploadImg . $_FILES['avatar']['name'];
                     $controleUpload = move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadFile);
-    
+
                     if (!$controleUpload) {
                         header('Location: ' . $router->generate('uploadError'));
                         exit;
@@ -147,13 +147,13 @@ class UserController extends Controller
                     $_SESSION['avatar'] = $avatar;
 
                     header('Location: ' . $router->generate('userProfil'));
-                   
+
                     exit;
                 }
-                
+
             }
         } else {
-          
+
             echo self::getRender('profil.html.twig', []);
         }
 
@@ -199,9 +199,13 @@ class UserController extends Controller
         echo self::getRender('favoris.html.twig', ['wishlist' => $wishlist, 'rentals' => $rentals]);
     }
 
-    public function addToWishlist(){}
+    public function addToWishlist()
+    {
+    }
 
-    public function deleteFromWishlist(){}
+    public function deleteFromWishlist()
+    {
+    }
 
     //Dashboard - CRUD Messagerie User
     public function getUserMessagerie()
@@ -227,27 +231,27 @@ class UserController extends Controller
 
     public function addProperty()
     {
-        if (!$_POST) {
-            $message = "Veillez remplir tout les champs";
-                echo self::getRender('addproperty.html.twig', ['message' => $message]);
-        } else {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            var_dump($_FILES);
+            if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 'UPLOAD_ERR_OK') {
+                $id_user = $_SESSION['id_user'];
+                global $router;
+                $model = new RentalModel();
 
-            global $router;
-            $model = new RentalModel();
-
-           
                 $title = $_POST['title'];
-                $content= $_POST['content'];
-                $cover = $_POST['cover'];
+                $content = $_POST['content'];
+                $cover = $_FILES['cover']['name'];
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
                 $address = $_POST['address'];
                 $price = $_POST['price'];
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
-               
+
+
 
                 $rental = new Rental([
+                    'id_user' => $id_user,
                     'title' => $title,
                     'content' => $content,
                     'cover' => $cover,
@@ -257,16 +261,39 @@ class UserController extends Controller
                     'price' => $price,
                     'latitude' => $latitude,
                     'longitude' => $longitude
-                    
-
                 ]);
-                $model->addRental($rental);
-                header('Location: ' . $router->generate('home'));
-           
-               
-                echo self::getRender('addproperty.html.twig', []);
-            
-        }
-    }
-    }
 
+
+                var_dump($rental);
+                $queryNewRental = $model->addRental($id_user, $rental);
+                var_dump($queryNewRental);
+                if ($queryNewRental) {
+                    $uploadImg = 'asset/media/images/';
+                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
+                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+
+                    if (!$controleUpload) {
+                        header('Location: ' . $router->generate('uploadError'));
+                        
+                    }
+
+                    $_SESSION['cover'] = $cover;
+
+                     header('Location: ' . $router->generate('dashboard'));
+
+                    
+                } 
+
+            }
+         } else {
+
+             echo self::getRender('addproperty.html.twig', []);
+         }
+
+
+
+
+
+
+    }
+}
