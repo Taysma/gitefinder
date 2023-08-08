@@ -1506,6 +1506,23 @@ body .profil .container-profil form.profil-information .name-lastname .file {
   border: none;
   padding: 10px;
 }
+body .profil .container-profil form.profil-information .name-lastname .img-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: rgba(168, 176, 183, 0.6588235294);
+  z-index: 1;
+}
+body .profil .container-profil form.profil-information .name-lastname .img-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  overflow: hidden;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+}
 body .profil .container-profil form.profil-information .update-delete {
   display: flex;
   gap: 10px;
@@ -1634,7 +1651,7 @@ body .addproperty .btn {
 body .addproperty .btn #btn-add {
   background-color: #0056b3;
 }
-body .addproperty .addproperty {
+body .addproperty .icon-add {
   width: 100%;
   text-align: center;
 }
@@ -1681,11 +1698,11 @@ body .addproperty .container-card-property .card .img-card .size-img {
   border-top-right-radius: 13px;
 }
 body .addproperty .container-card-property .card .content-card {
-  box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.101);
   padding: 10px;
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
-  height: 175px;
+  height: 200px;
+  box-shadow: -1px 15px 30px -12px rgba(0, 0, 0, 0.266);
 }
 body .addproperty .container-card-property .card .content-card .title-prince {
   display: flex;
@@ -1724,10 +1741,44 @@ body .addproperty .container-card-property .card .content-card .rating-card .rat
 body .addproperty .container-card-property .card .content-card .rating-card .size-img-star {
   width: 24px;
 }
+body .addproperty .container-card-property .card .content-card .divbtnedit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+body .addproperty .container-card-property .card .content-card .divbtnedit .edit-btn {
+  padding: 10px;
+  border: none;
+  position: relative;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5ch;
+  transition: filter 0.35s, transform 0.35s, opacity 0.35s;
+}
+body .addproperty .container-card-property .card .content-card .divbtnedit .edit-btn:hover {
+  filter: brightness(125%);
+  opacity: 1;
+  border: 1px solid rgb(0, 234, 255);
+}
+body .addproperty .container-card-property .card .content-card .divbtnedit .edit-btn:active {
+  transition: transform 0.1s;
+  transform: scale(0.95);
+}
+body .addproperty .container-card-property .card .content-card .divbtnedit .edit-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(190.82% 190.82% at 50% 100%, rgb(0, 123, 255) 0%, rgba(0, 26, 255, 0.62) 18.09%);
+  opacity: 0.2;
+  filter: blur(2px);
+}
 body .addproperty .form-cart {
   width: 100%;
   display: flex;
-  padding: 50px;
+  padding-bottom: 70px;
   margin: auto;
   visibility: hidden;
   position: absolute;
@@ -1871,8 +1922,6 @@ body .addproperty .form-cart .cart #mapid {
   position: relative;
 }
 body .addproperty .editproperty {
-  width: 100%;
-  padding: 50px;
   margin: auto;
   visibility: hidden;
   position: absolute;
@@ -1884,6 +1933,7 @@ body .addproperty .editproperty h2 {
 body .addproperty .editproperty .profil-information {
   width: 100%;
   max-width: 700px;
+  margin: initial;
 }
 body .addproperty .editproperty .profil-information .name-lastname {
   width: 100%;
@@ -1966,8 +2016,6 @@ body .addproperty .editproperty .profil-information .name-lastname .latitude-lon
 }
 body .addproperty .editproperty .profil-information .update-delete {
   display: flex;
-  width: -moz-fit-content;
-  width: fit-content;
   justify-content: space-around;
 }
 body .addproperty .editproperty .profil-information #save-changes-btn {
@@ -2012,8 +2060,7 @@ body .addproperty .update-delete #save-changes-btn {
   cursor: pointer;
 }
 body .addproperty #delete-changes-btn {
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 130px;
   background-color: #fc0707;
   color: #F7F7F7;
   font-size: 1rem;

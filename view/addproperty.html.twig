@@ -12,13 +12,12 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="{{ path('dashboard') }}">Dashboard</a>
+					<a href="{{ path('dashboard') }}">
+						&#x3008; Dashboard</a>
 				</li>
-				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
-				<li class="breadcrumb-item active" aria-current="page">Propriete</li>
 			</ol>
 		</nav>
-		<div class="addproperty">
+		<div class="icon-add">
 			<img class="iconhome" src="{{asset('/media/icon/addproperty.png')}}" alt="">
 
 		</div>
@@ -57,7 +56,7 @@
 							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
 						</span>
 					</div>
-					<div>
+					<div class="divbtnedit">
 						<button class="edit-btn" type="button">edit</button>
 					</div>
 
@@ -188,22 +187,34 @@
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
-					<input type="file" id="image" name="image" value="" class="file">
+					<input
+					type="file" id="image" name="image" value="" class="file">
+					{# objectif faire comme pour le profil #}
+					<div class="img-profil">
+						<form action="{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data">
+							<input type="file" name='avatar' id="profile-upload" accept="image/*" style="display: none;">
+							<label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/images/' ~ session.avatar) }}')"></label>
+							<input class="btn-edit" type="submit" value="Envoyer">
+						</form>
+					</div>
 				</div>
 				<div class="update-delete">
 					<input type="submit" value="Ajouter la location" id="save-changes-btn">
+
 				</form>
-				<div class="cart">
-					<div id="mapid"></div>
-				</div>
+
 				<form action="">
 					<input type="submit" value="delete" id="delete-changes-btn">
 				</form>
 			</div>
-		</div>
+			<div class="cart">
+				<div id="mapid"></div>
+			</div>
 
-	</section>
-	{% block javascripts %}
-		{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
-	{% endblock %}
-{% endblock %}
+		</div>
+	</div>
+
+</section>
+{% block javascripts %}
+	{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
+{% endblock %}{% endblock %}

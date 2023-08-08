@@ -1927,6 +1927,26 @@ body {
                         padding: 10px;
                     }
 
+                    .img-profile {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 999px;
+                        overflow: hidden;
+                        background-color: #a8b0b7a8;
+                        // padding: 2px;
+                        z-index: 1;
+
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 999px;
+                            overflow: hidden;
+                            z-index: 3;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
 
                 }
 
@@ -2103,7 +2123,7 @@ body {
 
         }
 
-        .addproperty {
+        .icon-add {
             width: 100%;
             text-align: center;
         }
@@ -2156,11 +2176,13 @@ body {
                 }
 
                 .content-card {
-                    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.101);
                     padding: 10px;
                     border-bottom-left-radius: 13px;
                     border-bottom-right-radius: 13px;
-                    height: 175px;
+                    height: 200px;
+                    box-shadow: -1px 15px 30px -12px rgba(0, 0, 0, 0.266);
+
+
 
 
 
@@ -2216,6 +2238,48 @@ body {
                         }
 
                     }
+
+                    .divbtnedit {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        padding: 15px;
+
+                        .edit-btn {
+                            padding: 10px;
+                            border: none;
+
+                            position: relative;
+                            width: 100px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: .5ch;
+
+                            transition: filter .35s, transform .35s, opacity .35s;
+
+                            &:hover {
+                                filter: brightness(125%);
+                                opacity: 1;
+                                border: 1px solid rgb(0, 234, 255);
+                            }
+
+                            &:active {
+                                transition: transform .1s;
+                                transform: scale(.95);
+                            }
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                inset: 0;
+                                background: radial-gradient(190.82% 190.82% at 50% 100%, rgb(0, 123, 255) 0%, rgba(0, 26, 255, 0.62) 18.09%);
+                                opacity: .2;
+                                filter: blur(2px);
+                            }
+                        }
+                    }
+
                 }
             }
 
@@ -2228,7 +2292,7 @@ body {
         .form-cart {
             width: 100%;
             display: flex;
-            padding: 50px;
+            padding-bottom: 70px;
             margin: auto;
             visibility: hidden;
             position: absolute;
@@ -2395,13 +2459,13 @@ body {
         }
 
         .editproperty {
-            width: 100%;
+            // width: 100%;
             // display: flex;
-            padding: 50px;
             margin: auto;
             visibility: hidden;
             position: absolute;
             justify-content: space-around;
+
 
             h2 {
                 font-size: 1.3rem;
@@ -2410,6 +2474,7 @@ body {
             .profil-information {
                 width: 100%;
                 max-width: 700px;
+                margin: initial;
 
                 .name-lastname {
                     width: 100%;
@@ -2502,7 +2567,6 @@ body {
 
                 .update-delete {
                     display: flex;
-                    width: fit-content;
                     justify-content: space-around;
                 }
 
@@ -2557,7 +2621,7 @@ body {
         }
 
         #delete-changes-btn {
-            width: fit-content;
+            width: 130px;
             background-color: #fc0707;
             color: #F7F7F7;
             font-size: 1rem;
