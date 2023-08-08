@@ -2234,6 +2234,23 @@ body {
             position: absolute;
             justify-content: space-around;
 
+            .close-img {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                background-color: red;
+                display: flex;
+                align-items: center;
+                padding: 5px;
+                right: 10px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+
+                }
+            }
+
             h2 {
                 font-size: 1.3rem;
             }
@@ -2536,17 +2553,19 @@ body {
                 cursor: pointer;
             }
 
-            #delete-changes-btn {
-                width: fit-content;
-                background-color: #fc0707;
-                color: #F7F7F7;
-                font-size: 1rem;
-                border: none;
-                margin: 10px auto;
-                border-radius: 5px;
-                padding: 10px;
-                cursor: pointer;
-            }
+
+        }
+
+        #delete-changes-btn {
+            width: fit-content;
+            background-color: #fc0707;
+            color: #F7F7F7;
+            font-size: 1rem;
+            border: none;
+            margin: 10px auto;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
         }
 
 
