@@ -86,11 +86,7 @@ class UserModel extends Model
 
        $queryAvatar = $req->execute();
        return $queryAvatar;
-       
-
-
     }
-
 
     public function deleteUser(int $id_user)
     {
@@ -138,18 +134,4 @@ class UserModel extends Model
         }
     }
 
-    public function modelAvatar($id_user, $avatar)
-    {
-
-        // $id_user = $_SESSION['id_user'];
-        // $avatar = $user->getAvatar();
-
-        $req = $this->getDb()->prepare("UPDATE user SET avatar=:avatar WHERE id_user=:id_user");
-
-        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
-        $req->bindParam(":avatar", $avatar, PDO::PARAM_STR);
-
-        $queryAvatar = $req->execute();
-        return $queryAvatar;
-    }
 }
