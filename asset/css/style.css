@@ -1733,6 +1733,20 @@ body .addproperty .form-cart {
   position: absolute;
   justify-content: space-around;
 }
+body .addproperty .form-cart .close-img {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  right: 10px;
+}
+body .addproperty .form-cart .close-img img {
+  width: 100%;
+  height: 100%;
+}
 body .addproperty .form-cart h2 {
   font-size: 1.3rem;
 }
@@ -1997,7 +2011,7 @@ body .addproperty .update-delete #save-changes-btn {
   padding: 10px;
   cursor: pointer;
 }
-body .addproperty .update-delete #delete-changes-btn {
+body .addproperty #delete-changes-btn {
   width: -moz-fit-content;
   width: fit-content;
   background-color: #fc0707;
