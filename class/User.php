@@ -95,7 +95,7 @@ class User {
         $this->password = $password;
     } 
 
-    public function setPhone(int $phone){
+    public function setPhone(String $phone){
         $this->phone = $phone;
     } 
 

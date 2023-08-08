@@ -10,7 +10,7 @@ class UserController extends Controller
             global $router;
             $model = new UserModel();
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
                 $firstname = $_POST['firstname'];
                 $lastname = $_POST['lastname'];
                 $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
@@ -29,9 +29,9 @@ class UserController extends Controller
 
                 $model->createUser($user);
                 header('Location: ' . $router->generate('home'));
-            } else {
+           
                 echo self::getRender('connect.html.twig', []);
-            }
+            
         }
     }
 
@@ -99,12 +99,10 @@ class UserController extends Controller
 
     public function editProfil()
     {
-        if (!$_POST) {
-            echo self::getRender('homepage.html.twig', []);
-        } else {
+        
             global $router;
             $model = new UserModel();
-            var_dump($_POST);
+            //var_dump($_POST);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $firstname = $_POST['firstname'];
                 $lastname = $_POST['lastname'];
@@ -119,11 +117,11 @@ class UserController extends Controller
                 ]);
 
                 $model->updateUser($user);
-                header('Location: ' . $router->generate('userProfile'));
+                header('Location: ' . $router->generate('userProfil'));
             } else {
                 echo self::getRender('profil.html.twig', []);
             }
-        }
+        
     }
 
     public function editAvatar()
@@ -146,13 +144,17 @@ class UserController extends Controller
                         header('Location: ' . $router->generate('uploadError'));
                         exit;
                     }
-                    var_dump($_FILES['avatar']['name']);
-                    echo self::getRender('profil.html.twig', ['avatar', $_FILES['avatar']['name']]);
+
+                    $_SESSION['avatar'] = $avatar;
+
+                    header('Location: ' . $router->generate('userProfil'));
+                   
                     exit;
                 }
-                // header('Location: ' . $router->generate('userProfil'));
+                
             }
         } else {
+          
             echo self::getRender('profil.html.twig', []);
         }
 
@@ -231,44 +233,44 @@ class UserController extends Controller
     public function addProperty()
     {
         if (!$_POST) {
-            echo self::getRender('addproperty.html.twig', []);
+            $message = "Veillez remplir tout les champs";
+                echo self::getRender('addproperty.html.twig', ['message' => $message]);
         } else {
 
             global $router;
             $model = new RentalModel();
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $id_user = $_SESSION['id_user'];
+           
                 $title = $_POST['title'];
+                $content= $_POST['content'];
+                $cover = $_POST['cover'];
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
-                $city = $_POST['city'];
                 $address = $_POST['address'];
-                $content = $_POST['content'];
-                $cover = $_POST['cover'];
-                $country = $_POST['country'];
                 $price = $_POST['price'];
-                // add latitude & longitude later
+                $latitude = $_POST['latitude'];
+                $longitude = $_POST['longitude'];
+               
 
                 $rental = new Rental([
-                    'id_user' => $id_user,
                     'title' => $title,
-                    'capacity' => $capacity,
-                    'surface_area' => $surface_area,
-                    'city' => $city,
-                    'address' => $address,
                     'content' => $content,
                     'cover' => $cover,
-                    'country' => $country,
-                    'price' => $price
-                ]);
+                    'capacity' => $capacity,
+                    'surface_area' => $surface_area,
+                    'address' => $address,
+                    'price' => $price,
+                    'latitude' => $latitude,
+                    'longitude' => $longitude
+                    
 
+                ]);
                 $model->addRental($rental);
                 header('Location: ' . $router->generate('home'));
-            } else {
-                $message = "Veillez remplir tout les champs";
-                echo self::getRender('addproperty.html.twig', ['message' => $message]);
-            }
+           
+               
+                echo self::getRender('addproperty.html.twig', []);
+            
         }
     }
 }
