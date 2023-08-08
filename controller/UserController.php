@@ -10,7 +10,7 @@ class UserController extends Controller
             global $router;
             $model = new UserModel();
 
-            
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $firstname = $_POST['firstname'];
                 $lastname = $_POST['lastname'];
                 $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
@@ -29,9 +29,9 @@ class UserController extends Controller
 
                 $model->createUser($user);
                 header('Location: ' . $router->generate('home'));
-           
+            } else {
                 echo self::getRender('connect.html.twig', []);
-            
+            }
         }
     }
 
