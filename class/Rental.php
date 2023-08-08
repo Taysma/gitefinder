@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Rental{
+class Rental
+{
     private $id_rental;
     private $id_user;
     private $title;
@@ -12,111 +13,165 @@ class Rental{
     private $address;
     private $country;
     private $price;
+    private $latitude;
+    private $longitude;
+    private $categories = [];  // Ajout de la propriété categories
 
-
-    public function __construct(array $datas){
+    public function __construct(array $datas)
+    {
         $this->hydrate($datas);
     }
 
-    private function hydrate(array $datas){
-        foreach($datas as $key => $value){
+    private function hydrate(array $datas)
+    {
+        foreach ($datas as $key => $value) {
             $method = 'set' . ucfirst($key);
 
-            if(method_exists($this, $method)){
+            if (method_exists($this, $method)) {
                 $this->$method($value);
             }
         }
     }
 
-    
     //GETTERS
-    public function getId_rental(){
+    public function getId_rental()
+    {
         return $this->id_rental;
     }
 
-    public function getId_user(){
+    public function getId_user()
+    {
         return $this->id_user;
     }
 
-    public function getTitle(){
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function getContent(){
+    public function getContent()
+    {
         return $this->content;
     }
 
-    public function getCover(){
+    public function getCover()
+    {
         return $this->cover;
     }
 
-    public function getCapacity(){
+    public function getCapacity()
+    {
         return $this->capacity;
     }
 
-    public function getSurface_area(){
+    public function getSurface_area()
+    {
         return $this->surface_area;
     }
 
-    public function getCity(){
+    public function getCity()
+    {
         return $this->city;
     }
 
-    public function getAddress(){
+    public function getAddress()
+    {
         return $this->address;
     }
 
-    public function getCountry(){
+    public function getCountry()
+    {
         return $this->country;
     }
 
-    public function getPrice(){
+    public function getPrice()
+    {
         return $this->price;
     }
 
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 
     //SETTERS
-    public function setId_rental(int $id_rental){
+    public function setId_rental(int $id_rental)
+    {
         $this->id_rental = $id_rental;
     }
 
-    public function setId_user(int $id_user){
+    public function setId_user(int $id_user)
+    {
         $this->id_user = $id_user;
     }
 
-    public function setTitle(String $title){
+    public function setTitle(String $title)
+    {
         $this->title = $title;
     }
 
-    public function setContent(String $content){
+    public function setContent(String $content)
+    {
         $this->content = $content;
     }
 
-    public function setCover(String $cover){
+    public function setCover(String $cover)
+    {
         $this->cover = $cover;
     }
 
-    public function setCapacity(int $capacity){
+    public function setCapacity(int $capacity)
+    {
         $this->capacity = $capacity;
     }
 
-    public function setSurface_area(int $surface_area){
+    public function setSurface_area(int $surface_area)
+    {
         $this->surface_area = $surface_area;
     }
 
-    public function setCity(String $city){
+    public function setCity(String $city)
+    {
         $this->city = $city;
     }
 
-    public function setAddress(String $adress){
-        $this->address = $adress;
+    public function setAddress(String $address)
+    {
+        $this->address = $address;
     }
 
-    public function setCountry(String $country){
+    public function setCountry(String $country)
+    {
         $this->country = $country;
     }
 
-    public function setPrice(int $price){
+    public function setPrice(int $price)
+    {
         $this->price = $price;
+    }
+
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+    public function setCategories(array $categories)
+    {
+        $this->categories = $categories;
     }
 }

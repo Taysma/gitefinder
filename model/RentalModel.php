@@ -59,7 +59,7 @@ class RentalModel extends Model
 
     public function getOneRental(int $id_rental)
     {
-        $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,  `city`, `address`, `country`, `price` FROM `rental` WHERE `id_rental`= :id');
+        $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,  `city`, `address`, `country`, `price`, `latitude`, `longitude` FROM `rental` WHERE `id_rental`= :id');
         $req->bindParam('id', $id_rental, PDO::PARAM_INT);
         $req->execute();
 
@@ -68,7 +68,7 @@ class RentalModel extends Model
         return $rental;
     }
 
-    
+
 
     public function updateRental(Rental $rental)
     {

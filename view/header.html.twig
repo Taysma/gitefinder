@@ -41,7 +41,7 @@
 					<div class="img-username">
 						<div class="img-profile">
 							<a href="{{ path('userProfil') }}">
-								<img src="{{ asset('/media/images/' ~ session.avatar  ) }}" alt=""></a>
+								<img src="{{ asset('/media/images/' ~ session.avatar ) }}" alt=""></a>
 						</div>
 						<span>{{ session.firstname }}</span>
 					</div>
@@ -51,23 +51,19 @@
 					</div>
 					<div id="burger-menu-modal">
 						<ul>
-							<div class="loginRegister">
-								<li>
-									<a href="{{ path('login') }}">Se connecter</a>
-								</li>
-								<li>
-									<a href="{{ path('register') }}">S'inscrire</a>
-								</li>
-							</div>
-							<li>
-								<a href="{{ path('dashboard') }}">Dashboard</a>
-							</li>
-							<li>
-								<a href="{{ path('userFavoris') }}">Favoris</a>
-							</li>
-							<li>
-								<a href="{{ path('userReservations') }}">Réservation</a>
-							</li>
+							<a href="{{path('dashboard')}}">
+								<li>Dashboard</li>
+							</a>
+
+							<a href="{{path('userFavoris')}}">
+								<li>Favoris</li>
+							</a>
+
+
+							<a href="{{path('userReservations')}}">
+								<li>Réservation</li>
+							</a>
+
 						</ul>
 					</div>
 
