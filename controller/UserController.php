@@ -217,16 +217,16 @@ class UserController extends Controller
     public function getUserProperty()
     {
         
-        //  $id_user = $_SESSION['id_user'];
+          $id_user = $_SESSION['id_user'];
 
-        //  $model = new RentalModel();
-        //  $userRental = $model->getUserRentals($id_user);
+          $model = new RentalModel();
+          $rentalsUser = $model->getUserRentals($id_user);
 
-        //  global $router;
-        //  echo self::getRender('dashboard.html.twig', ['rental' => $userRental]);
-        // }
+          
+          echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser]);
+         
 
-        echo self::getRender('property.html.twig', []);
+       
     }
 
     public function addProperty()
@@ -285,10 +285,7 @@ class UserController extends Controller
                 } 
 
             }
-         } else {
-
-             echo self::getRender('addproperty.html.twig', []);
-         }
+         } 
 
 
 

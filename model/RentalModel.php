@@ -69,6 +69,24 @@ class RentalModel extends Model
         return $rental;
     }
 
+    public function getUserRentals($id_user)
+    {
+        $rentalsUser = [];
+
+        $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,   `address`,  `price`, `latitude`, `longitude` FROM rental WHERE `id_user` = :id_user ORDER BY id_rental DESC');
+
+        
+        $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+    $req->execute();
+
+        while ($rentals = $req->fetch(PDO::FETCH_ASSOC)) {
+            $rentalsUser[] = new Rental($rentals);
+            var_dump($rentalsUser);
+        }
+        
+        return $rentalsUser;
+    }
+
     
 
     public function updateRental(Rental $rental)

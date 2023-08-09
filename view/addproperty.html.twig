@@ -25,43 +25,41 @@
 		{# card #}
 		<div class="container-card-property">
 			<div class="card">
-				<div class="img-card">
-					<a href="{{ path('baseRental') ~ rental.id_rental }}">
+				{% for rental in rentals %}
+					<div class="img-card">
+						<a href="{{ path('baseRental') ~ rental.id_rental }}">
 
-						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
-					</a>
-				</div>
-				<div class="content-card">
+							<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
+						</a>
+					</div>
+					<div class="content-card">
 
-					<div class="title-prince">
-						<div class="h1-title-card">
+						<div class="title-prince">
+							<div class="h1-title-card">
 
-							<h1>
-								{{ rental.title }}
-							</h1>
+								<h1>
+									{{ rental.title }}
+								</h1>
+							</div>
+							<div class="prince">
+
+								<span>{{ rental.price }}</span>
+								<span>€</span>
+							</div>
 						</div>
-						<div class="prince">
-
-							<span>{{ rental.price }}</span>
-							<span>€</span>
+						
+						<div class="rating-card">
+							<span class="rating">4.8</span>
+							<span>
+								<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
+							</span>
 						</div>
-					</div>
-					<div class="location-card">
-						<span class="city">{{ rental.city }}</span>
-						<span>,</span>
-						<span class="country">{{ rental.country }}</span>
-					</div>
-					<div class="rating-card">
-						<span class="rating">4.8</span>
-						<span>
-							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-						</span>
-					</div>
-					<div>
-						<button class="edit-btn" type="button">edit</button>
-					</div>
+						<div>
+							<button class="edit-btn" type="button">edit</button>
+						</div>
 
-				</div>
+					</div>
+				{% endfor %}
 			</div>
 		</div>
 		{# formulaire ajout #}
@@ -85,7 +83,7 @@
 					<label for="capacity">Nombre de personne:</label>
 					<select name="capacity" id="capacity">
 						{% for num in 1..1000 %}
-							<option value="{{ num }}">{{ num }}</option> 
+							<option value="{{ num }}">{{ num }}</option>
 						{% endfor %}
 					</select>
 					{# Surface_area #}
@@ -94,24 +92,22 @@
 					type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
 					{# prince #}
 					<label for="price">Prix:</label>
-					<input
-					type="text" id="price" name="price" value="">
+					<input type="text" id="price" name="price" value="">
 					{# Catégories de gîtes #}
 					{# <label>Catégories de gîtes:</label>
-					<div class="accommodation-types">
-
-						{% for category in categories %}
-							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
-							<label for="{{ category.id_category }}"></label>
-							<p>{{ category.name }}</p>
-						{% endfor %}
-						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
-						<label for="">{{ category.name }}</label>
-					</div> #}
+																<div class="accommodation-types">
+											
+																	{% for category in categories %}
+																		<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+																		<label for="{{ category.id_category }}"></label>
+																		<p>{{ category.name }}</p>
+																	{% endfor %}
+																	<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
+																	<label for="">{{ category.name }}</label>
+																</div> #}
 
 					{# gps #}
-					<div class="ltitude-longitude">
-						<label for="latitude">latitude</label>
+						<div class="ltitude-longitude"> <label for="latitude">latitude</label>
 						<input type="text" id="latitude" name="latitude" readonly>
 						<label for="longitude">longitude</label>
 						<input type="text" id="longitude" name="longitude" readonly>
