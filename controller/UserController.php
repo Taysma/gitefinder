@@ -264,7 +264,7 @@ class UserController extends Controller
                 header('Location: ' . $router->generate('home'));
            
                
-                echo self::getRender('addproperty.html.twig', []);
+                // echo self::getRender('addproperty.html.twig', []);
             
         }
     }

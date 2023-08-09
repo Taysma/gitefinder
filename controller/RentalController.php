@@ -11,9 +11,7 @@ class RentalController extends Controller
         $oneRental = $router->generate('baseRental');
         echo self::getRender('post.html.twig', [
             'rental' => $rental,
-            'oneRental' => $oneRental,
-            'latitude' => $rental->getLatitude(),
-            'longitude' => $rental->getLongitude(),
+            'oneRental' => $oneRental
         ]);
     }
 
