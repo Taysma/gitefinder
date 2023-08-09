@@ -15,12 +15,12 @@ class RentalModel extends Model
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
 
-        $req = $this->getDb()->prepare('INSERT INTO `rental` (`id_user`, `title`, `capacity`, `surface_area`, `cover`, `address`, `content`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area,  :address, :content, :cover,  :price, :latitude, :longitude )');
+        $req = $this->getDb()->prepare('INSERT INTO `rental` (`id_user`, `title`, `capacity`, `surface_area`, `cover`, `address`, `content`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area, :cover,  :address, :content,   :price, :latitude, :longitude )');
 
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
         $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
-        $req->bindParam(':surface_area', $surface_area, PDO::PARAM_INT);
+        $req->bindParam(':surface_area', $surface_area, PDO::PARAM_STR);
         $req->bindParam(':cover', $cover, PDO::PARAM_STR);
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);

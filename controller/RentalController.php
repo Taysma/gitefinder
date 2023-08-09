@@ -12,9 +12,10 @@ class RentalController extends Controller
         echo self::getRender('post.html.twig', [
             'rental' => $rental,
             'oneRental' => $oneRental,
-            'latitude' => $rental->getLatitude(),
-            'longitude' => $rental->getLongitude(),
+            
+           
         ]);
+        
     }
 
     public function getOneCategory($id_category)

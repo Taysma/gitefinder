@@ -216,7 +216,7 @@ class UserController extends Controller
     //Dashboard - CRUD Propriétés User
     public function getUserProperty()
     {
-        // if ($_SESSION['connect']) {
+        
         //  $id_user = $_SESSION['id_user'];
 
         //  $model = new RentalModel();
@@ -233,7 +233,7 @@ class UserController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             var_dump($_FILES);
-            if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 'UPLOAD_ERR_OK') {
+            if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 0) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
@@ -244,7 +244,7 @@ class UserController extends Controller
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
                 $address = $_POST['address'];
-                $price = $_POST['price'];
+                $price = intval($_POST['price']);
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
 
