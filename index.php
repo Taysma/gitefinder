@@ -32,7 +32,8 @@ $router->map('GET', '/dashboard', 'UserController#getUserDashboard', 'dashboard'
 // USER - PROFIL
 $router->map('GET', '/dashboard/profil', 'UserController#getUserProfil', 'userProfil');
 $router->map('GET|POST', '/dashboard/profil/edit', 'UserController#editProfil', 'editUserProfil');
-$router->map('GET|DELETE', '/dashboard/profil/delete', 'UserController#deleteProfil', 'deleteUserProfil');
+$router->map('GET|POST', '/dashboard/profil/edit/avatar', 'UserController#editAvatar', 'editUserAvatar');
+$router->map('POST', '/dashboard/profil/delete', 'UserController#deleteProfil', 'deleteUserProfil');
 // USER - PROPRIETE
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
 $router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'addProperty');
@@ -46,6 +47,9 @@ $router->map('GET', '/dashboard/favoris', 'UserController#getUserWishlist', 'use
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 // USER - RESERVATION
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
+//$router->map('GET|POST', '/dashboard/profil/edit/avatar', 'UserController#editAvatar', '');
+
+
 
 // // SEARCH
 // $router->map('GET', '/search', 'SearchController#searchResult', 'search');

@@ -8,19 +8,65 @@
 	{% include 'header.html.twig' with {'categories' : cats } %}
 {% endblock %}
 {% block content %}
-	<section class="addrental">
+	<section class="addproperty">
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="../view/dashboard.html">Dashboard</a>
+					<a href="{{ path('dashboard') }}">Dashboard</a>
 				</li>
-				<img src="../asset/media/icon/fleche.svg" alt="fleche">
+				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
 				<li class="breadcrumb-item active" aria-current="page">Propriete</li>
 			</ol>
 		</nav>
+		<div class="addproperty">
+			<img class="iconhome" src="{{asset('/media/icon/addproperty.png')}}" alt="">
 
-		{# form add update delete #}
+		</div>
+		{# card #}
+		<div class="container-card-property">
+			<div class="card">
+				<div class="img-card">
+					<a href="{{ path('baseRental') ~ rental.id_rental }}">
+
+						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
+					</a>
+				</div>
+				<div class="content-card">
+
+					<div class="title-prince">
+						<div class="h1-title-card">
+
+							<h1>
+								{{ rental.title }}
+							</h1>
+						</div>
+						<div class="prince">
+
+							<span>{{ rental.price }}</span>
+							<span>€</span>
+						</div>
+					</div>
+					<div class="location-card">
+						<span class="city">{{ rental.city }}</span>
+						<span>,</span>
+						<span class="country">{{ rental.country }}</span>
+					</div>
+					<div class="rating-card">
+						<span class="rating">4.8</span>
+						<span>
+							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
+						</span>
+					</div>
+					<div>
+						<button class="edit-btn" type="button">edit</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		{# formulaire ajout #}
 		<div class="form-cart">
+
 			<form action="" method="post" class="profil-information">
 				<h2>Formulaire d'ajout de location</h2>
 				<div class="name-lastname">
@@ -31,53 +77,133 @@
 						</div>
 						<div class="address">
 							<label for="address">Adresse:</label>
-							<input type="text" id="address" name="address" value="">
-							<div id="autocomplete-items"></div>
+							<input type="text" class="address" name="address" value="">
+							<div class="autocomplete-items"></div>
 
 						</div>
 					</div>
+					<label for="capacity">Nombre de personne:</label>
+					<select name="capacity" id="capacity">
+						{% for num in 1..10 %}
+							<option value="{{ num }}">{{ num }}</option>
+						{% endfor %}
+					</select>
+					{# Surface_area #}
+					<label for="Surface_area">Surface:</label>
+					<input
+					type="text" id="Surface_area" name="Surface_area" value="" placeholder="Surface">
+					{# prince #}
+					<label for="price">Prix:</label>
+					<input
+					type="text" id="price" name="price" value="">
+					{# Catégories de gîtes #}
+					<label>Catégories de gîtes:</label>
+					<div class="accommodation-types">
+
+						{% for category in categories %}
+							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+							<label for="{{ category.id_category }}"></label>
+							<p>{{ category.name }}</p>
+						{% endfor %}
+						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
+						<label for="">{{ category.name }}</label>
+					</div>
+
+					{# gps #}
+					<div class="latitude-longitude">
+						<label for="latitude">latitude</label>
+						<input type="text" id="latitude" name="latitude" readonly>
+						<label for="longitude">longitude</label>
+						<input type="text" id="longitude" name="longitude" readonly>
+					</div>
+
+
+					{# description #}
+					<label for="content">Description:</label>
+					<textarea id="description" name="content"></textarea>
+					<label for="image">photos du bien</label>
+					<input type="file" id="image" name="image" value="" class="file"></div>
+				<div class="add-edit-delete">
+					<input type="submit" value="Ajouter la location" id="save-changes-btn">
+					<button type id="delete-changes-btn">Fermer</button>
+				</div>
+			</form>
+			<div class="cart">
+				<div id="mapid"></div>
+			</div>
+		</div>
+		{# edit property #}
+		<div class="editproperty">
+
+			<form action="" class="profil-information">
+				<div class="name-lastname">
 					<div class="label-input">
 						<div class="name">
-							<label for="city">ville:</label>
-							<input type="text" id="city" name="city" value="">
+							<label for="title">Nom de la location:</label>
+							<input type="text" id="name" name="title" value="">
 						</div>
 						<div class="address">
-							<label for="country">pays:</label>
-							<input type="text" id="country" name="country" value="">
+							<label for="address">Adresse:</label>
+							<input type="text" class="address" name="address" value="">
+							<div class="autocomplete-items"></div>
+
 						</div>
 					</div>
-
+					<label for="capacity">Nombre de personne:</label>
+					<select name="capacity" id="capacity">
+						{% for num in 1..10 %}
+							<option value="{{ num }}">{{ num }}</option>
+						{% endfor %}
+					</select>
+					{# Surface_area #}
+					<label for="Surface_area">Surface:</label>
+					<input
+					type="text" id="Surface_area" name="Surface_area" value="" placeholder="Surface">
+					{# prince #}
 					<label for="price">Prix:</label>
-					<input type="text" id="price" name="price" value="">
-					<div class="latitude-logitude">
-						<label for="latitude"></label>
-						<input type="text" id="latitude" name="latitude" value="">
-						<label for="longitude"></label>
-						<input type="text" id="longitude" name="longitude" value="">
+					<input
+					type="text" id="price" name="price" value="">
+					{# Catégories de gîtes #}
+					<label>Catégories de gîtes:</label>
+					<div class="accommodation-types">
+
+						{% for category in categories %}
+							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
+							<label for="category-{{ category.id_category }}">{{ category.name }}</label>
+						{% endfor %}
+
 					</div>
 
+
+					{# gps #}
+					<div class="latitude-longitude">
+						<label for="latitude">latitude</label>
+						<input type="text" id="latitude" name="latitude" readonly>
+						<label for="longitude">longitude</label>
+						<input type="text" id="longitude" name="longitude" readonly>
+					</div>
+
+
+					{# description #}
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
 					<input type="file" id="image" name="image" value="" class="file">
 				</div>
-				<div class="add-edit-delete">
+				<div class="update-delete">
 					<input type="submit" value="Ajouter la location" id="save-changes-btn">
-
 				</form>
-				<form action="">
-					<input type="submit" value="update" id="save-changes-btn">
-				</form>
+				<div class="cart">
+					<div id="mapid"></div>
+				</div>
 				<form action="">
 					<input type="submit" value="delete" id="delete-changes-btn">
 				</form>
 			</div>
-			<div class="cart">
-				<div id="mapid"></div>
-			</div>
 		</div>
 
 	</section>
-
-
+	{% block javascripts %}
+		{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
+	{% endblock %}
 {% endblock %}

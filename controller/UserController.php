@@ -93,23 +93,21 @@ class UserController extends Controller
     {
         $userModel = new UserModel();
         $personnalData = $userModel->getUserById();
-        
+
         echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
     }
 
     public function editProfil()
     {
-        if (!$_POST) {
-            echo self::getRender('homepage.html.twig', []);
-        } else {
+        
             global $router;
             $model = new UserModel();
-            var_dump($_POST);
+            //var_dump($_POST);
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $firstname = $_POST['firstname-input'];
-                $lastname = $_POST['lastname-input'];
-                $mail = $_POST["mail-input"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
-                $phone = $_POST['phone-input'];
+                $firstname = $_POST['firstname'];
+                $lastname = $_POST['lastname'];
+                $mail = $_POST["mail"]; // revoir le contrôle du format pour voir si la string est formatée pour un mail
+                $phone = $_POST['phone'];
 
                 $user = new User([
                     'firstname' => $firstname,
@@ -119,11 +117,47 @@ class UserController extends Controller
                 ]);
 
                 $model->updateUser($user);
-                header('Location: ' . $router->generate('home'));
+                header('Location: ' . $router->generate('userProfil'));
             } else {
-                echo self::getRender('homepage.html.twig', []);
+                echo self::getRender('profil.html.twig', []);
             }
+    }
+
+    public function editAvatar()
+    {
+        //var_dump($_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+                global $router;
+                $model = new UserModel();
+                $avatar = $_FILES['avatar']['name'];
+    
+                $queryAvatar = $model->modelAvatar($_SESSION['id_user'], $avatar);
+    
+                if ($queryAvatar) {
+                    $uploadImg = 'asset/media/images/';
+                    $uploadFile = $uploadImg . $_FILES['avatar']['name'];
+                    $controleUpload = move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadFile);
+    
+                    if (!$controleUpload) {
+                        header('Location: ' . $router->generate('uploadError'));
+                        exit;
+                    }
+
+                    $_SESSION['avatar'] = $avatar;
+
+                    header('Location: ' . $router->generate('userProfil'));
+                   
+                    exit;
+                }
+                
+            }
+        } else {
+          
+            echo self::getRender('profil.html.twig', []);
         }
+
+
     }
 
     public function deleteProfil()
@@ -162,7 +196,7 @@ class UserController extends Controller
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
 
-        echo self::getRender('favoris.html.twig', [ 'wishlist' => $wishlist, 'rentals' => $rentals]);
+        echo self::getRender('favoris.html.twig', ['wishlist' => $wishlist, 'rentals' => $rentals]);
     }
 
     public function addToWishlist(){}
@@ -194,44 +228,45 @@ class UserController extends Controller
     public function addProperty()
     {
         if (!$_POST) {
-            echo self::getRender('addproperty.html.twig', []);
+            $message = "Veillez remplir tout les champs";
+                echo self::getRender('addproperty.html.twig', ['message' => $message]);
         } else {
 
             global $router;
             $model = new RentalModel();
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $id_user = $_SESSION['id_user'];
+           
                 $title = $_POST['title'];
+                $content= $_POST['content'];
+                $cover = $_POST['cover'];
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
-                $city = $_POST['city'];
                 $address = $_POST['address'];
-                $content = $_POST['content'];
-                $cover = $_POST['cover'];
-                $country = $_POST['country'];
                 $price = $_POST['price'];
-                // add latitude & longitude later
+                $latitude = $_POST['latitude'];
+                $longitude = $_POST['longitude'];
+               
 
                 $rental = new Rental([
-                    'id_user' => $id_user,
                     'title' => $title,
-                    'capacity' => $capacity,
-                    'surface_area' => $surface_area,
-                    'city' => $city,
-                    'address' => $address,
                     'content' => $content,
                     'cover' => $cover,
-                    'country' => $country,
-                    'price' => $price
-                ]);
+                    'capacity' => $capacity,
+                    'surface_area' => $surface_area,
+                    'address' => $address,
+                    'price' => $price,
+                    'latitude' => $latitude,
+                    'longitude' => $longitude
+                    
 
+                ]);
                 $model->addRental($rental);
                 header('Location: ' . $router->generate('home'));
-            } else {
-                $message = "Veillez remplir tout les champs";
-                echo self::getRender('addproperty.html.twig', ['message' => $message]);
-            }
+           
+               
+                // echo self::getRender('addproperty.html.twig', []);
+            
         }
     }
-}
+    }
+
