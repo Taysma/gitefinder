@@ -66,7 +66,7 @@
 		{# formulaire ajout #}
 		<div class="form-cart">
 
-			<form action="" method="post" class="profil-information">
+			<form action="" method="POST" class="profil-information">
 				<h2>Formulaire d'ajout de location</h2>
 				<div class="name-lastname">
 					<div class="label-input">
@@ -78,8 +78,10 @@
 							<label for="address">Adresse:</label>
 							<input type="text" class="address" name="address" value="">
 							<div class="autocomplete-items"></div>
-
 						</div>
+					</div>
+					<div class="cart">
+						<div id="mapid"></div>
 					</div>
 					<label for="capacity">Nombre de personne:</label>
 					<select name="capacity" id="capacity">
@@ -127,14 +129,12 @@
 					<button type id="delete-changes-btn">Fermer</button>
 				</div>
 			</form>
-			<div class="cart">
-				<div id="mapid"></div>
-			</div>
+
 		</div>
 		{# edit property #}
 		<div class="editproperty">
 
-			<form action="" class="profil-information">
+			<form action="" method="POST" class="profil-information">
 				<div class="name-lastname">
 					<div class="label-input">
 						<div class="name">
@@ -147,6 +147,9 @@
 							<div class="autocomplete-items"></div>
 
 						</div>
+					</div>
+					<div class="cart">
+						<div id="mapid"></div>
 					</div>
 					<label for="capacity">Nombre de personne:</label>
 					<select name="capacity" id="capacity">
@@ -187,34 +190,46 @@
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
-					<input
-					type="file" id="image" name="image" value="" class="file">
+
 					{# objectif faire comme pour le profil #}
-					<div class="img-profil">
-						<form action="{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data">
-							<input type="file" name='avatar' id="profile-upload" accept="image/*" style="display: none;">
-							<label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/images/' ~ session.avatar) }}')"></label>
-							<input class="btn-edit" type="submit" value="Envoyer">
-						</form>
+					<div class="add-img">
+						<div class="img-profil-rental">
+							<form action="" method="POST" enctype="multipart/form-data">
+								<div class="container-picture">
+									<div class="picture-rental">
+										<input type="file" name='avatar' id="profile-upload-rental1" class="profile-upload-rental" accept="image/*" multiple style="display: none;">
+										<label for="profile-upload-rental1" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+										<div class="profile-pictures-container"></div>
+										<input class="btn-edit" type="submit" value="Envoyer">
+									</div>
+									<div class="picture-rental">
+										<input type="file" name='avatar' id="profile-upload-rental2" class="profile-upload-rental" accept="image/*" multiple style="display: none;">
+										<label for="profile-upload-rental2" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+										<div class="profile-pictures-container"></div>
+										<input class="btn-edit" type="submit" value="Envoyer">
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
+
+
+					<div class="update-delete">
+						<input type="submit" value="Ajouter la location" id="save-changes-btn">
+
+					</form>
+					<form action="">
+						<input type="submit" value="delete" id="delete-changes-btn">
+					</form>
+					<div role="button" class="button-83">Fermer</div>
 				</div>
-				<div class="update-delete">
-					<input type="submit" value="Ajouter la location" id="save-changes-btn">
-
-				</form>
-
-				<form action="">
-					<input type="submit" value="delete" id="delete-changes-btn">
-				</form>
-			</div>
-			<div class="cart">
-				<div id="mapid"></div>
 			</div>
 
 		</div>
-	</div>
 
-</section>
-{% block javascripts %}
-	{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
-{% endblock %}{% endblock %}
+
+	</section>
+	{% block javascripts %}
+		{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
+	{% endblock %}
+{% endblock %}

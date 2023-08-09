@@ -1,7 +1,7 @@
+let hasClickedInputAddress = false;
 let addPropety = document.querySelector('.addproperty');
 let containerForm = document.getElementsByClassName('form-cart')[0];
 let iconHome = document.getElementsByClassName('iconhome')[0];
-let inputAddress = document.getElementById('address');
 let cartMaps = document.getElementsByClassName('cart')[0];
 let containerEdit = document.getElementsByClassName('editproperty')[0];
 let btnEdit = document.getElementsByClassName('edit-btn')[0];
@@ -17,12 +17,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 29,
 }).addTo(map);
 
-var addressInputs = document.querySelectorAll('.address');
+let addressInputs = document.querySelectorAll('.address');
 
 addressInputs.forEach((addressInput, index) => {
     let timeout = null;
-    let suggestionBox = addressInput.nextElementSibling; // Supposons que la boîte de suggestion soit juste après l'input
-
+    let suggestionBox = addressInput.nextElementSibling;
     function hideSuggestionBox() {
         suggestionBox.style.display = 'none';
     }
@@ -94,22 +93,20 @@ addressInputs.forEach((addressInput, index) => {
         }
     });
     addressInput.addEventListener('click', function () {
-        cartMaps.style.visibility = "visible"; // Affiche la carte
+        cartMaps.style.visibility = "visible";
+        hasClickedInputAddress = true;
+
+        adjustHeight();
     });
 });
 
 iconHome.addEventListener('click', function () {
     containerForm.style.visibility = "visible";
+    addPropety.style.overflow = "initial";
     iconHome.style.display = "none";
     containerCard.style.display = "none";
-    addPropety.style.overflow = "initial";
 
 });
-
-
-
-
-
 
 btnEdit.addEventListener('click', function () {
     containerEdit.style.visibility = "visible";
@@ -117,9 +114,71 @@ btnEdit.addEventListener('click', function () {
     iconHome.style.display = "none";
     addPropety.style.overflow = "inherit";
 });
+let cardMaps2 = document.getElementsByClassName('cart')[1];
+function adjustHeight() {
+    let labelInputAddress = document.querySelectorAll('.label-input');
+    labelInputAddress.forEach(function (label) {
+        cartMaps.style.position = "inherit";
+        cardMaps2.style.position = "inherit";
 
-inputAddress.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+            label.style.height = "100px";
+        } else {
+            label.style.height = "auto";
+        }
+    });
+}
 
-    cartMaps.style.visibility = "visible";
+window.addEventListener('resize', function () {
+    if (hasClickedInputAddress) {
+        adjustHeight();
+    }
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const pictureRentals = document.querySelectorAll('.picture-rental');
+
+    pictureRentals.forEach(function (pictureRental) {
+        const profilePicturesContainer = pictureRental.querySelector('.profile-pictures-container');
+        const profileUpload = pictureRental.querySelector('.profile-upload-rental');
+        const profilePicture = pictureRental.querySelector('.profile-picture');
+
+        // Fonction pour mettre à jour les images de profil
+        function updatePictures(event) {
+            const files = event.target.files;
+            profilePicturesContainer.innerHTML = ''; // Efface les anciennes prévisualisations
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = '100px'; // Vous pouvez définir la taille de la prévisualisation ici
+                    profilePicturesContainer.appendChild(img);
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+            // Si vous voulez également mettre à jour le label
+            if (files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePicture.style.backgroundImage = `url(${reader.result})`;
+                };
+                reader.readAsDataURL(files[0]);
+            }
+        }
+
+        profileUpload.addEventListener('change', updatePictures);
+
+        profilePicture.addEventListener('click', function () {
+            profileUpload.click();
+        });
+    });
+});
+
 

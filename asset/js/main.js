@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //menu burger
-let btnBurger = document.querySelector('.menu-burger-header .img-burger');
+let btnBurger = document.getElementsByClassName('menu-burger-header')[0];
 let menuModal = document.getElementById('burger-menu-modal');
 let menuOpen = false; // Booléen pour garder une trace de l'état du menu
 
@@ -145,6 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
         containerTitle.style = "margin:auto;";
     });
 });
+
 
 
 
