@@ -2127,14 +2127,18 @@ body {
         .icon-add {
             width: 100%;
             text-align: center;
+
+            .iconhome {
+                width: 64px;
+            }
         }
 
         // fichier propriete
         .container-card-property {
             width: 100%;
             max-width: 1200px;
-            margin: 50px auto;
             max-width: 1440px;
+            margin-top: 10px;
             display: grid;
             grid-template-columns: repeat(auto-fill, 350px);
             justify-content: center;
@@ -2164,7 +2168,7 @@ body {
 
                 .img-card {
                     width: 100%;
-                    height: 300px;
+                    height: 230px;
                     border-radius: 10px;
                     position: relative;
 
@@ -2180,7 +2184,7 @@ body {
                     padding: 10px;
                     border-bottom-left-radius: 13px;
                     border-bottom-right-radius: 13px;
-                    height: 200px;
+                    // height: 200px;
                     box-shadow: -1px 15px 30px -12px rgba(0, 0, 0, 0.266);
 
                     .title-prince {
@@ -2239,7 +2243,7 @@ body {
                     .divbtnedit {
                         width: 100%;
                         display: flex;
-                        justify-content: center;
+                        justify-content: space-around;
                         padding: 15px;
 
                         .edit-btn {
@@ -2291,9 +2295,10 @@ body {
             padding-bottom: 70px;
             margin: auto;
             visibility: hidden;
-            justify-content: space-around;
-            width: 100%;
-            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            max-width: 1400px;
             position: absolute;
 
             .close-img {
@@ -2410,7 +2415,7 @@ body {
                     }
 
                     textarea {
-                        width: 90%;
+                        width: 70%;
                         height: 200px;
                     }
 
@@ -2501,6 +2506,24 @@ body {
                 .leaflet-touch .leaflet-bar {
                     position: fixed;
                     z-index: 999;
+                }
+            }
+
+            .banner {
+                max-width: 600px;
+                display: flex;
+                height: fit-content;
+
+                @media screen and (max-width:768px) {
+                    display: none;
+                }
+
+
+                .img-banner {
+                    border-radius: 50px;
+                    width: 100%;
+                    padding: 10px;
+
                 }
             }
 

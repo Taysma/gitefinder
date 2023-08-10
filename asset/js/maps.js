@@ -138,47 +138,26 @@ window.addEventListener('resize', function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const pictureRentals = document.querySelectorAll('.picture-rental');
+    // Sélectionnez l'élément de la photo de profil et l'input de téléchargement de fichier
+    const profilePicture = document.getElementById('profile-picture-rental');
+    const profileUpload = document.getElementById('profile-upload-rental');
 
-    pictureRentals.forEach(function (pictureRental) {
-        const profilePicturesContainer = pictureRental.querySelector('.profile-pictures-container');
-        const profileUpload = pictureRental.querySelector('.profile-upload-rental');
-        const profilePicture = pictureRental.querySelector('.profile-picture');
+    // Fonction pour mettre à jour l'image de profil
+    function updatePicture(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
 
-        // Fonction pour mettre à jour les images de profil
-        function updatePictures(event) {
-            const files = event.target.files;
-            profilePicturesContainer.innerHTML = ''; // Efface les anciennes prévisualisations
+        reader.onload = function () {
+            profilePicture.style.backgroundImage = `url(${reader.result})`;
+        };
 
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.width = '100px'; // Vous pouvez définir la taille de la prévisualisation ici
-                    profilePicturesContainer.appendChild(img);
-                };
-
-                reader.readAsDataURL(file);
-            });
-
-            // Si vous voulez également mettre à jour le label
-            if (files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    profilePicture.style.backgroundImage = `url(${reader.result})`;
-                };
-                reader.readAsDataURL(files[0]);
-            }
+        if (file) {
+            reader.readAsDataURL(file);
         }
+    }
 
-        profileUpload.addEventListener('change', updatePictures);
-
-        profilePicture.addEventListener('click', function () {
-            profileUpload.click();
-        });
-    });
+    // Ajoutez un événement de changement de fichier à l'input de téléchargement
+    profileUpload.addEventListener('change', updatePicture);
 });
 
 

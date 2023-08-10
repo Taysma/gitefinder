@@ -58,6 +58,10 @@
 					</div>
 					<div class="divbtnedit">
 						<button class="edit-btn" type="button">edit</button>
+
+						<form action="">
+							<input type="submit" value="delete" id="delete-changes-btn">
+						</form>
 					</div>
 
 				</div>
@@ -129,12 +133,17 @@
 					<button type id="delete-changes-btn">Fermer</button>
 				</div>
 			</form>
-
+			{# mettre image du bien du proprieter #}
+			<div class="banner" class="image">
+				<img class="img-banner" src="{{asset('/media/images/banner-gitefinder.svg')}}" alt="">
+			</div>
 		</div>
 		{# edit property #}
 		<div class="editproperty">
 
+
 			<form action="" method="POST" class="profil-information">
+				<h2>Formulaire edit de location</h2>
 				<div class="name-lastname">
 					<div class="label-input">
 						<div class="name">
@@ -197,15 +206,8 @@
 							<form action="" method="POST" enctype="multipart/form-data">
 								<div class="container-picture">
 									<div class="picture-rental">
-										<input type="file" name='avatar' id="profile-upload-rental1" class="profile-upload-rental" accept="image/*" multiple style="display: none;">
-										<label for="profile-upload-rental1" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-										<div class="profile-pictures-container"></div>
-										<input class="btn-edit" type="submit" value="Envoyer">
-									</div>
-									<div class="picture-rental">
-										<input type="file" name='avatar' id="profile-upload-rental2" class="profile-upload-rental" accept="image/*" multiple style="display: none;">
-										<label for="profile-upload-rental2" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-										<div class="profile-pictures-container"></div>
+										<input type="file" name='avatar1' id="profile-upload-rental" class="profile-upload-rental" accept="image/*" style="display: none;">
+										<label for="profile-upload-rental" id="profile-picture-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
 										<input class="btn-edit" type="submit" value="Envoyer">
 									</div>
 								</div>
@@ -224,12 +226,15 @@
 					<div role="button" class="button-83">Fermer</div>
 				</div>
 			</div>
-
+			<div class="banner" class="image">
+				<img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt="">
+			</div>
 		</div>
 
+	</div>
 
-	</section>
-	{% block javascripts %}
-		{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
-	{% endblock %}
-{% endblock %}
+
+</section>
+{% block javascripts %}
+	{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
+{% endblock %}{% endblock %}

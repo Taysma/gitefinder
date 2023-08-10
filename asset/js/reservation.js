@@ -1,14 +1,13 @@
 function updateTotal() {
     var arrivee = new Date(document.querySelector('input[name="arrivee"]').value);
     var depart = new Date(document.querySelector('input[name="depart"]').value);
-    var personnes = document.getElementById('input-select').value;
 
     var oneDay = 24 * 60 * 60 * 1000;
     var numberOfNights = Math.round(Math.abs((depart - arrivee) / oneDay));
 
     var pricePerNight = parseFloat(document.getElementById('price-per-night').dataset.price); // récupérer le prix par nuit depuis l'élément HTML
 
-    var subTotal = numberOfNights * pricePerNight * personnes;
+    var subTotal = numberOfNights * pricePerNight;
     var taxe = subTotal * 0.05;
     var total = subTotal + taxe;
 
