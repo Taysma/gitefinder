@@ -116,7 +116,7 @@ class Rental
         $this->capacity = $capacity;
     }
 
-    public function setSurface_area(int $surface_area)
+    public function setSurface_area(String $surface_area)
     {
         $this->surface_area = $surface_area;
     }

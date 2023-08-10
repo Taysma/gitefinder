@@ -76,8 +76,7 @@ class UserModel extends Model
 
     public function modelAvatar($id_user, $avatar){
 
-        // $id_user = $_SESSION['id_user'];
-        // $avatar = $user->getAvatar();
+        
 
         $req = $this->getDb()->prepare("UPDATE `user` SET `avatar`=:avatar WHERE `id_user`=:id_user");
 
