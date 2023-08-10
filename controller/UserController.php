@@ -220,10 +220,12 @@ class UserController extends Controller
           $id_user = $_SESSION['id_user'];
 
           $model = new RentalModel();
+          $CategoryModel = new CategoryModel();
           $rentalsUser = $model->getUserRentals($id_user);
+          $categories = $CategoryModel->getAllCategory();
 
-          
-          echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser]);
+         
+          echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
          
 
        
@@ -232,11 +234,12 @@ class UserController extends Controller
     public function addProperty()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump($_FILES);
+            
             if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 0) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
+                
 
                 $title = $_POST['title'];
                 $content = $_POST['content'];
@@ -263,10 +266,13 @@ class UserController extends Controller
                     'longitude' => $longitude
                 ]);
 
+               
+                
+                
 
-                var_dump($rental);
+                
                 $queryNewRental = $model->addRental($id_user, $rental);
-                var_dump($queryNewRental);
+                
                 if ($queryNewRental) {
                     $uploadImg = 'asset/media/images/';
                     $uploadFile = $uploadImg . $_FILES['cover']['name'];
@@ -277,6 +283,8 @@ class UserController extends Controller
                         
                     }
 
+                    
+                    
                     $_SESSION['cover'] = $cover;
 
                      header('Location: ' . $router->generate('dashboard'));

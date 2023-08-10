@@ -81,7 +81,7 @@ class RentalModel extends Model
 
         while ($rentals = $req->fetch(PDO::FETCH_ASSOC)) {
             $rentalsUser[] = new Rental($rentals);
-            var_dump($rentalsUser);
+            
         }
         
         return $rentalsUser;
