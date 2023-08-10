@@ -12,13 +12,12 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="{{ path('dashboard') }}">Dashboard</a>
+					<a href="{{ path('dashboard') }}">
+						&#x3008; Dashboard</a>
 				</li>
-				<img src="{{ asset('/media/icon/fleche.svg') }}" alt="fleche">
-				<li class="breadcrumb-item active" aria-current="page">Propriete</li>
 			</ol>
 		</nav>
-		<div class="addproperty">
+		<div class="icon-add">
 			<img class="iconhome" src="{{asset('/media/icon/addproperty.png')}}" alt="">
 
 		</div>
@@ -43,20 +42,28 @@
 							</div>
 							<div class="prince">
 
-								<span>{{ rental.price }}</span>
-								<span>€</span>
-							</div>
+							<span>{{ rental.price }}</span>
+							<span>€</span>
 						</div>
-						
-						<div class="rating-card">
-							<span class="rating">4.8</span>
-							<span>
-								<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-							</span>
-						</div>
-						<div>
-							<button class="edit-btn" type="button">edit</button>
-						</div>
+					</div>
+					<div class="location-card">
+						<span class="city">{{ rental.city }}</span>
+						<span>,</span>
+						<span class="country">{{ rental.country }}</span>
+					</div>
+					<div class="rating-card">
+						<span class="rating">4.8</span>
+						<span>
+							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
+						</span>
+					</div>
+					<div class="divbtnedit">
+						<button class="edit-btn" type="button">edit</button>
+
+						<form action="">
+							<input type="submit" value="delete" id="delete-changes-btn">
+						</form>
+					</div>
 
 					</div>
 				{% endfor %}
@@ -65,7 +72,7 @@
 		{# formulaire ajout #}
 		<div class="form-cart">
 
-			<form action="{{ path('addProperty') }}" method="post" class="profil-information" enctype="multipart/form-data">
+			<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
 				<h2>Formulaire d'ajout de location</h2>
 				<div class="name-lastname">
 					<div class="label-input">
@@ -77,8 +84,10 @@
 							<label for="address">Adresse:</label>
 							<input type="text" class="address" name="address" value="">
 							<div class="autocomplete-items"></div>
-
 						</div>
+					</div>
+					<div class="cart">
+						<div id="mapid"></div>
 					</div>
 					<label for="capacity">Nombre de personne:</label>
 					<select name="capacity" id="capacity">
@@ -124,14 +133,17 @@
 					<button type id="delete-changes-btn">Fermer</button>
 				</div>
 			</form>
-			<div class="cart">
-				<div id="mapid"></div>
+			{# mettre image du bien du proprieter #}
+			<div class="banner" class="image">
+				<img class="img-banner" src="{{asset('/media/images/banner-gitefinder.svg')}}" alt="">
 			</div>
 		</div>
 		{# edit property #}
 		<div class="editproperty">
 
-			<form action="" class="profil-information">
+
+			<form action="" method="POST" class="profil-information">
+				<h2>Formulaire edit de location</h2>
 				<div class="name-lastname">
 					<div class="label-input">
 						<div class="name">
@@ -144,6 +156,9 @@
 							<div class="autocomplete-items"></div>
 
 						</div>
+					</div>
+					<div class="cart">
+						<div id="mapid"></div>
 					</div>
 					<label for="capacity">Nombre de personne:</label>
 					<select name="capacity" id="capacity">
@@ -184,22 +199,42 @@
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
-					<input type="file" id="image" name="image" value="" class="file">
+
+					{# objectif faire comme pour le profil #}
+					<div class="add-img">
+						<div class="img-profil-rental">
+							<form action="" method="POST" enctype="multipart/form-data">
+								<div class="container-picture">
+									<div class="picture-rental">
+										<input type="file" name='avatar1' id="profile-upload-rental" class="profile-upload-rental" accept="image/*" style="display: none;">
+										<label for="profile-upload-rental" id="profile-picture-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+										<input class="btn-edit" type="submit" value="Envoyer">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+
+					<div class="update-delete">
+						<input type="submit" value="Ajouter la location" id="save-changes-btn">
+
+					</form>
+					<form action="">
+						<input type="submit" value="delete" id="delete-changes-btn">
+					</form>
+					<div role="button" class="button-83">Fermer</div>
 				</div>
-				<div class="update-delete">
-					<input type="submit" value="Ajouter la location" id="save-changes-btn">
-				</form>
-				<div class="cart">
-					<div id="mapid"></div>
-				</div>
-				<form action="">
-					<input type="submit" value="delete" id="delete-changes-btn">
-				</form>
+			</div>
+			<div class="banner" class="image">
+				<img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt="">
 			</div>
 		</div>
 
-	</section>
-	{% block javascripts %}
-		{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
-	{% endblock %}
-{% endblock %}
+	</div>
+
+
+</section>
+{% block javascripts %}
+	{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>
+{% endblock %}{% endblock %}
