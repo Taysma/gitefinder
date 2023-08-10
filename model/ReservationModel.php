@@ -10,7 +10,7 @@ class ReservationModel extends Model
         $checkout_date = $reservation->getCheckout_date();
         $num_guest = $reservation->getNum_guest();
         $total_price = $reservation->getTotal_price();
-        
+
         $req = $this->getDb()->prepare("INSERT INTO `reservation` (`id_user`, `id_rental`, `checkin_date`, `checkout_date`, `num_guest`, `total_price`) 
         VALUES (:id_user, :id_rental, :checkin_date, :checkout_date, :num_guest, :total_price)");
 
@@ -25,19 +25,22 @@ class ReservationModel extends Model
     }
 
     //Read
-    public function readAllReservationUser(Reservation $reservation)
+    public function getAllUserReservation()
     {
-        $id_reservation = $_GET['id'];
+        $id_user = $_SESSION['id_user'];
+        $reservations = [];
 
-        $req = $this->getDb()->prepare("SELECT `id_reservation`, `id_user`, `id_rental`, `available`, `checkin_date`, `checkout_date`, `validation` FROM `reservation` WHERE `id_reservation` = :id_reservation");
 
-        $req->bindParam(":id_reservation", $id_reservation, PDO::PARAM_INT);
+        $req = $this->getDb()->prepare("SELECT `id_reservation`, `id_user`, `id_rental`, `checkin_date`, `checkout_date`, `num_guest`, `total_price` FROM `reservation` WHERE `id_user` = :id_user ORDER BY `id_reservation` DESC");
 
-        while($reservation = $req->fetch(PDO::FETCH_ASSOC)){
+        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+        $req->execute();
+
+        while ($reservation = $req->fetch(PDO::FETCH_ASSOC)) {
             $reservations[] = new Reservation($reservation);
         }
 
-        $req->execute();
+        return $reservations;
     }
 
     public function updateReservation(Reservation $reservation)
@@ -72,7 +75,6 @@ class ReservationModel extends Model
 
             // Commit the transaction if both operations succeeded
             $this->getDb()->commit();
-
         } catch (Exception $e) {
             // If any operation fails, an exception is thrown
             // Rollback the transaction

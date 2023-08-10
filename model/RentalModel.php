@@ -2,7 +2,7 @@
 class RentalModel extends Model
 {
 
-    public function addRental($id_user,Rental $rental)
+    public function addRental($id_user, Rental $rental)
     {
         $id_user = $_SESSION['id_user'];
         $title = $rental->getTitle();
@@ -75,19 +75,16 @@ class RentalModel extends Model
 
         $req = $this->getDb()->prepare('SELECT `id_rental`, `id_user`, `title`, `capacity`, `surface_area`, `content`, `cover`,   `address`,  `price`, `latitude`, `longitude` FROM rental WHERE `id_user` = :id_user ORDER BY id_rental DESC');
 
-        
+
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-    $req->execute();
+        $req->execute();
 
         while ($rentals = $req->fetch(PDO::FETCH_ASSOC)) {
             $rentalsUser[] = new Rental($rentals);
-            var_dump($rentalsUser);
         }
-        
+
         return $rentalsUser;
     }
-
-    
 
     public function updateRental(Rental $rental)
     {
@@ -112,7 +109,6 @@ class RentalModel extends Model
 
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);
-        ;
         $req->bindParam(':price', $price, PDO::PARAM_INT);
         $req->bindParam(':latitude', $latitude, PDO::PARAM_STR);
         $req->bindParam(':longitude', $longitude, PDO::PARAM_STR);

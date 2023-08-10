@@ -181,10 +181,13 @@ class UserController extends Controller
     //Dashboard - CRUD Reservation User
     public function getUserReservation()
     {
-        //$model = new ReservationModel();
-        //$rentals = $model->readAllReservationUser($reservation);
+        $model = new ReservationModel();
+        $reservations = $model->getAllUserReservation();
 
-        echo self::getRender('rental.html.twig', []);
+        $rentalModel = new RentalModel();
+        $rentals = $rentalModel->getAllRentals();
+
+        echo self::getRender('rental.html.twig', [ 'reservations' => $reservations, 'rentals' => $rentals]);
     }
 
     //Dashboard - CRUD Wishlist User
@@ -216,7 +219,6 @@ class UserController extends Controller
     //Dashboard - CRUD Propriétés User
     public function getUserProperty()
     {
-        
           $id_user = $_SESSION['id_user'];
 
           $model = new RentalModel();
@@ -224,9 +226,6 @@ class UserController extends Controller
 
           
           echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser]);
-         
-
-       
     }
 
     public function addProperty()

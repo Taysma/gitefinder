@@ -1,8 +1,6 @@
 <?php
 class RentalController extends Controller
 {
-
-
     public function getOne(int $id_rental)
     {
         global $router;
@@ -36,6 +34,7 @@ class RentalController extends Controller
     {
         global $router;
         $model = new ReservationModel();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_user = $_SESSION['id_user'];
             $id_rental = $_POST['id_post'];
@@ -54,7 +53,7 @@ class RentalController extends Controller
                 'id_rental' => $id_rental,
                 'checkin_date' => $checkin_date,
                 'checkout_date' => $checkout_date,
-                'numb_guest' => $numb_guest,
+                'num_guest' => $numb_guest,
                 'total_price' => $total_price,
             ]);
 
