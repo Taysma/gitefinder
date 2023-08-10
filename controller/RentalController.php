@@ -13,6 +13,7 @@ class RentalController extends Controller
             'rental' => $rental,
             'oneRental' => $oneRental
         ]);
+        
     }
 
     public function getOneCategory($id_category)
