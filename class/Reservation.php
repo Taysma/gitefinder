@@ -4,10 +4,12 @@ class Reservation{
     private $id_reservation;
     private $id_user;
     private $id_rental;
-    private $available;
+    private $status;
     private $checkin_date;
     private $checkout_date;
-    private $validation;
+    private $num_guest;
+    private $total_price;
+    private $created_at;
 
 
     public function __construct(array $post){
@@ -38,8 +40,8 @@ class Reservation{
         return $this->id_rental;
     }
 
-    public function getAvailable(){
-        return $this->available;
+    public function getStatus(){
+        return $this->status;
     }
 
     public function getCheckin_date(){
@@ -50,8 +52,16 @@ class Reservation{
         return $this->checkout_date;
     }
 
-    public function getValidation(){
-        return $this->validation;
+    public function getNum_guest(){
+        return $this->num_guest;
+    }
+    
+    public function getTotal_price(){
+        return $this->total_price;
+    }
+
+    public function getCreated_at(){
+        return $this->created_at;
     }
 
 
@@ -68,8 +78,8 @@ class Reservation{
         $this->id_rental = $id_rental;
     }
 
-    public function setAvailable(bool $available){
-        $this->available = $available;
+    public function setStatus(bool $status){
+        $this->status = $status;
     }
 
     public function setCheckin_date(String $checkin_date){
@@ -80,7 +90,15 @@ class Reservation{
         $this->checkout_date = $checkout_date;
     }
 
-    public function setValidation(String $validation){
-        $this->validation = $validation;
+    public function setNum_guest(String $num_guest){
+        $this->num_guest = $num_guest;
+    }
+    
+    public function setTotal_price(int $total_price){
+        $this->total_price = $total_price;
+    }
+
+    public function setCreated_at(String $created_at){
+        $this->created_at = $created_at;
     }
 }

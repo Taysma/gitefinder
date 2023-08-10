@@ -13,7 +13,6 @@ class RentalController extends Controller
             'rental' => $rental,
             'oneRental' => $oneRental
         ]);
-        
     }
 
     public function getOneCategory($id_category)
@@ -42,12 +41,21 @@ class RentalController extends Controller
             $id_rental = $_POST['id_post'];
             $checkin_date = $_POST['arrivee'];
             $checkout_date = $_POST['depart'];
+            $numb_guest = $_POST['personnes'];
+
+            $checkin = new DateTime($checkin_date);
+            $checkout = new DateTime($checkout_date);
+            $interval = $checkin->diff($checkout);
+
+            $total_price = (($_POST['price'] * $interval->days) + (($_POST['price'] * $interval->days) * 0.05));
 
             $reservation = new Reservation([
                 'id_user' => $id_user,
                 'id_rental' => $id_rental,
                 'checkin_date' => $checkin_date,
                 'checkout_date' => $checkout_date,
+                'numb_guest' => $numb_guest,
+                'total_price' => $total_price,
             ]);
 
             $model->addReservation($reservation);

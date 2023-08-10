@@ -25,13 +25,10 @@
 
 			<div class="card-rental">
 
-
 				<i id="heart" class="heart fa-regular fa-heart"></i>
 
 				<div class="img-card-rental">
-
-					<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
-
+					<img src="{{ asset('/media/images/') }}{{ rental.cover }}" alt="{{ rental.title }}">
 					<span>{{ rental.content }}</span>
 					{#mettre un z-index dans l'inspecteur pour voir le texte #}
 
@@ -41,8 +38,6 @@
 						<div class="title">
 							<h1>{{ rental.title }}</h1>
 							<span>{{ rental.address }}</span>
-							
-
 						</div>
 						<div class="prince">
 							<span>{{ rental.price }}</span>
@@ -50,7 +45,7 @@
 						</div>
 					</div>
 					<div class="personne">
-						<span>capacitées:
+						<span>Capacitées:
 						</span>
 						<span>
 							{{ rental.capacity }}
