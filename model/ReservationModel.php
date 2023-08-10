@@ -4,19 +4,17 @@ class ReservationModel extends Model
     //Create
     public function addReservation(Reservation $reservation)
     {
-        $id_user = $reservation->getId_user();
+        $id_user = $_SESSION['id_user'];
         $id_rental = $reservation->getId_rental();
-        $available = $reservation->getAvailable();
         $checkin_date = $reservation->getCheckin_date();
         $checkout_date = $reservation->getCheckout_date();
         
 
-        $req = $this->getDb()->prepare("INSERT INTO `reservation` (`id_user`, `id_rental`, `available`, `checkin_date`, `checkout_date`, `validation`) 
-        VALUES (:id_user, :id_rental, 1, :checkin_date, :checkout_date, NULL)");
+        $req = $this->getDb()->prepare("INSERT INTO `reservation` (`id_user`, `id_rental`, `checkin_date`, `checkout_date`) 
+        VALUES (:id_user, :id_rental, :checkin_date, :checkout_date)");
 
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
         $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
-        $req->bindParam(":available", $available, PDO::PARAM_STR);
         $req->bindParam(":checkin_date", $checkin_date, PDO::PARAM_STR);
         $req->bindParam(":checkout_date", $checkout_date, PDO::PARAM_STR);
 

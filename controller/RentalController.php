@@ -35,9 +35,10 @@ class RentalController extends Controller
     public function newReservation()
     {
         global $router;
-        if (isset($_POST['submit'])) {
+        $model = new ReservationModel();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_user = $_SESSION['id_user'];
-            $id_rental = $_GET['id_rental'];;
+            $id_rental = $_POST['id_post'];
             $checkin_date = $_POST['arrivee'];
             $checkout_date = $_POST['depart'];
 
@@ -48,11 +49,8 @@ class RentalController extends Controller
                 'checkout_date' => $checkout_date,
             ]);
 
-            $model = new ReservationModel();
             $model->addReservation($reservation);
-
-
-            header('Location: ' . $router->generate('reserver'));
+            header('Location: ' . $router->generate('userReservations'));
         } else {
 
             $message = 'Veiller choisir une date de séjour.';
