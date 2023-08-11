@@ -4,7 +4,7 @@ let containerForm = document.getElementsByClassName('form-cart')[0];
 let iconHome = document.getElementsByClassName('iconhome')[0];
 let cartMaps = document.getElementsByClassName('cart')[0];
 let containerEdit = document.getElementsByClassName('editproperty')[0];
-let btnEdit = document.getElementsByClassName('edit-btn')[0];
+let btnEdit = document.querySelectorAll('.edit-btn');
 let containerCard = document.getElementsByClassName('container-card-property')[0];
 var myIcon = L.icon({
     iconUrl: "../asset/media/icon/home.svg",
@@ -108,12 +108,15 @@ iconHome.addEventListener('click', function () {
 
 });
 
-btnEdit.addEventListener('click', function () {
-    containerEdit.style.visibility = "visible";
-    containerCard.style.display = "none";
-    iconHome.style.display = "none";
-    addPropety.style.overflow = "inherit";
+btnEdit.forEach((button) => {
+    button.addEventListener('click', function () {
+        containerEdit.style.visibility = "visible";
+        containerCard.style.display = "none";
+        iconHome.style.display = "none";
+        addPropety.style.overflow = "inherit";
+    });
 });
+
 let cardMaps2 = document.getElementsByClassName('cart')[1];
 function adjustHeight() {
     let labelInputAddress = document.querySelectorAll('.label-input');
@@ -138,26 +141,132 @@ window.addEventListener('resize', function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Sélectionnez l'élément de la photo de profil et l'input de téléchargement de fichier
-    const profilePicture = document.getElementById('profile-picture-rental');
-    const profileUpload = document.getElementById('profile-upload-rental');
+    // Obtenez tous les éléments avec la classe "picture-rental"
+    const pictureRentals = document.querySelectorAll('.picture-rental');
 
-    // Fonction pour mettre à jour l'image de profil
-    function updatePicture(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+    // Parcourez chaque élément
+    pictureRentals.forEach(function (pictureRental) {
+        const profileUpload = pictureRental.querySelector('.profile-upload-rental');
+        const profilePicture = pictureRental.querySelector('.profile-picture');
 
-        reader.onload = function () {
-            profilePicture.style.backgroundImage = `url(${reader.result})`;
-        };
+        // Mettre à jour l'image de profil lors du changement de fichier
+        function updatePicture(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
 
-        if (file) {
-            reader.readAsDataURL(file);
+            reader.onload = function () {
+                profilePicture.style.backgroundImage = `url(${reader.result})`;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
         }
-    }
 
-    // Ajoutez un événement de changement de fichier à l'input de téléchargement
-    profileUpload.addEventListener('change', updatePicture);
+        // Attachez les écouteurs d'événements
+        profileUpload.addEventListener('change', updatePicture);
+        profilePicture.addEventListener('click', function () {
+            profileUpload.click();
+        });
+    });
 });
+
+
+let btnAddImage = document.querySelectorAll('.addmore-picture');
+let addImgContainers = document.querySelectorAll('.add-img');
+
+btnAddImage.forEach(element => {
+    let clickCount = 0; // Compteur de clics pour ce bouton
+    let onClick = function () {
+        if (clickCount >= 4) {
+            // Supprimer l'écouteur d'événement après 4 clics
+            element.removeEventListener('click', onClick);
+            return;
+        }
+
+        let htmlContent = '<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" name="title" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="profile-upload-rental"  class="profile-picture" style="background-image: url(\'{{ asset("/media/images/" ) }}\')"></label><input class="btn-edit" type="submit" value="Envoyer"></div></div></div>';
+
+        // Convertissez la chaîne en un élément DOM
+        let div = document.createElement('div');
+        div.innerHTML = htmlContent;
+        let content = div.firstChild;
+
+        // Ajoutez le contenu à chaque élément avec la classe '.add-img'
+        addImgContainers.forEach(container => {
+            container.append(content.cloneNode(true));
+        });
+
+        clickCount++;
+    };
+
+    element.addEventListener('click', onClick);
+});
+
+
+
+
+
+
+
+// Fonction pour attacher les écouteurs d'événements
+// function attachListeners(pictureRental) {
+//     const profileUpload = pictureRental.querySelector('.profile-upload-rental');
+//     const profilePicture = pictureRental.querySelector('.profile-picture');
+
+//     function updatePicture(event) {
+//         const file = event.target.files[0];
+//         const reader = new FileReader();
+
+//         reader.onload = function () {
+//             const imageUrl = reader.result; // Chemin de l'image téléchargée
+//             profilePicture.style.backgroundImage = `url(${imageUrl})`;
+//         };
+
+//         if (file) {
+//             reader.readAsDataURL(file);
+//         }
+//     }
+
+
+//     profileUpload.addEventListener('change', updatePicture);
+//     profilePicture.addEventListener('click', function () {
+//         profileUpload.click();
+//     });
+// }
+
+// let btnAddImage = document.querySelectorAll('.addmore-picture');
+// let addImgContainers = document.querySelectorAll('.add-img');
+
+// btnAddImage.forEach(element => {
+//     let clickCount = 0;
+//     let onClick = function () {
+//         if (clickCount >= 4) {
+//             element.removeEventListener('click', onClick);
+//             return;
+//         }
+
+//         // Utilisez le compteur de clics pour créer des identifiants uniques
+//         let uniqueID = `profile-upload-rental${clickCount}`;
+//         let htmlContent = `<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" id="${uniqueID}" name="title" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="${uniqueID}" class="profile-picture" style="background-image: url('{{ asset('/media/images/${uniqueID}' ) }}')></label>
+//         </label><input class="btn-edit" type="submit" value="Envoyer"></div></div></div>`;
+
+//         let div = document.createElement('div');
+//         div.innerHTML = htmlContent;
+//         let content = div.firstChild;
+
+//         addImgContainers.forEach(container => {
+//             container.appendChild(content.cloneNode(true));
+//         });
+
+//         // Attachez les écouteurs d'événements au nouvel élément
+//         attachListeners(content.querySelector('.picture-rental'));
+
+//         clickCount++;
+//     };
+
+//     element.addEventListener('click', onClick);
+// });
+
+
 
 

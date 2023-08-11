@@ -1670,6 +1670,7 @@ body .addproperty .container-card-property {
   justify-content: center;
   grid-gap: 55px;
   grid-auto-rows: auto;
+  padding-bottom: 68px;
 }
 @media screen and (max-width: 450px) {
   body .addproperty .container-card-property {
@@ -1685,7 +1686,7 @@ body .addproperty .container-card-property .btn-add .btn-add {
 body .addproperty .container-card-property .card {
   width: 100%;
   height: 100%;
-  height: auto;
+  max-height: 500px;
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
   position: relative;
@@ -1789,7 +1790,7 @@ body .addproperty .editproperty {
   margin: 20px;
   max-width: 1400px;
   position: absolute;
-  width: inherit;
+  width: 100%;
 }
 body .addproperty .form-cart .close-img,
 body .addproperty .editproperty .close-img {
@@ -1999,7 +2000,7 @@ body .addproperty .form-cart .cart .leaflet-touch .leaflet-control-layers,
 body .addproperty .form-cart .cart .leaflet-touch .leaflet-bar,
 body .addproperty .editproperty .cart .leaflet-touch .leaflet-control-layers,
 body .addproperty .editproperty .cart .leaflet-touch .leaflet-bar {
-  position: fixed;
+  margin: 49px;
   z-index: 999;
 }
 body .addproperty .form-cart .banner,
@@ -2022,7 +2023,11 @@ body .addproperty .editproperty .banner .img-banner {
   padding: 10px;
 }
 body .addproperty .add-img {
-  width: 100%;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: end;
 }
 body .addproperty .add-img .img-profil-rental {
   width: 200px;
@@ -2059,7 +2064,7 @@ body .addproperty .add-img .img-profil-rental .container-picture .picture-rental
   height: 200px;
   background-size: cover;
   background-position: center;
-  border-radius: 20%;
+  border-radius: 999px;
   cursor: pointer;
   border: 2px solid #ccc;
   background-color: #f9f9f9;
@@ -2083,6 +2088,7 @@ body .addproperty .add-img .img-profil-rental .container-picture .picture-rental
   width: 100%;
   height: 100%;
   border-radius: inherit;
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.7);
   /* Fond semi-transparent */
   color: #fff;
@@ -2134,12 +2140,15 @@ body .addproperty .button-83 {
        column-gap: 1rem;
   cursor: pointer;
   display: flex;
+  width: 170px;
+  height: -moz-fit-content;
+  height: fit-content;
   font-size: 100%;
   font-weight: 700;
   line-height: 24px;
   margin: 0;
   outline: 2px solid transparent;
-  padding: 1rem 1.5rem;
+  padding: 10px;
   text-align: center;
   align-items: center;
   text-transform: none;
@@ -2205,6 +2214,7 @@ body .rental .container-rental .card-rental {
   }
 }
 body .rental .container-rental .card-rental .img-card-rental {
+  width: 100%;
   image-rendering: pixelated;
   height: 100%;
 }
@@ -2212,6 +2222,10 @@ body .rental .container-rental .card-rental .img-card-rental {
   body .rental .container-rental .card-rental .img-card-rental {
     font-size: 1.2rem;
   }
+}
+body .rental .container-rental .card-rental .img-card-rental .img-rental {
+  width: 100%;
+  height: 100%;
 }
 body .rental .container-rental .card-rental .img-card-rental .size-img-rental-card {
   width: 350px;
@@ -2327,6 +2341,11 @@ body .rental .container-rental .card-rental .btn-rental-card {
   align-items: center;
   padding: 10px;
 }
+@media screen and (max-width: 768px) {
+  body .rental .container-rental .card-rental .btn-rental-card {
+    flex-direction: row;
+  }
+}
 body .rental .container-rental .card-rental .btn-rental-card form {
   margin: auto;
   width: 100%;
@@ -2340,12 +2359,15 @@ body .rental .container-rental .card-rental .btn-rental-card form #wait {
   max-width: 222px;
   font-size: 1.5rem;
   color: #f7f7f7;
+  cursor: pointer;
 }
 @media screen and (max-width: 1060px) {
   body .rental .container-rental .card-rental .btn-rental-card form #reserver,
   body .rental .container-rental .card-rental .btn-rental-card form #annuler,
   body .rental .container-rental .card-rental .btn-rental-card form #wait {
     width: auto;
+    font-size: 1rem;
+    white-space: nowrap;
   }
 }
 body .rental .container-rental .card-rental .btn-rental-card form #reserver {
@@ -2356,6 +2378,17 @@ body .rental .container-rental .card-rental .btn-rental-card form #annuler {
 }
 body .rental .container-rental .card-rental .btn-rental-card form #wait {
   background: #FAC800;
+}
+body .rental .container-rental .card-rental .heart-icon {
+  height: 100%;
+}
+body .rental .container-rental .card-rental .heart-icon .heart {
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  body .rental .container-rental .card-rental .heart-icon .heart {
+    position: absolute;
+  }
 }
 body .messenger {
   width: 100%;
