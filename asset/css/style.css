@@ -1714,14 +1714,14 @@ body .addproperty .container-card-property .card .content-card .title-prince {
   align-items: center;
   justify-content: space-between;
 }
-body .addproperty .container-card-property .card .content-card .title-prince .h1-title-card {
+body .addproperty .container-card-property .card .content-card .title-prince .h1-title-card h1 {
   font-size: 1.1rem;
 }
 body .addproperty .container-card-property .card .content-card .title-prince .prince {
   display: flex;
 }
 body .addproperty .container-card-property .card .content-card .title-prince .prince span {
-  font-size: xx-large;
+  font-size: 1.3rem;
   color: #F85E9F;
   text-align: center;
   font: xx-large;
@@ -1732,14 +1732,14 @@ body .addproperty .container-card-property .card .content-card .location-card {
   margin: 10px 0px;
 }
 body .addproperty .container-card-property .card .content-card .location-card span {
-  font-size: x-large;
+  font-size: 0.97rem;
 }
 body .addproperty .container-card-property .card .content-card .rating-card {
   text-align: center;
   margin-top: 10px;
 }
 body .addproperty .container-card-property .card .content-card .rating-card .rating {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bolder;
   color: #FF5722;
 }
@@ -1817,43 +1817,49 @@ body .addproperty .editproperty .profil-information {
   width: 100%;
   padding: 10px;
 }
-body .addproperty .form-cart .profil-information .name-lastname,
-body .addproperty .editproperty .profil-information .name-lastname {
+body .addproperty .form-cart .profil-information .container-form,
+body .addproperty .editproperty .profil-information .container-form {
   width: 100%;
+  display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
+  align-items: center;
+  justify-content: space-between;
 }
-body .addproperty .form-cart .profil-information .name-lastname .accommodation-types,
-body .addproperty .editproperty .profil-information .name-lastname .accommodation-types {
+body .addproperty .form-cart .profil-information .container-form .accommodation-types,
+body .addproperty .editproperty .profil-information .container-form .accommodation-types {
   /* 2 colonnes de largeur égale */
   gap: 10px;
 }
-body .addproperty .form-cart .profil-information .name-lastname label,
-body .addproperty .editproperty .profil-information .name-lastname label {
+body .addproperty .form-cart .profil-information .container-form label,
+body .addproperty .editproperty .profil-information .container-form label {
   font-size: 1.1rem;
 }
-body .addproperty .form-cart .profil-information .name-lastname .label-input,
-body .addproperty .editproperty .profil-information .name-lastname .label-input {
+body .addproperty .form-cart .profil-information .container-form .name-address,
+body .addproperty .editproperty .profil-information .container-form .name-address {
   display: flex;
+  width: 100%;
   margin: 10px auto;
   gap: 10px;
+  justify-content: space-evenly;
 }
 @media screen and (max-width: 768px) {
-  body .addproperty .form-cart .profil-information .name-lastname .label-input,
-  body .addproperty .editproperty .profil-information .name-lastname .label-input {
+  body .addproperty .form-cart .profil-information .container-form .name-address,
+  body .addproperty .editproperty .profil-information .container-form .name-address {
     flex-direction: column;
+    align-items: center;
   }
 }
-body .addproperty .form-cart .profil-information .name-lastname input,
-body .addproperty .form-cart .profil-information .name-lastname textarea,
-body .addproperty .form-cart .profil-information .name-lastname select,
-body .addproperty .editproperty .profil-information .name-lastname input,
-body .addproperty .editproperty .profil-information .name-lastname textarea,
-body .addproperty .editproperty .profil-information .name-lastname select {
+body .addproperty .form-cart .profil-information .container-form input,
+body .addproperty .form-cart .profil-information .container-form textarea,
+body .addproperty .form-cart .profil-information .container-form select,
+body .addproperty .editproperty .profil-information .container-form input,
+body .addproperty .editproperty .profil-information .container-form textarea,
+body .addproperty .editproperty .profil-information .container-form select {
   display: flex;
-  justify-content: center;
-  margin: 10px 20px;
+  justify-content: start;
+  margin: 10px auto;
   width: auto;
   height: 40px;
   border: 1px solid #191825;
@@ -1862,39 +1868,74 @@ body .addproperty .editproperty .profil-information .name-lastname select {
   text-align: center;
   font-size: 1rem;
   font: 800;
+  width: inherit;
   position: relative;
 }
-body .addproperty .form-cart .profil-information .name-lastname input:focus,
-body .addproperty .form-cart .profil-information .name-lastname textarea:focus,
-body .addproperty .form-cart .profil-information .name-lastname select:focus,
-body .addproperty .editproperty .profil-information .name-lastname input:focus,
-body .addproperty .editproperty .profil-information .name-lastname textarea:focus,
-body .addproperty .editproperty .profil-information .name-lastname select:focus {
+body .addproperty .form-cart .profil-information .container-form input:focus,
+body .addproperty .form-cart .profil-information .container-form textarea:focus,
+body .addproperty .form-cart .profil-information .container-form select:focus,
+body .addproperty .editproperty .profil-information .container-form input:focus,
+body .addproperty .editproperty .profil-information .container-form textarea:focus,
+body .addproperty .editproperty .profil-information .container-form select:focus {
   border: 5px solid #007bff;
 }
 @media screen and (max-width: 750px) {
-  body .addproperty .form-cart .profil-information .name-lastname input,
-  body .addproperty .form-cart .profil-information .name-lastname textarea,
-  body .addproperty .form-cart .profil-information .name-lastname select,
-  body .addproperty .editproperty .profil-information .name-lastname input,
-  body .addproperty .editproperty .profil-information .name-lastname textarea,
-  body .addproperty .editproperty .profil-information .name-lastname select {
+  body .addproperty .form-cart .profil-information .container-form input,
+  body .addproperty .form-cart .profil-information .container-form textarea,
+  body .addproperty .form-cart .profil-information .container-form select,
+  body .addproperty .editproperty .profil-information .container-form input,
+  body .addproperty .editproperty .profil-information .container-form textarea,
+  body .addproperty .editproperty .profil-information .container-form select {
     margin: auto;
     width: auto;
   }
 }
-body .addproperty .form-cart .profil-information .name-lastname #capacity,
-body .addproperty .editproperty .profil-information .name-lastname #capacity {
+body .addproperty .form-cart .profil-information .container-form .number-serface,
+body .addproperty .editproperty .profil-information .container-form .number-serface {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 768px) {
+  body .addproperty .form-cart .profil-information .container-form .number-serface,
+  body .addproperty .editproperty .profil-information .container-form .number-serface {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+body .addproperty .form-cart .profil-information .container-form .number-serface #capacity,
+body .addproperty .editproperty .profil-information .container-form .number-serface #capacity {
   width: 200px;
 }
 @media screen and (max-width) {
-  body .addproperty .form-cart .profil-information .name-lastname #capacity,
-  body .addproperty .editproperty .profil-information .name-lastname #capacity {
+  body .addproperty .form-cart .profil-information .container-form .number-serface #capacity,
+  body .addproperty .editproperty .profil-information .container-form .number-serface #capacity {
     width: 60%;
   }
 }
-body .addproperty .form-cart .profil-information .name-lastname .autocomplete-items,
-body .addproperty .editproperty .profil-information .name-lastname .autocomplete-items {
+body .addproperty .form-cart .profil-information .container-form .price,
+body .addproperty .editproperty .profil-information .container-form .price {
+  margin: auto;
+}
+body .addproperty .form-cart .profil-information .container-form .price .input-span,
+body .addproperty .editproperty .profil-information .container-form .price .input-span {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+body .addproperty .form-cart .profil-information .container-form .price .input-span #price,
+body .addproperty .editproperty .profil-information .container-form .price .input-span #price {
+  border: 1px solid rgba(0, 0, 0, 0.235);
+  padding: 1px;
+  width: 100px;
+}
+body .addproperty .form-cart .profil-information .container-form .price .input-span span,
+body .addproperty .editproperty .profil-information .container-form .price .input-span span {
+  padding: 4px;
+}
+body .addproperty .form-cart .profil-information .container-form .autocomplete-items,
+body .addproperty .editproperty .profil-information .container-form .autocomplete-items {
   display: none;
   position: absolute;
   margin: auto;
@@ -1908,23 +1949,31 @@ body .addproperty .editproperty .profil-information .name-lastname .autocomplete
   flex-direction: column;
   gap: 10px;
 }
-body .addproperty .form-cart .profil-information .name-lastname .autocomplete-items div,
-body .addproperty .editproperty .profil-information .name-lastname .autocomplete-items div {
+body .addproperty .form-cart .profil-information .container-form .autocomplete-items div,
+body .addproperty .editproperty .profil-information .container-form .autocomplete-items div {
   padding: 10px;
   font-size: 0.97rem;
 }
-body .addproperty .form-cart .profil-information .name-lastname textarea,
-body .addproperty .editproperty .profil-information .name-lastname textarea {
-  width: 70%;
+body .addproperty .form-cart .profil-information .container-form textarea,
+body .addproperty .editproperty .profil-information .container-form textarea {
+  text-align: inherit;
+  width: 600px;
   height: 200px;
 }
-body .addproperty .form-cart .profil-information .name-lastname .file,
-body .addproperty .editproperty .profil-information .name-lastname .file {
+@media screen and (max-width: 768px) {
+  body .addproperty .form-cart .profil-information .container-form textarea,
+  body .addproperty .editproperty .profil-information .container-form textarea {
+    max-width: 300px;
+    align-items: center;
+  }
+}
+body .addproperty .form-cart .profil-information .container-form .file,
+body .addproperty .editproperty .profil-information .container-form .file {
   border: none;
   padding: 10px;
 }
-body .addproperty .form-cart .profil-information .name-lastname .latitude-longitude,
-body .addproperty .editproperty .profil-information .name-lastname .latitude-longitude {
+body .addproperty .form-cart .profil-information .container-form .latitude-longitude,
+body .addproperty .editproperty .profil-information .container-form .latitude-longitude {
   visibility: hidden;
   position: absolute;
 }
@@ -1967,6 +2016,8 @@ body .addproperty .editproperty .cart {
   visibility: hidden;
   position: absolute;
   height: 400px;
+  display: flex;
+  justify-content: center;
 }
 @media screen and (max-width: 768px) {
   body .addproperty .form-cart .cart,
@@ -2002,6 +2053,19 @@ body .addproperty .editproperty .cart .leaflet-touch .leaflet-control-layers,
 body .addproperty .editproperty .cart .leaflet-touch .leaflet-bar {
   margin: 49px;
   z-index: 999;
+}
+body .addproperty .form-cart .cart #delete-changes-btn,
+body .addproperty .editproperty .cart #delete-changes-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #fc0707;
+  color: #F7F7F7;
+  height: auto;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
 }
 body .addproperty .form-cart .banner,
 body .addproperty .editproperty .banner {
@@ -2110,10 +2174,37 @@ body .addproperty .add-img .img-profil-rental .container-picture .picture-rental
 }
 body .addproperty .update-delete {
   display: flex;
-  width: 100%;
-  margin: auto;
-  gap: 10px;
+  margin: 10px auto;
+  gap: 40px;
   justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+body .addproperty .update-delete #delete-changes-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #fc0707;
+  color: #F7F7F7;
+  height: auto;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+body .addproperty .update-delete .close-changes-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgba(252, 7, 7, 0.4588235294);
+  color: #F7F7F7;
+  height: auto;
+  font-size: 1rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
 }
 body .addproperty #delete-changes-btn {
   width: -moz-fit-content;
@@ -2126,6 +2217,14 @@ body .addproperty #delete-changes-btn {
   border-radius: 5px;
   padding: 1rem 1.5rem;
   cursor: pointer;
+}
+@keyframes push {
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 body .addproperty .button-83 {
   -webkit-appearance: button;

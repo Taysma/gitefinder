@@ -119,16 +119,16 @@ btnEdit.forEach((button) => {
 
 let cardMaps2 = document.getElementsByClassName('cart')[1];
 function adjustHeight() {
-    let labelInputAddress = document.querySelectorAll('.label-input');
-    labelInputAddress.forEach(function (label) {
+
+    addressInputs.forEach(function (label) {
         cartMaps.style.position = "inherit";
         cardMaps2.style.position = "inherit";
 
-        if (window.innerWidth <= 768) {
-            label.style.height = "100px";
-        } else {
-            label.style.height = "auto";
-        }
+        // if (window.innerWidth <= 768) {
+        //     label.style.height = "100px";
+        // } else {
+        //     label.style.height = "fit-content";
+        // }
     });
 }
 
@@ -137,12 +137,26 @@ window.addEventListener('resize', function () {
         adjustHeight();
     }
 });
+let btnCloseForm = document.querySelectorAll('.close-changes-btn');
+
+btnCloseForm.forEach((button) => {
+    button.addEventListener('click', function () {
+        containerEdit.style.visibility = "hidden";
+        containerEdit.style.position = "absolute";
+        containerForm.style.visibility = "hidden";
+        containerForm.style.position = "absolute";
+        addPropety.style.overflow = "";
+        containerCard.style.display = 'grid';
+        iconHome.style.display = "initial";
+        console.log('coucouc');
+    })
+});
 
 
-
-document.addEventListener("DOMContentLoaded", function () {
+// ajout image 
+function image() {
     // Obtenez tous les éléments avec la classe "picture-rental"
-    const pictureRentals = document.querySelectorAll('.picture-rental');
+    let pictureRentals = document.querySelectorAll('.picture-rental:not(.initialized)');
 
     // Parcourez chaque élément
     pictureRentals.forEach(function (pictureRental) {
@@ -168,9 +182,12 @@ document.addEventListener("DOMContentLoaded", function () {
         profilePicture.addEventListener('click', function () {
             profileUpload.click();
         });
-    });
-});
 
+        // Marquez cet élément comme initialisé
+        pictureRental.classList.add('initialized');
+    });
+}
+image();
 
 let btnAddImage = document.querySelectorAll('.addmore-picture');
 let addImgContainers = document.querySelectorAll('.add-img');
@@ -197,76 +214,10 @@ btnAddImage.forEach(element => {
         });
 
         clickCount++;
+
+        // Appelez la fonction image() pour initialiser les nouveaux éléments
+        image();
     };
 
     element.addEventListener('click', onClick);
 });
-
-
-
-
-
-
-
-// Fonction pour attacher les écouteurs d'événements
-// function attachListeners(pictureRental) {
-//     const profileUpload = pictureRental.querySelector('.profile-upload-rental');
-//     const profilePicture = pictureRental.querySelector('.profile-picture');
-
-//     function updatePicture(event) {
-//         const file = event.target.files[0];
-//         const reader = new FileReader();
-
-//         reader.onload = function () {
-//             const imageUrl = reader.result; // Chemin de l'image téléchargée
-//             profilePicture.style.backgroundImage = `url(${imageUrl})`;
-//         };
-
-//         if (file) {
-//             reader.readAsDataURL(file);
-//         }
-//     }
-
-
-//     profileUpload.addEventListener('change', updatePicture);
-//     profilePicture.addEventListener('click', function () {
-//         profileUpload.click();
-//     });
-// }
-
-// let btnAddImage = document.querySelectorAll('.addmore-picture');
-// let addImgContainers = document.querySelectorAll('.add-img');
-
-// btnAddImage.forEach(element => {
-//     let clickCount = 0;
-//     let onClick = function () {
-//         if (clickCount >= 4) {
-//             element.removeEventListener('click', onClick);
-//             return;
-//         }
-
-//         // Utilisez le compteur de clics pour créer des identifiants uniques
-//         let uniqueID = `profile-upload-rental${clickCount}`;
-//         let htmlContent = `<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" id="${uniqueID}" name="title" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="${uniqueID}" class="profile-picture" style="background-image: url('{{ asset('/media/images/${uniqueID}' ) }}')></label>
-//         </label><input class="btn-edit" type="submit" value="Envoyer"></div></div></div>`;
-
-//         let div = document.createElement('div');
-//         div.innerHTML = htmlContent;
-//         let content = div.firstChild;
-
-//         addImgContainers.forEach(container => {
-//             container.appendChild(content.cloneNode(true));
-//         });
-
-//         // Attachez les écouteurs d'événements au nouvel élément
-//         attachListeners(content.querySelector('.picture-rental'));
-
-//         clickCount++;
-//     };
-
-//     element.addEventListener('click', onClick);
-// });
-
-
-
-
