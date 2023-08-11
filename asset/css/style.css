@@ -1829,6 +1829,10 @@ body .addproperty .editproperty .profil-information .container-form {
 }
 body .addproperty .form-cart .profil-information .container-form .accommodation-types,
 body .addproperty .editproperty .profil-information .container-form .accommodation-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   /* 2 colonnes de largeur égale */
   gap: 10px;
 }

@@ -2341,7 +2341,10 @@ body {
                     justify-content: space-between;
 
                     .accommodation-types {
-
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
                         /* 2 colonnes de largeur égale */
                         gap: 10px
                     }
