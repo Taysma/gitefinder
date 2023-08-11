@@ -28,7 +28,7 @@
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental }}">
 
-						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
+						<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="{{ rental.title }}">
 					</a>
 				</div>
 				<div class="content-card">
@@ -47,9 +47,7 @@
 						</div>
 					</div>
 					<div class="location-card">
-						<span class="city">{{ rental.city }}</span>
-						<span>,</span>
-						<span class="country">{{ rental.country }}</span>
+						<span class="city">{{ rental.address }}</span>
 					</div>
 					<div class="rating-card">
 						<span class="rating">4.8</span>
@@ -63,51 +61,6 @@
 						<form action="">
 							<input type="submit" value="delete" id="delete-changes-btn">
 						</form>
-					</div>
-
-				</div>
-			</div>
-			<div class="card">
-				<div class="img-card">
-					<a href="{{ path('baseRental') ~ rental.id_rental }}">
-
-						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
-					</a>
-				</div>
-				<div class="content-card">
-
-						<div class="title-prince">
-							<div class="h1-title-card">
-
-								<h1>
-									{{ rental.title }}
-								</h1>
-							</div>
-							<div class="prince">
-
-							<span>{{ rental.price }}</span>
-							<span>€</span>
-						</div>
-					</div>
-					<div class="location-card">
-						<span class="city">{{ rental.city }}</span>
-						<span>,</span>
-						<span class="country">{{ rental.country }}</span>
-					</div>
-					<div class="rating-card">
-						<span class="rating">4.8</span>
-						<span>
-							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-						</span>
-					</div>
-					<div class="divbtnedit">
-						<button class="edit-btn" type="button">edit</button>
-
-						<form action="">
-							<input type="submit" value="delete" id="delete-changes-btn">
-						</form>
-					</div>
-
 					</div>
 				{% endfor %}
 			</div>
