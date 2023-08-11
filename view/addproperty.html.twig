@@ -12,87 +12,35 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="{{ path('dashboard') }}">
-						&#x3008; Dashboard</a>
+					<a href="{{ path('dashboard') }}">&#x3008; Dashboard</a>
 				</li>
 			</ol>
 		</nav>
 		<div class="icon-add">
 			<img class="iconhome" src="{{asset('/media/icon/addproperty.png')}}" alt="">
-
 		</div>
+
 		{# card #}
 		<div class="container-card-property">
-			<div class="card">
-				{% for rental in rentals %}
-					<div class="img-card">
-						<a href="{{ path('baseRental') ~ rental.id_rental }}">
-
-							<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
-						</a>
-					</div>
-					<div class="content-card">
-
-						<div class="title-prince">
-							<div class="h1-title-card">
-
-								<h1>
-									{{ rental.title }}
-								</h1>
-							</div>
-							<div class="prince">
-
-								<span>{{ rental.price }}</span>
-								<span>€</span>
-							</div>
-						</div>
-						<div class="location-card">
-							<span class="city">{{ rental.city }}</span>
-							<span>,</span>
-							<span class="country">{{ rental.country }}</span>
-						</div>
-						<div class="rating-card">
-							<span class="rating">4.8</span>
-							<span>
-								<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-							</span>
-						</div>
-						<div class="divbtnedit">
-							<button class="edit-btn" type="button">edit</button>
-
-							<form action="">
-								<input type="submit" value="delete" id="delete-changes-btn">
-							</form>
-						</div>
-
-					</div>
-				</div>
+			{% for rental in rentals %}
 				<div class="card">
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental }}">
-
-							<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
+							<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="{{ rental.title }}">
 						</a>
 					</div>
 					<div class="content-card">
-
 						<div class="title-prince">
 							<div class="h1-title-card">
-
-								<h1>
-									{{ rental.title }}
-								</h1>
+								<h1>{{ rental.title }}</h1>
 							</div>
 							<div class="prince">
-
 								<span>{{ rental.price }}</span>
 								<span>€</span>
 							</div>
 						</div>
 						<div class="location-card">
-							<span class="city">{{ rental.city }}</span>
-							<span>,</span>
-							<span class="country">{{ rental.country }}</span>
+							<span class="city">{{ rental.address }}</span>
 						</div>
 						<div class="rating-card">
 							<span class="rating">4.8</span>
@@ -101,27 +49,25 @@
 							</span>
 						</div>
 						<div class="divbtnedit">
-							<button class="edit-btn" type="button">edit</button>
-
-							<form action="" method="GET">
-								<input type="submit" value="delete" id="delete-changes-btn">
+							<button class="edit-btn" type="button">Modifier</button>
+							<form action="">
+								<input type="submit" value="Supprimer" id="delete-changes-btn">
 							</form>
 						</div>
-
 					</div>
-				{% endfor %}
-			</div>
+				</div>
+			{% endfor %}
 		</div>
+
 		{# formulaire ajout #}
 		<div class="form-cart">
-
 			<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
 				<h2>Formulaire d'ajout de location</h2>
 				<div class="container-form">
 					<div class="name-address">
 						<div class="name">
 							<label for="name">Nom de la location:</label>
-							<input type="text" id="name" name="name" value="">
+							<input type="text" id="name" name="title" value="">
 						</div>
 						<div class="address">
 							<label for="address">Adresse:</label>
@@ -148,6 +94,7 @@
 							<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
 						</div>
 					</div>
+
 					{# prince #}
 					<div class="price">
 						<label for="price">Prix:</label>
@@ -156,10 +103,10 @@
 							<span>€</span>
 						</div>
 					</div>
+
 					{# Catégories de gîtes #}
 					<label>Catégories de gîtes:</label>
 					<div class="accommodation-types">
-
 						{% for category in categories %}
 							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
 							<label for="{{ category.id_category }}"></label>
@@ -177,7 +124,6 @@
 						<input type="text" id="longitude" name="longitude" readonly>
 					</div>
 
-
 					{# description #}
 					<div class="description-container">
 						<label for="content">Description:</label>
@@ -185,20 +131,16 @@
 					</div>
 
 					{# objectif faire comme pour le profil #}
-					<span>photos du bien</span>
+					<span>Gallerie image :</span>
 					<div class="add-img">
-
 						<div class="img-profil-rental">
 							<div class="container-picture">
 								<div class="picture-rental">
 									<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
 									<label for="profile-upload-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-									{# <input class="btn-edit" type="submit" value="Envoyer"> #}
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 					<div role="button" class="button-83 addmore-picture">ajouter une image</div>
 					<div class="update-delete">
@@ -206,20 +148,16 @@
 						<button type="button" class="close-changes-btn">Fermer</button>
 					</div>
 				</div>
-
-
 			</form>
-
 
 			{# mettre image du bien du proprieter #}
 			<div class="banner" class="image">
 				<img class="img-banner" src="{{asset('/media/images/banner-gitefinder.svg')}}" alt="">
 			</div>
 		</div>
+
 		{# edit property #}
 		<div class="editproperty">
-
-
 			<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
 				<h2>Formulaire modification de location</h2>
 				<div class="container-form">
@@ -253,6 +191,7 @@
 							<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
 						</div>
 					</div>
+
 					{# prince #}
 					<div class="price">
 						<label for="price">Prix:</label>
@@ -261,21 +200,33 @@
 							<span>€</span>
 						</div>
 					</div>
+
 					{# Catégories de gîtes #}
 					{# <label>Catégories de gîtes:</label>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							<div class="accommodation-types">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								{% for category in categories %}
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									<label for="{{ category.id_category }}"></label>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									<p>{{ category.name }}</p>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								{% endfor %}
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<label for="">{{ category.name }}</label>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							</div> #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												<div class="accommodation-types">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													{% for category in categories %}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<label for="{{ category.id_category }}"></label>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<p>{{ category.name }}</p>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													{% endfor %}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													<label for="">{{ category.name }}</label>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</div> #}
+					<label>Catégories de gîtes:</label>
+					<div class="accommodation-types">
+						{% for category in categories %}
+							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+							<label for="{{ category.id_category }}"></label>
+							<p>{{ category.name }}</p>
+						{% endfor %}
+						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
+						<label for="">{{ category.name }}</label>
+					</div>
 
 					{# gps #}
-						<div class="latitude-longitude"> <label for="latitude">latitude</label>
+					<div class="latitude-longitude">
+						<label for="latitude">latitude</label>
 						<input type="text" id="latitude" name="latitude" readonly>
 						<label for="longitude">longitude</label>
 						<input type="text" id="longitude" name="longitude" readonly>
@@ -288,26 +239,21 @@
 						<textarea id="description" name="content"></textarea>
 					</div>
 
-					<span>photos du bien</span>
+					<span>Gallerie image :</span>
 					<div class="add-img">
-
 						<div class="img-profil-rental">
 							<div class="container-picture">
 								<div class="picture-rental">
 									<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
 									<label for="profile-upload-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-									{# <input class="btn-edit" type="submit" value="Envoyer"> #}
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 					<div role="button" class="button-83 addmore-picture">ajouter une image</div>
 				</div>
+
 				{# objectif faire comme pour le profil #}
-
-
 				<div class="update-delete">
 					<input type="submit" value="Ajouter la location" id="save-changes-btn">
 					<input type="submit" value="delete" id="delete-changes-btn">
@@ -319,7 +265,6 @@
 				<img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt="">
 			</div>
 		</div>
-
 	</div>
 </section>
 {% block javascripts %}
