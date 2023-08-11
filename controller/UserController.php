@@ -279,14 +279,14 @@ class UserController extends Controller
                 $insertEtRecupId = $model->addRental($id_user, $rental);
                 
                 if ($insertEtRecupId) {
-                    // $uploadImg = 'asset/media/images/';
-                    // $uploadFile = $uploadImg . $_FILES['cover']['name'];
-                    // $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+                    $uploadImg = 'asset/media/images/';
+                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
+                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
 
-                    // if (!$controleUpload) {
-                    //     header('Location: ' . $router->generate('uploadError'));
+                    if (!$controleUpload) {
+                        header('Location: ' . $router->generate('uploadError'));
                         
-                    // }
+                    }
 
                     
                     
@@ -297,7 +297,7 @@ class UserController extends Controller
                     }
                     
 
-                     header('Location: ' . $router->generate('dashboard'));
+                     header('Location: ' . $router->generate('userProperty'));
 
                     
                 } 

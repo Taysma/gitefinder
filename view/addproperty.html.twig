@@ -22,10 +22,10 @@
 
 		</div>
 		{# card #}
-
 		<div class="container-card-property">
 			{% for rental in rentals %}
 				<div class="card">
+
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental }}">
 							<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="{{ rental.title }}">
@@ -41,9 +41,9 @@
 								<span>€</span>
 							</div>
 						</div>
-						{# <div class="location-card">
+						<div class="location-card">
 							<span class="city">{{ rental.address }}</span>
-						</div> #}
+						</div>
 						<div class="rating-card">
 							<span class="rating">4.8</span>
 							<span>
@@ -60,8 +60,6 @@
 				</div>
 			{% endfor %}
 		</div>
-
-
 		{# formulaire ajout #}
 		<div class="form-cart">
 
@@ -71,7 +69,7 @@
 					<div class="label-input">
 						<div class="name">
 							<label for="name">Nom de la location:</label>
-							<input type="text" id="name" name="name" value="">
+							<input type="text" id="name" name="title" value="">
 						</div>
 						<div class="address">
 							<label for="address">Adresse:</label>
@@ -120,11 +118,11 @@
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
-					<input type="file" id="image" name="image" value="" class="file">
+					<input type="file" id="image" name="cover" value="" class="file">
 				</div>
 				{# objectif faire comme pour le profil #}
 				<div class="add-img">
-					<div class="img-profil-rental">
+					{# <div class="img-profil-rental">
 						<div class="container-picture">
 							<div class="picture-rental">
 								<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
@@ -132,7 +130,7 @@
 								<input class="btn-edit" type="submit" value="Envoyer">
 							</div>
 						</div>
-					</div>
+					</div> #}
 
 
 				</div>
