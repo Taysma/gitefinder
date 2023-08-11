@@ -222,21 +222,27 @@ class UserController extends Controller
           $id_user = $_SESSION['id_user'];
 
           $model = new RentalModel();
+          $CategoryModel = new CategoryModel();
           $rentalsUser = $model->getUserRentals($id_user);
+          $categories = $CategoryModel->getAllCategory();
 
-          
-          echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser]);
+         
+          echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
+         
+
+       
     }
 
     public function addProperty()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump($_FILES);
+            
             if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 0) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
-
+                
+             
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 $cover = $_FILES['cover']['name'];
@@ -246,6 +252,7 @@ class UserController extends Controller
                 $price = intval($_POST['price']);
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
+                $selectedCategories = $_POST['categories']; 
 
 
 
@@ -262,21 +269,33 @@ class UserController extends Controller
                     'longitude' => $longitude
                 ]);
 
+                
 
-                var_dump($rental);
-                $queryNewRental = $model->addRental($id_user, $rental);
-                var_dump($queryNewRental);
-                if ($queryNewRental) {
-                    $uploadImg = 'asset/media/images/';
-                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
-                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+               
+                
+                
 
-                    if (!$controleUpload) {
-                        header('Location: ' . $router->generate('uploadError'));
+                
+                $insertEtRecupId = $model->addRental($id_user, $rental);
+                
+                if ($insertEtRecupId) {
+                    // $uploadImg = 'asset/media/images/';
+                    // $uploadFile = $uploadImg . $_FILES['cover']['name'];
+                    // $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+
+                    // if (!$controleUpload) {
+                    //     header('Location: ' . $router->generate('uploadError'));
                         
-                    }
+                    // }
 
-                    $_SESSION['cover'] = $cover;
+                    
+                    
+                    // $_SESSION['cover'] = $cover;
+
+                    foreach ($selectedCategories as $id_category) {
+                        $model->addRentalCategory($insertEtRecupId, $id_category);
+                    }
+                    
 
                      header('Location: ' . $router->generate('dashboard'));
 

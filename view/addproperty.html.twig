@@ -144,22 +144,22 @@
 					type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
 					{# prince #}
 					<label for="price">Prix:</label>
-					<input type="text" id="price" name="price" value="">
+					<input
+					type="text" id="price" name="price" value="">
 					{# Catégories de gîtes #}
-					{# <label>Catégories de gîtes:</label>
-																<div class="accommodation-types">
-											
-																	{% for category in categories %}
-																		<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
-																		<label for="{{ category.id_category }}"></label>
-																		<p>{{ category.name }}</p>
-																	{% endfor %}
-																	<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
-																	<label for="">{{ category.name }}</label>
-																</div> #}
+					<label>Catégories de gîtes:</label>
+					<div class="accommodation-types">
+						{% for category in categories %}
+							<div>
+								<input type="checkbox" name="categories[]" value="{{ category.id_category }}" id="{{ category.id_category }}">
+								<label for="{{ category.id_category }}">{{ category.name }}</label>
+							</div>
+						{% endfor %}
+					</div>
 
 					{# gps #}
-						<div class="ltitude-longitude"> <label for="latitude">latitude</label>
+					<div class="ltitude-longitude">
+						<label for="latitude">latitude</label>
 						<input type="text" id="latitude" name="latitude" readonly>
 						<label for="longitude">longitude</label>
 						<input type="text" id="longitude" name="longitude" readonly>

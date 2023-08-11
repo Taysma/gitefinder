@@ -1,7 +1,10 @@
 <?php
 class CategoryModel extends Model
 {
-    public function getAllCategory()
+
+
+   
+    public function getAllCategory() //partie category formulaire d'ajout
     {
         $categories = [];
 

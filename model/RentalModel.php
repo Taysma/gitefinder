@@ -29,7 +29,26 @@ class RentalModel extends Model
         $req->bindParam(':longitude', $longitude, PDO::PARAM_STR);
 
         $queryNewRental = $req->execute();
-        return $queryNewRental;
+
+        if ($queryNewRental) {
+            // Récupérer l'ID généré automatiquement
+            $insertEtRecupId = $this->getDb()->lastInsertId();
+            return $insertEtRecupId;
+        }
+       
+    }
+
+    public function addRentalCategory(int $insertEtRecupId, array $id_category) 
+    {
+        
+        $req = $this->getDb()->prepare(' INSERT INTO `rental_category`(`id_category`, `id_rental`) VALUES (:id_category, :id_rental)');
+        $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
+        $req->bindParam(':id_rental', $insertEtRecupId, PDO::PARAM_INT);
+
+        $req->execute();
+        
+        
+        
     }
 
     public function getLastTenPost()
