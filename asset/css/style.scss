@@ -2196,14 +2196,16 @@ body {
 
 
                         .h1-title-card {
-                            font-size: 1.1rem;
+                            h1 {
+                                font-size: 1.1rem;
+                            }
                         }
 
                         .prince {
                             display: flex;
 
                             span {
-                                font-size: xx-large;
+                                font-size: 1.3rem;
                                 color: #F85E9F;
                                 text-align: center;
                                 font: xx-large;
@@ -2221,7 +2223,7 @@ body {
 
                         span {
 
-                            font-size: x-large;
+                            font-size: 0.97rem;
                         }
                     }
 
@@ -2230,7 +2232,7 @@ body {
                         margin-top: 10px;
 
                         .rating {
-                            font-size: 1.5rem;
+                            font-size: 1.3rem;
                             font-weight: bolder;
                             color: #FF5722;
                         }
@@ -2329,11 +2331,14 @@ body {
                 padding: 10px;
 
 
-                .name-lastname {
+                .container-form {
                     width: 100%;
+                    display: flex;
                     flex-direction: column;
                     gap: 10px;
                     padding: 10px;
+                    align-items: center;
+                    justify-content: space-between;
 
                     .accommodation-types {
 
@@ -2346,13 +2351,16 @@ body {
                         // margin: 20px;
                     }
 
-                    .label-input {
+                    .name-address {
                         display: flex;
+                        width: 100%;
                         margin: 10px auto;
                         gap: 10px;
+                        justify-content: space-evenly;
 
                         @media screen and (max-width:768px) {
                             flex-direction: column;
+                            align-items: center;
                             // height: 380px;
 
                         }
@@ -2362,9 +2370,10 @@ body {
                     textarea,
                     select {
                         display: flex;
-                        justify-content: center;
-                        margin: 10px 20px;
+                        justify-content: start;
+                        margin: 10px auto;
                         width: auto;
+                        // max-width: 150px;
                         height: 40px;
                         border: 1px solid #191825;
                         border-radius: 7px;
@@ -2372,6 +2381,7 @@ body {
                         text-align: center;
                         font-size: 1rem;
                         font: 800;
+                        width: inherit;
                         position: relative;
 
                         &:focus {
@@ -2384,14 +2394,48 @@ body {
                         }
                     }
 
-                    #capacity {
-                        width: 200px;
+                    .number-serface {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-evenly;
 
-                        @media screen and (max-width) {
-                            width: 60%;
+                        @media screen and (max-width:768px) {
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 10px;
+
                         }
 
+                        #capacity {
+                            width: 200px;
 
+                            @media screen and (max-width) {
+                                width: 60%;
+                            }
+
+
+                        }
+                    }
+
+                    .price {
+                        margin: auto;
+
+
+                        .input-span {
+                            display: flex;
+                            align-items: center;
+                            font-size: 1rem;
+
+                            #price {
+                                border: 1px solid rgba(0, 0, 0, 0.235);
+                                padding: 1px;
+                                width: 100px;
+                            }
+
+                            span {
+                                padding: 4px;
+                            }
+                        }
                     }
 
                     .autocomplete-items {
@@ -2417,8 +2461,15 @@ body {
                     }
 
                     textarea {
-                        width: 70%;
+                        text-align: inherit;
+                        width: 600px;
                         height: 200px;
+
+                        @media screen and (max-width:768px) {
+                            max-width: 300px;
+                            align-items: center;
+
+                        }
                     }
 
                     .file {
@@ -2475,6 +2526,8 @@ body {
                 visibility: hidden;
                 position: absolute;
                 height: 400px;
+                display: flex;
+                justify-content: center;
 
                 @media screen and (max-width:768px) {
                     // width: 300px;
@@ -2509,6 +2562,18 @@ body {
                     margin: 49px;
                     z-index: 999;
                 }
+
+                #delete-changes-btn {
+                    width: fit-content;
+                    background-color: #fc0707;
+                    color: #F7F7F7;
+                    height: auto;
+                    font-size: 1rem;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 1rem 1.5rem;
+                    cursor: pointer;
+                }
             }
 
             .banner {
@@ -2532,6 +2597,7 @@ body {
 
         }
 
+        // image add
         .add-img {
             display: flex;
             padding: 10px;
@@ -2540,8 +2606,7 @@ body {
             align-items: end;
 
             .img-profil-rental {
-                width: 200px;
-                height: 200px;
+
                 border-radius: 999px;
                 overflow: hidden;
                 background-color: #a8b0b7a8;
@@ -2629,11 +2694,40 @@ body {
 
         .update-delete {
             display: flex;
-            width: 100%;
-            margin: auto;
-            gap: 10px;
+            margin: 10px auto;
+            gap: 40px;
             justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+            #delete-changes-btn {
+                width: fit-content;
+                background-color: #fc0707;
+                color: #F7F7F7;
+                height: auto;
+                font-size: 1rem;
+                border: none;
+                border-radius: 5px;
+                padding: 1rem 1.5rem;
+                cursor: pointer;
+            }
+
+            .close-changes-btn {
+                width: fit-content;
+                background-color: #fc070775;
+                color: #F7F7F7;
+                height: auto;
+                font-size: 1rem;
+                height: fit-content;
+                border: none;
+                border-radius: 5px;
+                padding: 1rem 1.5rem;
+                cursor: pointer;
+            }
+
+
         }
+
 
         #delete-changes-btn {
             width: fit-content;
@@ -2645,9 +2739,20 @@ body {
             border-radius: 5px;
             padding: 1rem 1.5rem;
             cursor: pointer;
+
+
+
         }
 
+        @keyframes push {
+            50% {
+                transform: scale(.8);
+            }
 
+            100% {
+                transform: scale(1);
+            }
+        }
 
         /* CSS */
         .button-83 {
