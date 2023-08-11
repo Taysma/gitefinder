@@ -240,7 +240,7 @@ class UserController extends Controller
                 global $router;
                 $model = new RentalModel();
                 
-
+             
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 $cover = $_FILES['cover']['name'];
@@ -250,6 +250,7 @@ class UserController extends Controller
                 $price = intval($_POST['price']);
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
+                $selectedCategories = $_POST['categories']; 
 
 
 
@@ -266,26 +267,33 @@ class UserController extends Controller
                     'longitude' => $longitude
                 ]);
 
+                
+
                
                 
                 
 
                 
-                $queryNewRental = $model->addRental($id_user, $rental);
+                $insertEtRecupId = $model->addRental($id_user, $rental);
                 
-                if ($queryNewRental) {
-                    $uploadImg = 'asset/media/images/';
-                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
-                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+                if ($insertEtRecupId) {
+                    // $uploadImg = 'asset/media/images/';
+                    // $uploadFile = $uploadImg . $_FILES['cover']['name'];
+                    // $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
 
-                    if (!$controleUpload) {
-                        header('Location: ' . $router->generate('uploadError'));
+                    // if (!$controleUpload) {
+                    //     header('Location: ' . $router->generate('uploadError'));
                         
-                    }
+                    // }
 
                     
                     
-                    $_SESSION['cover'] = $cover;
+                    // $_SESSION['cover'] = $cover;
+
+                    foreach ($selectedCategories as $id_category) {
+                        $model->addRentalCategory($insertEtRecupId, $id_category);
+                    }
+                    
 
                      header('Location: ' . $router->generate('dashboard'));
 

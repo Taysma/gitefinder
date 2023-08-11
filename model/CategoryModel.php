@@ -3,26 +3,7 @@ class CategoryModel extends Model
 {
 
 
-    public function addCategoryInAddProperty(int $id_category) 
-    {
-        $rentals = [];
-
-        $req = $this->getDb()->prepare('INSERT INTO `rental`.`id_rental`, `rental`.`id_user`, `rental`.`title`, `rental`.`capacity`, `rental`.`surface_area`, `rental`.`cover`,  `rental`.`address`, `rental`.`content`, `rental`.`price`, `rental`.`latitude`, `rental`.`longitude`, 
-        FROM `rental` 
-        INNER JOIN `rental_category` 
-        ON `rental_category`.`id_rental` = `rental`.`id_rental` 
-        INNER JOIN `category` 
-        ON `rental_category`.`id_category` = `category`.`id_category` 
-        WHERE `category`.`id_category` = :id_category');
-        $req->bindParam(':id_category', $id_category, PDO::PARAM_INT);
-        $req->execute();
-
-        while ($rental = $req->fetch(PDO::FETCH_ASSOC)) {
-            $rentals[] = new Rental($rental);
-        }
-
-        return $rentals;
-    }
+   
     public function getAllCategory() //partie category formulaire d'ajout
     {
         $categories = [];
