@@ -28,10 +28,53 @@
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental }}">
 
-							<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
-						</a>
+						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
+					</a>
+				</div>
+				<div class="content-card">
+
+					<div class="title-prince">
+						<div class="h1-title-card">
+
+							<h1>
+								{{ rental.title }}
+							</h1>
+						</div>
+						<div class="prince">
+
+							<span>{{ rental.price }}</span>
+							<span>€</span>
+						</div>
 					</div>
-					<div class="content-card">
+					<div class="location-card">
+						<span class="city">{{ rental.city }}</span>
+						<span>,</span>
+						<span class="country">{{ rental.country }}</span>
+					</div>
+					<div class="rating-card">
+						<span class="rating">4.8</span>
+						<span>
+							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
+						</span>
+					</div>
+					<div class="divbtnedit">
+						<button class="edit-btn" type="button">edit</button>
+
+						<form action="">
+							<input type="submit" value="delete" id="delete-changes-btn">
+						</form>
+					</div>
+
+				</div>
+			</div>
+			<div class="card">
+				<div class="img-card">
+					<a href="{{ path('baseRental') ~ rental.id_rental }}">
+
+						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
+					</a>
+				</div>
+				<div class="content-card">
 
 						<div class="title-prince">
 							<div class="h1-title-card">
@@ -77,8 +120,8 @@
 				<div class="name-lastname">
 					<div class="label-input">
 						<div class="name">
-							<label for="title">Nom de la location:</label>
-							<input type="text" id="name" name="title" value="">
+							<label for="name">Nom de la location:</label>
+							<input type="text" id="name" name="name" value="">
 						</div>
 						<div class="address">
 							<label for="address">Adresse:</label>
@@ -127,15 +170,35 @@
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
-					<input type="file" id="image" name="cover" value="" class="file"></div>
+					<input type="file" id="image" name="image" value="" class="file">
+				</div>
+				{# objectif faire comme pour le profil #}
+				<div class="add-img">
+					<div class="img-profil-rental">
+						<div class="container-picture">
+							<div class="picture-rental">
+								<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
+								<label for="profile-upload-rental1" id="profile-picture-rental1" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+								<input class="btn-edit" type="submit" value="Envoyer">
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<div role="button" class="button-83 addmore-picture">ajouter une image</div>
 				<div class="add-edit-delete">
 					<input type="submit" value="Ajouter la location" id="save-changes-btn">
 					<button type id="delete-changes-btn">Fermer</button>
 				</div>
 			</form>
+
+			{# objectif faire comme pour le profil #}
+
 			{# mettre image du bien du proprieter #}
-			<div class="banner" class="image">
-				<img class="img-banner" src="{{asset('/media/images/banner-gitefinder.svg')}}" alt="">
+
+			{# mettre image du bien du proprieter #}
+				<div class="banner" class="image"> <img class="img-banner" src="{{asset('/media/images/banner-gitefinder.svg')}}" alt="">
 			</div>
 		</div>
 		{# edit property #}
@@ -203,17 +266,18 @@
 					{# objectif faire comme pour le profil #}
 					<div class="add-img">
 						<div class="img-profil-rental">
-							<form action="" method="POST" enctype="multipart/form-data">
-								<div class="container-picture">
-									<div class="picture-rental">
-										<input type="file" name='avatar1' id="profile-upload-rental" class="profile-upload-rental" accept="image/*" style="display: none;">
-										<label for="profile-upload-rental" id="profile-picture-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-										<input class="btn-edit" type="submit" value="Envoyer">
-									</div>
+							<div class="container-picture">
+								<div class="picture-rental">
+									<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
+									<label for="profile-upload-rental1" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+									<input class="btn-edit" type="submit" value="Envoyer">
 								</div>
-							</form>
+							</div>
 						</div>
+
+
 					</div>
+					<div role="button" class="button-83 addmore-picture">ajouter une image</div>
 
 
 					<div class="update-delete">
@@ -223,8 +287,8 @@
 					<form action="">
 						<input type="submit" value="delete" id="delete-changes-btn">
 					</form>
-					<div role="button" class="button-83">Fermer</div>
 				</div>
+
 			</div>
 			<div class="banner" class="image">
 				<img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt="">
@@ -232,8 +296,6 @@
 		</div>
 
 	</div>
-
-
 </section>
 {% block javascripts %}
 	{{ parent() }}<script defer src="{{ asset('/js/maps.js') }}"></script>

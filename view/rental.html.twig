@@ -29,9 +29,8 @@
 					{% if rental.id_rental == reservation.id_rental %}
 						<div class="container-rental">
 							<div class="card-rental">
-								<i id="heart" class="heart fa-regular fa-heart"></i>
 								<div class="img-card-rental">
-									<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="{{ rental.title }}">
+									<img class="img-rental" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="{{ rental.title }}">
 								</div>
 								<div class="content-rental-card">
 									<div class="title-prince">
@@ -48,7 +47,7 @@
 										<span>Capacitées:
 										</span>
 										<span>
-											{{ rental.capacity }}
+											{{ reservation.num_guest }}
 										</span>
 										<span>personnes</span>
 									</div>
@@ -70,6 +69,9 @@
 									<form action="#">
 										<button id="annuler" type="submit">annuler</button>
 									</form>
+								</div>
+								<div class="heart-icon">
+									<i id="heart" class="heart fa-regular fa-heart"></i>
 								</div>
 							</div>
 						</div>
