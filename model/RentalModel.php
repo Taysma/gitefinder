@@ -38,7 +38,7 @@ class RentalModel extends Model
        
     }
 
-    public function addRentalCategory(int $insertEtRecupId, array $id_category) 
+    public function addRentalCategory(int $insertEtRecupId, $id_category) 
     {
         
         $req = $this->getDb()->prepare(' INSERT INTO `rental_category`(`id_category`, `id_rental`) VALUES (:id_category, :id_rental)');

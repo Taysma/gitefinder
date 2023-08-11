@@ -22,59 +22,18 @@
 
 		</div>
 		{# card #}
+
 		<div class="container-card-property">
-			<div class="card">
-				{% for rental in rentals %}
+			{% for rental in rentals %}
+				<div class="card">
+
 					<div class="img-card">
 						<a href="{{ path('baseRental') ~ rental.id_rental }}">
 
-						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
-					</a>
-				</div>
-				<div class="content-card">
-
-					<div class="title-prince">
-						<div class="h1-title-card">
-
-							<h1>
-								{{ rental.title }}
-							</h1>
-						</div>
-						<div class="prince">
-
-							<span>{{ rental.price }}</span>
-							<span>€</span>
-						</div>
+							<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="{{ rental.title }}">
+						</a>
 					</div>
-					<div class="location-card">
-						<span class="city">{{ rental.city }}</span>
-						<span>,</span>
-						<span class="country">{{ rental.country }}</span>
-					</div>
-					<div class="rating-card">
-						<span class="rating">4.8</span>
-						<span>
-							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-						</span>
-					</div>
-					<div class="divbtnedit">
-						<button class="edit-btn" type="button">edit</button>
-
-						<form action="">
-							<input type="submit" value="delete" id="delete-changes-btn">
-						</form>
-					</div>
-
-				</div>
-			</div>
-			<div class="card">
-				<div class="img-card">
-					<a href="{{ path('baseRental') ~ rental.id_rental }}">
-
-						<img class='size-img' src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="gite en Foret">
-					</a>
-				</div>
-				<div class="content-card">
+					<div class="content-card">
 
 						<div class="title-prince">
 							<div class="h1-title-card">
@@ -85,32 +44,29 @@
 							</div>
 							<div class="prince">
 
-							<span>{{ rental.price }}</span>
-							<span>€</span>
+								<span>{{ rental.price }}</span>
+								<span>€</span>
+							</div>
+						</div>
+						<div class="location-card">
+							<span class="city">{{ rental.address }}</span>
+						</div>
+						<div class="rating-card">
+							<span class="rating">4.8</span>
+							<span>
+								<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
+							</span>
+						</div>
+						<div class="divbtnedit">
+							<button class="edit-btn" type="button">edit</button>
+
+							<form action="">
+								<input type="submit" value="delete" id="delete-changes-btn">
+							</form>
 						</div>
 					</div>
-					<div class="location-card">
-						<span class="city">{{ rental.city }}</span>
-						<span>,</span>
-						<span class="country">{{ rental.country }}</span>
-					</div>
-					<div class="rating-card">
-						<span class="rating">4.8</span>
-						<span>
-							<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-						</span>
-					</div>
-					<div class="divbtnedit">
-						<button class="edit-btn" type="button">edit</button>
-
-						<form action="">
-							<input type="submit" value="delete" id="delete-changes-btn">
-						</form>
-					</div>
-
-					</div>
-				{% endfor %}
-			</div>
+				</div>
+			{% endfor %}
 		</div>
 		{# formulaire ajout #}
 		<div class="form-cart">
@@ -121,7 +77,7 @@
 					<div class="label-input">
 						<div class="name">
 							<label for="name">Nom de la location:</label>
-							<input type="text" id="name" name="name" value="">
+							<input type="text" id="name" name="title" value="">
 						</div>
 						<div class="address">
 							<label for="address">Adresse:</label>
@@ -170,11 +126,11 @@
 					<label for="content">Description:</label>
 					<textarea id="description" name="content"></textarea>
 					<label for="image">photos du bien</label>
-					<input type="file" id="image" name="image" value="" class="file">
+					<input type="file" id="image" name="cover" value="" class="file">
 				</div>
 				{# objectif faire comme pour le profil #}
 				<div class="add-img">
-					<div class="img-profil-rental">
+					{# <div class="img-profil-rental">
 						<div class="container-picture">
 							<div class="picture-rental">
 								<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
@@ -182,7 +138,7 @@
 								<input class="btn-edit" type="submit" value="Envoyer">
 							</div>
 						</div>
-					</div>
+					</div> #}
 
 
 				</div>
