@@ -12,17 +12,15 @@
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="{{ path('dashboard') }}">
-						&#x3008; Dashboard</a>
+					<a href="{{ path('dashboard') }}">&#x3008; Dashboard</a>
 				</li>
 			</ol>
 		</nav>
 		<div class="icon-add">
 			<img class="iconhome" src="{{asset('/media/icon/addproperty.png')}}" alt="">
-
 		</div>
-		{# card #}
 
+		{# card #}
 		<div class="container-card-property">
 			{% for rental in rentals %}
 				<div class="card">
@@ -41,9 +39,9 @@
 								<span>€</span>
 							</div>
 						</div>
-						{# <div class="location-card">
+						<div class="location-card">
 							<span class="city">{{ rental.address }}</span>
-						</div> #}
+						</div>
 						<div class="rating-card">
 							<span class="rating">4.8</span>
 							<span>
@@ -51,9 +49,9 @@
 							</span>
 						</div>
 						<div class="divbtnedit">
-							<button class="edit-btn" type="button">edit</button>
+							<button class="edit-btn" type="button">Modifier</button>
 							<form action="">
-								<input type="submit" value="delete" id="delete-changes-btn">
+								<input type="submit" value="Supprimer" id="delete-changes-btn">
 							</form>
 						</div>
 					</div>
@@ -61,14 +59,108 @@
 			{% endfor %}
 		</div>
 
-
 		{# formulaire ajout #}
 		<div class="form-cart">
-
 			<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
 				<h2>Formulaire d'ajout de location</h2>
-				<div class="name-lastname">
-					<div class="label-input">
+				<div class="container-form">
+					<div class="name-address">
+						<div class="name">
+							<label for="name">Nom de la location:</label>
+							<input type="text" id="name" name="title" value="">
+						</div>
+						<div class="address">
+							<label for="address">Adresse:</label>
+							<input type="text" class="address" name="address" value="">
+							<div class="autocomplete-items"></div>
+						</div>
+					</div>
+					<div class="cart">
+						<div id="mapid"></div>
+					</div>
+					<div class="number-serface">
+						<div class="capacity-container">
+							<label for="capacity">Nombre de personne:</label>
+							<select name="capacity" id="capacity">
+								{% for num in 1..1000 %}
+									<option value="{{ num }}">{{ num }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="number-container">
+							{# Surface_area #}
+							<label for="Surface_area">Surface:</label>
+							<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
+						</div>
+					</div>
+
+					{# prince #}
+					<div class="price">
+						<label for="price">Prix:</label>
+						<div class="input-span">
+							<input type="text" id="price" name="price" value="">
+							<span>€</span>
+						</div>
+					</div>
+
+					{# Catégories de gîtes #}
+					<label>Catégories de gîtes:</label>
+					<div class="accommodation-types">
+						{% for category in categories %}
+							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+							<label for="{{ category.id_category }}"></label>
+							<p>{{ category.name }}</p>
+						{% endfor %}
+						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
+						<label for="">{{ category.name }}</label>
+					</div>
+
+					{# gps #}
+					<div class="latitude-longitude">
+						<label for="latitude">latitude</label>
+						<input type="text" id="latitude" name="latitude" readonly>
+						<label for="longitude">longitude</label>
+						<input type="text" id="longitude" name="longitude" readonly>
+					</div>
+
+					{# description #}
+					<div class="description-container">
+						<label for="content">Description:</label>
+						<textarea id="description" name="content"></textarea>
+					</div>
+
+					{# objectif faire comme pour le profil #}
+					<span>Gallerie image :</span>
+					<div class="add-img">
+						<div class="img-profil-rental">
+							<div class="container-picture">
+								<div class="picture-rental">
+									<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
+									<label for="profile-upload-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="button" class="button-83 addmore-picture">ajouter une image</div>
+					<div class="update-delete">
+						<input type="submit" value="Ajouter la location" id="save-changes-btn">
+						<button type="button" class="close-changes-btn">Fermer</button>
+					</div>
+				</div>
+			</form>
+
+			{# mettre image du bien du proprieter #}
+			<div class="banner" class="image">
+				<img class="img-banner" src="{{asset('/media/images/banner-gitefinder.svg')}}" alt="">
+			</div>
+		</div>
+
+		{# edit property #}
+		<div class="editproperty">
+			<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
+				<h2>Formulaire modification de location</h2>
+				<div class="container-form">
+					<div class="name-address">
 						<div class="name">
 							<label for="name">Nom de la location:</label>
 							<input type="text" id="name" name="name" value="">
@@ -82,122 +174,42 @@
 					<div class="cart">
 						<div id="mapid"></div>
 					</div>
-					<label for="capacity">Nombre de personne:</label>
-					<select name="capacity" id="capacity">
-						{% for num in 1..1000 %}
-							<option value="{{ num }}">{{ num }}</option>
-						{% endfor %}
-					</select>
-					{# Surface_area #}
-					<label for="Surface_area">Surface:</label>
-					<input
-					type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
+					<div class="number-serface">
+						<div class="capacity-container">
+							<label for="capacity">Nombre de personne:</label>
+							<select name="capacity" id="capacity">
+								{% for num in 1..1000 %}
+									<option value="{{ num }}">{{ num }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="number-container">
+							{# Surface_area #}
+							<label for="Surface_area">Surface:</label>
+							<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
+						</div>
+					</div>
+
 					{# prince #}
-					<label for="price">Prix:</label>
-					<input
-					type="text" id="price" name="price" value="">
+					<div class="price">
+						<label for="price">Prix:</label>
+						<div class="input-span">
+							<input type="text" id="price" name="price" value="">
+							<span>€</span>
+						</div>
+					</div>
+
 					{# Catégories de gîtes #}
 					<label>Catégories de gîtes:</label>
 					<div class="accommodation-types">
 						{% for category in categories %}
-							<div>
-								<input type="checkbox" name="categories[]" value="{{ category.id_category }}" id="{{ category.id_category }}">
-								<label for="{{ category.id_category }}">{{ category.name }}</label>
-							</div>
+							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+							<label for="{{ category.id_category }}"></label>
+							<p>{{ category.name }}</p>
 						{% endfor %}
+						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
+						<label for="">{{ category.name }}</label>
 					</div>
-
-					{# gps #}
-					<div class="ltitude-longitude">
-						<label for="latitude">latitude</label>
-						<input type="text" id="latitude" name="latitude" readonly>
-						<label for="longitude">longitude</label>
-						<input type="text" id="longitude" name="longitude" readonly>
-					</div>
-
-
-					{# description #}
-					<label for="content">Description:</label>
-					<textarea id="description" name="content"></textarea>
-					<label for="image">photos du bien</label>
-					<input type="file" id="image" name="image" value="" class="file">
-				</div>
-				{# objectif faire comme pour le profil #}
-				<div class="add-img">
-					<div class="img-profil-rental">
-						<div class="container-picture">
-							<div class="picture-rental">
-								<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
-								<label for="profile-upload-rental1" id="profile-picture-rental1" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-								<input class="btn-edit" type="submit" value="Envoyer">
-							</div>
-						</div>
-					</div>
-
-
-				</div>
-				<div role="button" class="button-83 addmore-picture">ajouter une image</div>
-				<div class="add-edit-delete">
-					<input type="submit" value="Ajouter la location" id="save-changes-btn">
-					<button type id="delete-changes-btn">Fermer</button>
-				</div>
-			</form>
-
-			{# objectif faire comme pour le profil #}
-
-			{# mettre image du bien du proprieter #}
-
-			{# mettre image du bien du proprieter #}
-				<div class="banner" class="image"> <img class="img-banner" src="{{asset('/media/images/banner-gitefinder.svg')}}" alt="">
-			</div>
-		</div>
-		{# edit property #}
-		<div class="editproperty">
-
-
-			<form action="" method="POST" class="profil-information">
-				<h2>Formulaire edit de location</h2>
-				<div class="name-lastname">
-					<div class="label-input">
-						<div class="name">
-							<label for="title">Nom de la location:</label>
-							<input type="text" id="name" name="title" value="">
-						</div>
-						<div class="address">
-							<label for="address">Adresse:</label>
-							<input type="text" class="address" name="address" value="">
-							<div class="autocomplete-items"></div>
-
-						</div>
-					</div>
-					<div class="cart">
-						<div id="mapid"></div>
-					</div>
-					<label for="capacity">Nombre de personne:</label>
-					<select name="capacity" id="capacity">
-						{% for num in 1..10 %}
-							<option value="{{ num }}">{{ num }}</option>
-						{% endfor %}
-					</select>
-					{# Surface_area #}
-					<label for="Surface_area">Surface:</label>
-					<input
-					type="text" id="Surface_area" name="Surface_area" value="" placeholder="Surface">
-					{# prince #}
-					<label for="price">Prix:</label>
-					<input
-					type="text" id="price" name="price" value="">
-					{# Catégories de gîtes #}
-					<label>Catégories de gîtes:</label>
-					<div class="accommodation-types">
-
-						{% for category in categories %}
-							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
-							<label for="category-{{ category.id_category }}">{{ category.name }}</label>
-						{% endfor %}
-
-					</div>
-
 
 					{# gps #}
 					<div class="latitude-longitude">
@@ -209,42 +221,37 @@
 
 
 					{# description #}
-					<label for="content">Description:</label>
-					<textarea id="description" name="content"></textarea>
-					<label for="image">photos du bien</label>
+					<div class="description-container">
+						<label for="content">Description:</label>
+						<textarea id="description" name="content"></textarea>
+					</div>
 
-					{# objectif faire comme pour le profil #}
+					<span>Gallerie image :</span>
 					<div class="add-img">
 						<div class="img-profil-rental">
 							<div class="container-picture">
 								<div class="picture-rental">
 									<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
-									<label for="profile-upload-rental1" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-									<input class="btn-edit" type="submit" value="Envoyer">
+									<label for="profile-upload-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 					<div role="button" class="button-83 addmore-picture">ajouter une image</div>
-
-
-					<div class="update-delete">
-						<input type="submit" value="Ajouter la location" id="save-changes-btn">
-
-					</form>
-					<form action="">
-						<input type="submit" value="delete" id="delete-changes-btn">
-					</form>
 				</div>
+				
+				{# objectif faire comme pour le profil #}
+				<div class="update-delete">
+					<input type="submit" value="Ajouter la location" id="save-changes-btn">
+					<input type="submit" value="delete" id="delete-changes-btn">
+					<button type="button" class="close-changes-btn">Fermer</button>
+				</div>
+			</form>
 
-			</div>
 			<div class="banner" class="image">
 				<img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt="">
 			</div>
 		</div>
-
 	</div>
 </section>
 {% block javascripts %}
