@@ -111,7 +111,7 @@ class RentalModel extends Model
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
         $surface_area = $rental->getSurface_area();
-
+        $cover = $rental->getCover();
         $address = $rental->getAddress();
         $content = $rental->getContent();
 
@@ -119,13 +119,13 @@ class RentalModel extends Model
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
 
-        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area,  `address` = :address,`content` = :content,  `price` = :price WHERE `id_rental` = :id, `latitude` = :latitude, `longitude` = :longitude');
+        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area,  `cover` = :cover,`address` = :address,`content` = :content,  `price` = :price , `latitude` = :latitude, `longitude` = :longitudeWHERE `id_rental` = :id');
 
         $req->bindParam(':id', $id_rental, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
         $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
         $req->bindParam(':surface_area', $surface_area, PDO::PARAM_INT);
-
+        $req->bindParam(':cover', $cover, PDO::PARAM_STR);
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);
         $req->bindParam(':price', $price, PDO::PARAM_INT);

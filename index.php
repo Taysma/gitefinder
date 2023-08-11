@@ -38,7 +38,7 @@ $router->map('POST', '/dashboard/profil/delete', 'UserController#deleteProfil', 
 $router->map('GET', '/dashboard/propriete', 'UserController#getUserProperty', 'userProperty');
 $router->map('GET|POST', '/dashboard/nouveau', 'UserController#addProperty', 'addProperty');
 $router->map('GET|POST', '/dashboard/modifier', 'UserController#editProperty', 'editProperty');
-$router->map('GET|DELETE', '/dashboard/supprimer', 'UserController#deleteProperty', 'deleteProperty');
+$router->map('POST', '/dashboard/supprimer', 'UserController#deleteProperty', 'deleteProperty');
 // USER - FAVORIS
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserWishlist', 'userFavoris');
 // $router->map('GET', '/dashboard/favoris/modifier', 'UserController#addToWishlist', 'addFavoris');
