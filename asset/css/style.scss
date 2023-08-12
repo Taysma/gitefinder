@@ -2300,7 +2300,7 @@ body {
             visibility: hidden;
             display: flex;
             justify-content: space-between;
-            margin: 20px;
+            margin: 20px auto;
             max-width: 1400px;
             position: absolute;
             width: 100%;
@@ -2441,27 +2441,141 @@ body {
                         }
                     }
 
-                    .autocomplete-items {
-                        display: none;
-                        position: absolute;
+                    .checkbox-group {
+                        display: flex;
+                        justify-content: space-evenly;
                         margin: auto;
-                        max-width: 270px;
-                        background-color: #ffffff;
+                        flex-wrap: wrap;
+                        // background-color: #ffffff;
                         width: 100%;
                         z-index: 999;
-                        cursor: pointer;
                         padding: 10px;
                         border: 1px solid #0e0e0e29;
-                        flex-direction: column;
                         gap: 10px;
-                        // background: #e9e9e9;
+                        height: 450px;
+                        overflow-y: scroll;
+                        border-radius: 7px;
+
+                        &::-webkit-scrollbar {
+                            width: 0.5em;
+                        }
+
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
 
 
-                        div {
-                            padding: 10px;
-                            font-size: 0.97rem;
+                        .checkbox {
+                            flex: 1 1 calc(33.333% - 0.5rem);
+                            display: flex;
+                            justify-content: space-evenly;
+                            align-items: center;
+
+                            .checkbox-wrapper {
+                                display: flex;
+                                align-items: center;
+                                gap: 0.5rem;
+
+                                .checkbox-input {
+                                    clip: rect(0 0 0 0);
+                                    clip-path: inset(100%);
+                                    height: 1px;
+                                    overflow: hidden;
+                                    position: absolute;
+                                    white-space: nowrap;
+                                    width: 1px;
+
+                                    &:checked+.checkbox-tile {
+                                        border-color: #E74646;
+                                        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+                                        .checkbox-label {
+                                            color: #FF385C;
+                                        }
+
+                                        &::before {
+                                            opacity: 1;
+                                            background-image: url('../media/icon/confirmer.svg');
+                                            z-index: 99;
+                                            background-size: contain;
+                                        }
+
+                                        &::after {
+                                            opacity: 0;
+                                        }
+                                    }
+                                }
+
+                                .checkbox-label {
+                                    color: #707070;
+                                    transition: .375s ease;
+                                    text-align: center;
+                                }
+
+                                .checkbox-tile {
+                                    display: flex;
+                                    align-items: center;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    width: 142px;
+                                    height: 115px;
+                                    border-radius: 0.5rem;
+                                    border: 2px solid #b5bfd9;
+                                    background-color: #fff;
+                                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                                    transition: 0.15s ease;
+                                    cursor: pointer;
+                                    position: relative;
+
+                                    &::after {
+                                        content: "";
+                                        display: block;
+                                        width: 1.5rem;
+                                        height: 1.5rem;
+                                        border: 1px solid gray;
+                                        border-radius: 50%;
+                                        position: absolute;
+                                        top: 15%;
+                                        left: 13%;
+                                        transform: translate(-50%, -50%);
+                                        opacity: 0;
+                                        transition: opacity 0.2s ease;
+                                    }
+
+                                    &:hover::after {
+                                        opacity: 1;
+                                    }
+
+                                    &::before {
+                                        content: "";
+                                        display: block;
+                                        width: 24px;
+                                        height: 24px;
+                                        border-radius: 50%;
+                                        background-color: #2260ff;
+                                        background-repeat: no-repeat;
+                                        background-position: center;
+                                        position: absolute;
+                                        top: 15%;
+                                        left: 13%;
+                                        transform: translate(-50%, -50%);
+                                        opacity: 0;
+                                        transition: opacity 0.2s ease;
+                                    }
+                                }
+                            }
+
+                            .checkbox-icon {
+                                transition: .375s ease;
+                                width: 100%;
+                                max-width: 64px;
+
+                                img {
+                                    width: 100%;
+                                }
+                            }
                         }
                     }
+
 
                     textarea {
                         text-align: inherit;

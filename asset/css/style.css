@@ -1787,7 +1787,7 @@ body .addproperty .editproperty {
   visibility: hidden;
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin: 20px auto;
   max-width: 1400px;
   position: absolute;
   width: 100%;
@@ -1938,25 +1938,138 @@ body .addproperty .form-cart .profil-information .container-form .price .input-s
 body .addproperty .editproperty .profil-information .container-form .price .input-span span {
   padding: 4px;
 }
-body .addproperty .form-cart .profil-information .container-form .autocomplete-items,
-body .addproperty .editproperty .profil-information .container-form .autocomplete-items {
-  display: none;
-  position: absolute;
+body .addproperty .form-cart .profil-information .container-form .checkbox-group,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group {
+  display: flex;
+  justify-content: space-evenly;
   margin: auto;
-  max-width: 270px;
-  background-color: #ffffff;
+  flex-wrap: wrap;
   width: 100%;
   z-index: 999;
-  cursor: pointer;
   padding: 10px;
   border: 1px solid rgba(14, 14, 14, 0.1607843137);
-  flex-direction: column;
   gap: 10px;
+  height: 450px;
+  overflow-y: scroll;
+  border-radius: 7px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-body .addproperty .form-cart .profil-information .container-form .autocomplete-items div,
-body .addproperty .editproperty .profil-information .container-form .autocomplete-items div {
-  padding: 10px;
-  font-size: 0.97rem;
+body .addproperty .form-cart .profil-information .container-form .checkbox-group::-webkit-scrollbar,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group::-webkit-scrollbar {
+  width: 0.5em;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox {
+  flex: 1 1 calc(33.333% - 0.5rem);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input {
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile {
+  border-color: #E74646;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile .checkbox-label,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile .checkbox-label {
+  color: #FF385C;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile::before,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile::before {
+  opacity: 1;
+  background-image: url("../media/icon/confirmer.svg");
+  z-index: 99;
+  background-size: contain;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile::after,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-input:checked + .checkbox-tile::after {
+  opacity: 0;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-label,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-label {
+  color: #707070;
+  transition: 0.375s ease;
+  text-align: center;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 142px;
+  height: 115px;
+  border-radius: 0.5rem;
+  border: 2px solid #b5bfd9;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.15s ease;
+  cursor: pointer;
+  position: relative;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile::after,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile::after {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid gray;
+  border-radius: 50%;
+  position: absolute;
+  top: 15%;
+  left: 13%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile:hover::after,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile:hover::after {
+  opacity: 1;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile::before,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-wrapper .checkbox-tile::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #2260ff;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 15%;
+  left: 13%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-icon,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-icon {
+  transition: 0.375s ease;
+  width: 100%;
+  max-width: 64px;
+}
+body .addproperty .form-cart .profil-information .container-form .checkbox-group .checkbox .checkbox-icon img,
+body .addproperty .editproperty .profil-information .container-form .checkbox-group .checkbox .checkbox-icon img {
+  width: 100%;
 }
 body .addproperty .form-cart .profil-information .container-form textarea,
 body .addproperty .editproperty .profil-information .container-form textarea {
