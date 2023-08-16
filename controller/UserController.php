@@ -298,6 +298,27 @@ class UserController extends Controller
 
     public function addToWishlist()
     {
+        global $router;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_user = $_SESSION['id_user'];
+            $id_rental = $_POST['id_rental'];
+
+            // Créer une instance de votre modèle FavoriteModel
+            $favorite = new Wishlist([
+                'id_rental' => $id_rental,
+                'id_user' => $id_user,
+            ]);
+
+            $favoriteModel = new WishlistModel();
+            $favoriteModel->addWish($favorite);
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                // c'est une requête AJAX
+                echo json_encode(['success' => true]);
+                exit;
+            }
+        }
     }
 
     public function deleteFromWishlist()

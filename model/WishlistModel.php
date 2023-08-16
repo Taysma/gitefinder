@@ -17,14 +17,14 @@ class WishlistModel extends Model
         return $wishlists;
     }
 
-    public function addWish(Wishlist $userId, $giteId)
+    public function addWish(Wishlist $wish)
     {
-        $userId = $_POST['userId'];
-        $giteId = $_POST['giteId'];
+        $id_user = $wish->getId_user();
+        $id_rental = $wish->getId_rental();
 
-        $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_wishlist`, `id_user`, `id_rental`) VALUES (:id_wishlist, :id_user, :id_rental)");
-        $req->bindParam(":id_user", $userId, PDO::PARAM_INT);
-        $req->bindParam(":id_rental", $giteId, PDO::PARAM_INT);
+        $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_user`, `id_rental`) VALUES (:id_user, :id_rental)");
+        $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+        $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
 
         $req->execute();
     }
