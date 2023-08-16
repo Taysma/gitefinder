@@ -156,8 +156,8 @@
 
             <script>
                 // Variables globales pour le mois et l'année actuels
-                let currentMonth = 5; // 0 correspond à janvier, 1 à février, ..., 11 à décembre
-                let currentYear = 2023;
+                varcurrentMonth = 5; // 0 correspond à janvier, 1 à février, ..., 11 à décembre
+                varcurrentYear = 2023;
 
                 // Fonction pour afficher le calendrier
                 function showCalendar() {
@@ -172,7 +172,7 @@
                     const numDays = lastDay.getDate();
 
                     // Ajoute les cases pour les jours du mois
-                    for (let i = 1; i <= numDays; i++) {
+                    for (vari = 1; i <= numDays; i++) {
                         const dayCell = document.createElement('div');
                         dayCell.classList.add('day');
                         dayCell.textContent = i;

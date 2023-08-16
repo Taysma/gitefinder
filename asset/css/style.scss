@@ -183,6 +183,11 @@ body {
 
                 }
 
+                @media screen and (max-width:768px) {
+                    max-width: 100%;
+
+                }
+
 
                 .search-bar {
                     display: flex;
@@ -346,7 +351,7 @@ body {
 
                         @media screen and (max-width:1170px) {
                             // margin-top: 10px;
-                            max-width: 150px;
+                            max-width: 130px;
 
                         }
 
@@ -442,11 +447,13 @@ body {
                 align-items: center;
                 justify-content: flex-end;
                 margin: auto 10px;
+                gap: 10px;
 
-                @media screen and (max-width:980px) {
-                    justify-content: center;
+                // @media screen and (max-width:980px) {
+                //     justify-content: center;
 
-                }
+                // }
+
 
                 @media screen and (max-width:768px) {
                     justify-content: flex-end;
@@ -473,6 +480,11 @@ body {
                     box-shadow: $btn-shadow;
                     background-color: $btn-bg-color;
 
+                    @media screen and (max-width:1008px) {
+                        width: 40px;
+                        height: 40px;
+                    }
+
                     @media screen and (max-width:508px) {
                         width: 40px;
                         height: 40px;
@@ -483,10 +495,23 @@ body {
                         border-radius: 40px;
                         transition-duration: $transition-duration;
 
+                        @media screen and (max-width:930px) {
+                            width: 40px;
+                            $transition-duration: none;
+
+                        }
+
                         .sign {
                             width: 30%;
                             transition-duration: $transition-duration;
                             padding-left: 20px;
+
+                            @media screen and (max-width:1008px) {
+                                width: 35px;
+                                padding: 1px;
+                            }
+
+
                         }
 
                         .text {
@@ -494,6 +519,14 @@ body {
                             width: 70%;
                             transition-duration: $transition-duration;
                             padding-right: 10px;
+
+                            @media screen and (max-width:1008px) {
+                                font-size: 15px;
+                            }
+
+                            @media screen and (max-width:930px) {
+                                display: none;
+                            }
                         }
                     }
 
@@ -569,7 +602,7 @@ body {
                 animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-down both;
                 position: relative;
 
-                @media screen and (max-width:508px) {
+                @media screen and (max-width:800px) {
                     border: none
                 }
 
@@ -619,7 +652,7 @@ body {
                 align-items: center;
                 padding: 5px;
 
-                @media screen and (max-width:950px) {
+                @media screen and (max-width:1000px) {
                     display: none;
                 }
 
@@ -1053,15 +1086,141 @@ body {
             margin: auto;
 
             .title-article {
-
                 position: relative;
+                width: 90%;
+                margin: auto 20px;
+
 
                 .h1-title-article {
                     font-size: 1.8rem;
                     font-weight: 800;
                     color: #191825;
-                    font-variant-caps: petite-caps;
+                    font-variant-caps: all-petite-caps;
+
+
+                    @media screen and (max-width:950px) {
+                        font-size: 1.5rem;
+                    }
                 }
+
+
+
+            }
+
+            .rating-comment-location-share-like {
+                display: flex;
+                gap: 20px;
+                justify-content: right;
+                width: 100%;
+                padding: 10px;
+                align-items: center;
+
+                @media screen and (max-width:850px) {
+                    margin: 10px 0px;
+                    column-gap: 20px;
+
+                }
+
+                .rating,
+                .comment {
+                    white-space: nowrap;
+                    font: 500;
+                    font-size: 1.2rem;
+
+                    @media screen and (max-width:990px) {
+                        font-size: 1rem;
+                    }
+
+                    @media screen and (max-width:750px) {
+                        font-size: 0.80rem;
+                    }
+                }
+
+                .location {
+                    font-size: 1.4rem;
+
+                    @media screen and (max-width:990px) {
+
+                        font-size: 1rem;
+
+                    }
+
+                    @media screen and (max-width:750px) {
+
+                        font-size: 0.80rem;
+
+                    }
+                }
+
+
+                .share {
+                    text-align: center;
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    white-space: nowrap;
+
+                    .img-share {
+                        width: 24px;
+                        height: 20px;
+                    }
+
+                    .share-button {
+                        width: 70px;
+                        align-items: center;
+                        position: relative;
+                        display: flex;
+                        padding: 5px;
+                        font-size: 1rem;
+                        // background-color: #191825;
+                        color: #191825;
+                        border: none;
+                        background: none;
+
+
+
+                        .share-popup {
+                            // width: 300px;
+                            background-color: rgba(0, 0, 0, 0.848), 0 10px 10px rgba(0, 0, 0, 0.778);
+                            // border: 1px solid black;
+                            display: none;
+                            // margin: -100px 20px;
+                            translate: (-35px 55px);
+                            z-index: 9;
+                            position: absolute;
+                            // margin-top: 20px;
+                            padding: 5px;
+                            background-color: #ffffff77;
+                            box-shadow: 0px 0px 3px rgb(0, 0, 0);
+                            gap: 10px;
+                            border-radius: 15px;
+
+                            @media screen and (max-width:750px) {
+                                rotate: 90deg;
+                                top: 40%;
+                                left: 0%;
+                                position: fixed;
+                            }
+
+                            .icon-img {
+                                width: 44px;
+                                // background-color: #ccc;
+                                border-radius: 999px;
+                                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+                                border: none;
+                                cursor: pointer;
+
+                                @media screen and (max-width:750px) {
+                                    rotate: 270deg;
+
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
             }
 
             .container-img {
@@ -1159,110 +1318,7 @@ body {
 
 
 
-            .rating-comment-location-share-like {
-                display: flex;
-                gap: 20px;
-                justify-content: right;
-                width: 100%;
-                align-items: center;
 
-                @media screen and (max-width:850px) {
-                    margin: 10px 0px;
-                    column-gap: 20px;
-
-                }
-
-                .rating,
-                .comment {
-                    white-space: nowrap;
-                    font: 500;
-                    font-size: 1.4rem;
-
-                    @media screen and (max-width:750px) {
-
-                        font-size: 0.80rem;
-
-                    }
-                }
-
-                .location {
-                    font-size: 1.4rem;
-
-                    @media screen and (max-width:750px) {
-
-                        font-size: 0.80rem;
-
-                    }
-                }
-
-
-                .share {
-                    text-align: center;
-                    display: flex;
-                    cursor: pointer;
-                    align-items: center;
-                    white-space: nowrap;
-
-                    .img-share {
-                        width: 24px;
-                        height: 20px;
-                    }
-
-                    .share-button {
-                        width: 70px;
-                        align-items: center;
-                        position: relative;
-                        display: flex;
-                        padding: 5px;
-                        font-size: 1rem;
-                        // background-color: #191825;
-                        color: #191825;
-                        border: none;
-                        background: none;
-
-
-
-                        .share-popup {
-                            // width: 300px;
-                            background-color: rgba(0, 0, 0, 0.848), 0 10px 10px rgba(0, 0, 0, 0.778);
-                            // border: 1px solid black;
-                            display: none;
-                            // margin: -100px 20px;
-                            translate: (-35px 55px);
-                            z-index: 9;
-                            position: absolute;
-                            // margin-top: 20px;
-                            padding: 5px;
-                            background-color: #ffffff77;
-                            box-shadow: 0px 0px 3px rgb(0, 0, 0);
-                            gap: 10px;
-                            border-radius: 15px;
-
-                            @media screen and (max-width:750px) {
-                                rotate: 90deg;
-                                top: 40%;
-                                left: 0%;
-                                position: fixed;
-                            }
-
-                            .icon-img {
-                                width: 44px;
-                                // background-color: #ccc;
-                                border-radius: 999px;
-                                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-                                border: none;
-                                cursor: pointer;
-
-                                @media screen and (max-width:750px) {
-                                    rotate: 270deg;
-
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
         }
 
 
@@ -1291,13 +1347,18 @@ body {
 
 
                 .profil-article {
-                    // display: flex;
+                    display: flex;
                     align-items: center;
+                    flex-direction: column;
                     gap: 20px;
                     width: 100%;
                     max-width: 600px;
                     padding: 10px;
                     margin: auto;
+
+                    @media screen and (max-width:1090px) {
+                        width: 50%;
+                    }
 
                     .title-article {
                         display: flex;
@@ -1305,11 +1366,11 @@ body {
                         align-items: center;
 
                         @media screen and (max-width:1100px) {
-                            flex-direction: column;
+                            // flex-direction: column;
                             gap: 5px;
-                            text-align: center;
-                            justify-content: center;
-                            width: 200px;
+                            // text-align: center;
+                            // justify-content: center;
+                            // width: 200px;
                         }
 
                         .h1-title-article {
@@ -1374,14 +1435,15 @@ body {
 
                         .title-star-rating {
                             display: flex;
-                            position: relative;
-                            justify-content: space-evenly;
-                            padding: 20px;
+                            // position: relative;
+                            // justify-content: space-evenly;
+                            // padding: 20px;
                             gap: 10px;
                         }
 
                         .star-rating {
                             white-space: nowrap;
+                            display: none;
 
 
                         }
@@ -1403,7 +1465,7 @@ body {
 
                                 .condition {
                                     height: 70px;
-                                    margin: 20px 60px;
+                                    margin: 20px 12px;
                                     display: flex;
                                     align-items: center;
                                     gap: 10px;
@@ -1475,10 +1537,54 @@ body {
 
                 .scrool-container-card-maps {
                     width: fit-content;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
 
                     @media screen and (max-width:768px) {
                         margin: auto;
                     }
+
+                    .card-share {
+                        width: 290px;
+                        height: 64px;
+                        background: rgb(255, 255, 255);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 10px;
+                        border-radius: 20px;
+                        position: relative;
+                        border: 2px solid transparent;
+                        transition: all 0.5s ease-in-out;
+
+                        &:focus-within {
+                            background-color: rgba(17, 17, 17, 0.5);
+                            backdrop-filter: blur(10px);
+                            border: 2px solid rgb(27, 27, 27);
+                            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                        }
+
+                        button {
+                            font-size: 34px;
+                            background-color: transparent;
+                            width: 50px;
+                            padding: 7px;
+                            height: 50px;
+                            border-radius: 100%;
+                            transition: all 0.2s ease-in;
+                            border: 0;
+                            cursor: pointer;
+
+                            &:focus {
+                                background-color: rgb(255, 255, 255);
+                                margin-bottom: 50%;
+                            }
+                        }
+
+
+                    }
+
 
                     .card-map-article {
                         display: flex;
@@ -1802,18 +1908,19 @@ body {
 
         .comment-container {
             width: 100%;
-            margin: auto;
-            margin-bottom: 50px;
+            margin: 20px auto;
             height: auto;
-            padding: 50px;
             max-width: 1440px;
+            display: flex;
+            justify-content: start;
+
 
 
             .star-comment {
                 display: flex;
                 gap: 20px;
                 font-size: 1.5rem;
-                margin: 20px auto;
+                margin: 20px 10px;
             }
 
 
@@ -1825,6 +1932,7 @@ body {
             justify-content: space-around;
             flex-wrap: wrap;
             gap: 45px;
+            padding: 25px;
 
             .comment-img-p {
                 display: flex;
