@@ -211,6 +211,12 @@ body header .header-limit-size .search-bar-form .search-bar #location-input {
   border-top-left-radius: 14px;
   border-bottom-left-radius: 14px;
 }
+@media screen and (max-width: 1000px) {
+  body header .header-limit-size .search-bar-form .search-bar #location-input {
+    width: 110px;
+    color: #FF385C;
+  }
+}
 @media screen and (max-width: 900px) {
   body header .header-limit-size .search-bar-form .search-bar #location-input {
     width: 100px;
@@ -219,7 +225,7 @@ body header .header-limit-size .search-bar-form .search-bar #location-input {
 }
 @media screen and (max-width: 850px) {
   body header .header-limit-size .search-bar-form .search-bar #location-input {
-    width: 110px;
+    width: 100px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -276,7 +282,7 @@ body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
   border-top: 0.1em solid #FF385C;
   border-bottom: 0.1em solid #FF385C;
 }
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1170px) {
   body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
     max-width: 150px;
   }
@@ -500,7 +506,7 @@ body header .header-limit-size .img-username {
   align-items: center;
   padding: 5px;
 }
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 950px) {
   body header .header-limit-size .img-username {
     display: none;
   }
