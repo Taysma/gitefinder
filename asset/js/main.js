@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function copyToClipboard(text) {
-    var textarea = document.createElement("textarea");
+    lettextarea = document.createElement("textarea");
     textarea.textContent = text;
     textarea.style.position = "fixed";
     document.body.appendChild(textarea);

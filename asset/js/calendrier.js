@@ -265,11 +265,3 @@ document.addEventListener("DOMContentLoaded", function () {
 //         }
 //     }
 // });
-
-
-
-
-
-
-
-

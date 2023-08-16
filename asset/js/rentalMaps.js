@@ -18,6 +18,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
     L.marker([latitude, longitude], { icon: myIcon }).addTo(map);
 });
-
-
-

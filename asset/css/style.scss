@@ -1086,15 +1086,141 @@ body {
             margin: auto;
 
             .title-article {
-
                 position: relative;
+                width: 90%;
+                margin: auto 20px;
+
 
                 .h1-title-article {
                     font-size: 1.8rem;
                     font-weight: 800;
                     color: #191825;
-                    font-variant-caps: petite-caps;
+                    font-variant-caps: all-petite-caps;
+
+
+                    @media screen and (max-width:950px) {
+                        font-size: 1.5rem;
+                    }
                 }
+
+
+
+            }
+
+            .rating-comment-location-share-like {
+                display: flex;
+                gap: 20px;
+                justify-content: right;
+                width: 100%;
+                padding: 10px;
+                align-items: center;
+
+                @media screen and (max-width:850px) {
+                    margin: 10px 0px;
+                    column-gap: 20px;
+
+                }
+
+                .rating,
+                .comment {
+                    white-space: nowrap;
+                    font: 500;
+                    font-size: 1.2rem;
+
+                    @media screen and (max-width:990px) {
+                        font-size: 1rem;
+                    }
+
+                    @media screen and (max-width:750px) {
+                        font-size: 0.80rem;
+                    }
+                }
+
+                .location {
+                    font-size: 1.4rem;
+
+                    @media screen and (max-width:990px) {
+
+                        font-size: 1rem;
+
+                    }
+
+                    @media screen and (max-width:750px) {
+
+                        font-size: 0.80rem;
+
+                    }
+                }
+
+
+                .share {
+                    text-align: center;
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    white-space: nowrap;
+
+                    .img-share {
+                        width: 24px;
+                        height: 20px;
+                    }
+
+                    .share-button {
+                        width: 70px;
+                        align-items: center;
+                        position: relative;
+                        display: flex;
+                        padding: 5px;
+                        font-size: 1rem;
+                        // background-color: #191825;
+                        color: #191825;
+                        border: none;
+                        background: none;
+
+
+
+                        .share-popup {
+                            // width: 300px;
+                            background-color: rgba(0, 0, 0, 0.848), 0 10px 10px rgba(0, 0, 0, 0.778);
+                            // border: 1px solid black;
+                            display: none;
+                            // margin: -100px 20px;
+                            translate: (-35px 55px);
+                            z-index: 9;
+                            position: absolute;
+                            // margin-top: 20px;
+                            padding: 5px;
+                            background-color: #ffffff77;
+                            box-shadow: 0px 0px 3px rgb(0, 0, 0);
+                            gap: 10px;
+                            border-radius: 15px;
+
+                            @media screen and (max-width:750px) {
+                                rotate: 90deg;
+                                top: 40%;
+                                left: 0%;
+                                position: fixed;
+                            }
+
+                            .icon-img {
+                                width: 44px;
+                                // background-color: #ccc;
+                                border-radius: 999px;
+                                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+                                border: none;
+                                cursor: pointer;
+
+                                @media screen and (max-width:750px) {
+                                    rotate: 270deg;
+
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
             }
 
             .container-img {
@@ -1192,112 +1318,7 @@ body {
 
 
 
-            .rating-comment-location-share-like {
-                display: flex;
-                gap: 20px;
-                justify-content: right;
-                width: 100%;
-                align-items: center;
 
-                @media screen and (max-width:850px) {
-                    margin: 10px 0px;
-                    column-gap: 20px;
-
-                }
-
-                .rating,
-                .comment {
-                    white-space: nowrap;
-                    font: 500;
-                    font-size: 1.4rem;
-
-                    @media screen and (max-width:750px) {
-
-                        font-size: 0.80rem;
-
-                    }
-                }
-
-                .location {
-                    font-size: 1.4rem;
-
-                    @media screen and (max-width:750px) {
-
-                        font-size: 0.80rem;
-
-                    }
-                }
-
-
-                .share {
-                    text-align: center;
-                    display: flex;
-                    cursor: pointer;
-                    align-items: center;
-                    white-space: nowrap;
-
-                    .img-share {
-                        width: 24px;
-                        height: 20px;
-                    }
-
-                    .share-button {
-                        width: 70px;
-                        align-items: center;
-                        position: relative;
-                        display: flex;
-                        padding: 5px;
-                        font-size: 1rem;
-                        // background-color: #191825;
-                        color: #191825;
-                        border: none;
-                        background: none;
-
-
-
-                        .share-popup {
-                            // width: 300px;
-                            background-color: rgba(0, 0, 0, 0.848), 0 10px 10px rgba(0, 0, 0, 0.778);
-                            // border: 1px solid black;
-                            display: none;
-                            // margin: -100px 20px;
-                            translate: (-35px 55px);
-                            z-index: 9;
-                            position: absolute;
-                            // margin-top: 20px;
-                            padding: 5px;
-                            background-color: #ffffff77;
-                            box-shadow: 0px 0px 3px rgb(0, 0, 0);
-                            gap: 10px;
-                            border-radius: 15px;
-
-                            @media screen and (max-width:750px) {
-                                rotate: 90deg;
-                                top: 40%;
-                                left: 0%;
-                                position: fixed;
-                            }
-
-                            .icon-img {
-                                width: 44px;
-                                // background-color: #ccc;
-                                border-radius: 999px;
-                                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-                                border: none;
-                                cursor: pointer;
-
-                                @media screen and (max-width:750px) {
-                                    rotate: 270deg;
-
-                                }
-
-                            }
-                        }
-                    }
-                }
-
-
-            }
         }
 
 
@@ -1326,13 +1347,18 @@ body {
 
 
                 .profil-article {
-                    // display: flex;
+                    display: flex;
                     align-items: center;
+                    flex-direction: column;
                     gap: 20px;
                     width: 100%;
                     max-width: 600px;
                     padding: 10px;
                     margin: auto;
+
+                    @media screen and (max-width:1090px) {
+                        width: 50%;
+                    }
 
                     .title-article {
                         display: flex;
@@ -1340,11 +1366,11 @@ body {
                         align-items: center;
 
                         @media screen and (max-width:1100px) {
-                            flex-direction: column;
+                            // flex-direction: column;
                             gap: 5px;
-                            text-align: center;
-                            justify-content: center;
-                            width: 200px;
+                            // text-align: center;
+                            // justify-content: center;
+                            // width: 200px;
                         }
 
                         .h1-title-article {
@@ -1409,14 +1435,15 @@ body {
 
                         .title-star-rating {
                             display: flex;
-                            position: relative;
-                            justify-content: space-evenly;
-                            padding: 20px;
+                            // position: relative;
+                            // justify-content: space-evenly;
+                            // padding: 20px;
                             gap: 10px;
                         }
 
                         .star-rating {
                             white-space: nowrap;
+                            display: none;
 
 
                         }
@@ -1438,7 +1465,7 @@ body {
 
                                 .condition {
                                     height: 70px;
-                                    margin: 20px 60px;
+                                    margin: 20px 12px;
                                     display: flex;
                                     align-items: center;
                                     gap: 10px;
@@ -1881,18 +1908,19 @@ body {
 
         .comment-container {
             width: 100%;
-            margin: auto;
-            margin-bottom: 50px;
+            margin: 20px auto;
             height: auto;
-            padding: 50px;
             max-width: 1440px;
+            display: flex;
+            justify-content: start;
+
 
 
             .star-comment {
                 display: flex;
                 gap: 20px;
                 font-size: 1.5rem;
-                margin: 20px auto;
+                margin: 20px 10px;
             }
 
 
@@ -1904,6 +1932,7 @@ body {
             justify-content: space-around;
             flex-wrap: wrap;
             gap: 45px;
+            padding: 25px;
 
             .comment-img-p {
                 display: flex;

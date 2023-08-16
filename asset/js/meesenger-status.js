@@ -81,4 +81,3 @@ socket.on('userStatusUpdate', ({ userId, status }) => {
         document.querySelector('.status').classList.remove('online');
     }
 });
-

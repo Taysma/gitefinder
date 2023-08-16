@@ -52,7 +52,7 @@
 
                 <div class="card">
                     <div class="img-card">
-                        <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chalet en foret" class="size-img">
+                        <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chavaren foret" class="size-img">
 
                     </div>
                     <div class="content-card">
@@ -150,19 +150,19 @@
     <!-- <script src="../asset/js/maps.js"></script> -->
 
     <script>
-        var map = L.map('mapid').setView([51.505, -0.09], 13); // Position de départ
-        var marker;
+        letmap = L.map('mapid').setView([51.505, -0.09], 13); // Position de départ
+        letmarker;
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
         }).addTo(map);
 
-        var timeout = null;
+        lettimeout = null;
 
         // Écoute les événements 'input' sur le champ d'adresse
         $('#address').on('input', function () {
-            var address = $(this).val();
-            var suggestionBox = $('#autocomplete-items');
+            letaddress = $(this).val();
+            letsuggestionBox = $('#autocomplete-items');
 
             // Annule la précédente requête d'autocomplétion si elle n'est pas encore terminée
             clearTimeout(timeout);
@@ -185,7 +185,7 @@
                         })
                         .then(function (data) {
                             // Affiche les suggestions d'adresse
-                            var suggestions = data.map(function (item) {
+                            letsuggestions = data.map(function (item) {
                                 return {
                                     name: item.display_name,
                                     lat: item.lat,
@@ -196,8 +196,8 @@
                             suggestionBox.empty();  // Nettoie les anciennes suggestions
 
                             // Crée un élément pour chaque suggestion
-                            for (var i = 0; i < suggestions.length; i++) {
-                                var item = $('<div></div>').text(suggestions[i].name);
+                            for (leti = 0; i < suggestions.length; i++) {
+                                letitem = $('<div></div>').text(suggestions[i].name);
                                 item.click((function (i) {
                                     return function () {
                                         $('#address').val(suggestions[i].name);  // Met à jour le champ d'adresse
