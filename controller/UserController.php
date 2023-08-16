@@ -327,5 +327,61 @@ class UserController extends Controller
        
     }
 
+    public function editProperty()
+    {
+
+       
+        //var_dump($_POST);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            global $router;
+            $model = new RentalModel();
+
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $cover = $_FILES['cover']['name'];
+                $capacity = $_POST['capacity'];
+                $surface_area = $_POST['surface_area'];
+                $address = $_POST['address'];
+                $price = intval($_POST['price']);
+                $latitude = $_POST['latitude'];
+                $longitude = $_POST['longitude'];
+                $selectedCategories = $_POST['categories'];
+
+            $rental = new Rental([
+                    'title' => $title,
+                    'content' => $content,
+                    'cover' => $cover,
+                    'capacity' => $capacity,
+                    'surface_area' => $surface_area,
+                    'address' => $address,
+                    'price' => $price,
+                    'latitude' => $latitude,
+                    'longitude' => $longitude
+            ]);
+
+            $model->updateRental($rental);
+
+            if ($model) {
+                $uploadImg = 'asset/media/images/';
+                $uploadFile = $uploadImg . $_FILES['cover']['name'];
+                $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+
+                if (!$controleUpload) {
+                    header('Location: ' . $router->generate('uploadError'));
+                    exit;
+                }
+
+                
+
+                header('Location: ' . $router->generate('userProperty'));
+
+                exit;
+            }
+            header('Location: ' . $router->generate('userProfil'));
+        } else {
+            echo self::getRender('profil.html.twig', []);
+        }
+    }
+
  
 }
