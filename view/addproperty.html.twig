@@ -49,9 +49,11 @@
 							</span>
 						</div>
 						<div class="divbtnedit">
-							<button class="edit-btn" type="button">Modifier</button>
-							<form action="">
-								<input type="submit" value="Supprimer" id="delete-changes-btn">
+							<button class="edit-btn" type="button">edit</button>
+
+							<form action="{{ path('deleteProperty') }}" method="POST">
+							<input type="hidden" name="id_rental" value="{{ rental.id_rental }}">
+								<input type="submit" value="delete" id="delete-changes-btn">
 							</form>
 						</div>
 					</div>
