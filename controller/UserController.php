@@ -43,6 +43,7 @@ class UserController extends Controller
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
+                $Pmodel = new PictureModel();
                 
              
                 $title = $_POST['title'];
@@ -55,6 +56,7 @@ class UserController extends Controller
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
                 $selectedCategories = $_POST['categories']; 
+                $titlePicture = $_FILES['title']['name'];
 
 
 
@@ -80,12 +82,17 @@ class UserController extends Controller
                 
                 $insertEtRecupId = $model->addRental($id_user, $rental);
                 
+                
                 if ($insertEtRecupId) {
                     $uploadImg = 'asset/media/images/';
                     $uploadFile = $uploadImg . $_FILES['cover']['name'];
                     $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
 
-                    if (!$controleUpload) {
+                    $uploadTitleImg = 'asset/media/images/';
+                $uploadTitleFile = $uploadTitleImg . $_FILES['title']['name'];
+                $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'], $uploadTitleFile);
+
+                    if (!$controleUpload || !$controleTitleUpload) {
                         header('Location: ' . $router->generate('uploadError'));
                         
                     }
@@ -97,6 +104,12 @@ class UserController extends Controller
                     foreach ($selectedCategories as $id_category) {
                         $model->addRentalCategory($insertEtRecupId, $id_category);
                     }
+
+                    $picture = new Picture([
+                        'id_rental' => $insertEtRecupId,
+                        'title' => $title
+                    ]);
+                    $Pmodel->addPicture($insertEtRecupId, $picture);
                     
 
                      header('Location: ' . $router->generate('userProperty'));
