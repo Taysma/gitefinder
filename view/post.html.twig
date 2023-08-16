@@ -26,7 +26,7 @@
 				</div>
 				<div class="location">
 					<span>{{ rental.address }},
-						</span>
+					</span>
 				</div>
 				<!-- share -->
 				<div class="share">
@@ -181,118 +181,121 @@
 					</div>
 				</div>
 				<!-- card-reservation-map-article -->
-				<div class=" card-map-article">
-					<div class="card-reservation">
-						<div class="prince-rating-comment">
-							<div class="prince-device">
-								<span class="prince">{{ rental.price }}</span>
-								<span class="devise">€</span>
-								<span class='night-card-reservation'>par nuit</span>
+				<div class="scrool-container-card-maps">
+
+					<div class=" card-map-article">
+						<div class="card-reservation">
+							<div class="prince-rating-comment">
+								<div class="prince-device">
+									<span class="prince">{{ rental.price }}</span>
+									<span class="devise">€</span>
+									<span class='night-card-reservation'>par nuit</span>
+								</div>
+								<div class="star-rating">
+									<i class="fa-solid fa-star"></i>
+									<span class="rating">4.83</span>
+								</div>
+							</span>
+							<div class="comment">
+								<span class="number-comment">64</span>
+								<span class="sapn-comment">Comments</span>
 							</div>
-							<div class="star-rating">
-								<i class="fa-solid fa-star"></i>
-								<span class="rating">4.83</span>
+						</div>
+
+						<div class="form-card-reservation">
+
+							<form action="{{ path('addReservation') }}" method="POST">
+								<div class="form-reservation">
+									<div class="label">
+										<label for="arrivee">Date arrivée</label>
+										<label for="depart">Date depart</label>
+									</div>
+
+									<div class="form-date-arrivee-depart">
+										<input type="date" name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée" title="Sélectionnez votre date d'arrivée">
+										<input type="text" name="depart" class="date-depart" id="date-depart" placeholder="Date depart" title="Sélectionnez votre date de départ">
+									</div>
+									{# <p class="stay-duration"></p> #}
+
+									<div class="guest-input">
+										<select id="input-select" name="personnes">
+											<option value="1">1 Personne</option>
+											<option value="2">2 Personnes</option>
+											<option value="3">3 Personnes</option>
+											<option value="4">4 Personnes</option>
+											<option value="5">5 Personnes</option>
+											<option value="6">6 Personnes</option>
+											<option value="7">7 Personnes</option>
+											<option value="8">8 Personnes</option>
+										</select>
+									</div>
+
+									<!-- Les champs cachés -->
+									<input type="hidden" id="duration" name="duration">
+									<input type="hidden" id="total" name="total">
+									<input type="hidden" name="id_post" value="{{ rental.id_rental }}">
+									<input type="hidden" name="price" value="{{ rental.price }}">
+
+
+								</div>
+
+								<div class="btn-reservation">
+									<button type="submit" id="search-button" name="submit">Reserver</button>
+								</div>
+							</form>
+
+							<div class="card-span-reservation">
+								<span class="span-card">Aucun montant ne vous sera débité pour le moment</span>
 							</div>
-						</span>
-						<div class="comment">
-							<span class="number-comment">64</span>
-							<span class="sapn-comment">Comments</span>
+
+							<div class="prince-card-reservation">
+								<div id="price-per-night" data-price="{{ rental.price }}"></div>
+
+								<div class="day-prince">
+									<div class="prince-for-day">
+										<span id="price-per-night-display">{{ rental.price }}€</span>
+										<span>x</span>
+										<span id="num-nights"></span>
+									</div>
+
+									<div class="prince">
+										<span id="sub-total-span">550</span>
+										<span>€</span>
+									</div>
+								</div>
+
+								<hr>
+
+								<div class="tax-for-days">
+									<div class="tax-for-day">
+										<span>Taxe (5%)</span>
+									</div>
+
+									<div class="tax">
+										<span id="tax-total-span">0</span>
+										<span>€</span>
+									</div>
+								</div>
+
+								<hr>
+
+								<div class="total-prince">
+									<span class="span-prince">Total</span>
+									<span id="total-span">550</span>
+									<span class="device-total-span">€</span>
+								</div>
+							</div>
 						</div>
 					</div>
-
-					<div class="form-card-reservation">
-
-						<form action="{{ path('addReservation') }}" method="POST">
-							<div class="form-reservation">
-								<div class="label">
-									<label for="arrivee">Date arrivée</label>
-									<label for="depart">Date depart</label>
-								</div>
-
-								<div class="form-date-arrivee-depart">
-									<input type="date" name="arrivee" class="date-arrive" id="date-arrive" placeholder="Date arrivée">
-									<input type="date" name="depart" class="date-depart" id="date-depart" placeholder="Date depart">
-								</div>
-
-								<div class="guest-input">
-									<select id="input-select" name="personnes">
-										<option value="1">1 Personne</option>
-										<option value="2">2 Personnes</option>
-										<option value="3">3 Personnes</option>
-										<option value="4">4 Personnes</option>
-										<option value="5">5 Personnes</option>
-										<option value="6">6 Personnes</option>
-										<option value="7">7 Personnes</option>
-										<option value="8">8 Personnes</option>
-									</select>
-								</div>
-
-								<!-- Les champs cachés -->
-								<input type="hidden" id="duration" name="duration">
-								<input type="hidden" id="total" name="total">
-								<input type="hidden" name="id_post" value="{{ rental.id_rental }}">
-								<input type="hidden" name="price" value="{{ rental.price }}">
+					<!-- map -->
+					<div class="map-container">
+						<div
+							class="map">
+							{# <div id="mapid"></div> #}
+							<div style="height:280px;" id="mapid" data-latitude="{{ rental.latitude }}" data-longitude="{{ rental.longitude }}"></div>
 
 
-							</div>
-
-							<div class="btn-reservation">
-								<button type="submit" id="search-button" name="submit">Reserver</button>
-							</div>
-						</form>
-
-						<div class="card-span-reservation">
-							<span class="span-card">Aucun montant ne vous sera débité pour le moment</span>
 						</div>
-
-						<div class="prince-card-reservation">
-							<div id="price-per-night" data-price="{{ rental.price }}"></div>
-
-							<div class="day-prince">
-								<div class="prince-for-day">
-									<span id="price-per-night-display">{{ rental.price }}€</span>
-									<span>x</span>
-									<span id="num-nights">5</span>
-									<span>nuits</span>
-								</div>
-
-								<div class="prince">
-									<span id="sub-total-span">550</span>
-									<span>€</span>
-								</div>
-							</div>
-
-							<hr>
-
-							<div class="tax-for-days">
-								<div class="tax-for-day">
-									<span>Taxe (5%)</span>
-								</div>
-
-								<div class="tax">
-									<span id="tax-total-span">0</span>
-									<span>€</span>
-								</div>
-							</div>
-
-							<hr>
-
-							<div class="total-prince">
-								<span class="span-prince">Total</span>
-								<span id="total-span">550</span>
-								<span class="device-total-span">€</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- map -->
-				<div class="map-container">
-					<div
-						class="map">
-						{# <div id="mapid"></div> #}
-						<div style="height:280px;" id="mapid" data-latitude="{{ rental.latitude }}" data-longitude="{{ rental.longitude }}"></div>
-
-
 					</div>
 				</div>
 			</div>
@@ -347,7 +350,6 @@
 		<script defer src="{{ asset('/js/sharePopup.js') }}"></script>
 		<script defer src="{{ asset('/js/star.js') }}"></script>
 		<script defer src="{{ asset('/js/reservation.js') }}"></script>
-
 
 	{% endblock %}
 {% endblock %}

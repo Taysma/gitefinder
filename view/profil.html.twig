@@ -104,3 +104,6 @@
 
 
 		{% endblock %}
+		{% block javascripts %}
+			{{ parent() }}<script defer src="{{ asset('/js/profil-picture.js') }}"></script>
+		{% endblock %}

@@ -89,7 +89,8 @@
 								{% endfor %}
 							</select>
 						</div>
-						<div class="number-container">
+						<div
+							class="number-container">
 							{# Surface_area #}
 							<label for="Surface_area">Surface:</label>
 							<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
@@ -106,16 +107,21 @@
 					</div>
 
 					{# Catégories de gîtes #}
-					<label>Catégories de gîtes:</label>
-					<div class="accommodation-types">
+					<legend>Catégories de gîtes:</legend>
+					<div class="checkbox-group">
 						{% for category in categories %}
-							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
-							<label for="{{ category.id_category }}"></label>
-							<p>{{ category.name }}</p>
+							<div class="checkbox">
+								<label class="checkbox-wrapper">
+									<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+									<span class="checkbox-tile">
+										<span class="checkbox-icon"><img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></span>
+										<span class="checkbox-label">{{ category.name }}</span>
+									</span>
+								</label>
+							</div>
 						{% endfor %}
-						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
-						<label for="">{{ category.name }}</label>
 					</div>
+
 
 					{# gps #}
 					<div class="latitude-longitude">
@@ -180,12 +186,13 @@
 						<div class="capacity-container">
 							<label for="capacity">Nombre de personne:</label>
 							<select name="capacity" id="capacity">
-								{% for num in 1..1000 %}
+								{% for num in 1..10 %}
 									<option value="{{ num }}">{{ num }}</option>
 								{% endfor %}
 							</select>
 						</div>
-						<div class="number-container">
+						<div
+							class="number-container">
 							{# Surface_area #}
 							<label for="Surface_area">Surface:</label>
 							<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
@@ -202,15 +209,19 @@
 					</div>
 
 					{# Catégories de gîtes #}
-					<label>Catégories de gîtes:</label>
-					<div class="accommodation-types">
+					<legend>Catégories de gîtes:</legend>
+					<div class="checkbox-group">
 						{% for category in categories %}
-							<input type="checkbox" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
-							<label for="{{ category.id_category }}"></label>
-							<p>{{ category.name }}</p>
+							<div class="checkbox">
+								<label class="checkbox-wrapper">
+									<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+									<span class="checkbox-tile">
+										<span class="checkbox-icon"><img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></span>
+										<span class="checkbox-label">{{ category.name }}</span>
+									</span>
+								</label>
+							</div>
 						{% endfor %}
-						<input type="checkbox" name="categories[]" value="{{ category.name }}" id="category-{{ category.id_category }}">
-						<label for="">{{ category.name }}</label>
 					</div>
 
 					{# gps #}
@@ -241,7 +252,7 @@
 					</div>
 					<div role="button" class="button-83 addmore-picture">ajouter une image</div>
 				</div>
-				
+
 				{# objectif faire comme pour le profil #}
 				<div class="update-delete">
 					<input type="submit" value="Ajouter la location" id="save-changes-btn">
