@@ -183,6 +183,11 @@ body {
 
                 }
 
+                @media screen and (max-width:768px) {
+                    max-width: 100%;
+
+                }
+
 
                 .search-bar {
                     display: flex;
@@ -346,7 +351,7 @@ body {
 
                         @media screen and (max-width:1170px) {
                             // margin-top: 10px;
-                            max-width: 150px;
+                            max-width: 130px;
 
                         }
 
@@ -442,11 +447,13 @@ body {
                 align-items: center;
                 justify-content: flex-end;
                 margin: auto 10px;
+                gap: 10px;
 
-                @media screen and (max-width:980px) {
-                    justify-content: center;
+                // @media screen and (max-width:980px) {
+                //     justify-content: center;
 
-                }
+                // }
+
 
                 @media screen and (max-width:768px) {
                     justify-content: flex-end;
@@ -473,6 +480,11 @@ body {
                     box-shadow: $btn-shadow;
                     background-color: $btn-bg-color;
 
+                    @media screen and (max-width:1008px) {
+                        width: 40px;
+                        height: 40px;
+                    }
+
                     @media screen and (max-width:508px) {
                         width: 40px;
                         height: 40px;
@@ -483,10 +495,23 @@ body {
                         border-radius: 40px;
                         transition-duration: $transition-duration;
 
+                        @media screen and (max-width:930px) {
+                            width: 40px;
+                            $transition-duration: none;
+
+                        }
+
                         .sign {
                             width: 30%;
                             transition-duration: $transition-duration;
                             padding-left: 20px;
+
+                            @media screen and (max-width:1008px) {
+                                width: 35px;
+                                padding: 1px;
+                            }
+
+
                         }
 
                         .text {
@@ -494,6 +519,14 @@ body {
                             width: 70%;
                             transition-duration: $transition-duration;
                             padding-right: 10px;
+
+                            @media screen and (max-width:1008px) {
+                                font-size: 15px;
+                            }
+
+                            @media screen and (max-width:930px) {
+                                display: none;
+                            }
                         }
                     }
 
@@ -569,7 +602,7 @@ body {
                 animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-down both;
                 position: relative;
 
-                @media screen and (max-width:508px) {
+                @media screen and (max-width:800px) {
                     border: none
                 }
 
@@ -619,7 +652,7 @@ body {
                 align-items: center;
                 padding: 5px;
 
-                @media screen and (max-width:950px) {
+                @media screen and (max-width:1000px) {
                     display: none;
                 }
 
@@ -1262,6 +1295,8 @@ body {
                         }
                     }
                 }
+
+
             }
         }
 
@@ -1475,10 +1510,54 @@ body {
 
                 .scrool-container-card-maps {
                     width: fit-content;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
 
                     @media screen and (max-width:768px) {
                         margin: auto;
                     }
+
+                    .card-share {
+                        width: 290px;
+                        height: 64px;
+                        background: rgb(255, 255, 255);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 10px;
+                        border-radius: 20px;
+                        position: relative;
+                        border: 2px solid transparent;
+                        transition: all 0.5s ease-in-out;
+
+                        &:focus-within {
+                            background-color: rgba(17, 17, 17, 0.5);
+                            backdrop-filter: blur(10px);
+                            border: 2px solid rgb(27, 27, 27);
+                            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                        }
+
+                        button {
+                            font-size: 34px;
+                            background-color: transparent;
+                            width: 50px;
+                            padding: 7px;
+                            height: 50px;
+                            border-radius: 100%;
+                            transition: all 0.2s ease-in;
+                            border: 0;
+                            cursor: pointer;
+
+                            &:focus {
+                                background-color: rgb(255, 255, 255);
+                                margin-bottom: 50%;
+                            }
+                        }
+
+
+                    }
+
 
                     .card-map-article {
                         display: flex;

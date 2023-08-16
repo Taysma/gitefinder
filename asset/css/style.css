@@ -146,6 +146,11 @@ body header .header-limit-size .search-bar-form:hover {
     max-width: 593px;
   }
 }
+@media screen and (max-width: 768px) {
+  body header .header-limit-size .search-bar-form {
+    max-width: 100%;
+  }
+}
 body header .header-limit-size .search-bar-form .search-bar {
   display: flex;
   top: 0;
@@ -284,7 +289,7 @@ body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
 }
 @media screen and (max-width: 1170px) {
   body header .header-limit-size .search-bar-form .search-bar .date-inputs input {
-    max-width: 150px;
+    max-width: 130px;
   }
 }
 @media screen and (max-width: 850px) {
@@ -359,11 +364,7 @@ body header .header-limit-size .burger-profil {
   align-items: center;
   justify-content: flex-end;
   margin: auto 10px;
-}
-@media screen and (max-width: 980px) {
-  body header .header-limit-size .burger-profil {
-    justify-content: center;
-  }
+  gap: 10px;
 }
 @media screen and (max-width: 768px) {
   body header .header-limit-size .burger-profil {
@@ -386,6 +387,12 @@ body header .header-limit-size .burger-profil .Btn {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
   background-color: rgb(255, 65, 65);
 }
+@media screen and (max-width: 1008px) {
+  body header .header-limit-size .burger-profil .Btn {
+    width: 40px;
+    height: 40px;
+  }
+}
 @media screen and (max-width: 508px) {
   body header .header-limit-size .burger-profil .Btn {
     width: 40px;
@@ -397,23 +404,44 @@ body header .header-limit-size .burger-profil .Btn:hover {
   border-radius: 40px;
   transition-duration: 0.3s;
 }
+@media screen and (max-width: 930px) {
+  body header .header-limit-size .burger-profil .Btn:hover {
+    width: 40px;
+  }
+}
 body header .header-limit-size .burger-profil .Btn:hover .sign {
   width: 30%;
-  transition-duration: 0.3s;
+  transition-duration: none;
   padding-left: 20px;
+}
+@media screen and (max-width: 1008px) {
+  body header .header-limit-size .burger-profil .Btn:hover .sign {
+    width: 35px;
+    padding: 1px;
+  }
 }
 body header .header-limit-size .burger-profil .Btn:hover .text {
   opacity: 1;
   width: 70%;
-  transition-duration: 0.3s;
+  transition-duration: none;
   padding-right: 10px;
+}
+@media screen and (max-width: 1008px) {
+  body header .header-limit-size .burger-profil .Btn:hover .text {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 930px) {
+  body header .header-limit-size .burger-profil .Btn:hover .text {
+    display: none;
+  }
 }
 body header .header-limit-size .burger-profil .Btn:active {
   transform: translate(2px, 2px);
 }
 body header .header-limit-size .burger-profil .Btn .sign {
   width: 100%;
-  transition-duration: 0.3s;
+  transition-duration: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,7 +460,7 @@ body header .header-limit-size .burger-profil .Btn .text {
   color: white;
   font-size: 1.2em;
   font-weight: 600;
-  transition-duration: 0.3s;
+  transition-duration: none;
 }
 body header .header-limit-size .raise:hover,
 body header .header-limit-size .raise:focus {
@@ -466,7 +494,7 @@ body header .header-limit-size .menu-burger-header {
   animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-down both;
   position: relative;
 }
-@media screen and (max-width: 508px) {
+@media screen and (max-width: 800px) {
   body header .header-limit-size .menu-burger-header {
     border: none;
   }
@@ -506,7 +534,7 @@ body header .header-limit-size .img-username {
   align-items: center;
   padding: 5px;
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
   body header .header-limit-size .img-username {
     display: none;
   }
@@ -1150,11 +1178,49 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps {
   width: -moz-fit-content;
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 @media screen and (max-width: 768px) {
   body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps {
     margin: auto;
   }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-share {
+  width: 290px;
+  height: 64px;
+  background: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 20px;
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.5s ease-in-out;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-share:focus-within {
+  background-color: rgba(17, 17, 17, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 2px solid rgb(27, 27, 27);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-share button {
+  font-size: 34px;
+  background-color: transparent;
+  width: 50px;
+  padding: 7px;
+  height: 50px;
+  border-radius: 100%;
+  transition: all 0.2s ease-in;
+  border: 0;
+  cursor: pointer;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-share button:focus {
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 50%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article {
   display: flex;
