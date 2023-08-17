@@ -4,6 +4,7 @@ class WishlistModel extends Model
     public function getWish()
     {
         $id = $_SESSION['id_user'];
+
         $wishlists = [];
 
         $req = $this->getDb()->prepare('SELECT `id_user`,`id_rental` FROM `wishlist` WHERE `id_user`= :id_user');
@@ -29,13 +30,25 @@ class WishlistModel extends Model
         $req->execute();
     }
 
-    public function deleteWish(int $id)
+    public function isInWishlist($userId, $rentalId)
+    {
+
+
+        $req = $this->getDb()->prepare('SELECT COUNT(*) FROM `wishlist` WHERE `id_user` = :id_user AND `id_rental` = :id_rental');
+        $req->bindParam(':id_user', $userId, PDO::PARAM_INT);
+        $req->bindParam(':id_rental', $rentalId, PDO::PARAM_INT);
+        $req->execute();
+
+        return $req->fetchColumn() > 0;
+    }
+
+    public function deleteWish(Wishlist $wish)
     {
         // Start a new transaction
         $this->getDb()->beginTransaction();
+        $id = $wish->getId_wishlist();
 
         try {
-
             // Delete the wishlist
             $req = $this->getDb()->prepare('DELETE FROM `wishlist` WHERE `id_wishlist` = :id_wishlist');
             $req->bindParam('id_wishlist', $id, PDO::PARAM_INT);

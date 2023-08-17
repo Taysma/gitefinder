@@ -6,8 +6,20 @@ class HomeController extends Controller
     {
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
-       
-        echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
+
+        if (isset($_SESSION['connect']) && $_SESSION['connect'] === true) {
+            $model = new WishlistModel();
+            $wishlist = $model->getWish();
+
+            $rentalIdsInWishlist = [];
+            foreach ($wishlist as $wishItem) {
+                $rentalIdsInWishlist[] = $wishItem->getId_rental();
+            }
+
+            echo self::getRender('homePage.html.twig', ['rentals' => $rentals, 'rentalIdsInWishlist' => $rentalIdsInWishlist,]);
+        } else {
+            echo self::getRender('homePage.html.twig', ['rentals' => $rentals]);
+        }
     }
 
     public function addSubscribes()
@@ -16,9 +28,9 @@ class HomeController extends Controller
         $model = new NewsletterModel();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
+
             $mail = $_POST['mail'];
-            $subscribe = new Newsletter([ 'mail' => $mail ]);
+            $subscribe = new Newsletter(['mail' => $mail]);
 
             $model->createNewSubscribe($subscribe);
             header('Location: ' . $router->generate('home'));
@@ -27,4 +39,3 @@ class HomeController extends Controller
         }
     }
 }
-

@@ -35,85 +35,6 @@ class UserController extends Controller
         }
     }
 
-    public function addProperty()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
-            if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 0) {
-                $id_user = $_SESSION['id_user'];
-                global $router;
-                $model = new RentalModel();
-                
-             
-                $title = $_POST['title'];
-                $content = $_POST['content'];
-                $cover = $_FILES['cover']['name'];
-                $capacity = $_POST['capacity'];
-                $surface_area = $_POST['surface_area'];
-                $address = $_POST['address'];
-                $price = intval($_POST['price']);
-                $latitude = $_POST['latitude'];
-                $longitude = $_POST['longitude'];
-                $selectedCategories = $_POST['categories']; 
-
-
-
-                $rental = new Rental([
-                    'id_user' => $id_user,
-                    'title' => $title,
-                    'content' => $content,
-                    'cover' => $cover,
-                    'capacity' => $capacity,
-                    'surface_area' => $surface_area,
-                    'address' => $address,
-                    'price' => $price,
-                    'latitude' => $latitude,
-                    'longitude' => $longitude
-                ]);
-
-                
-
-               
-                
-                
-
-                
-                $insertEtRecupId = $model->addRental($id_user, $rental);
-                
-                if ($insertEtRecupId) {
-                    $uploadImg = 'asset/media/images/';
-                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
-                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
-
-                    if (!$controleUpload) {
-                        header('Location: ' . $router->generate('uploadError'));
-                        
-                    }
-
-                    
-                    
-                    // $_SESSION['cover'] = $cover;
-
-                    foreach ($selectedCategories as $id_category) {
-                        $model->addRentalCategory($insertEtRecupId, $id_category);
-                    }
-                    
-
-                     header('Location: ' . $router->generate('userProperty'));
-
-                    
-                } 
-
-            }
-         } 
-
-
-
-
-
-
-    }
-
     public function login()
     {
         if (!$_POST) {
@@ -133,7 +54,7 @@ class UserController extends Controller
                     $_SESSION['connect'] = true;
 
                     global $router;
-                    header('Location: ' . $router->generate('dashboard')); // add condition "if" pour les 3 routes si role match host/guest/admin
+                    header('Location: ' . $router->generate('dashboard'));
                     exit();
                 } else {
                     echo 'Email / password incorrect !';
@@ -229,14 +150,11 @@ class UserController extends Controller
 
                     exit;
                 }
-
             }
         } else {
 
             echo self::getRender('profil.html.twig', []);
         }
-
-
     }
 
     public function deleteProfil()
@@ -257,19 +175,83 @@ class UserController extends Controller
         }
     }
 
+    //Dashboard - CRUD Propriétés User
+    public function getUserProperty()
+    {
+        $id_user = $_SESSION['id_user'];
+
+        $model = new RentalModel();
+        $CategoryModel = new CategoryModel();
+        $rentalsUser = $model->getUserRentals($id_user);
+        $categories = $CategoryModel->getAllCategory();
+
+        echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
+    }
+
+    public function addProperty()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 0) {
+                $id_user = $_SESSION['id_user'];
+                global $router;
+                $model = new RentalModel();
+
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $cover = $_FILES['cover']['name'];
+                $capacity = $_POST['capacity'];
+                $surface_area = $_POST['surface_area'];
+                $address = $_POST['address'];
+                $price = intval($_POST['price']);
+                $latitude = $_POST['latitude'];
+                $longitude = $_POST['longitude'];
+                $selectedCategories = $_POST['categories'];
+
+                $rental = new Rental([
+                    'id_user' => $id_user,
+                    'title' => $title,
+                    'content' => $content,
+                    'cover' => $cover,
+                    'capacity' => $capacity,
+                    'surface_area' => $surface_area,
+                    'address' => $address,
+                    'price' => $price,
+                    'latitude' => $latitude,
+                    'longitude' => $longitude
+                ]);
+
+                $insertEtRecupId = $model->addRental($id_user, $rental);
+
+                if ($insertEtRecupId) {
+                    $uploadImg = 'asset/media/images/';
+                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
+                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+
+                    if (!$controleUpload) {
+                        header('Location: ' . $router->generate('uploadError'));
+                    }
+
+                    foreach ($selectedCategories as $id_category) {
+                        $model->addRentalCategory($insertEtRecupId, $id_category);
+                    }
+
+
+                    header('Location: ' . $router->generate('userProperty'));
+                }
+            }
+        }
+    }
+
     public function deleteProperty()
     {
-       
+        global $router;
+        $model = new RentalModel();
 
-            global $router;
-            $model = new RentalModel();
+        $id = $_POST['id_rental'];
 
-            $id = $_POST['id_rental'];
+        $model->deleteRental($id);
 
-            $model->deleteRental($id);
-          
-            header('Location: ' . $router->generate('userProperty'));
-         
+        header('Location: ' . $router->generate('userProperty'));
     }
 
     //Dashboard - CRUD Reservation User
@@ -281,7 +263,7 @@ class UserController extends Controller
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
 
-        echo self::getRender('rental.html.twig', [ 'reservations' => $reservations, 'rentals' => $rentals]);
+        echo self::getRender('rental.html.twig', ['reservations' => $reservations, 'rentals' => $rentals]);
     }
 
     //Dashboard - CRUD Wishlist User
@@ -298,31 +280,48 @@ class UserController extends Controller
 
     public function addToWishlist()
     {
-        global $router;
+        if (isset($_SESSION['connect']) && $_SESSION['connect'] === true) {
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            global $router;
+
             $id_user = $_SESSION['id_user'];
-            $id_rental = $_POST['id_rental'];
+            //$id_rental = dataset;
 
-            // Créer une instance de votre modèle FavoriteModel
             $favorite = new Wishlist([
-                'id_rental' => $id_rental,
+                //'id_rental' => $id_rental,
                 'id_user' => $id_user,
             ]);
 
             $favoriteModel = new WishlistModel();
             $favoriteModel->addWish($favorite);
 
-            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-                // c'est une requête AJAX
-                echo json_encode(['success' => true]);
-                exit;
-            }
+            header('Location: ' . $router->generate('home'));
+
+        } else {
+            $message = "Veillez vous connecter pour ajouter des favoris";
+            echo self::getRender('connect.html.twig', ['message' => $message]);
         }
     }
 
     public function deleteFromWishlist()
     {
+        $id_user = $_SESSION['id_user'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['method'] === 'DELETE') {
+            if (isset($_POST['id_rental'])) {
+                $id_rental = $_POST['id_rental'];
+
+                $favoriteModel = new WishlistModel();
+                $favoriteModel->deleteWish($id_rental, $id_user);
+
+                // Return a JSON response
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true]);
+                exit();
+            } else {
+                echo self::getRender('dashboard.html.twig', []);
+            }
+        }
     }
 
     //Dashboard - CRUD Messagerie User
@@ -330,23 +329,4 @@ class UserController extends Controller
     {
         echo self::getRender('messenger.html.twig', []);
     }
-
-    //Dashboard - CRUD Propriétés User
-    public function getUserProperty()
-    {
-          $id_user = $_SESSION['id_user'];
-
-          $model = new RentalModel();
-          $CategoryModel = new CategoryModel();
-          $rentalsUser = $model->getUserRentals($id_user);
-          $categories = $CategoryModel->getAllCategory();
-
-         
-          echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
-         
-
-       
-    }
-
- 
 }
