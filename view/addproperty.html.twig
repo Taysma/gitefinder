@@ -137,21 +137,17 @@
 						</div>
 
 						{# objectif faire comme pour le profil #}
-						<div class="couverture">
-							<div class="label-input-cover">
-								<input type="file" name="cover" id="profil" class="first-cover">
 
-								<label for="profil" class="profile-picture-cover" style="background-image: url('/projets/gitefinder/asset/media/images/')"></label>
-							</div>
-						</div>
 
 						<span>Gallerie image :</span>
 						<div class="add-img">
 							<div class="img-profil-rental">
 								<div class="container-picture">
 									<div class="picture-rental">
-										<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
-										<label for="profile-upload-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" style="display: none;">
+										<div class="cover-indicator">Couverture</div>
+
+										<label for="profile-upload-rental" class="profile-picture firstImage" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
 									</div>
 								</div>
 							</div>
@@ -171,7 +167,7 @@
 					<div class="card">
 						<div class="heart-kr" id="heart-kr"></div>
 
-						<div class="img-card">
+						<div class="img-card imageContainer">
 							<img src="{{ asset('/media/images/boatkarim.png' ) }}" alt="gite en Foret">
 						</div>
 						<div class="txt-card">
@@ -278,10 +274,10 @@
 							<div class="img-profil-rental">
 								<div class="container-picture">
 									<div class="picture-rental">
-										<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
+										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" style="display: none;">
 										<div class="cover-indicator">Couverture</div>
 
-										<label for="profile-upload-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+										<label for="profile-upload-rental" class="profile-picture firstImage" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
 									</div>
 								</div>
 							</div>
@@ -304,7 +300,7 @@
 					<div class="card">
 						<div class="heart-kr" id="heart-kr"></div>
 
-						<div class="img-card">
+						<div class="img-card imageContainer">
 							<img src="{{ asset('/media/images/boatkarim.png' ) }}" alt="gite en Foret">
 						</div>
 						<div class="txt-card">
@@ -336,24 +332,6 @@
 	{{ parent() }}
 	<script defer src="{{ asset('/js/maps.js') }}"></script>
 	<script defer src="{{ asset('/js/listenerInputProperty.js') }}"></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-const inputFile = document.querySelector('.first-cover');
-const label = document.querySelector('.profile-picture-cover');
 
-inputFile.addEventListener('change', function (event) {
-const file = event.target.files[0];
-if (file) {
-const reader = new FileReader();
-reader.onload = function (e) {
-label.style.backgroundImage = `url(${
-e.target.result
-})`;
-};
-reader.readAsDataURL(file);
-}
-});
-});
-	</script>
 
 {% endblock %}{% endblock %}

@@ -132,19 +132,31 @@
 
 	{# footer-mobile #}
 	<div class="footer-mobile">
-		<div class="mobile-footer-explore">
-			<img src="{{ asset('/media/icon/magnifying-glass-solid.svg') }}" alt="explorer" class="footer-img">
-			<p class="txt-footer">Explorer</p>
-		</div>
-		<div class="mobile-footer-favoris">
-			<img src="{{ asset('/media/icon/coeur (1).png') }}" alt="Favoris" class="footer-img">
-			<p class="txt-footer">Favoris</p>
-		</div>
-		<div class="mobile-footer-user">
-			<img src="{{ asset('/media/icon/user-solid.svg') }}" alt="user" class="footer-user">
-			<p class="txt-footer">Connection</p>
-		</div>
-	</div>
+		<a href="{{path('userFavoris')}}">
 
+			<div class="mobile-footer-explore">
+				<a href="{{path('userFavoris')}}">
 
-</footer>
+					<img src="{{ asset('/media/icon/magnifying-glass-solid.svg') }}" alt="explorer" class="footer-img">
+					<p class="txt-footer">Explorer</p>
+				</a>
+
+			</div>
+			<div class="mobile-footer-favoris">
+				<a href="{{path('userFavoris')}}">
+					<div class="heart-kr-footer-mobile" id="heart-kr"></div>
+
+					{# <img src="{{ asset('/media/icon/coeur (1).png') }}" alt="Favoris" class="footer-img"> #}
+					<p class="txt-footer">Favoris</p>
+				</a>
+
+			</div>
+			<div class="mobile-footer-user">
+				<a href="{{path('userFavoris')}}">
+
+					<img src="{{ asset('/media/icon/user-solid.svg') }}" alt="user" class="footer-user">
+					<p class="txt-footer">Connection</p>
+				</a>
+			</div>
+		</div>
+	</footer>
