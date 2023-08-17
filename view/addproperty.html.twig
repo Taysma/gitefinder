@@ -112,7 +112,7 @@
 						{% for category in categories %}
 							<div class="checkbox">
 								<label class="checkbox-wrapper">
-									<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+									<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.id_category }}" id="{{ category.id_category }}">
 									<span class="checkbox-tile">
 										<span class="checkbox-icon"><img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></span>
 										<span class="checkbox-label">{{ category.name }}</span>
@@ -143,7 +143,7 @@
 						<div class="img-profil-rental">
 							<div class="container-picture">
 								<div class="picture-rental">
-									<input type="file" name='title' class="profile-upload-rental" accept="image/*" style="display: none;">
+									<input type="file" name='title[]' class="profile-upload-rental" accept="image/*" multiple style="display: none;" >
 									<label for="profile-upload-rental" class="profile-picture" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
 								</div>
 							</div>

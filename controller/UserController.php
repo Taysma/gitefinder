@@ -38,33 +38,31 @@ class UserController extends Controller
     public function addProperty()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
-            if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 0) {
+            var_dump($_FILES);
+            if (isset($_FILES['title']) ) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
                 $Pmodel = new PictureModel();
-                
-             
+    
+    
                 $title = $_POST['title'];
                 $content = $_POST['content'];
-                $cover = $_FILES['cover']['name'];
+                // $cover = $_POST['cover'];
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
                 $address = $_POST['address'];
                 $price = intval($_POST['price']);
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
-                $selectedCategories = $_POST['categories']; 
-                $titlePicture = $_FILES['title']['name'];
-
-
-
+                $selectedCategories = $_POST['categories'];
+                $titlePictures = $_FILES['title']['name'];
+    
                 $rental = new Rental([
                     'id_user' => $id_user,
                     'title' => $title,
                     'content' => $content,
-                    'cover' => $cover,
+                    // 'cover' => $cover,
                     'capacity' => $capacity,
                     'surface_area' => $surface_area,
                     'address' => $address,
@@ -72,60 +70,45 @@ class UserController extends Controller
                     'latitude' => $latitude,
                     'longitude' => $longitude
                 ]);
-
-                
-
-               
-                
-                
-
-                
+    
                 $insertEtRecupId = $model->addRental($id_user, $rental);
-                
-                
+                var_dump($selectedCategories);
+                foreach ($selectedCategories as $id_category) {
+                    $model->addRentalCategory($insertEtRecupId, $id_category);
+                }
+
+    
                 if ($insertEtRecupId) {
-                    $uploadImg = 'asset/media/images/';
-                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
-                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
-
                     $uploadTitleImg = 'asset/media/images/';
-                $uploadTitleFile = $uploadTitleImg . $_FILES['title']['name'];
-                $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'], $uploadTitleFile);
-
-                    if (!$controleUpload || !$controleTitleUpload) {
-                        header('Location: ' . $router->generate('uploadError'));
-                        
+                    
+                    foreach ($titlePictures as $index => $titlePicture) {
+                        $uploadTitleFile = $uploadTitleImg . $titlePicture;
+                        $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
+    
+                        if (!$controleTitleUpload) {
+                            // Gérer l'échec du téléchargement
+                        }
+    
+                        $picture = new Picture([
+                            'id_rental' => $insertEtRecupId,
+                            'title' => $titlePicture
+                        ]);
+    
+                        $picture = $Pmodel->addPicture($picture);
                     }
 
-                    
-                    
-                    // $_SESSION['cover'] = $cover;
-
-                    foreach ($selectedCategories as $id_category) {
-                        $model->addRentalCategory($insertEtRecupId, $id_category);
+                   
+                    $picturesString = "";
+                    foreach ($titlePictures as $titlePicture) {
+                        $picturesString .= "Image Title: $titlePicture\n";
                     }
-
-                    $picture = new Picture([
-                        'id_rental' => $insertEtRecupId,
-                        'title' => $title
-                    ]);
-                    $Pmodel->addPicture($insertEtRecupId, $picture);
-                    
-
-                     header('Location: ' . $router->generate('userProperty'));
-
-                    
-                } 
-
+    
+                    //header('Location: ' . $router->generate('userProperty'));
+                }
             }
-         } 
-
-
-
-
-
-
+        }
     }
+    
 
     public function login()
     {
@@ -272,17 +255,17 @@ class UserController extends Controller
 
     public function deleteProperty()
     {
-       
 
-            global $router;
-            $model = new RentalModel();
 
-            $id = $_POST['id_rental'];
+        global $router;
+        $model = new RentalModel();
 
-            $model->deleteRental($id);
-          
-            header('Location: ' . $router->generate('userProperty'));
-         
+        $id = $_POST['id_rental'];
+
+        $model->deleteRental($id);
+
+        header('Location: ' . $router->generate('userProperty'));
+
     }
 
     //Dashboard - CRUD Reservation User
@@ -294,7 +277,7 @@ class UserController extends Controller
         $rentalModel = new RentalModel();
         $rentals = $rentalModel->getAllRentals();
 
-        echo self::getRender('rental.html.twig', [ 'reservations' => $reservations, 'rentals' => $rentals]);
+        echo self::getRender('rental.html.twig', ['reservations' => $reservations, 'rentals' => $rentals]);
     }
 
     //Dashboard - CRUD Wishlist User
@@ -326,50 +309,50 @@ class UserController extends Controller
     //Dashboard - CRUD Propriétés User
     public function getUserProperty()
     {
-          $id_user = $_SESSION['id_user'];
+        $id_user = $_SESSION['id_user'];
 
-          $model = new RentalModel();
-          $CategoryModel = new CategoryModel();
-          $rentalsUser = $model->getUserRentals($id_user);
-          $categories = $CategoryModel->getAllCategory();
+        $model = new RentalModel();
+        $CategoryModel = new CategoryModel();
+        $rentalsUser = $model->getUserRentals($id_user);
+        $categories = $CategoryModel->getAllCategory();
 
-         
-          echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
-         
 
-       
+        echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
+
+
+
     }
 
     public function editProperty()
     {
 
-       
+
         //var_dump($_POST);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             global $router;
             $model = new RentalModel();
 
-                $title = $_POST['title'];
-                $content = $_POST['content'];
-                $cover = $_FILES['cover']['name'];
-                $capacity = $_POST['capacity'];
-                $surface_area = $_POST['surface_area'];
-                $address = $_POST['address'];
-                $price = intval($_POST['price']);
-                $latitude = $_POST['latitude'];
-                $longitude = $_POST['longitude'];
-                $selectedCategories = $_POST['categories'];
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $cover = $_FILES['cover']['name'];
+            $capacity = $_POST['capacity'];
+            $surface_area = $_POST['surface_area'];
+            $address = $_POST['address'];
+            $price = intval($_POST['price']);
+            $latitude = $_POST['latitude'];
+            $longitude = $_POST['longitude'];
+            $selectedCategories = $_POST['categories'];
 
             $rental = new Rental([
-                    'title' => $title,
-                    'content' => $content,
-                    'cover' => $cover,
-                    'capacity' => $capacity,
-                    'surface_area' => $surface_area,
-                    'address' => $address,
-                    'price' => $price,
-                    'latitude' => $latitude,
-                    'longitude' => $longitude
+                'title' => $title,
+                'content' => $content,
+                'cover' => $cover,
+                'capacity' => $capacity,
+                'surface_area' => $surface_area,
+                'address' => $address,
+                'price' => $price,
+                'latitude' => $latitude,
+                'longitude' => $longitude
             ]);
 
             $model->updateRental($rental);
@@ -384,7 +367,7 @@ class UserController extends Controller
                     exit;
                 }
 
-                
+
 
                 header('Location: ' . $router->generate('userProperty'));
 
@@ -396,5 +379,5 @@ class UserController extends Controller
         }
     }
 
- 
+
 }

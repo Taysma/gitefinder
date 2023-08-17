@@ -8,20 +8,18 @@ class RentalModel extends Model
         $title = $rental->getTitle();
         $capacity = $rental->getCapacity();
         $surface_area = $rental->getSurface_area();
-        $cover = $rental->getCover();
         $address = $rental->getAddress();
         $content = $rental->getContent();
         $price = $rental->getPrice();
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
 
-        $req = $this->getDb()->prepare('INSERT INTO `rental` (`id_user`, `title`, `capacity`, `surface_area`, `cover`, `address`, `content`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area, :cover,  :address, :content,   :price, :latitude, :longitude )');
+        $req = $this->getDb()->prepare('INSERT INTO `rental` (`id_user`, `title`, `capacity`, `surface_area`, `address`, `content`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area,   :address, :content,   :price, :latitude, :longitude )');
 
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
         $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
         $req->bindParam(':surface_area', $surface_area, PDO::PARAM_STR);
-        $req->bindParam(':cover', $cover, PDO::PARAM_STR);
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);
         $req->bindParam(':price', $price, PDO::PARAM_INT);
@@ -40,7 +38,7 @@ class RentalModel extends Model
 
     public function addRentalCategory(int $insertEtRecupId, $id_category) 
     {
-        
+        // var_dump($id_category .' - rental : ' .$insertEtRecupId);
         $req = $this->getDb()->prepare(' INSERT INTO `rental_category`(`id_category`, `id_rental`) VALUES (:id_category, :id_rental)');
         $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
         $req->bindParam(':id_rental', $insertEtRecupId, PDO::PARAM_INT);
