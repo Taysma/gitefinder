@@ -2,19 +2,21 @@
 class PictureModel extends Model
 {
     //create
-    public function addPicture($insertEtRecupId, Picture $picture)
+    public function addPicture($picture)
     {
-       
-        $insertEtRecupId = $picture->getId_Rental();
-        $title = $picture->getTitle();
+
+        $id_rental = $picture->getId_Rental();
+        $titlePicture = $picture->getTitle();
 
         $reqGallery = $this->getDb()->prepare("INSERT INTO `picture` ( `id_rental`, `title`) VALUES (:id_rental, :title)");
 
-        
-        $reqGallery->bindParam(":id_rental", $insertEtRecupId, PDO::PARAM_INT);
-        $reqGallery->bindParam(":title", $title, PDO::PARAM_STR);
+
+        $reqGallery->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
+        $reqGallery->bindParam(":title", $titlePicture, PDO::PARAM_STR);
         $reqGallery->execute();
-        
+
+        return $reqGallery;
+
     }
 
     //read
@@ -35,6 +37,8 @@ class PictureModel extends Model
 
         return $picture;
     }
+
+    
 
     //update
     public function updatePicture(Picture $picture)
