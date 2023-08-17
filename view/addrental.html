@@ -2,227 +2,54 @@
 <html>
 
 <head>
-    <title>Formulaire d'ajout de location</title>
-    <!-- <link rel="stylesheet" href="../asset/css/style.css"> -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        #mapid {
-            height: 180px;
-        }
-
-        #autocomplete-items {
-            display: none;
+        .heart-kr {
+            width: 100px;
+            height: 100px;
             position: absolute;
-            max-width: 250px;
-            background-color: #ffffff;
-            width: 100%;
-            z-index: 99;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+            background-position: 0 0;
             cursor: pointer;
-            padding: 10px;
-            border: 1px solid #d4d4d4;
         }
     </style>
-
-
-
 </head>
 
 <body>
-    <!-- header -->
-
-    <!-- addrental -->
-    <section class="addrental">
-        <nav class="breadcrumb" aria-label="breadcrumb">
-            <ol class="ol-breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="../view/dashboard.html">Dashboard</a>
-                </li>
-                <img src="../asset/media/icon/fleche.svg" alt="fleche">
-                <li class="breadcrumb-item active" aria-current="page">Propriete</li>
-            </ol>
-        </nav>
-        {# container propriete #}
-        <div class="container-propriete">
-            <div class="btn-add">
-                <button id="btn-add">Ajouter un bien</button>
-            </div>
-            <div class="container-card-property">
-
-                <div class="card">
-                    <div class="img-card">
-                        <img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chavaren foret" class="size-img">
-
-                    </div>
-                    <div class="content-card">
-                        <div class="title-prince">
-                            <div class="h1-title-card">
-                                <h1>Paradise Beach, Bantayan Island
-                                </h1>
-                            </div>
-                            <div class="prince">
-
-                                <span>150</span>
-                                <span>€</span>
-                            </div>
-                        </div>
-                        <div class="location-card">
-                            <span class="city">Rome</span>
-                            <span>,</span>
-                            <span class="country">Italy</span>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        {# form add update delete #}
-        <div class="form-cart">
-            <form action="" method="post" class="profil-information">
-                <h2>Formulaire d'ajout de location</h2>
-                <div class="name-lastname">
-                    <div class="label-input">
-                        <div class="name">
-                            <label for="title">Nom de la location:</label>
-                            <input type="text" id="name" name="title" value="">
-                        </div>
-                        <div class="address">
-                            <label for="address">Adresse:</label>
-                            <input type="text" id="address" name="address" value="">
-                            <div id="autocomplete-items"></div>
-
-                        </div>
-                    </div>
-                    <div class="label-input">
-                        <div class="name">
-                            <label for="city">ville:</label>
-                            <input type="text" id="city" name="city" value="">
-                        </div>
-                        <div class="address">
-                            <label for="country">pays:</label>
-                            <input type="text" id="country" name="country" value="">
-                        </div>
-                    </div>
-
-                    <label for="price">Prix:</label>
-                    <input type="text" id="price" name="price" value="">
-                    <div class="latitude-logitude">
-                        <label for="latitude"></label>
-                        <input type="text" id="latitude" name="latitude" value="">
-                        <label for="longitude"></label>
-                        <input type="text" id="longitude" name="longitude" value="">
-                    </div>
-
-                    <label for="content">Description:</label>
-                    <textarea id="description" name="content"></textarea>
-                    <label for="image">photos du bien</label>
-                    <input type="file" id="image" name="image" value="" class="file">
-                </div>
-                <div class="add-edit-delete">
-                    <input type="submit" value="Ajouter la location" id="save-changes-btn">
-
-            </form>
-            <form action="">
-                <input type="submit" value="update" id="save-changes-btn">
-            </form>
-            <form action="">
-                <input type="submit" value="delete" id="delete-changes-btn">
-            </form>
-        </div>
-        <div class="cart">
-
-            <div id="mapid"></div>
-
-        </div>
-        </div>
-
-    </section>
-
-
-    <!-- <label for="address">Adresse:</label>
-    <input type="text" id="address" name="address" value=""> -->
-    <div id="autocomplete-items"></div>
-    <div id="mapid"></div>
-
-
-    <!-- <script src="../asset/js/maps.js"></script> -->
+    <div class="heart-kr" id="heart-kr"></div>
 
     <script>
-        letmap = L.map('mapid').setView([51.505, -0.09], 13); // Position de départ
-        letmarker;
+        document.addEventListener('DOMContentLoaded', function () {
+            let heartDiv = document.getElementById('heart-kr');
+            let isFilled = false;
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-        }).addTo(map);
+            heartDiv.addEventListener('click', function () {
+                isFilled = !isFilled;
+                animateHeart(isFilled);
+            });
 
-        lettimeout = null;
+            function animateHeart(isFilled) {
+                let totalFrames = 28;
+                let frames = Math.floor(totalFrames / 2); // Half of total frames
+                let interval = 1000 / frames;
 
-        // Écoute les événements 'input' sur le champ d'adresse
-        $('#address').on('input', function () {
-            letaddress = $(this).val();
-            letsuggestionBox = $('#autocomplete-items');
+                let currentFrame = 0;
+                let position = isFilled ? -currentFrame * 100 : 0;
 
-            // Annule la précédente requête d'autocomplétion si elle n'est pas encore terminée
-            clearTimeout(timeout);
+                let animation = setInterval(function () {
+                    heartDiv.style.backgroundPosition = `${position}px 0`;
+                    currentFrame++;
 
-            // Si l'input est vide, cache la boîte de suggestions
-            if (address === '') {
-                suggestionBox.css('display', 'none');
-            } else {
-                // Sinon, affiche la boîte de suggestions
-                suggestionBox.css('display', 'block');
+                    if (currentFrame >= frames) {
+                        clearInterval(animation);
+                    }
 
-                // Commence une nouvelle requête d'autocomplétion après un délai
-                timeout = setTimeout(function () {
-                    fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address))
-                        .then(function (response) {
-                            if (!response.ok) {
-                                throw new Error("Erreur de géocodage");
-                            }
-                            return response.json();
-                        })
-                        .then(function (data) {
-                            // Affiche les suggestions d'adresse
-                            letsuggestions = data.map(function (item) {
-                                return {
-                                    name: item.display_name,
-                                    lat: item.lat,
-                                    lon: item.lon
-                                };
-                            });
-
-                            suggestionBox.empty();  // Nettoie les anciennes suggestions
-
-                            // Crée un élément pour chaque suggestion
-                            for (leti = 0; i < suggestions.length; i++) {
-                                letitem = $('<div></div>').text(suggestions[i].name);
-                                item.click((function (i) {
-                                    return function () {
-                                        $('#address').val(suggestions[i].name);  // Met à jour le champ d'adresse
-                                        suggestionBox.empty();  // Nettoie les suggestions
-                                        map.setView([suggestions[i].lat, suggestions[i].lon], 13);  // Met à jour la carte
-
-                                        // Si un marqueur existait déjà, le supprime
-                                        if (marker) {
-                                            map.removeLayer(marker);
-                                        }
-
-                                        // Ajoute un nouveau marqueur
-                                        marker = L.marker([suggestions[i].lat, suggestions[i].lon]).addTo(map);
-                                    };
-                                })(i));
-                                suggestionBox.append(item);
-                            }
-                        })
-                        .catch(function (error) {
-                            alert("Une erreur est survenue lors du géocodage : " + error);
-                        });
-                }, 200);  // Durée du délai en millisecondes
+                    position = isFilled ? -currentFrame * 100 : 0;
+                }, interval);
             }
         });
-
     </script>
 </body>
 

@@ -201,7 +201,7 @@ btnAddImage.forEach(element => {
             return;
         }
 
-        let htmlContent = '<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" name="title" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="profile-upload-rental"  class="profile-picture" style="background-image: url(\'{{ asset("/media/images/" ) }}\')"></label></div></div></div>';
+        let htmlContent = '<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" name="title[]" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="profile-upload-rental"  class="profile-picture" style="background-image: url(\'{{ asset("/media/images/" ) }}\')"></label></div></div></div>';
 
         // Convertissez la chaîne en un élément DOM
         let div = document.createElement('div');

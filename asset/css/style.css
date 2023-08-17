@@ -576,13 +576,22 @@ body header .burger-menu-modal .btn-value {
   display: flex;
   position: relative;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   cursor: pointer;
   border-radius: 4px;
 }
+body header .burger-menu-modal .btn-value img {
+  width: 40px;
+  border-radius: 99px;
+}
+body header .burger-menu-modal .btn-value span {
+  font: 800;
+  font-size: 1rem;
+  text-align: center;
+}
 body header .burger-menu-modal .btn-value .svg-icon {
   width: 100%;
-  max-width: 24px;
+  max-width: 40px;
 }
 body header .burger-menu-modal .value:not(:active):hover,
 body header .burger-menu-modal .value:focus {
@@ -1062,14 +1071,10 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 450px;
   padding: 10px;
   margin: auto;
-}
-@media screen and (max-width: 1090px) {
-  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article {
-    width: 50%;
-  }
+  text-align: justify;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article {
   display: flex;
@@ -1175,6 +1180,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   padding: 20px;
   font-size: 1.4rem;
   color: #191825;
+  white-space: nowrap;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-container-rental {
   display: flex;
@@ -1240,7 +1246,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-share button:focus {
   background-color: rgb(255, 255, 255);
-  margin-bottom: 50%;
+  margin-bottom: -45%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article {
   display: flex;
@@ -1467,7 +1473,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
 }
 body .article .comment-container {
   width: 100%;
-  margin: 20px auto;
+  margin: 20px 20px;
   height: auto;
   max-width: 1440px;
   display: flex;
@@ -1905,6 +1911,18 @@ body .addproperty .btn {
 body .addproperty .btn #btn-add {
   background-color: #0056b3;
 }
+body .addproperty .cover-indicator {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px;
+  border-radius: 5px;
+}
+body .addproperty .cover-selected .cover-indicator {
+  display: block;
+}
 body .addproperty .icon-add {
   width: 100%;
   text-align: center;
@@ -2067,7 +2085,11 @@ body .addproperty .editproperty h2 {
 body .addproperty .form-cart .profil-information,
 body .addproperty .editproperty .profil-information {
   width: 100%;
-  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }
 body .addproperty .form-cart .profil-information .container-form,
 body .addproperty .editproperty .profil-information .container-form {
@@ -2078,15 +2100,6 @@ body .addproperty .editproperty .profil-information .container-form {
   padding: 10px;
   align-items: center;
   justify-content: space-between;
-}
-body .addproperty .form-cart .profil-information .container-form .accommodation-types,
-body .addproperty .editproperty .profil-information .container-form .accommodation-types {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  /* 2 colonnes de largeur égale */
-  gap: 10px;
 }
 body .addproperty .form-cart .profil-information .container-form label,
 body .addproperty .editproperty .profil-information .container-form label {
@@ -2106,6 +2119,30 @@ body .addproperty .editproperty .profil-information .container-form .name-addres
     flex-direction: column;
     align-items: center;
   }
+}
+body .addproperty .form-cart .profil-information .container-form .name-address .accommodation-types,
+body .addproperty .editproperty .profil-information .container-form .name-address .accommodation-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  max-width: 300px;
+  position: absolute;
+  z-index: 999;
+  border-radius: 8px;
+  text-align: justify;
+}
+body .addproperty .form-cart .profil-information .container-form .name-address .accommodation-types .data,
+body .addproperty .editproperty .profil-information .container-form .name-address .accommodation-types .data {
+  width: 90%;
+  margin: 10px auto;
+  font-size: 1rem;
+  font: 400;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 body .addproperty .form-cart .profil-information .container-form input,
 body .addproperty .form-cart .profil-information .container-form textarea,
@@ -2197,6 +2234,7 @@ body .addproperty .editproperty .profil-information .container-form .checkbox-gr
   margin: auto;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 60%;
   z-index: 999;
   padding: 10px;
   border: 1px solid rgba(14, 14, 14, 0.1607843137);
@@ -2346,6 +2384,21 @@ body .addproperty .editproperty .profil-information .container-form .latitude-lo
   visibility: hidden;
   position: absolute;
 }
+body .addproperty .form-cart .profil-information .container-form .couverture,
+body .addproperty .editproperty .profil-information .container-form .couverture {
+  width: 100%;
+  background-color: #007bff;
+}
+body .addproperty .form-cart .profil-information .container-form .couverture .label-input,
+body .addproperty .editproperty .profil-information .container-form .couverture .label-input {
+  max-width: 60%;
+  border: 1px solid black;
+  margin: auto;
+}
+body .addproperty .form-cart .profil-information .container-form .couverture .label-input .cover,
+body .addproperty .editproperty .profil-information .container-form .couverture .label-input .cover {
+  background-color: #007bff;
+}
 body .addproperty .form-cart .profil-information #save-changes-btn,
 body .addproperty .editproperty .profil-information #save-changes-btn {
   width: -moz-fit-content;
@@ -2359,16 +2412,16 @@ body .addproperty .editproperty .profil-information #save-changes-btn {
   cursor: pointer;
   height: auto;
 }
-body .addproperty .form-cart .add-edit-delete,
-body .addproperty .editproperty .add-edit-delete {
+body .addproperty .form-cart .profil-information .add-edit-delete,
+body .addproperty .editproperty .profil-information .add-edit-delete {
   display: flex;
   width: 100%;
   gap: 20px;
   max-width: 500px;
   align-items: center;
 }
-body .addproperty .form-cart .add-edit-delete #edit-changes-btn,
-body .addproperty .editproperty .add-edit-delete #edit-changes-btn {
+body .addproperty .form-cart .profil-information .add-edit-delete #edit-changes-btn,
+body .addproperty .editproperty .profil-information .add-edit-delete #edit-changes-btn {
   width: -moz-fit-content;
   width: fit-content;
   color: #F7F7F7;
@@ -2440,8 +2493,7 @@ body .addproperty .form-cart .banner,
 body .addproperty .editproperty .banner {
   max-width: 600px;
   display: flex;
-  height: -moz-fit-content;
-  height: fit-content;
+  position: relative;
 }
 @media screen and (max-width: 768px) {
   body .addproperty .form-cart .banner,
@@ -2454,6 +2506,97 @@ body .addproperty .editproperty .banner .img-banner {
   border-radius: 50px;
   width: 100%;
   padding: 10px;
+}
+body .addproperty .form-cart .banner .card,
+body .addproperty .editproperty .banner .card {
+  width: 100%;
+  max-width: 370px;
+  max-height: 380px;
+  background-color: aliceblue;
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px rgba(13, 38, 76, 0.19);
+  position: sticky;
+  top: 30px;
+}
+body .addproperty .form-cart .banner .card:hover,
+body .addproperty .editproperty .banner .card:hover {
+  transform: scale(1.012);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+}
+body .addproperty .form-cart .banner .card .img-card,
+body .addproperty .editproperty .banner .card .img-card {
+  width: 100%;
+  height: 220px;
+  margin: 0 auto;
+}
+body .addproperty .form-cart .banner .card .img-card img,
+body .addproperty .editproperty .banner .card .img-card img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+}
+body .addproperty .form-cart .banner .card .txt-card,
+body .addproperty .editproperty .banner .card .txt-card {
+  padding: 10px;
+  width: 100%;
+  color: black;
+  height: auto;
+  animation: 1.9s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-down both;
+}
+@keyframes wipe-in-down {
+  from {
+    -webkit-clip-path: inset(0 0 100% 0);
+            clip-path: inset(0 0 100% 0);
+  }
+  to {
+    -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+  }
+}
+body .addproperty .form-cart .banner .card .txt-card .title-card,
+body .addproperty .editproperty .banner .card .txt-card .title-card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+}
+body .addproperty .form-cart .banner .card .txt-card .title-card .h1-card,
+body .addproperty .editproperty .banner .card .txt-card .title-card .h1-card {
+  font-size: 0.77rem;
+  color: #191825;
+}
+body .addproperty .form-cart .banner .card .txt-card .title-card p,
+body .addproperty .editproperty .banner .card .txt-card .title-card p {
+  text-align: right;
+  font-size: 1.35rem;
+  color: #F85E9F;
+}
+body .addproperty .form-cart .banner .card .txt-card .h2-card,
+body .addproperty .editproperty .banner .card .txt-card .h2-card {
+  margin: 20px auto;
+  font-size: 1.17rem;
+  color: rgba(25, 24, 37, 0.5098039216);
+}
+body .addproperty .form-cart .banner .card .txt-card .note-card,
+body .addproperty .editproperty .banner .card .txt-card .note-card {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #FF5722;
+}
+body .addproperty .form-cart .banner .card .txt-card .note-card p,
+body .addproperty .editproperty .banner .card .txt-card .note-card p {
+  font: 400;
+  padding: 5px;
 }
 body .addproperty .add-img {
   display: flex;
@@ -3515,11 +3658,28 @@ body .heart {
   transition: color 0.3s ease-in-out;
   cursor: pointer;
 }
+body .heart-edit {
+  z-index: 150;
+  right: 20px;
+  top: 5px;
+  position: absolute;
+  font-size: 48px;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
 body .heart.filled {
   color: red;
   /* Couleur du cœur plein */
 }
 body .heart.empty {
+  color: black;
+  /* Couleur du cœur vide */
+}
+body .heart-edit.filled {
+  color: red;
+  /* Couleur du cœur plein */
+}
+body .heart-edit.empty {
   color: black;
   /* Couleur du cœur vide */
 }
@@ -3535,4 +3695,14 @@ body .star.selected {
 body .star.filled {
   color: gold;
   /* Couleur de l'étoile remplie */
+}
+body .heart-kr {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

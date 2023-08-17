@@ -18,3 +18,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
     L.marker([latitude, longitude], { icon: myIcon }).addTo(map);
 });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     let inputSearchElements = document.querySelectorAll('.name'); // J'ai changé l'ID en classe
+//     let h1Elements = document.querySelectorAll('.h1-complete');  // J'ai également changé l'ID en classe
+
+//     inputSearchElements.forEach((inputSearch, index) => {
+//         let originalH1Content = h1Elements[index].innerHTML;
+
+//         inputSearch.addEventListener('input', function () {
+//             if (inputSearch.value.length > 2) {
+//                 // Ajoutez la valeur de l'input à la suite du contenu original de h1
+//                 h1Elements[index].innerHTML = originalH1Content + inputSearch.value;
+//             } else {
+//                 // Réinitialisez à la valeur originale si la longueur du texte est inférieure à 3
+//                 h1Elements[index].innerHTML = originalH1Content;
+//             }
+//         });
+//     });
+// });
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     let inputNames = document.querySelectorAll('.name');
+//     let h1Elements = document.querySelectorAll('.h1-complete-edit');
+
+//     inputNames.forEach((inputName) => {
+//         inputName.addEventListener('input', function () {
+//             h1Elements.forEach((h1Element) => {
+//                 h1Element.innerHTML = inputName.value;
+//             });
+//         });
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
+    let inputName = document.querySelector('.name input'); // Sélection de l'input avec la classe 'name'
+    let h1Element = document.querySelector('.h1-complete-edit'); // Sélection du h1 avec la classe 'h1-complete-edit'
+
+    inputName.addEventListener('input', function () {
+        h1Element.innerHTML = inputName.value;
+    });
+});
+
+
