@@ -3,7 +3,7 @@
 class  Picture{
     private $id_picture;
     private $id_rental;
-    private $titlePicture;
+    private $title;
    
 
     public function __construct(array $post){
@@ -31,7 +31,7 @@ class  Picture{
     }
 
     public function getTitle(){
-        return $this->titlePicture;
+        return $this->title;
     }
 
 
@@ -44,7 +44,7 @@ class  Picture{
         $this->id_rental = $id_rental;
     }
 
-    public function setTitle(String $titlePicture){
-        $this->titlePicture = $titlePicture;
+    public function setTitle(String $title){
+        $this->title = $title;
     }
 }

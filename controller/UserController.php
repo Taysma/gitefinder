@@ -38,14 +38,14 @@ class UserController extends Controller
     public function addProperty()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            if (isset($_FILES['title']) && $_FILES['title']['error'] === 0) {
+            var_dump($_FILES);
+            if (isset($_FILES['title']) ) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
                 $Pmodel = new PictureModel();
-
-
+    
+    
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 // $cover = $_POST['cover'];
@@ -56,10 +56,8 @@ class UserController extends Controller
                 $latitude = $_POST['latitude'];
                 $longitude = $_POST['longitude'];
                 $selectedCategories = $_POST['categories'];
-                $titlePicture = $_FILES['title']['name'];
-
-
-
+                $titlePictures = $_FILES['title']['name'];
+    
                 $rental = new Rental([
                     'id_user' => $id_user,
                     'title' => $title,
@@ -72,61 +70,45 @@ class UserController extends Controller
                     'latitude' => $latitude,
                     'longitude' => $longitude
                 ]);
-
-
-
+    
                 $insertEtRecupId = $model->addRental($id_user, $rental);
-
-
-
-                $picture = new Picture([
-                    'id_rental' => $insertEtRecupId,
-                    'title' => $titlePicture
-
-
-                ]);
-
-                $picture = $Pmodel->addPicture($picture);
-
-                var_dump($insertEtRecupId);
-                if ($insertEtRecupId) {
-
-
-                    $uploadTitleImg = 'asset/media/images/';
-                    $uploadTitleFile = $uploadTitleImg . $_FILES['title']['name'];
-                    $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'], $uploadTitleFile);
-
-                    if (!$controleTitleUpload) {
-                        header('Location: ' . $router->generate('uploadError'));
-
-                    }
-
-                    
-
-
-
-
-                    foreach ($selectedCategories as $id_category) {
-                        $model->addRentalCategory($insertEtRecupId, $id_category);
-                    }
-
-
-
-
-                     header('Location: ' . $router->generate('userProperty'));
-
-
+                var_dump($selectedCategories);
+                foreach ($selectedCategories as $id_category) {
+                    $model->addRentalCategory($insertEtRecupId, $id_category);
                 }
 
+    
+                if ($insertEtRecupId) {
+                    $uploadTitleImg = 'asset/media/images/';
+                    
+                    foreach ($titlePictures as $index => $titlePicture) {
+                        $uploadTitleFile = $uploadTitleImg . $titlePicture;
+                        $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
+    
+                        if (!$controleTitleUpload) {
+                            // Gérer l'échec du téléchargement
+                        }
+    
+                        $picture = new Picture([
+                            'id_rental' => $insertEtRecupId,
+                            'title' => $titlePicture
+                        ]);
+    
+                        $picture = $Pmodel->addPicture($picture);
+                    }
+
+                   
+                    $picturesString = "";
+                    foreach ($titlePictures as $titlePicture) {
+                        $picturesString .= "Image Title: $titlePicture\n";
+                    }
+    
+                    //header('Location: ' . $router->generate('userProperty'));
+                }
             }
         }
-
-
-
-
-
-
     }
+    
 
     public function login()
     {
