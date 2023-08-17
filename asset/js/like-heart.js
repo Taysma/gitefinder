@@ -1,12 +1,20 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     const heartIcons = document.getElementsByClassName('heart');
+// // Vérifiez si le cookie 'userLoggedIn' est défini
+// var isLoggedIn = document.cookie.split(';').some((item) => item.trim().startsWith('userLoggedIn='));
 
-//     for (let i = 0; i < heartIcons.length; i++) {
-//         const heartIcon = heartIcons[i];
+// document.addEventListener('DOMContentLoaded', function () {
+//     var heartIcons = document.getElementsByClassName('heart');
+
+//     for (var i = 0; i < heartIcons.length; i++) {
+//         var heartIcon = heartIcons[i];
 
 //         heartIcon.addEventListener('click', function () {
+//             // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
+//             if (!isLoggedIn) {
+//                 window.location.href = '/projets/gitefinder/login';
+//                 return;
+//             }
 
-//             let likeCount = this.dataset.likeCount ? Number(this.dataset.likeCount) : 0;
+//             var likeCount = this.dataset.likeCount ? Number(this.dataset.likeCount) : 0;
 //             likeCount++;
 
 //             if (likeCount % 2 === 1) {
@@ -23,30 +31,27 @@
 
 //             this.dataset.likeCount = likeCount;
 
-
-//             const idRental = this.dataset.giteId;
-//             const method = this.classList.contains('filled') ? 'DELETE' : 'POST';
-
-//             // Make an AJAX request to the server
-//             fetch('./controller/UserController.php', {
-//                 method: method,
+//             // Envoi de la requête AJAX au serveur
+//             fetch('WishlistModel.php', {
+//                 method: 'POST',
 //                 headers: {
-//                     'Content-Type': 'application/json'
+//                     'Content-Type': 'application/x-www-form-urlencoded'
 //                 },
-//                 body: JSON.stringify({
-//                     id_rental: idRental,
-//                     method: method
-//                 })
+//                 body: 'id_user=' + userId + '&id_rental=' + this.dataset.giteId
 //             })
-//                 .then(response => {
-//                     console.log('Response:', response);
-//                     return response.json();
+//                 .then(function (response) {
+//                     if (response.ok) {
+//                         // Requête réussie
+//                         console.log('Le like a été mis à jour avec succès');
+//                     } else {
+//                         // Erreur lors de la requête
+//                         console.log('Une erreur s\'est produite lors de la mise à jour du like');
+//                     }
 //                 })
-
-//                 .catch(error => {
-//                     console.error('Error:', error);
+//                 .catch(function (error) {
+//                     // Erreur lors de la requête
+//                     console.log('Une erreur s\'est produite lors de la mise à jour du like :', error);
 //                 });
-
 //         });
 //     }
 // });

@@ -6,13 +6,13 @@ class ReservationModel extends Model
     {
         $id_user = $_SESSION['id_user'];
         $id_rental = $reservation->getId_rental();
-        $checkin_date = $reservation->getCheckin_date();
-        $checkout_date = $reservation->getCheckout_date();
+        $checkin_date = $this->convertToMySQLDateFormat($reservation->getCheckin_date());
+        $checkout_date = $this->convertToMySQLDateFormat($reservation->getCheckout_date());
         $num_guest = $reservation->getNum_guest();
         $total_price = $reservation->getTotal_price();
 
         $req = $this->getDb()->prepare("INSERT INTO `reservation` (`id_user`, `id_rental`, `checkin_date`, `checkout_date`, `num_guest`, `total_price`) 
-        VALUES (:id_user, :id_rental, :checkin_date, :checkout_date, :num_guest, :total_price)");
+            VALUES (:id_user, :id_rental, :checkin_date, :checkout_date, :num_guest, :total_price)");
 
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
         $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
@@ -23,6 +23,18 @@ class ReservationModel extends Model
 
         $req->execute();
     }
+
+    private function convertToMySQLDateFormat($date)
+    {
+        return \DateTime::createFromFormat('d-m-Y', $date)->format('Y-m-d');
+    }
+
+
+
+
+
+
+
 
     //Read
     public function getAllUserReservation()

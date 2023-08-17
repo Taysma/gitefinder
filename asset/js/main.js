@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const buttonSearch = document.querySelector('.button-search');
-    const searchBar = document.querySelector('.search-bar-form');
-    const menuBurger = document.querySelector('.menu-burger-header');
+document.addEventListener("DOMContentLoaded", function () {
+    let buttonSearch = document.querySelector('.button-search');
+    let searchBar = document.querySelector('.search-bar-form');
+    let menuBurger = document.querySelectorAll('.menu-burger-header');
     let isSearchBarVisible = false;
     let isAboveThreshold = window.innerWidth > 769;
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //menu burger
-let btnBurger = document.getElementsByClassName('menu-burger-header')[0];
+let btnBurger = document.querySelector('.menu-burger-header');
 let menuModal = document.getElementById('burger-menu-modal');
 let menuOpen = false; // Booléen pour garder une trace de l'état du menu
 
@@ -74,7 +74,7 @@ if (btnBurger && menuModal) {
             menuModal.style.display = 'none';
             menuOpen = false;
         } else {
-            menuModal.style.display = 'block';
+            menuModal.style.display = 'flex';
             menuOpen = true;
         }
     });
@@ -107,47 +107,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // image profil
 
-// Utilisez l'événement DOMContentLoaded pour vous assurer que le DOM est chargé avant d'ajouter l'événement
-document.addEventListener("DOMContentLoaded", function () {
-    // Sélectionnez l'élément de la photo de profil et l'input de téléchargement de fichier
-    const profilePicture = document.getElementById('profile-picture');
-    const profileUpload = document.getElementById('profile-upload');
 
-    // Fonction pour mettre à jour l'image de profil
-    function updatePicture(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
 
-        reader.onload = function () {
-            profilePicture.style.backgroundImage = `url(${reader.result})`;
-        };
 
-        if (file) {
-            reader.readAsDataURL(file);
-        }
+
+
+
+function copyToClipboard(text) {
+    lettextarea = document.createElement("textarea");
+    textarea.textContent = text;
+    textarea.style.position = "fixed";
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+        document.execCommand("copy");
+    } catch (ex) {
+        console.warn("Copy to clipboard failed.", ex);
+        return false;
+    } finally {
+        document.body.removeChild(textarea);
     }
+}
 
-    // Ajoutez un événement de changement de fichier à l'input de téléchargement
-    profileUpload.addEventListener('change', updatePicture);
-});
+function shareOnFacebook() {
+    const currentURL = window.location.href;
+    const fbShareURL = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(currentURL);
+    window.open(fbShareURL, '_blank');
+}
+
+function shareOnTwitter() {
+    const currentURL = window.location.href;
+    const twitterShareURL = "https://twitter.com/share?url=" + encodeURIComponent(currentURL);
+    window.open(twitterShareURL, '_blank');
+}
+
+function shareOnWhatsApp() {
+    const currentURL = window.location.href;
+    const whatsappShareURL = "https://wa.me/?text=" + encodeURIComponent(currentURL);
+    window.open(whatsappShareURL, '_blank');
+}
+
+function shareOnInstagram() {
+    // Discord n'a pas de lien de partage direct, donc nous copierons simplement l'URL pour l'utilisateur
+    const currentURL = window.location.href;
+    copyToClipboard(currentURL);
+    alert("Lien copié dans le presse-papiers. Collez-le dans Discord pour le partager !");
+    // const currentURL = window.location.href;
+    // const twitterShareURL = "https://www.instagram.com/share?url=" + encodeURIComponent(currentURL);
+    // window.open(twitterShareURL, '_blank');
+}
 
 
-// edit profil
-document.addEventListener("DOMContentLoaded", function () {
-    let btnIconEdit = document.getElementById('edit-icon');
-    let containerProfil = document.getElementsByClassName('profil-information')[0];
-    let containerInformationProfil = document.getElementsByClassName('name-lastname-email-number')[0];
-    let containerTitle = document.getElementsByClassName('title-img-btn')[0]; // Correction ici
 
-    btnIconEdit.addEventListener('click', function () {
-        containerProfil.style.display = "block";
-        containerInformationProfil.style.display = "none";
-        containerTitle.style = "margin:auto;";
-    });
-});
-
-
-
+// Attacher les écouteurs d'événements aux boutons
+document.getElementById('facebookShareButton').addEventListener('click', shareOnFacebook);
+document.getElementById('twitterShareButton').addEventListener('click', shareOnTwitter);
+document.getElementById('whatsappShareButton').addEventListener('click', shareOnWhatsApp);
+document.getElementById('instagramShareButton').addEventListener('click', shareOnInstagram);
 
 
 
