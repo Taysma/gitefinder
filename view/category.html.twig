@@ -13,52 +13,50 @@
 {% endblock %}
 
 {% block content %}
-	<section id="homepage" class="limit-size">
-		<nav class="breadcrumb" aria-label="breadcrumb">
-			<ol class="ol-breadcrumb">
-				<li class="breadcrumb-item">
-					<a href="{{ path('home') }}">Acceuille &#x3008;</a>
-				</li>
-				<li>
-					<h2>{{ category.name }}</h2>
-				</li>
-			</ol>
-		</nav>
+<section id="homepage" class="limit-size">
+	<nav class="breadcrumb" aria-label="breadcrumb">
+		<ol class="ol-breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{{ path('home') }}">Acceuille &#x3008;</a>
+			</li>
+
+			<h2>{{ category.name }}</h2>
+	</ol>
+</nav>
 
 
-		{% if rentals is empty %}
-			<p>Pas de logement dans cette categorie.</p>
-		{% else %}
+	{% if rentals is empty %}
+		<p>Pas de logement dans cette categorie.</p>
+	{% else %}
 
-			<div class="gallery-grid">
-				{% for rental in rentals %}
-					<div class="card">
-						<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ rental.id_rental }}"></i>
-						<div class="img-card">
-							<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
-								<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
-							</a>
+	<div class="gallery-grid">
+		{% for rental in rentals %}
+			<div class="card">
+				<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ rental.id_rental }}"></i>
+				<div class="img-card">
+					<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
+						<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
+					</a>
+				</div>
+				<div class="txt-card">
+					<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
+						<div class="title-card">
+							<div class="h1-card">
+								<h1>{{ rental.title }}</h1>
+							</div>
+							<p>{{ rental.price }}€</p>
 						</div>
-						<div class="txt-card">
-							<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
-								<div class="title-card">
-									<div class="h1-card">
-										<h1>{{ rental.title }}</h1>
-									</div>
-									<p>{{ rental.price }}€</p>
-								</div>
-								<h2 class="h2-card">{{ rental.country }}</h2>
-								<div class="note-card">
-									<p>4</p>
-									<span>
-										<img src="{{ asset('/media/icon/etoile.svg') }}" alt="">
-									</span>
-								</div>
-							</a>
+						<h2 class="h2-card">{{ rental.country }}</h2>
+						<div class="note-card">
+							<p>4</p>
+							<span>
+								<img src="{{ asset('/media/icon/etoile.svg') }}" alt="">
+							</span>
 						</div>
-					</div>
-				{% endfor %}
+					</a>
+				</div>
 			</div>
-		{% endif %}
-	</section>
-{% endblock %}
+		{% endfor %}
+	</div>
+	{% endif %}
+</section>{% endblock %}

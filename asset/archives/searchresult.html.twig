@@ -1,9 +1,15 @@
 {% extends "template.html.twig" %}
 
-{% block title %}Your Search Results
+{% block title %}Résultat des recherches
 {% endblock %}
 
-{% block header %}{% include 'header.html.twig' with {'categories' : cats } %}{% endblock %}
+{% block header %}
+	{% include 'header.html.twig' %}
+{% endblock %}
+
+{% block filters %}
+	{% include "filter.html.twig" with {'categories' : cats } %}
+{% endblock %}
 
 
 {% block content %}
@@ -26,4 +32,5 @@
 		{% if message %}<p>{{ message }}</p>{% endif %}	
 
 		</section>
+		
 {% endblock %}

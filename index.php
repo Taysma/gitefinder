@@ -53,7 +53,7 @@ $router->map('POST', '/nouveau', 'RentalController#newReservation', 'addReservat
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 
 //                                            SEARCH
-// $router->map('GET', '/search', 'SearchController#searchResult', 'search');
+$router->map('GET', '/search', 'SearchController#searchResult', 'search');
 
 $match = $router->match();
 
