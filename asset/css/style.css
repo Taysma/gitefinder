@@ -896,6 +896,12 @@ body .article .container-article-img .rating-comment-location-share-like .commen
     font-size: 0.8rem;
   }
 }
+@media screen and (max-width: 374px) {
+  body .article .container-article-img .rating-comment-location-share-like .rating,
+  body .article .container-article-img .rating-comment-location-share-like .comment {
+    font-size: 1rem;
+  }
+}
 body .article .container-article-img .rating-comment-location-share-like .location {
   font-size: 1.4rem;
 }
@@ -907,6 +913,11 @@ body .article .container-article-img .rating-comment-location-share-like .locati
 @media screen and (max-width: 750px) {
   body .article .container-article-img .rating-comment-location-share-like .location {
     font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 374px) {
+  body .article .container-article-img .rating-comment-location-share-like .location {
+    display: none;
   }
 }
 body .article .container-article-img .rating-comment-location-share-like .share {
@@ -1224,7 +1235,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   width: 100%;
   justify-content: space-between;
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 430px) {
   body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental {
     flex-direction: column;
     margin: auto;
@@ -1336,12 +1347,23 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
     max-width: 450px;
   }
 }
+@media screen and (max-width: 900px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article {
+    padding: initial;
+  }
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation {
   border-radius: 10px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   height: -moz-fit-content;
   height: fit-content;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation {
+    padding: initial;
+    margin: 20px auto;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment {
   padding: 30px;
@@ -1351,22 +1373,45 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment {
+    padding: initial;
+    margin: 10px auto;
+    gap: 8px;
+  }
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device .prince {
   font-size: 1.3rem;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device .prince {
+    font-size: 0.97rem;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device .night-card-reservation {
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.368627451);
+  white-space: nowrap;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device,
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .star-rating,
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .comment {
   color: #191825;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device,
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .star-rating,
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .comment {
+    font-size: 0.8rem;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .fa-solid {
   color: #FAC800;
-  font-size: 24px;
+  font-size: 1rem;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .star-rating .rating-img {
   width: auto;
@@ -1543,7 +1588,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
   width: 100%;
 }
 body .article .comment-container {
-  margin: 20px 20px;
+  margin: 60px 20px;
   height: auto;
   max-width: 1440px;
   display: flex;
