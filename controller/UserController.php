@@ -296,7 +296,7 @@ class UserController extends Controller
                     'longitude' => $longitude
                 ]);
     
-                $insertEtRecupId = $model->addRental($id_user, $rental);
+                $model->updateRental($id_user, $rental);
                 var_dump($selectedCategories);
                 foreach ($selectedCategories as $id_category) {
                     $model->addRentalCategory($insertEtRecupId, $id_category);
