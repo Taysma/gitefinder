@@ -576,13 +576,22 @@ body header .burger-menu-modal .btn-value {
   display: flex;
   position: relative;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   cursor: pointer;
   border-radius: 4px;
 }
+body header .burger-menu-modal .btn-value img {
+  width: 40px;
+  border-radius: 99px;
+}
+body header .burger-menu-modal .btn-value span {
+  font: 800;
+  font-size: 1rem;
+  text-align: center;
+}
 body header .burger-menu-modal .btn-value .svg-icon {
   width: 100%;
-  max-width: 24px;
+  max-width: 40px;
 }
 body header .burger-menu-modal .value:not(:active):hover,
 body header .burger-menu-modal .value:focus {
@@ -887,6 +896,12 @@ body .article .container-article-img .rating-comment-location-share-like .commen
     font-size: 0.8rem;
   }
 }
+@media screen and (max-width: 374px) {
+  body .article .container-article-img .rating-comment-location-share-like .rating,
+  body .article .container-article-img .rating-comment-location-share-like .comment {
+    font-size: 1rem;
+  }
+}
 body .article .container-article-img .rating-comment-location-share-like .location {
   font-size: 1.4rem;
 }
@@ -898,6 +913,11 @@ body .article .container-article-img .rating-comment-location-share-like .locati
 @media screen and (max-width: 750px) {
   body .article .container-article-img .rating-comment-location-share-like .location {
     font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 374px) {
+  body .article .container-article-img .rating-comment-location-share-like .location {
+    display: none;
   }
 }
 body .article .container-article-img .rating-comment-location-share-like .share {
@@ -1062,14 +1082,10 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 450px;
   padding: 10px;
   margin: auto;
-}
-@media screen and (max-width: 1090px) {
-  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article {
-    width: 50%;
-  }
+  text-align: justify;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article {
   display: flex;
@@ -1079,6 +1095,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 @media screen and (max-width: 1100px) {
   body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article {
     gap: 5px;
+    flex-wrap: wrap;
   }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .title-article .h1-title-article {
@@ -1092,6 +1109,11 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .profil-user-article {
   display: flex;
   gap: 20px;
+}
+@media screen and (max-width: 450px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .profil-user-article {
+    flex-direction: column;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .profil-user-article .img-profil {
   width: 64px;
@@ -1128,6 +1150,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article {
   margin: 0 auto;
   max-width: 750px;
+  width: 100%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .title-star-rating {
   display: flex;
@@ -1150,11 +1173,14 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   width: 100%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition {
-  height: 70px;
-  margin: 20px 12px;
   display: flex;
   align-items: center;
   gap: 10px;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition {
+    text-align: initial;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition .condition-img-span {
   display: flex;
@@ -1171,29 +1197,91 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .content-user-for-utulisateur {
   margin: 30px auto;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .title-liste {
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition {
+  display: flex;
+  flex-direction: column;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental {
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .title-liste {
   padding: 20px;
   font-size: 1.4rem;
   color: #191825;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-container-rental {
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul {
   display: flex;
-  padding: 10px;
-  width: 100%;
-  height: auto;
+  gap: 20px;
   justify-content: space-between;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-container-rental ul {
+@media screen and (max-width: 1100px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul {
+    font-size: 0.98rem;
+    margin: auto;
+  }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul ul {
   width: auto;
-  display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 30px;
+  gap: 35px;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-stuf-container-rental .stuf-chambre {
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental {
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  margin: 10px auto;
+}
+@media screen and (max-width: 430px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental {
+    flex-direction: column;
+    margin: auto;
+  }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .title-liste {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #191825;
+  white-space: nowrap;
+}
+@media screen and (max-width: 350px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .title-liste {
+    margin: 15px auto;
+  }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 10px;
+  white-space: nowrap;
+}
+@media screen and (max-width: 350px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list {
+    display: flex;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 1100px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list {
+    font-size: 0.98rem;
+    margin: auto;
+  }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list ul {
+  width: auto;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 35px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps {
   width: -moz-fit-content;
@@ -1240,7 +1328,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-share button:focus {
   background-color: rgb(255, 255, 255);
-  margin-bottom: 50%;
+  margin-bottom: -45%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article {
   display: flex;
@@ -1259,12 +1347,23 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
     max-width: 450px;
   }
 }
+@media screen and (max-width: 900px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article {
+    padding: initial;
+  }
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation {
   border-radius: 10px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   height: -moz-fit-content;
   height: fit-content;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation {
+    padding: initial;
+    margin: 20px auto;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment {
   padding: 30px;
@@ -1274,22 +1373,45 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment {
+    padding: initial;
+    margin: 10px auto;
+    gap: 8px;
+  }
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device .prince {
   font-size: 1.3rem;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device .prince {
+    font-size: 0.97rem;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device .night-card-reservation {
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.368627451);
+  white-space: nowrap;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device,
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .star-rating,
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .comment {
   color: #191825;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .prince-device,
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .star-rating,
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .comment {
+    font-size: 0.8rem;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .fa-solid {
   color: #FAC800;
-  font-size: 24px;
+  font-size: 1rem;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation .prince-rating-comment .star-rating .rating-img {
   width: auto;
@@ -1466,18 +1588,32 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
   width: 100%;
 }
 body .article .comment-container {
-  width: 100%;
-  margin: 20px auto;
+  margin: 60px 20px;
   height: auto;
   max-width: 1440px;
   display: flex;
   justify-content: start;
+}
+@media screen and (max-width: 450px) {
+  body .article .comment-container {
+    flex-direction: column;
+  }
 }
 body .article .comment-container .star-comment {
   display: flex;
   gap: 20px;
   font-size: 1.5rem;
   margin: 20px 10px;
+}
+@media screen and (max-width: 450px) {
+  body .article .comment-container .star-comment {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  body .article .comment-container .star-comment .star {
+    font-size: 1rem;
+  }
 }
 body .article .comment-flex {
   display: flex;
@@ -1515,12 +1651,22 @@ body .article .comment-flex .comment-img-p .name-comment-p .name-rating {
 body .article .comment-flex .comment-img-p .name-comment-p .name-rating .name-comment .name {
   font-size: 1.2rem;
 }
+@media screen and (max-width: 450px) {
+  body .article .comment-flex .comment-img-p .name-comment-p .name-rating .name-comment .name {
+    font-size: 1rem;
+  }
+}
 body .article .comment-flex .comment-img-p .name-comment-p .name-rating .note-card {
   display: flex;
   align-items: center;
   font-size: 20px;
   align-items: center;
   gap: 5px;
+}
+@media screen and (max-width: 450px) {
+  body .article .comment-flex .comment-img-p .name-comment-p .name-rating .note-card {
+    font-size: 1rem;
+  }
 }
 body .article .comment-flex .comment-img-p .name-comment-p .name-rating .note-card .img-note-card {
   width: 20px;
@@ -1905,6 +2051,18 @@ body .addproperty .btn {
 body .addproperty .btn #btn-add {
   background-color: #0056b3;
 }
+body .addproperty .cover-indicator {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px;
+  border-radius: 5px;
+}
+body .addproperty .cover-selected .cover-indicator {
+  display: block;
+}
 body .addproperty .icon-add {
   width: 100%;
   text-align: center;
@@ -2044,6 +2202,13 @@ body .addproperty .editproperty {
   position: absolute;
   width: 100%;
 }
+@media screen and (max-width: 1100px) {
+  body .addproperty .form-cart,
+  body .addproperty .editproperty {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 body .addproperty .form-cart .close-img,
 body .addproperty .editproperty .close-img {
   position: absolute;
@@ -2067,7 +2232,11 @@ body .addproperty .editproperty h2 {
 body .addproperty .form-cart .profil-information,
 body .addproperty .editproperty .profil-information {
   width: 100%;
-  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }
 body .addproperty .form-cart .profil-information .container-form,
 body .addproperty .editproperty .profil-information .container-form {
@@ -2078,15 +2247,6 @@ body .addproperty .editproperty .profil-information .container-form {
   padding: 10px;
   align-items: center;
   justify-content: space-between;
-}
-body .addproperty .form-cart .profil-information .container-form .accommodation-types,
-body .addproperty .editproperty .profil-information .container-form .accommodation-types {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  /* 2 colonnes de largeur égale */
-  gap: 10px;
 }
 body .addproperty .form-cart .profil-information .container-form label,
 body .addproperty .editproperty .profil-information .container-form label {
@@ -2106,6 +2266,30 @@ body .addproperty .editproperty .profil-information .container-form .name-addres
     flex-direction: column;
     align-items: center;
   }
+}
+body .addproperty .form-cart .profil-information .container-form .name-address .accommodation-types,
+body .addproperty .editproperty .profil-information .container-form .name-address .accommodation-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  max-width: 300px;
+  position: absolute;
+  z-index: 999;
+  border-radius: 8px;
+  text-align: justify;
+}
+body .addproperty .form-cart .profil-information .container-form .name-address .accommodation-types .data,
+body .addproperty .editproperty .profil-information .container-form .name-address .accommodation-types .data {
+  width: 90%;
+  margin: 10px auto;
+  font-size: 1rem;
+  font: 400;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 body .addproperty .form-cart .profil-information .container-form input,
 body .addproperty .form-cart .profil-information .container-form textarea,
@@ -2197,6 +2381,7 @@ body .addproperty .editproperty .profil-information .container-form .checkbox-gr
   margin: auto;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 80%;
   z-index: 999;
   padding: 10px;
   border: 1px solid rgba(14, 14, 14, 0.1607843137);
@@ -2346,6 +2531,21 @@ body .addproperty .editproperty .profil-information .container-form .latitude-lo
   visibility: hidden;
   position: absolute;
 }
+body .addproperty .form-cart .profil-information .container-form .couverture,
+body .addproperty .editproperty .profil-information .container-form .couverture {
+  width: 100%;
+  background-color: #007bff;
+}
+body .addproperty .form-cart .profil-information .container-form .couverture .label-input,
+body .addproperty .editproperty .profil-information .container-form .couverture .label-input {
+  max-width: 60%;
+  border: 1px solid black;
+  margin: auto;
+}
+body .addproperty .form-cart .profil-information .container-form .couverture .label-input .cover,
+body .addproperty .editproperty .profil-information .container-form .couverture .label-input .cover {
+  background-color: #007bff;
+}
 body .addproperty .form-cart .profil-information #save-changes-btn,
 body .addproperty .editproperty .profil-information #save-changes-btn {
   width: -moz-fit-content;
@@ -2359,16 +2559,16 @@ body .addproperty .editproperty .profil-information #save-changes-btn {
   cursor: pointer;
   height: auto;
 }
-body .addproperty .form-cart .add-edit-delete,
-body .addproperty .editproperty .add-edit-delete {
+body .addproperty .form-cart .profil-information .add-edit-delete,
+body .addproperty .editproperty .profil-information .add-edit-delete {
   display: flex;
   width: 100%;
   gap: 20px;
   max-width: 500px;
   align-items: center;
 }
-body .addproperty .form-cart .add-edit-delete #edit-changes-btn,
-body .addproperty .editproperty .add-edit-delete #edit-changes-btn {
+body .addproperty .form-cart .profil-information .add-edit-delete #edit-changes-btn,
+body .addproperty .editproperty .profil-information .add-edit-delete #edit-changes-btn {
   width: -moz-fit-content;
   width: fit-content;
   color: #F7F7F7;
@@ -2438,15 +2638,20 @@ body .addproperty .editproperty .cart #delete-changes-btn {
 }
 body .addproperty .form-cart .banner,
 body .addproperty .editproperty .banner {
+  width: 100%;
   max-width: 600px;
   display: flex;
-  height: -moz-fit-content;
-  height: fit-content;
+  position: relative;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1100px) {
   body .addproperty .form-cart .banner,
   body .addproperty .editproperty .banner {
-    display: none;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    padding: 22px;
   }
 }
 body .addproperty .form-cart .banner .img-banner,
@@ -2454,6 +2659,94 @@ body .addproperty .editproperty .banner .img-banner {
   border-radius: 50px;
   width: 100%;
   padding: 10px;
+}
+body .addproperty .form-cart .banner .card,
+body .addproperty .editproperty .banner .card {
+  width: 100%;
+  max-width: 370px;
+  max-height: 380px;
+  background-color: aliceblue;
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px rgba(13, 38, 76, 0.19);
+  position: sticky;
+  top: 30px;
+}
+body .addproperty .form-cart .banner .card:hover,
+body .addproperty .editproperty .banner .card:hover {
+  transform: scale(1.012);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+}
+body .addproperty .form-cart .banner .card .img-card,
+body .addproperty .editproperty .banner .card .img-card {
+  width: 100%;
+  height: 220px;
+}
+body .addproperty .form-cart .banner .card .img-card img,
+body .addproperty .editproperty .banner .card .img-card img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  image-rendering: -webkit-optimize-contrast;
+}
+body .addproperty .form-cart .banner .card .txt-card,
+body .addproperty .editproperty .banner .card .txt-card {
+  padding: 10px;
+  width: 100%;
+  color: black;
+  height: auto;
+  animation: 1.9s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-down both;
+}
+@keyframes wipe-in-down {
+  from {
+    -webkit-clip-path: inset(0 0 100% 0);
+            clip-path: inset(0 0 100% 0);
+  }
+  to {
+    -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+  }
+}
+body .addproperty .form-cart .banner .card .txt-card .title-card,
+body .addproperty .editproperty .banner .card .txt-card .title-card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+}
+body .addproperty .form-cart .banner .card .txt-card .title-card .h1-card,
+body .addproperty .editproperty .banner .card .txt-card .title-card .h1-card {
+  font-size: 0.77rem;
+  color: #191825;
+}
+body .addproperty .form-cart .banner .card .txt-card .title-card p,
+body .addproperty .editproperty .banner .card .txt-card .title-card p {
+  text-align: right;
+  font-size: 1.35rem;
+  color: #F85E9F;
+}
+body .addproperty .form-cart .banner .card .txt-card .h2-card,
+body .addproperty .editproperty .banner .card .txt-card .h2-card {
+  margin: 20px auto;
+  font-size: 1.17rem;
+  color: rgba(25, 24, 37, 0.5098039216);
+}
+body .addproperty .form-cart .banner .card .txt-card .note-card,
+body .addproperty .editproperty .banner .card .txt-card .note-card {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #FF5722;
+}
+body .addproperty .form-cart .banner .card .txt-card .note-card p,
+body .addproperty .editproperty .banner .card .txt-card .note-card p {
+  font: 400;
+  padding: 5px;
 }
 body .addproperty .add-img {
   display: flex;
@@ -3415,13 +3708,12 @@ body footer .footer-mobile {
 }
 @media screen and (max-width: 768px) {
   body footer .footer-mobile {
-    display: block;
+    display: none;
     width: 100%;
     height: 70px;
     border-top: 2px solid black;
     position: sticky;
     bottom: 0;
-    display: flex;
     align-items: center;
     justify-content: space-around;
     margin: auto;
@@ -3433,10 +3725,11 @@ body footer .footer-mobile .mobile-footer-user {
   display: flex;
   height: 100%;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: end;
   align-items: center;
   cursor: pointer;
   padding: 5px;
+  position: relative;
 }
 body footer .footer-mobile .mobile-footer-explore:hover,
 body footer .footer-mobile .mobile-footer-favoris:hover,
@@ -3515,11 +3808,28 @@ body .heart {
   transition: color 0.3s ease-in-out;
   cursor: pointer;
 }
+body .heart-edit {
+  z-index: 150;
+  right: 20px;
+  top: 5px;
+  position: absolute;
+  font-size: 48px;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
 body .heart.filled {
   color: red;
   /* Couleur du cœur plein */
 }
 body .heart.empty {
+  color: black;
+  /* Couleur du cœur vide */
+}
+body .heart-edit.filled {
+  color: red;
+  /* Couleur du cœur plein */
+}
+body .heart-edit.empty {
   color: black;
   /* Couleur du cœur vide */
 }
@@ -3535,4 +3845,23 @@ body .star.selected {
 body .star.filled {
   color: gold;
   /* Couleur de l'étoile remplie */
+}
+body .heart-kr {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+}
+body .heart-kr-footer-mobile {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: -22px;
+  background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

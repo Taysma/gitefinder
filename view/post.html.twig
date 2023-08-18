@@ -29,18 +29,7 @@
 					</span>
 				</div>
 				<!-- share -->
-				<div class="share">
-					<img class="img-share sharePopup" src="{{ asset('/media/icon/Font_Awesome_5_solid_share.svg.png') }}" alt="share article" onclick="toggleSharePopup()">
-					<button class="share-button" onclick="toggleSharePopup()">
-						Partager
-						<!-- Bouton de Partage avec Icônes -->
-						<div class="share-popup" id="sharePopup">
-							<img class="icon-img" src="{{ asset('/media/icon/facebook.png') }}" alt="Facebook" onclick="shareOnFacebook()">
-							<img class="icon-img" src="{{ asset('/media/icon/twitter.svg') }}" alt="Twitter" onclick="shareOnTwitter()">
-							<img class="icon-img" src="{{ asset('/media/icon/instagram.png') }}" alt="LinkedIn" onclick="shareOnLinkedIn()">
-						</div>
-					</button>
-				</div>
+
 
 			</div>
 			<!-- Image principale -->
@@ -142,45 +131,58 @@
 							</div>
 							<hr>
 							<!-- liste ce que propose le logement  -->
-							<h4 class="title-liste">Ce que propose ce logement</h4>
-							<div class="list-container-rental">
-								<ul class="ul-list">
-									<li>Parking gratuit sur place</li>
-									<li>Patio ou balcon : privé(e)</li>
-									<li>Brasero</li>
-									<li>Petit déjeuner</li>
-								</ul>
-								<ul class="ul-list">
-									<li>Petit déjeuner</li>
-									<li>Déjeuner</li>
-									<li>Gouter</li>
-									<li>Diner</li>
-								</ul>
-							</div>
-							<hr>
-							<div class="list-stuf-container-rental">
-								<div class="stuf-chambre">
-									<span class="title-liste">Equipements</span>
-									<span class="title-liste">Chambre et linge</span>
-								</div>
+							<div class="container-condition">
+
+
 								<div class="list-container-rental">
-									<ul class="ul-list">
-										<li>Parking gratuit sur place</li>
-										<li>Patio ou balcon : privé(e)</li>
-										<li>Brasero</li>
-										<li>Petit déjeuner</li>
-									</ul>
-									<ul class="ul-list">
-										<li>Petit déjeuner</li>
-										<li>Déjeuner</li>
-										<li>Gouter</li>
-										<li>Diner</li>
-									</ul>
+									<h4 class="title-liste">Ce que propose ce logement</h4>
+									<div class="list-ul">
+										<ul class="ul-list">
+											<li>Parking gratuit sur place</li>
+											<li>Patio ou balcon : privé(e)</li>
+											<li>Brasero</li>
+											<li>Petit déjeuner</li>
+										</ul>
+
+										<ul class="ul-list">
+											<li>Petit déjeuner</li>
+											<li>Déjeuner</li>
+											<li>Gouter</li>
+											<li>Diner</li>
+										</ul>
+									</div>
+								</div>
+								<hr>
+								<div class="list-stuf-container-rental">
+									<div class="liste-rental">
+
+										<span class="title-liste">Equipements</span>
+
+
+										<ul class="ul-list">
+											<li>Parking gratuit sur place</li>
+											<li>Patio ou balcon : privé(e)</li>
+											<li>Brasero</li>
+											<li>Petit déjeuner</li>
+										</ul>
+									</div>
+
+									<div class="liste-rental">
+										<span class="title-liste">Chambre et linge</span>
+										<ul class="ul-list">
+											<li>Petit déjeuner</li>
+											<li>Déjeuner</li>
+											<li>Gouter</li>
+											<li>Diner</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
+
 				<!-- card-reservation-map-article -->
 				<div
 					class="scrool-container-card-maps">

@@ -153,71 +153,216 @@ btnCloseForm.forEach((button) => {
 });
 
 
-// ajout image 
+// // ajout image + ajout dans le container
+// function image() {
+//     // Obtenez tous les éléments avec la classe "picture-rental"
+//     let pictureRentals = document.querySelectorAll('.picture-rental:not(.initialized)');
+
+//     // Parcourez chaque élément
+//     pictureRentals.forEach(function (pictureRental) {
+//         const profileUpload = pictureRental.querySelector('.profile-upload-rental');
+//         const profilePicture = pictureRental.querySelector('.profile-picture');
+
+//         // Mettre à jour l'image de profil lors du changement de fichier
+//         function updatePicture(event) {
+//             const file = event.target.files[0];
+//             const reader = new FileReader();
+
+//             reader.onload = function () {
+//                 profilePicture.style.backgroundImage = `url(${reader.result})`;
+//             };
+
+//             if (file) {
+//                 reader.readAsDataURL(file);
+//             }
+//         }
+
+//         // Attachez les écouteurs d'événements
+//         profileUpload.addEventListener('change', updatePicture);
+//         profilePicture.addEventListener('click', function () {
+//             profileUpload.click();
+//         });
+
+//         // Marquez cet élément comme initialisé
+//         pictureRental.classList.add('initialized');
+//     });
+// }
+// image();
+
+// let btnAddImage = document.querySelectorAll('.addmore-picture');
+// let addImgContainers = document.querySelectorAll('.add-img');
+
+// btnAddImage.forEach(element => {
+//     let clickCount = 0; // Compteur de clics pour ce bouton
+//     let onClick = function () {
+//         if (clickCount >= 4) {
+//             // Supprimer l'écouteur d'événement après 4 clics
+//             element.removeEventListener('click', onClick);
+//             return;
+//         }
+
+//         let htmlContent = '<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" name="title[]" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="profile-upload-rental"  class="profile-picture" style="background-image: url(\'{{ asset("/media/images/" ) }}\')"></label></div></div></div>';
+
+//         // Convertissez la chaîne en un élément DOM
+//         let div = document.createElement('div');
+//         div.innerHTML = htmlContent;
+//         let content = div.firstChild;
+
+//         // Ajoutez le contenu à chaque élément avec la classe '.add-img'
+//         addImgContainers.forEach(container => {
+//             container.append(content.cloneNode(true));
+//         });
+
+//         clickCount++;
+
+//         // Appelez la fonction image() pour initialiser les nouveaux éléments
+//         image();
+//     };
+
+//     element.addEventListener('click', onClick);
+// });
+
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+
+//     const profileUploads = document.querySelectorAll('.profile-upload-rental[name="cover"]');
+//     const profilePictures = document.querySelectorAll('.profile-picture.firstImage');
+//     const imgDisplays = document.querySelectorAll('.img-card.imageContainer img');
+
+//     // Mettre à jour l'image de profil lors du changement de fichier
+//     function updatePicture(event, profilePicture, imgDisplay) {
+//         const file = event.target.files[0];
+//         const reader = new FileReader();
+
+//         reader.onload = function () {
+//             const imageUrl = reader.result;
+//             profilePicture.style.backgroundImage = `url(${imageUrl})`;
+//             imgDisplay.src = imageUrl; // Mettre à jour la source de l'image
+//         };
+
+//         if (file) {
+//             reader.readAsDataURL(file);
+//         }
+//     }
+
+//     // Attachez les écouteurs d'événements pour chaque groupe d'éléments
+//     profileUploads.forEach((uploadElem, index) => {
+//         uploadElem.addEventListener('change', function (event) {
+//             updatePicture(event, profilePictures[index], imgDisplays[index]);
+//         });
+//         profilePictures[index].addEventListener('click', function () {
+//             uploadElem.click();
+//         });
+//     });
+// });
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const profileUpload = document.querySelector('.profile-upload-rental[name="cover"]');
+//     const profilePicture = document.querySelector('.profile-picture.firstImage');
+//     const imgDisplay = document.querySelector('.img-card.imageContainer img'); // Récupère l'image déjà présente
+
+//     // Mettre à jour l'image de profil lors du changement de fichier
+//     function updatePicture(event) {
+//         const file = event.target.files[0];
+//         const reader = new FileReader();
+
+//         reader.onload = function () {
+//             const imageUrl = reader.result;
+//             profilePicture.style.backgroundImage = `url(${imageUrl})`;
+//             imgDisplay.src = imageUrl; // Mettre à jour la source de l'image
+//         };
+
+//         if (file) {
+//             reader.readAsDataURL(file);
+//         }
+//     }
+
+//     // Attachez les écouteurs d'événements
+//     profileUpload.addEventListener('change', updatePicture);
+//     profilePicture.addEventListener('click', function () {
+//         profileUpload.click();
+//     });
+// });
+
+
+
+
+function attachListeners(profileUpload, profilePicture, imgDisplay) {
+    function updatePicture(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function () {
+            profilePicture.style.backgroundImage = `url(${reader.result})`;
+            if (imgDisplay) {
+                imgDisplay.src = reader.result;
+            }
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    profileUpload.addEventListener('change', updatePicture);
+    profilePicture.addEventListener('click', function () {
+        profileUpload.click();
+    });
+}
+
+// ajout image + ajout dans le container
 function image() {
-    // Obtenez tous les éléments avec la classe "picture-rental"
     let pictureRentals = document.querySelectorAll('.picture-rental:not(.initialized)');
 
-    // Parcourez chaque élément
-    pictureRentals.forEach(function (pictureRental) {
+    pictureRentals.forEach(pictureRental => {
         const profileUpload = pictureRental.querySelector('.profile-upload-rental');
         const profilePicture = pictureRental.querySelector('.profile-picture');
 
-        // Mettre à jour l'image de profil lors du changement de fichier
-        function updatePicture(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
+        attachListeners(profileUpload, profilePicture);
 
-            reader.onload = function () {
-                profilePicture.style.backgroundImage = `url(${reader.result})`;
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Attachez les écouteurs d'événements
-        profileUpload.addEventListener('change', updatePicture);
-        profilePicture.addEventListener('click', function () {
-            profileUpload.click();
-        });
-
-        // Marquez cet élément comme initialisé
         pictureRental.classList.add('initialized');
     });
 }
+
 image();
 
 let btnAddImage = document.querySelectorAll('.addmore-picture');
 let addImgContainers = document.querySelectorAll('.add-img');
 
 btnAddImage.forEach(element => {
-    let clickCount = 0; // Compteur de clics pour ce bouton
+    let clickCount = 0;
     let onClick = function () {
         if (clickCount >= 4) {
-            // Supprimer l'écouteur d'événement après 4 clics
             element.removeEventListener('click', onClick);
             return;
         }
 
         let htmlContent = '<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" name="title[]" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="profile-upload-rental"  class="profile-picture" style="background-image: url(\'{{ asset("/media/images/" ) }}\')"></label></div></div></div>';
 
-        // Convertissez la chaîne en un élément DOM
         let div = document.createElement('div');
         div.innerHTML = htmlContent;
         let content = div.firstChild;
 
-        // Ajoutez le contenu à chaque élément avec la classe '.add-img'
         addImgContainers.forEach(container => {
             container.append(content.cloneNode(true));
         });
 
         clickCount++;
 
-        // Appelez la fonction image() pour initialiser les nouveaux éléments
         image();
     };
 
     element.addEventListener('click', onClick);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const profileUploads = document.querySelectorAll('.profile-upload-rental[name="cover"]');
+    const profilePictures = document.querySelectorAll('.profile-picture.firstImage');
+    const imgDisplays = document.querySelectorAll('.img-card.imageContainer img');
+
+    profileUploads.forEach((uploadElem, index) => {
+        attachListeners(uploadElem, profilePictures[index], imgDisplays[index]);
+    });
 });

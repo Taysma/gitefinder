@@ -171,3 +171,39 @@ document.getElementById('instagramShareButton').addEventListener('click', shareO
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    let hearts = document.querySelectorAll('.heart-kr');
+
+    hearts.forEach(heart => {
+        setupHeart(heart);
+    });
+
+    function setupHeart(heart) {
+        let isFilled = false;
+
+        heart.addEventListener('click', function () {
+            isFilled = !isFilled;
+            animateHeart(heart, isFilled);
+        });
+
+        function animateHeart(heartElement, isFilled) {
+            let totalFrames = 28;
+            let frames = Math.floor(totalFrames / 2);
+            let interval = 1000 / frames;
+
+            let currentFrame = 0;
+            let position = isFilled ? -currentFrame * 100 : 0;
+
+            let animation = setInterval(function () {
+                heartElement.style.backgroundPosition = `${position}px 0`;
+                currentFrame++;
+
+                if (currentFrame >= frames) {
+                    clearInterval(animation);
+                }
+
+                position = isFilled ? -currentFrame * 100 : 0;
+            }, interval);
+        }
+    }
+});
