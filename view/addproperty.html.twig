@@ -52,7 +52,7 @@
 							<button class="edit-btn" type="button">edit</button>
 
 							<form action="{{ path('deleteProperty') }}" method="POST">
-							<input type="hidden" name="id_rental" value="{{ rental.id_rental }}">
+								<input type="hidden" name="id_rental" value="{{ rental.id_rental }}">
 								<input type="submit" value="delete" id="delete-changes-btn">
 							</form>
 						</div>
@@ -274,12 +274,16 @@
 						<span>Gallerie image :</span>
 						<div class="add-img">
 							<div class="img-profil-rental">
+
 								<div class="container-picture">
+
 									<div class="picture-rental">
+
 										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" style="display: none;">
 										<div class="cover-indicator">Couverture</div>
 
 										<label for="profile-upload-rental" class="profile-picture firstImage" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+
 									</div>
 								</div>
 							</div>

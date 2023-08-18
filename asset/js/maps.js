@@ -289,6 +289,97 @@ btnCloseForm.forEach((button) => {
 
 
 
+// function attachListeners(profileUpload, profilePicture, imgDisplay) {
+//     function updatePicture(event) {
+//         const file = event.target.files[0];
+//         const reader = new FileReader();
+
+//         reader.onload = function () {
+//             profilePicture.style.backgroundImage = `url(${reader.result})`;
+//             if (imgDisplay) {
+//                 imgDisplay.src = reader.result;
+//             }
+//         };
+
+//         if (file) {
+//             reader.readAsDataURL(file);
+//         }
+//     }
+
+//     profileUpload.addEventListener('change', updatePicture);
+//     profilePicture.addEventListener('click', function () {
+//         profileUpload.click();
+//     });
+// }
+
+// // ajout image + ajout dans le container
+// function image() {
+//     let pictureRentals = document.querySelectorAll('.picture-rental:not(.initialized)');
+
+//     pictureRentals.forEach(pictureRental => {
+//         const profileUpload = pictureRental.querySelector('.profile-upload-rental');
+//         const profilePicture = pictureRental.querySelector('.profile-picture');
+
+//         attachListeners(profileUpload, profilePicture);
+
+//         pictureRental.classList.add('initialized');
+//     });
+// }
+
+// image();
+
+// let btnAddImage = document.querySelectorAll('.addmore-picture');
+// let addImgContainers = document.querySelectorAll('.add-img');
+
+// btnAddImage.forEach(element => {
+//     let clickCount = 0;
+//     let onClick = function () {
+//         if (clickCount >= 4) {
+//             element.removeEventListener('click', onClick);
+//             return;
+//         }
+
+//         let htmlContent = '<div class="img-profil-rental"><div class="container-picture">' +
+//             '<form action="" method="POST">' + '<button type="button" class="btn-delete-picture">' +
+//             '<svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" class="icon">' +
+//             '<path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>' +
+//             '</svg></button>' +
+//             '<div class="picture-rental">' +
+//             '<input type="file" name="title[]" class="profile-upload-rental" accept="image/*" style="display: none;">' +
+//             '<label for="profile-upload-rental" class="profile-picture" style="background-image: url(\'{{ asset("/media/images/") }}\')"></label>' +
+//             '</div>' +
+
+//             '</form>' +
+//             '</div></div>';
+
+//         let div = document.createElement('div');
+//         div.innerHTML = htmlContent;
+//         let content = div.firstChild;
+
+//         addImgContainers.forEach(container => {
+//             container.append(content.cloneNode(true));
+//         });
+
+//         clickCount++;
+
+//         image();
+//     };
+
+//     element.addEventListener('click', onClick);
+// });
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const profileUploads = document.querySelectorAll('.profile-upload-rental[name="cover"]');
+//     const profilePictures = document.querySelectorAll('.profile-picture.firstImage');
+//     const imgDisplays = document.querySelectorAll('.img-card.imageContainer img');
+
+//     profileUploads.forEach((uploadElem, index) => {
+//         attachListeners(uploadElem, profilePictures[index], imgDisplays[index]);
+//     });
+// });
+
+
+
 function attachListeners(profileUpload, profilePicture, imgDisplay) {
     function updatePicture(event) {
         const file = event.target.files[0];
@@ -306,13 +397,19 @@ function attachListeners(profileUpload, profilePicture, imgDisplay) {
         }
     }
 
-    profileUpload.addEventListener('change', updatePicture);
-    profilePicture.addEventListener('click', function () {
+    function triggerProfileUpload() {
         profileUpload.click();
-    });
+    }
+
+    // Remove existing listeners to prevent duplication
+    profileUpload.removeEventListener('change', updatePicture);
+    profilePicture.removeEventListener('click', triggerProfileUpload);
+
+    // Add the listeners
+    profileUpload.addEventListener('change', updatePicture);
+    profilePicture.addEventListener('click', triggerProfileUpload);
 }
 
-// ajout image + ajout dans le container
 function image() {
     let pictureRentals = document.querySelectorAll('.picture-rental:not(.initialized)');
 
@@ -326,20 +423,46 @@ function image() {
     });
 }
 
+function attachDeleteListeners() {
+    const deleteButtons = document.querySelectorAll('.btn-delete-picture');
+    deleteButtons.forEach(button => {
+        button.removeEventListener('click', handleDeleteClick);
+        button.addEventListener('click', handleDeleteClick);
+    });
+}
+
+function handleDeleteClick(event) {
+    const divToRemove = event.currentTarget.closest('.img-profil-rental');
+    if (divToRemove) {
+        divToRemove.remove();
+        if (clickCount > 0) clickCount--;
+        attachDeleteListeners();
+    }
+}
+
 image();
 
 let btnAddImage = document.querySelectorAll('.addmore-picture');
 let addImgContainers = document.querySelectorAll('.add-img');
+let clickCount = 0;
 
 btnAddImage.forEach(element => {
-    let clickCount = 0;
     let onClick = function () {
         if (clickCount >= 4) {
-            element.removeEventListener('click', onClick);
             return;
         }
 
-        let htmlContent = '<div class="img-profil-rental"><div class="container-picture"><div class="picture-rental"><input type="file" name="title[]" class="profile-upload-rental" accept="image/*" style="display: none;"><label for="profile-upload-rental"  class="profile-picture" style="background-image: url(\'{{ asset("/media/images/" ) }}\')"></label></div></div></div>';
+        let htmlContent = '<div class="img-profil-rental"><div class="container-picture">' +
+            '<form action="" method="POST">' + '<button type="button" class="btn-delete-picture">' +
+            '<svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" class="icon">' +
+            '<path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>' +
+            '</svg></button>' +
+            '<div class="picture-rental">' +
+            '<input type="file" name="title[]" class="profile-upload-rental" accept="image/*" style="display: none;">' +
+            '<label for="profile-upload-rental" class="profile-picture" style="background-image: url(\'{{ asset("/media/images/") }}\')"></label>' +
+            '</div>' +
+            '</form>' +
+            '</div></div>';
 
         let div = document.createElement('div');
         div.innerHTML = htmlContent;
@@ -350,8 +473,8 @@ btnAddImage.forEach(element => {
         });
 
         clickCount++;
-
         image();
+        attachDeleteListeners();
     };
 
     element.addEventListener('click', onClick);
@@ -365,4 +488,61 @@ document.addEventListener("DOMContentLoaded", function () {
     profileUploads.forEach((uploadElem, index) => {
         attachListeners(uploadElem, profilePictures[index], imgDisplays[index]);
     });
+
+    attachDeleteListeners();
 });
+
+
+
+
+
+
+// function supprimerItem(id) {
+//     // Remplacez cette URL par l'URL de votre route de suppression
+//     let url = `${id}`;
+
+//     fetch(url, {
+//         method: 'DELETE', // Utilisez la méthode DELETE pour la suppression
+//         headers: {
+//             'Content-Type': 'application/json',
+//             // Ajoutez d'autres en-têtes si nécessaire (par exemple, un token d'authentification)
+//         }
+//     })
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Erreur réseau lors de la tentative de suppression.');
+//             }
+//             return response.json(); // Ou peut-être `response.text()` si vous ne renvoyez pas de JSON
+//         })
+//         .then(data => {
+//             // Traitez la réponse ici. Par exemple, vous pourriez actualiser l'interface utilisateur
+//             // pour refléter la suppression de l'élément.
+//             console.log('Item supprimé avec succès:', data);
+//         })
+//         .catch(error => {
+//             console.error('Il y a eu un problème avec la requête de suppression:', error);
+//         });
+// }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Sélectionnez tous les boutons avec la classe "btn-delete-picture"
+//     const deleteButtons = document.querySelectorAll('.btn-delete-picture');
+
+//     // Ajoutez un écouteur d'événements à chaque bouton
+//     deleteButtons.forEach(button => {
+//         button.addEventListener('click', function(event) {
+//             const id = event.currentTarget.getAttribute('data-id');
+//             if (id) {
+//                 supprimerItem(id);
+
+//                 // Supprimez la div avec la classe .img-profil-rental
+//                 const divToRemove = event.currentTarget.closest('.img-profil-rental');
+//                 if (divToRemove) {
+//                     divToRemove.remove();
+//                 }
+//             } else {
+//                 console.error('ID manquant pour le bouton de suppression.');
+//             }
+//         });
+//     });
+// });
