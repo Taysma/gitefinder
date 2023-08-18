@@ -21,7 +21,7 @@ class WishlistModel extends Model
     public function addWish(Wishlist $wish)
     {
         $id_user = $_SESSION['id_user'];
-        $id_rental = $wish->getId_rental();
+        $id_rental = $_GET['id_rental'];
 
         $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_user`, `id_rental`) VALUES (:id_user, :id_rental)");
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);

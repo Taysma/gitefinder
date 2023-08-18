@@ -378,10 +378,10 @@ class UserController extends Controller
             global $router;
 
             $id_user = $_SESSION['id_user'];
-            //$id_rental = dataset;
+            $id_rental = $_GET['id_rental'];
 
             $favorite = new Wishlist([
-                //'id_rental' => $id_rental,
+                'id_rental' => $id_rental,
                 'id_user' => $id_user,
             ]);
 

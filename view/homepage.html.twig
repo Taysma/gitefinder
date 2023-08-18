@@ -19,7 +19,7 @@
 				<div class="card">
 					{% if session.connect %}
 						{% if rental.id_rental in rentalIdsInWishlist %}
-							<a href="{{ path('deleteFavoris') }}" data-gite-id="{{ rental.id_rental }}">
+							<a href="{{ path('addToWishlist', {'id_rental': rental.id_rental}) }}">
 								<img class="heart"src="{{ asset('/media/icon/heart-full.svg') }}" alt="">
 							</a>
 						{% else %}

@@ -42,7 +42,7 @@ $router->map('POST', '/dashboard/supprimer', 'UserController#deleteProperty', 'd
 
 //                                       USER - FAVORIS
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserWishlist', 'userFavoris');
-$router->map('GET', '/favoris/nouveau', 'UserController#addToWishlist', 'addFavoris');
+$router->map('GET', '/favoris/nouveau/', 'UserController#addToWishlist', 'addFavoris');
 $router->map('GET', '/favoris/supprimer', 'UserController#deleteFromWishlist', 'deleteFavoris');
 
 //                                       USER - RESERVATION
