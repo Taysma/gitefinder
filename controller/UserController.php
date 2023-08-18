@@ -109,7 +109,6 @@ class UserController extends Controller
         }
     }
     
-
     public function login()
     {
         if (!$_POST) {

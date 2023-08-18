@@ -1,0 +1,61 @@
+{% extends "template.html.twig" %}
+
+{% block title %}Résultat des recherches
+{% endblock %}
+
+{% block header %}
+	{% include 'header.html.twig' %}
+{% endblock %}
+
+{% block filters %}
+	{% include "filter.html.twig" with {'categories' : cats } %}
+{% endblock %}
+
+
+{% block content %}
+
+	{% if rentals is empty %}
+		<p>Pas de résultat trouvé suite à votre recherche.</p>
+	{% else %}
+
+		<h2>Résultat(s) de recherche</h2>
+
+		<section id="homepage" class="limit-size">
+			<div class="gallery-grid">
+				{% for rental in rentals %}
+					<div class="card">
+						<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ gite.id }}"></i>
+						<div class="img-card">
+							<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
+								<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
+							</a>
+						</div>
+						<div class="txt-card">
+							<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
+								<div class="title-card">
+									<div class="h1-card">
+										<h1>{{ rental.title }}</h1>
+									</div>
+									<p>{{ rental.price }}€</p>
+								</div>
+								<h2 class="h2-card">{{ rental.country }}</h2>
+								<div class="note-card">
+									<p>4</p>
+									<span>
+										<img src="{{ asset('/media/icon/etoile.svg') }}" alt="">
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
+
+	{% if message %}
+		<p>{{ message }}</p>
+	{% endif %}
+
+{% endblock %}

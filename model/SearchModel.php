@@ -1,5 +1,4 @@
 <?php
-
 class SearchModel extends Model {
 
     public function getSearchResult($searchTerm)
