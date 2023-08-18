@@ -1,9 +1,6 @@
 <?php
 class CategoryModel extends Model
 {
-
-
-   
     public function getAllCategory() //partie category formulaire d'ajout
     {
         $categories = [];
@@ -48,5 +45,4 @@ class CategoryModel extends Model
 
         return $rentals;
     }
-
 }

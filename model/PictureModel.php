@@ -38,19 +38,6 @@ class PictureModel extends Model
         return $picture;
     }
 
-    
-
-    //update
-    public function updatePicture($id_picture, $title)
-    {
-
-        $req = $this->getDb()->prepare("UPDATE picture SET title= :title WHERE id_picture= :id_picture ");
-        
-        $req->bindParam(":id_", $id_picture, PDO::PARAM_INT);
-        $req->bindParam(":title", $title, PDO::PARAM_STR);
-        $req->execute();
-    }
-
 
     //delete
     public function delete(int $id)

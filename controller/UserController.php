@@ -262,6 +262,7 @@ class UserController extends Controller
 
     public function editProperty()
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            
             if (isset($_FILES['title']) ) {
