@@ -38,7 +38,7 @@ class RentalModel extends Model
 
     public function addRentalCategory(int $insertEtRecupId, $id_category) 
     {
-        // var_dump($id_category .' - rental : ' .$insertEtRecupId);
+        
         $req = $this->getDb()->prepare(' INSERT INTO `rental_category`(`id_category`, `id_rental`) VALUES (:id_category, :id_rental)');
         $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
         $req->bindParam(':id_rental', $insertEtRecupId, PDO::PARAM_INT);
@@ -117,7 +117,7 @@ class RentalModel extends Model
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
 
-        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area,  `cover` = :cover,`address` = :address,`content` = :content,  `price` = :price , `latitude` = :latitude, `longitude` = :longitudeWHERE `id_rental` = :id_rental');
+        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area,  `cover` = :cover,`address` = :address,`content` = :content,  `price` = :price , `latitude` = :latitude, `longitude` = :longitude WHERE `id_rental` = :id_rental');
 
         $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
@@ -131,6 +131,19 @@ class RentalModel extends Model
         $req->bindParam(':longitude', $longitude, PDO::PARAM_STR);
 
         $req->execute();
+    }
+
+    public function updateRentalCategory(int $id_rental, $id_category) 
+    {
+        
+        $req = $this->getDb()->prepare('UPDATE `rental_category` SET `id_category`=:id_category WHERE `id_rental`');
+        $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
+        $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
+
+        $req->execute();
+        
+        
+        
     }
 
     public function deleteRental(int $id)
