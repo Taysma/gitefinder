@@ -2754,6 +2754,7 @@ body .addproperty .add-img {
   gap: 10px;
   flex-wrap: wrap;
   align-items: end;
+  justify-content: center;
 }
 body .addproperty .add-img .img-profil-rental {
   border-radius: 999px;
@@ -2818,7 +2819,7 @@ body .addproperty .add-img .img-profil-rental .container-picture .picture-rental
   color: #fff;
   /* Couleur du texte */
   font-size: 16px;
-  opacity: 0;
+  opacity: 1;
   /* Rendre le texte transparent par défaut */
   transition: opacity 0.3s ease-in-out;
   /* Ajouter une transition pour une animation fluide */
