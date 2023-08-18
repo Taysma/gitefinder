@@ -1162,11 +1162,14 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   width: 100%;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition {
-  height: 70px;
-  margin: 20px 12px;
   display: flex;
   align-items: center;
   gap: 10px;
+}
+@media screen and (max-width: 500px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition {
+    text-align: initial;
+  }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .condition .condition-img-span {
   display: flex;
@@ -1183,30 +1186,91 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .user-location-condition .content-user-for-utulisateur {
   margin: 30px auto;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .title-liste {
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition {
+  display: flex;
+  flex-direction: column;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental {
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .title-liste {
   padding: 20px;
+  font-size: 1.4rem;
+  color: #191825;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1100px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul {
+    font-size: 0.98rem;
+    margin: auto;
+  }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul ul {
+  width: auto;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 35px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+@media screen and (max-width: 350px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental {
+    flex-direction: column;
+    margin: auto;
+  }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .title-liste {
+  margin-top: 10px;
   font-size: 1.4rem;
   color: #191825;
   white-space: nowrap;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-container-rental {
-  display: flex;
-  padding: 10px;
-  width: 100%;
-  height: auto;
-  justify-content: space-between;
+@media screen and (max-width: 350px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .title-liste {
+    margin: 15px auto;
+  }
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-container-rental ul {
-  width: auto;
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list {
   display: flex;
+  gap: 5px;
   justify-content: space-between;
   flex-direction: column;
-  gap: 30px;
+  margin-top: 10px;
+  white-space: nowrap;
 }
-body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .list-stuf-container-rental .stuf-chambre {
-  display: flex;
+@media screen and (max-width: 350px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list {
+    display: flex;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 1100px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list {
+    font-size: 0.98rem;
+    margin: auto;
+  }
+}
+body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list ul {
+  width: auto;
   justify-content: space-between;
-  margin: 10px auto;
+  flex-direction: column;
+  gap: 35px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps {
   width: -moz-fit-content;

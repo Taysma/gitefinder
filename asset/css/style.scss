@@ -1476,12 +1476,15 @@ body {
                                 width: 100%;
 
                                 .condition {
-                                    height: 70px;
-                                    margin: 20px 12px;
+                                    // margin: 20px 12px;
                                     display: flex;
                                     align-items: center;
                                     gap: 10px;
+
                                     // background-color: #0056b3;
+                                    @media screen and (max-width:500px) {
+                                        text-align: initial;
+                                    }
 
                                     .condition-img-span {
                                         display: flex;
@@ -1508,44 +1511,113 @@ body {
                                 }
                             }
 
-                            .title-liste {
-                                padding: 20px;
-                                font-size: 1.4rem;
-                                color: #191825;
-                                white-space: nowrap;
-                            }
-
-                            .list-container-rental {
+                            .container-condition {
                                 display: flex;
-                                padding: 10px;
-                                width: 100%;
-                                height: auto;
-                                justify-content: space-between;
+                                flex-direction: column;
 
-                                ul {
-                                    width: auto;
+                                .list-container-rental {
+                                    padding: 10px;
+                                    width: 100%;
+                                    height: auto;
                                     display: flex;
-                                    justify-content: space-between;
                                     flex-direction: column;
-                                    gap: 30px;
+
+                                    .title-liste {
+                                        padding: 20px;
+                                        font-size: 1.4rem;
+                                        color: #191825;
+
+
+
+                                    }
+
+                                    .list-ul {
+                                        display: flex;
+                                        gap: 20px;
+                                        justify-content: space-between;
+
+                                        @media screen and (max-width:1100px) {
+                                            font-size: 0.98rem;
+                                            // flex-direction: column;
+                                            margin: auto;
+                                        }
+
+                                        ul {
+                                            width: auto;
+                                            justify-content: space-between;
+                                            flex-direction: column;
+                                            gap: 35px;
+                                        }
+                                    }
+
+
                                 }
 
-
-                            }
-
-                            .list-stuf-container-rental {
-                                .stuf-chambre {
+                                .list-stuf-container-rental {
                                     display: flex;
+                                    width: 100%;
+                                    // gap: 85px;
                                     justify-content: space-between;
-                                    margin: 10px auto;
+
+                                    @media screen and (max-width:350px) {
+                                        flex-direction: column;
+                                        margin: auto;
+                                    }
+
+                                    .liste-rental {
+                                        display: flex;
+                                        flex-direction: column;
+                                        margin-top: 10px;
+
+
+                                        .title-liste {
+                                            margin-top: 10px;
+                                            font-size: 1.4rem;
+                                            color: #191825;
+                                            white-space: nowrap;
+
+                                            @media screen and (max-width:350px) {
+
+                                                margin: 15px auto;
+                                            }
+                                        }
+
+                                        .ul-list {
+                                            display: flex;
+                                            gap: 5px;
+                                            justify-content: space-between;
+                                            flex-direction: column;
+                                            margin-top: 10px;
+                                            white-space: nowrap;
+
+                                            @media screen and (max-width:350px) {
+                                                display: flex;
+                                                align-items: center;
+
+                                            }
+
+                                            @media screen and (max-width:1100px) {
+                                                font-size: 0.98rem;
+                                                // flex-direction: column;
+                                                margin: auto;
+                                            }
+
+                                            ul {
+                                                width: auto;
+                                                justify-content: space-between;
+                                                flex-direction: column;
+                                                gap: 35px;
+                                            }
+                                        }
+                                    }
+
+
                                 }
                             }
 
                         }
 
                     }
-
-
                 }
 
                 .scrool-container-card-maps {
