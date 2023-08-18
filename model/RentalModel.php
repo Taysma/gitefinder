@@ -33,20 +33,16 @@ class RentalModel extends Model
             $insertEtRecupId = $this->getDb()->lastInsertId();
             return $insertEtRecupId;
         }
-       
     }
 
-    public function addRentalCategory(int $insertEtRecupId, $id_category) 
+    public function addRentalCategory(int $insertEtRecupId, $id_category)
     {
-        
+
         $req = $this->getDb()->prepare(' INSERT INTO `rental_category`(`id_category`, `id_rental`) VALUES (:id_category, :id_rental)');
         $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
         $req->bindParam(':id_rental', $insertEtRecupId, PDO::PARAM_INT);
 
         $req->execute();
-        
-        
-        
     }
 
     public function getLastTenPost()
@@ -133,17 +129,14 @@ class RentalModel extends Model
         $req->execute();
     }
 
-    public function updateRentalCategory(int $id_rental, $id_category) 
+    public function updateRentalCategory(int $id_rental, $id_category)
     {
-        
+
         $req = $this->getDb()->prepare('UPDATE `rental_category` SET `id_category`=:id_category WHERE `id_rental`');
         $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
         $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
 
         $req->execute();
-        
-        
-        
     }
 
     public function deleteRental(int $id)
