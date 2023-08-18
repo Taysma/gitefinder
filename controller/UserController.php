@@ -382,10 +382,6 @@ class UserController extends Controller
                 $favoriteModel = new WishlistModel();
                 $favoriteModel->deleteWish($id_rental, $id_user);
 
-                // Return a JSON response
-                header('Content-Type: application/json');
-                echo json_encode(['success' => true]);
-                exit();
             } else {
                 echo self::getRender('dashboard.html.twig', []);
             }
