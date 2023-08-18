@@ -117,9 +117,9 @@ class RentalModel extends Model
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
 
-        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area,  `cover` = :cover,`address` = :address,`content` = :content,  `price` = :price , `latitude` = :latitude, `longitude` = :longitudeWHERE `id_rental` = :id');
+        $req = $this->getDb()->prepare('UPDATE `rental` SET `title` = :title, `capacity` = :capacity, `surface_area` = :surface_area,  `cover` = :cover,`address` = :address,`content` = :content,  `price` = :price , `latitude` = :latitude, `longitude` = :longitudeWHERE `id_rental` = :id_rental');
 
-        $req->bindParam(':id', $id_rental, PDO::PARAM_INT);
+        $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
         $req->bindParam(':capacity', $capacity, PDO::PARAM_INT);
         $req->bindParam(':surface_area', $surface_area, PDO::PARAM_INT);
