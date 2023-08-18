@@ -113,7 +113,7 @@
 							{% for category in categories %}
 								<div class="checkbox">
 									<label class="checkbox-wrapper">
-										<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+										<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.id_category }}" id="{{ category.id_category }}">
 										<span class="checkbox-tile">
 											<span class="checkbox-icon"><img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></span>
 											<span class="checkbox-label">{{ category.name }}</span>
@@ -146,7 +146,7 @@
 							<div class="img-profil-rental">
 								<div class="container-picture">
 									<div class="picture-rental">
-										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" style="display: none;">
+										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" multiple style="display: none;">
 										<div class="cover-indicator">Couverture</div>
 
 										<label for="profile-upload-rental" class="profile-picture firstImage" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
@@ -203,11 +203,11 @@
 						<div class="name-address">
 							<div class="name">
 								<label for="name">Nom de la location:</label>
-								<input type="text" id='name' class="name-edit" placeholder="Nom de location">
+								<input type="text" id='name' class="name-edit" placeholder="{{ rental.title }}">
 							</div>
 							<div class="address">
 								<label for="address">Adresse:</label>
-								<input type="text" class="address address-edit" name="address" value="">
+								<input type="text" class="address address-edit" name="address" value="{{ rental.address }}">
 								<div class="accommodation-types"></div>
 							</div>
 						</div>
@@ -227,7 +227,7 @@
 								class="number-container">
 								{# Surface_area #}
 								<label for="Surface_area">Surface:</label>
-								<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
+								<input type="text" id="Surface_area" name="surface_area" value="{{ rental.surface_area }}" placeholder="Surface">
 							</div>
 						</div>
 
@@ -235,7 +235,7 @@
 						<div class="price">
 							<label for="price">Prix:</label>
 							<div class="input-span">
-								<input type="number" id="price" name="price" class="input-prince" value="">
+								<input type="number" id="price" name="price" class="input-prince" value="{{ rental.price }}">
 								<span>€</span>
 							</div>
 						</div>
@@ -268,7 +268,7 @@
 						{# description #}
 						<div class="description-container">
 							<label for="content">Description:</label>
-							<textarea id="description" name="content"></textarea>
+							<textarea id="description" name="content" value="{{ rental.content }}"></textarea>
 						</div>
 
 						<span>Gallerie image :</span>

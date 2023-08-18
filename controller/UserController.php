@@ -223,82 +223,7 @@ class UserController extends Controller
                 ]);
     
                 $insertEtRecupId = $model->addRental($id_user, $rental);
-                var_dump($selectedCategories);
-                foreach ($selectedCategories as $id_category) {
-                    $model->addRentalCategory($insertEtRecupId, $id_category);
-                }
-
-    
-                if ($insertEtRecupId) {
-                    $uploadTitleImg = 'asset/media/images/';
-                    
-                    foreach ($titlePictures as $index => $titlePicture) {
-                        $uploadTitleFile = $uploadTitleImg . $titlePicture;
-                        $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
-    
-                        if (!$controleTitleUpload) {
-                            // Gérer l'échec du téléchargement
-                        }
-    
-                        $picture = new Picture([
-                            'id_rental' => $insertEtRecupId,
-                            'title' => $titlePicture
-                        ]);
-    
-                        $picture = $Pmodel->addPicture($picture);
-                    }
-
-                   
-                    $picturesString = "";
-                    foreach ($titlePictures as $titlePicture) {
-                        $picturesString .= "Image Title: $titlePicture\n";
-                    }
-    
-                    //header('Location: ' . $router->generate('userProperty'));
-                }
-            }
-        }
-    }
-
-    public function editProperty()
-    {
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-           
-            if (isset($_FILES['title']) ) {
-                $id_user = $_SESSION['id_user'];
-                global $router;
-                $model = new RentalModel();
-                $Pmodel = new PictureModel();
-    
-    
-                $title = $_POST['title'];
-                $content = $_POST['content'];
-                // $cover = $_POST['cover'];
-                $capacity = $_POST['capacity'];
-                $surface_area = $_POST['surface_area'];
-                $address = $_POST['address'];
-                $price = intval($_POST['price']);
-                $latitude = $_POST['latitude'];
-                $longitude = $_POST['longitude'];
-                $selectedCategories = $_POST['categories'];
-                $titlePictures = $_FILES['title']['name'];
-    
-                $rental = new Rental([
-                    'id_user' => $id_user,
-                    'title' => $title,
-                    'content' => $content,
-                    // 'cover' => $cover,
-                    'capacity' => $capacity,
-                    'surface_area' => $surface_area,
-                    'address' => $address,
-                    'price' => $price,
-                    'latitude' => $latitude,
-                    'longitude' => $longitude
-                ]);
-    
-                $model->updateRental($id_user, $rental);
-                var_dump($selectedCategories);
+                
                 foreach ($selectedCategories as $id_category) {
                     $model->addRentalCategory($insertEtRecupId, $id_category);
                 }
@@ -333,8 +258,83 @@ class UserController extends Controller
                 }
             }
         }
-        
     }
+
+    // public function editProperty()
+    // {
+
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           
+    //         if (isset($_FILES['title']) ) {
+    //             $id_user = $_SESSION['id_user'];
+    //             global $router;
+    //             $model = new RentalModel();
+    //             $Pmodel = new PictureModel();
+    
+    
+    //             $title = $_POST['title'];
+    //             $content = $_POST['content'];
+                
+    //             $capacity = $_POST['capacity'];
+    //             $surface_area = $_POST['surface_area'];
+    //             $address = $_POST['address'];
+    //             $price = intval($_POST['price']);
+    //             $latitude = $_POST['latitude'];
+    //             $longitude = $_POST['longitude'];
+    //             $selectedCategories = $_POST['categories'];
+    //             $titlePictures = $_FILES['title']['name'];
+    
+    //             $rental = new Rental([
+    //                 'id_user' => $id_user,
+    //                 'title' => $title,
+    //                 'content' => $content,
+                   
+    //                 'capacity' => $capacity,
+    //                 'surface_area' => $surface_area,
+    //                 'address' => $address,
+    //                 'price' => $price,
+    //                 'latitude' => $latitude,
+    //                 'longitude' => $longitude
+    //             ]);
+    
+    //             $model->updateRental($id_user, $rental);
+    //             var_dump($selectedCategories);
+    //             foreach ($selectedCategories as $id_category) {
+    //                 $model->addRentalCategory($insertEtRecupId, $id_category);
+    //             }
+
+    
+    //             if ($insertEtRecupId) {
+    //                 $uploadTitleImg = 'asset/media/images/';
+                    
+    //                 foreach ($titlePictures as $index => $titlePicture) {
+    //                     $uploadTitleFile = $uploadTitleImg . $titlePicture;
+    //                     $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
+    
+    //                     if (!$controleTitleUpload) {
+    //                         // Gérer l'échec du téléchargement
+    //                     }
+    
+    //                     $picture = new Picture([
+    //                         'id_rental' => $insertEtRecupId,
+    //                         'title' => $titlePicture
+    //                     ]);
+    
+    //                     $picture = $Pmodel->addPicture($picture);
+    //                 }
+
+                   
+    //                 $picturesString = "";
+    //                 foreach ($titlePictures as $titlePicture) {
+    //                     $picturesString .= "Image Title: $titlePicture\n";
+    //                 }
+    
+    //                 header('Location: ' . $router->generate('userProperty'));
+    //             }
+    //         }
+    //     }
+        
+    // }
 
     public function deleteProperty()
     {
