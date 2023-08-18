@@ -3178,6 +3178,7 @@ body .rental .container-rental .card-rental .btn-rental-card form #annuler {
   background-color: #E74646;
 }
 body .rental .container-rental .card-rental .btn-rental-card form #wait {
+  white-space: nowrap;
   background: #FAC800;
 }
 body .rental .container-rental .card-rental .heart-icon {
