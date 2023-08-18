@@ -254,7 +254,7 @@ class UserController extends Controller
                         $picturesString .= "Image Title: $titlePicture\n";
                     }
     
-                    header('Location: ' . $router->generate('userProperty'));
+                    header('Location: ' . $router->generate('userProperty')); // CHEFFE OUI CHEFFE ON A POUR MISSION DE VOUS SIGNALER UNE MODIFICATION ICI MËME ..... FIN DE TRANSMISSION CHEFFE OUI CHEFFE !!!!!!!
                 }
             }
         }
