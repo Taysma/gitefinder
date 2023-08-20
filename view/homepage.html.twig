@@ -16,11 +16,11 @@
 	<section id="homepage" class="limit-size">
 		<div class="gallery-grid">
 			{% for rental in rentals %}
-				<div class="card">
+				<div class="card" data-aos="zoom-out-up">
 					{% if session.connect %}
 						{% if rental.id_rental in rentalIdsInWishlist %}
 							<a href="{{ path('deleteFavoris') }}{{ rental.id_rental }}">
-								<img class="heart"src="{{ asset('/media/icon/heart-full.svg') }}" alt="">
+								<img class="heart" src="{{ asset('/media/icon/heart-full.svg') }}" alt="">
 							</a>
 						{% else %}
 							<a href="{{ path('addFavoris') }}{{ rental.id_rental }}">
