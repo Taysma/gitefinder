@@ -1071,6 +1071,11 @@ body .article .profil-content-reservation-map {
   margin-bottom: 100px;
   justify-content: center;
 }
+@media screen and (max-width: 768px) {
+  body .article .profil-content-reservation-map {
+    margin-bottom: 10px;
+  }
+}
 body .article .profil-content-reservation-map .row-limit-size-flex {
   display: flex;
   width: auto;
@@ -1646,6 +1651,13 @@ body .article .comment-flex {
   gap: 45px;
   padding: 25px;
 }
+@media screen and (max-width: 768px) {
+  body .article .comment-flex {
+    padding: 0px;
+    width: 100%;
+    margin: 10px auto;
+  }
+}
 body .article .comment-flex .comment-img-p {
   display: flex;
   width: 450px;
@@ -1655,6 +1667,14 @@ body .article .comment-flex .comment-img-p {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   border-radius: 12px;
   padding: 5px;
+}
+@media screen and (max-width: 768px) {
+  body .article .comment-flex .comment-img-p {
+    width: 300px;
+    margin: auto;
+    flex-direction: column;
+    align-items: start;
+  }
 }
 body .article .comment-flex .comment-img-p img {
   width: 70px;
@@ -1667,6 +1687,12 @@ body .article .comment-flex .comment-img-p .name-comment-p {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  body .article .comment-flex .comment-img-p .name-comment-p {
+    width: 90%;
+    margin: auto;
+  }
 }
 body .article .comment-flex .comment-img-p .name-comment-p .name-rating {
   display: flex;
@@ -3282,7 +3308,7 @@ body .rental .container-rental .card-rental .btn-rental-card form #wait {
   body .rental .container-rental .card-rental .btn-rental-card form #reserver,
   body .rental .container-rental .card-rental .btn-rental-card form #annuler,
   body .rental .container-rental .card-rental .btn-rental-card form #wait {
-    width: auto;
+    width: 100%;
     font-size: 1rem;
     white-space: nowrap;
   }

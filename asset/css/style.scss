@@ -1361,6 +1361,13 @@ body {
             margin-bottom: 100px;
             justify-content: center;
 
+            @media screen and (max-width:768px) {
+
+                margin-bottom: 10px;
+                ;
+
+            }
+
 
             .row-limit-size-flex {
                 display: flex;
@@ -2100,6 +2107,13 @@ body {
             gap: 45px;
             padding: 25px;
 
+            @media screen and (max-width:768px) {
+                padding: 0px;
+                width: 100%;
+                margin: 10px auto;
+
+            }
+
             .comment-img-p {
                 display: flex;
                 width: 450px;
@@ -2109,6 +2123,15 @@ body {
                 box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
                 border-radius: 12px;
                 padding: 5px;
+
+                @media screen and (max-width:768px) {
+                    width: 300px;
+                    margin: auto;
+                    flex-direction: column;
+                    align-items: start;
+
+
+                }
 
                 img {
                     width: 70px;
@@ -2123,6 +2146,13 @@ body {
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
+
+                    @media screen and (max-width:768px) {
+                        width: 90%;
+                        margin: auto;
+                        ;
+
+                    }
 
                     .name-rating {
                         display: flex;
@@ -4000,7 +4030,7 @@ body {
                             cursor: pointer;
 
                             @media screen and (max-width:1060px) {
-                                width: auto;
+                                width: 100%;
                                 font-size: 1rem;
                                 white-space: nowrap;
                             }
