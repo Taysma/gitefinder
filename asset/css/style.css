@@ -1239,7 +1239,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  margin-top: 20px;
+  margin: 20px auto;
 }
 @media screen and (max-width: 1100px) {
   body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul {
@@ -1248,10 +1248,12 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   }
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-container-rental .list-ul ul {
+  display: flex;
   width: auto;
   justify-content: space-between;
   flex-direction: column;
   gap: 35px;
+  row-gap: 20px;
 }
 body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental {
   display: flex;
@@ -1287,6 +1289,7 @@ body .article .profil-content-reservation-map .row-limit-size-flex .profil-artic
   flex-direction: column;
   margin-top: 20px;
   white-space: nowrap;
+  row-gap: 20px;
 }
 @media screen and (max-width: 1100px) {
   body .article .profil-content-reservation-map .row-limit-size-flex .profil-article .content-article .content-paragragraphe-article .container-condition .list-stuf-container-rental .liste-rental .ul-list {
@@ -1788,7 +1791,6 @@ body .profil .container-profil {
   width: 100%;
   border-radius: 1px;
   padding: 50px 40px 20px 40px;
-  border: 1px solid rgb(219, 219, 219);
 }
 @media screen and (max-width: 937px) {
   body .profil .container-profil {

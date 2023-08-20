@@ -1571,7 +1571,7 @@ body {
                                         display: flex;
                                         gap: 20px;
                                         justify-content: space-between;
-                                        margin-top: 20px;
+                                        margin: 20px auto;
 
                                         @media screen and (max-width:1100px) {
                                             font-size: 0.98rem;
@@ -1580,10 +1580,12 @@ body {
                                         }
 
                                         ul {
+                                            display: flex;
                                             width: auto;
                                             justify-content: space-between;
                                             flex-direction: column;
                                             gap: 35px;
+                                            row-gap: 20px;
                                         }
                                     }
 
@@ -1626,6 +1628,7 @@ body {
                                             flex-direction: column;
                                             margin-top: 20px;
                                             white-space: nowrap;
+                                            row-gap: 20px;
 
 
 
@@ -2284,7 +2287,6 @@ body {
             width: 100%;
             border-radius: 1px;
             padding: 50px 40px 20px 40px;
-            border: 1px solid rgb(219, 219, 219);
 
             @media screen and (max-width:937px) {
                 padding: initial;
