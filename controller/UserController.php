@@ -276,7 +276,7 @@ class UserController extends Controller
                 $model = new RentalModel();
                 $Pmodel = new PictureModel();
     
-                
+                $id_rental = $_GET['id_rental'];
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 
@@ -290,7 +290,7 @@ class UserController extends Controller
                 $titlePictures = $_FILES['title']['name'];
     
                 $rental = new Rental([
-                    'id_rental' => $id_rental,
+                    
                     'title' => $title,
                     'content' => $content,
                    
@@ -302,14 +302,14 @@ class UserController extends Controller
                     'longitude' => $longitude
                 ]);
     
-                $model->updateRental($id_rental, $rental);
+                $model->updateRental($rental);
                 
                 foreach ($selectedCategories as $id_category) {
                     $model->updateRentalCategory($id_rental, $id_category);
                 }
 
     
-                if ($insertEtRecupId) {
+                if ($id_rental) {
                     $uploadTitleImg = 'asset/media/images/';
                     
                     foreach ($titlePictures as $index => $titlePicture) {
@@ -321,7 +321,7 @@ class UserController extends Controller
                         }
     
                         $picture = new Picture([
-                            'id_rental' => $insertEtRecupId,
+                            'id_rental' => $id_rental,
                             'title' => $titlePicture
                         ]);
     

@@ -107,7 +107,7 @@ class RentalModel extends Model
         return $rentalsUser;
     }
 
-    public function updateRental(Rental $id_rental, $rental)
+    public function updateRental(Rental $rental)
 {
     $id_rental = $rental->getId_rental();
     $title = $rental->getTitle();
