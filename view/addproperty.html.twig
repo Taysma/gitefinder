@@ -7,7 +7,9 @@
 {% block header %}
 	{% include 'header.html.twig' with {'categories' : cats } %}
 {% endblock %}
+
 {% block content %}
+
 	<section class="addproperty">
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
@@ -60,8 +62,8 @@
 				</div>
 			{% endfor %}
 		</div>
-		<div
-			class="profil-information">
+
+		<div class="profil-information">
 			{# formulaire ajout #}
 			<div class="form-cart">
 				<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
@@ -140,7 +142,6 @@
 
 						{# objectif faire comme pour le profil #}
 
-
 						<span>Gallerie image :</span>
 						<div class="add-img">
 							<div class="img-profil-rental">
@@ -168,7 +169,6 @@
 					{# <img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt=""> #}
 					<div class="card">
 						<div class="heart-kr" id="heart-kr"></div>
-
 						<div class="img-card imageContainer">
 							<img src="{{ asset('/media/images/boatkarim.png' ) }}" alt="gite en Foret">
 						</div>
@@ -178,7 +178,6 @@
 									<h1 class="h1-complete-edit"></h1>
 								</div>
 								<p class="prince-edit"></p>
-
 							</div>
 							<div class="location-card">
 								<span class="city city-edit"></span>
@@ -274,16 +273,12 @@
 						<span>Gallerie image :</span>
 						<div class="add-img">
 							<div class="img-profil-rental">
-
 								<div class="container-picture">
-
 									<div class="picture-rental">
-
 										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" style="display: none;">
 										<div class="cover-indicator">Couverture</div>
 
 										<label for="profile-upload-rental" class="profile-picture firstImage" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
-
 									</div>
 								</div>
 							</div>
@@ -330,12 +325,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-{% block javascripts %}
-	{{ parent() }}
-	<script defer src="{{ asset('/js/maps.js') }}"></script>
-	<script defer src="{{ asset('/js/listenerInputProperty.js') }}"></script>
 
+	</section>
 
-{% endblock %}{% endblock %}
+	{% block javascripts %}
+		{{ parent() }}
+		<script defer src="{{ asset('/js/maps.js') }}"></script>
+		<script defer src="{{ asset('/js/listenerInputProperty.js') }}"></script>
+	{% endblock %}
+{% endblock %}
