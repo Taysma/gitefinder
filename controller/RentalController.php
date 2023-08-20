@@ -2,16 +2,19 @@
 class RentalController extends Controller
 {
     public function getOne(int $id_rental)
-    {
-        global $router;
-        $model = new RentalModel();
-        $rental = $model->getOneRental($id_rental);
-        $oneRental = $router->generate('baseRental');
-        echo self::getRender('post.html.twig', [
-            'rental' => $rental,
-            'oneRental' => $oneRental
-        ]);
-    }
+{
+    global $router;
+    $model = new RentalModel();
+    $modelPicture = new PictureModel();
+    $rental = $model->getOneRental($id_rental);
+    
+    $picture = $modelPicture->getAllPicture($id_rental);
+    
+    $oneRental = $router->generate('baseRental');
+    echo self::getRender('post.html.twig', ['rental' => $rental, 'oneRental' => $oneRental, 'picture' => $picture]);
+}
+
+
 
     public function getOneCategory($id_category)
     {
