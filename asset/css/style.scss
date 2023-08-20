@@ -54,7 +54,7 @@ body {
     scroll-behavior: smooth;
     font-family: $mainfont;
     width: 100%;
-    background-color: #F7F7F7;
+    background-color: #fff;
 
     header {
         width: 100%;
@@ -74,6 +74,7 @@ body {
             margin: 0 auto;
             position: relative;
 
+
             box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 
             @media screen and (max-width:900px) {
@@ -92,6 +93,8 @@ body {
                 h1 {
                     font-size: 1.5rem;
                     color: #FF385C;
+                    font-weight: 900;
+                    font-family: sora;
 
                     @media screen and (max-width:1060px) {
                         font-size: 1.2rem;
@@ -1365,9 +1368,15 @@ body {
                 gap: 20px;
                 justify-content: center;
 
-                @media screen and (max-width:750px) {
+                @media screen and (max-width:850px) {
+                    gap: initial;
+
+                }
+
+                @media screen and (max-width:780px) {
                     flex-direction: column;
                     width: 100%;
+                    gap: 0px;
                 }
 
 
@@ -1461,6 +1470,11 @@ body {
                         max-width: 750px;
                         width: 100%;
 
+                        @media screen and (max-width:800px) {
+                            max-width: 90%;
+                        }
+
+
                         .title-star-rating {
                             display: flex;
                             // position: relative;
@@ -1532,14 +1546,13 @@ body {
                                 flex-direction: column;
 
                                 .list-container-rental {
-                                    padding: 10px;
                                     width: 100%;
                                     height: auto;
                                     display: flex;
                                     flex-direction: column;
+                                    margin-top: 10px;
 
                                     .title-liste {
-                                        padding: 20px;
                                         font-size: 1.4rem;
                                         color: #191825;
 
@@ -1551,11 +1564,12 @@ body {
                                         display: flex;
                                         gap: 20px;
                                         justify-content: space-between;
+                                        margin-top: 20px;
 
                                         @media screen and (max-width:1100px) {
                                             font-size: 0.98rem;
                                             // flex-direction: column;
-                                            margin: auto;
+                                            margin: 20px auto;
                                         }
 
                                         ul {
@@ -1603,19 +1617,21 @@ body {
                                             gap: 5px;
                                             justify-content: space-between;
                                             flex-direction: column;
-                                            margin-top: 10px;
+                                            margin-top: 20px;
                                             white-space: nowrap;
 
-                                            @media screen and (max-width:350px) {
-                                                display: flex;
-                                                align-items: center;
 
-                                            }
 
                                             @media screen and (max-width:1100px) {
                                                 font-size: 0.98rem;
                                                 // flex-direction: column;
-                                                margin: auto;
+                                                margin: 20px auto;
+                                            }
+
+                                            @media screen and (max-width:350px) {
+                                                display: flex;
+                                                margin: 10px 20px;
+
                                             }
 
                                             ul {
@@ -1702,7 +1718,7 @@ body {
                         border-radius: 15px;
 
                         @media screen and (max-width:900px) {
-                            max-width: 450px;
+                            max-width: 350px;
 
                         }
 
@@ -2044,10 +2060,10 @@ body {
 
         .comment-container {
             // width: 100%;
-            margin: 60px 20px;
             height: auto;
             max-width: 1440px;
             display: flex;
+            padding: 20px;
             justify-content: start;
 
             @media screen and (max-width:450px) {
@@ -2236,6 +2252,15 @@ body {
         .container-profil {
             margin: auto;
             width: 100%;
+            border-radius: 1px;
+            padding: 50px 40px 20px 40px;
+            border: 1px solid rgb(219, 219, 219);
+
+            @media screen and (max-width:937px) {
+                padding: initial;
+            }
+
+
 
             @media screen and (max-width:768px) {
                 margin: auto;
@@ -2262,12 +2287,11 @@ body {
 
                 .img-btn-profil {
                     width: 100%;
-                    padding: 10px;
+                    // padding: 10px;
                     display: flex;
                     align-items: start;
                     // justify-content: space-around;
                     gap: 50px;
-                    margin: 20px;
 
                     // box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
 
@@ -2306,6 +2330,10 @@ body {
                         box-shadow: -2px -1px 2px rgba(180, 180, 180, .3), inset -3px -2px 3px rgba(255, 255, 255, .7);
                         border-radius: 9px;
 
+                        @media screen and (max-width:400px) {
+                            padding: 40px;
+                        }
+
                         .name-lasname,
                         .email,
                         .number {
@@ -2313,6 +2341,10 @@ body {
                             gap: 10px;
                             border-bottom: 1px solid rgba(0, 0, 0, 0.26);
                             padding: 10px;
+
+                            @media screen and (max-width:400px) {
+                                flex-direction: column;
+                            }
 
                             &:hover {
                                 background-color: #19182511;
@@ -2331,9 +2363,78 @@ body {
                             right: 10px;
                             padding: 5px;
 
-                            #edit-icon {
-                                width: 34px;
+                            .edit-button {
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 50%;
+                                background-color: rgb(20, 20, 20);
+                                border: none;
+                                font-weight: 600;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
                                 cursor: pointer;
+                                transition-duration: 0.3s;
+                                overflow: hidden;
+                                position: relative;
+                                text-decoration: none !important;
+
+                                &:hover {
+                                    width: 120px;
+                                    border-radius: 50px;
+                                    transition-duration: 0.3s;
+                                    background-color: rgb(255, 69, 69);
+                                    align-items: center;
+                                }
+
+                                &::before {
+                                    display: none;
+                                    content: "Edit";
+                                    color: white;
+                                    transition-duration: 0.3s;
+                                    font-size: 2px;
+                                }
+
+                                &:hover::before {
+                                    display: block;
+                                    padding-right: 10px;
+                                    font-size: 13px;
+                                    opacity: 1;
+                                    transform: translateY(0px);
+                                    transition-duration: 0.3s;
+                                }
+
+                                .edit-svgIcon {
+                                    width: 17px;
+                                    transition-duration: 0.3s;
+
+                                    path {
+                                        fill: white;
+                                    }
+
+                                    &:hover {
+                                        width: 20px;
+                                        transition-duration: 0.3s;
+                                        transform: translateY(60%);
+                                        -webkit-transform: rotate(360deg);
+                                        -moz-transform: rotate(360deg);
+                                        -o-transform: rotate(360deg);
+                                        -ms-transform: rotate(360deg);
+                                        transform: rotate(360deg);
+                                    }
+                                }
+                            }
+
+
+                            @media screen and (max-width:400px) {
+                                right: 5px;
+                            }
+
+                            #edit-icon {
+                                cursor: pointer;
+
+
                             }
 
                         }
@@ -2405,7 +2506,7 @@ body {
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
-                    padding: 5px;
+                    // padding: 5px;
 
                     label {
                         font-size: 1.3rem;
@@ -2464,6 +2565,12 @@ body {
                     display: flex;
                     gap: 10px;
                     align-items: center;
+
+                    @media screen and (max-width:400px) {
+                        width: 90%;
+                        margin: auto;
+
+                    }
 
                     #save-changes-btn {
                         width: fit-content;
