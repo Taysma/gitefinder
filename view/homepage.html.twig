@@ -19,21 +19,19 @@
 				<div class="card">
 					{% if session.connect %}
 						{% if rental.id_rental in rentalIdsInWishlist %}
-							<a href="{{ path('deleteFavoris') }}" data-gite-id="{{ rental.id_rental }}">
+							<a href="{{ path('deleteFavoris') }}{{ rental.id_rental }}">
 								<img class="heart"src="{{ asset('/media/icon/heart-full.svg') }}" alt="">
 							</a>
 						{% else %}
-							<a href="{{ path('addFavoris') }}" data-gite-id="{{ rental.id_rental }}">
+							<a href="{{ path('addFavoris') }}{{ rental.id_rental }}">
 								<img class="heart" src="{{ asset('/media/icon/heart-empty.svg') }}" alt="">
 							</a>
 						{% endif %}
 					{% else %}
-						<a href="{{ path('login') }}"  data-gite-id="{{ rental.id_rental }}">
+						<a href="{{ path('login') }}">
 							<img class="heart" src="{{ asset('/media/icon/heart-empty.svg') }}" alt="">
 						</a>
 					{% endif %}
-
-					{# <i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ rental.id_rental }}"></i> #}
 					<div class="img-card">
 						<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
 							<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">

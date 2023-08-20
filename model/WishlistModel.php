@@ -18,10 +18,9 @@ class WishlistModel extends Model
         return $wishlists;
     }
 
-    public function addWish(Wishlist $wish)
+    public function addWish(Wishlist $wish, int $id_rental)
     {
         $id_user = $_SESSION['id_user'];
-        $id_rental = $wish->getId_rental();
 
         $req = $this->getDb()->prepare("INSERT INTO `wishlist`(`id_user`, `id_rental`) VALUES (:id_user, :id_rental)");
         $req->bindParam(":id_user", $id_user, PDO::PARAM_INT);
@@ -32,8 +31,6 @@ class WishlistModel extends Model
 
     public function isInWishlist($userId, $rentalId)
     {
-
-
         $req = $this->getDb()->prepare('SELECT COUNT(*) FROM `wishlist` WHERE `id_user` = :id_user AND `id_rental` = :id_rental');
         $req->bindParam(':id_user', $userId, PDO::PARAM_INT);
         $req->bindParam(':id_rental', $rentalId, PDO::PARAM_INT);
@@ -42,25 +39,11 @@ class WishlistModel extends Model
         return $req->fetchColumn() > 0;
     }
 
-    public function deleteWish(Wishlist $wish)
+    public function deleteWish($id_user, $id_rental)
     {
-        // Start a new transaction
-        $this->getDb()->beginTransaction();
-        $id = $wish->getId_wishlist();
-
-        try {
-            // Delete the wishlist
-            $req = $this->getDb()->prepare('DELETE FROM `wishlist` WHERE `id_wishlist` = :id_wishlist');
-            $req->bindParam('id_wishlist', $id, PDO::PARAM_INT);
-            $req->execute();
-
-            // Commit the transaction if both operations succeeded
-            $this->getDb()->commit();
-        } catch (Exception $e) {
-            // If any operation fails, an exception is thrown
-            // Rollback the transaction
-            $this->getDb()->rollBack();
-            throw $e;  // or handle it in another way depending on your needs
-        }
+        $req = $this->getDb()->prepare('DELETE FROM `wishlist` WHERE `id_user` = :id_user AND `id_rental` = :id_rental');
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
+        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
+        $req->execute();
     }
 }

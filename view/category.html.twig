@@ -19,12 +19,9 @@
 			<li class="breadcrumb-item">
 				<a href="{{ path('home') }}">Acceuille &#x3008;</a>
 			</li>
-
 			<h2>{{ category.name }}</h2>
 	</ol>
 </nav>
-
-
 	{% if rentals is empty %}
 		<p>Pas de logement dans cette categorie.</p>
 	{% else %}
@@ -32,7 +29,22 @@
 	<div class="gallery-grid">
 		{% for rental in rentals %}
 			<div class="card">
-				<i id="heart" class="heart fa-regular fa-heart" data-gite-id="{{ rental.id_rental }}"></i>
+				{% if session.connect %}
+						{% if rental.id_rental in rentalIdsInWishlist %}
+							<a href="{{ path('deleteFavoris') }}{{ rental.id_rental }}">
+								<img class="heart"src="{{ asset('/media/icon/heart-full.svg') }}" alt="">
+							</a>
+						{% else %}
+							<a href="{{ path('addFavoris') }}{{ rental.id_rental }}">
+								<img class="heart" src="{{ asset('/media/icon/heart-empty.svg') }}" alt="">
+							</a>
+						{% endif %}
+					{% else %}
+						<a href="{{ path('login') }}">
+							<img class="heart" src="{{ asset('/media/icon/heart-empty.svg') }}" alt="">
+						</a>
+					{% endif %}
+
 				<div class="img-card">
 					<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
 						<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">

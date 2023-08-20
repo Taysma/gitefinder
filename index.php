@@ -42,8 +42,10 @@ $router->map('POST', '/dashboard/supprimer', 'UserController#deleteProperty', 'd
 
 //                                       USER - FAVORIS
 $router->map('GET', '/dashboard/favoris', 'UserController#getUserWishlist', 'userFavoris');
-$router->map('GET', '/dashboard/favoris/nouveau/[i:id_rental]', 'UserController#addToWishlist', 'addFavoris');
-$router->map('GET', '/dashboard/favoris/supprimer/[i:id_rental]', 'UserController#deleteFromWishlist', 'deleteFavoris');
+$router->map('GET', '/dashboard/favoris/nouveau/', '', 'addFavoris');
+$router->map('GET', '/dashboard/favoris/nouveau/[i:id_rental]', 'UserController#addToWishlist', '');
+$router->map('GET', '/dashboard/favoris/supprimer/', '', 'deleteFavoris');
+$router->map('GET', '/dashboard/favoris/supprimer/[i:id_rental]', 'UserController#deleteFromWishlist', '');
 
 //                                       USER - RESERVATION
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');

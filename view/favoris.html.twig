@@ -9,9 +9,7 @@
 
 {% block content %}
 	<!-- Favoris -->
-	<section
-		class="favoris">
-		<!-- fil d'ariane  breadcrumb -->
+	<section id="homepage" class="limit-size">
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
 				<li class="breadcrumb-item">
@@ -20,7 +18,8 @@
 				</li>
 			</ol>
 		</nav>
-		<div class="container-favoris">
+
+		<div class="gallery-grid">
 			{% if wishlist|length == 0 %}
 				<p>Vous n'avez aucun favoris enregistrés.</p>
 			{% else %}
@@ -28,35 +27,31 @@
 					{% for rental in rentals %}
 						{% if rental.id_rental == wish.id_rental %}
 							<div class="card">
-								<i id="heart" class="heart fa-regular fa-heart"></i>
+								<a href="{{ path('deleteFavoris') }}{{ rental.id_rental }}">
+									<img class="heart" src="{{ asset('/media/icon/heart-full.svg') }}" alt="">
+								</a>
+
 								<div class="img-card">
-									<a href="{{ path('baseRental') ~ rental.id_rental }}">
-										<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
+									<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
+										<img src="{{ asset('/media/images/' ~ rental.cover) }}" alt="gite en Foret">
 									</a>
 								</div>
-								<div class="content-card">
-									<div class="title-prince">
-										<div class="h1-title-card">
-											<h1>
-												{{ rental.title }}
-											</h1>
+								<div class="txt-card">
+									<a href="{{ path('baseRental') }}{{ rental.id_rental }}">
+										<div class="title-card">
+											<div class="h1-card">
+												<h1>{{ rental.title }}</h1>
+											</div>
+											<p>{{ rental.price }}€</p>
 										</div>
-										<div class="prince">
-											<span>{{ rental.price }}</span>
-											<span>€</span>
+										<h2 class="h2-card">{{ rental.country }}</h2>
+										<div class="note-card">
+											<p>4</p>
+											<span>
+												<img src="{{ asset('/media/icon/etoile.svg') }}" alt="">
+											</span>
 										</div>
-									</div>
-									<div class="location-card">
-										<span class="city">{{ rental.city }}</span>
-										<span>,</span>
-										<span class="country">{{ rental.country }}</span>
-									</div>
-									<div class="rating-card">
-										<span class="rating">4.8</span>
-										<span>
-											<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
-										</span>
-									</div>
+									</a>
 								</div>
 							</div>
 						{% endif %}
