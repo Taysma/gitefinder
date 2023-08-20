@@ -33,8 +33,11 @@
 						<form action="{{ path('editUserAvatar') }}" method="POST" enctype="multipart/form-data">
 							<input type="file" name='avatar' id="profile-upload" accept="image/*" style="display: none;">
 							<label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/images/' ~ session.avatar) }}')"></label>
+
+							{# <label for="profile-upload" class="profile-picture" id="profile-picture" style="background-image: url('{{ asset('/media/images/' ~ (session.avatar ?? 'user.svg')) }}')"></label> #}
 							<input class="btn-edit" type="submit" value="Envoyer">
 						</form>
+
 					</div>
 					<div class="name-lastname-email-number ">
 						<div class="name-lasname">

@@ -544,7 +544,6 @@ body header .header-limit-size .img-username .img-profile {
   height: 50px;
   border-radius: 999px;
   overflow: hidden;
-  background-color: rgba(168, 176, 183, 0.6588235294);
   z-index: 1;
 }
 body header .header-limit-size .img-username .img-profile img {
@@ -561,7 +560,7 @@ body header .burger-menu-modal {
   flex-direction: column;
   max-width: 200px;
   width: 100%;
-  background-color: #0D1117;
+  background-color: #ffffff;
   justify-content: center;
   position: absolute;
   top: 100px;
@@ -572,7 +571,7 @@ body header .burger-menu-modal .btn-value {
   width: auto;
   border: none;
   padding: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   position: relative;
   align-items: center;
@@ -595,7 +594,7 @@ body header .burger-menu-modal .btn-value .svg-icon {
 }
 body header .burger-menu-modal .value:not(:active):hover,
 body header .burger-menu-modal .value:focus {
-  background-color: #21262C;
+  background-color: #282c30;
 }
 body header .burger-menu-modal .value:focus,
 body header .burger-menu-modal .value:active {
@@ -647,6 +646,12 @@ body #homepage .gallery-grid .card {
   border-radius: 15px;
   box-shadow: 0px 5px 20px rgba(13, 38, 76, 0.19);
   position: relative;
+}
+@media screen and (max-width: 320px) {
+  body #homepage .gallery-grid .card {
+    width: 90%;
+    margin: auto;
+  }
 }
 body #homepage .gallery-grid .card:hover {
   transform: scale(1.012);
@@ -754,7 +759,7 @@ body .dayContainer {
 body .filter .filter-bar-container {
   position: relative;
   width: 100%;
-  max-width: 1440px;
+  max-width: 90%;
   margin: auto;
   overflow: hidden;
 }
@@ -1352,6 +1357,12 @@ body .article .profil-content-reservation-map .row-limit-size-flex .scrool-conta
     padding: initial;
   }
 }
+@media screen and (max-width: 320px) {
+  body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article {
+    width: 90%;
+    margin: auto;
+  }
+}
 body .article .profil-content-reservation-map .row-limit-size-flex .scrool-container-card-maps .card-map-article .card-reservation {
   border-radius: 10px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -1682,6 +1693,13 @@ body .dashboard .container-dashboard {
   grid-auto-rows: auto;
   justify-content: center;
   row-gap: 100px;
+}
+@media screen and (max-width: 768px) {
+  body .dashboard .container-dashboard {
+    row-gap: 1px;
+    margin: 10px auto;
+    width: 95%;
+  }
 }
 body .dashboard .container-dashboard .card-dashboard {
   width: 322px;
@@ -2100,6 +2118,7 @@ body .addproperty .container-card-property .card {
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
   position: relative;
+  margin: 10px auto;
 }
 body .addproperty .container-card-property .card .img-card {
   width: 100%;
@@ -2118,6 +2137,11 @@ body .addproperty .container-card-property .card .content-card {
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
   box-shadow: -1px 15px 30px -12px rgba(0, 0, 0, 0.266);
+  height: 100%;
+  max-height: 236px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 body .addproperty .container-card-property .card .content-card .title-prince {
   display: flex;
