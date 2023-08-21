@@ -194,7 +194,7 @@ class UserController extends Controller
             $rentalsUser = $model->getUserRentals($id_user);
             $categories = $CategoryModel->getAllCategory();
 
-            echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
+            echo self::getRender('property.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
         }
     }
 
@@ -202,7 +202,7 @@ class UserController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
-            if (isset($_FILES['title']) ) {
+            if (null !== $_FILES['cover']) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
@@ -271,15 +271,18 @@ class UserController extends Controller
                         $picturesString .= "Image Title: $titlePicture\n";
                     }
     
-                    header('Location: ' . $router->generate('userProperty')); 
+                    header('Location: ' . $router->generate('userProperty'));
+                    exit;
                 }
+            } else {
+                $message = "Les informations n'a pas pu être enregister.";
+                echo self::getRender('property.html.twig', ['message' => $message]);
             }
         }
     }
 
     public function editProperty()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            
             if (isset($_FILES['title']) ) {
