@@ -9,4 +9,4 @@ https://www.figma.com/file/c9fuXpQTobK4R32RGLwMpX/GiteFinder?type=design&node-id
 
 • MCD / MLD / BDD: ./asset/bdd
 
-• Languages et structurations  : MVC / PHP / TWIG / SASS / altorouteur
+• Languages et structurations  : MVC / PHP / TWIG / SASS / altorouteur /js
