@@ -4,34 +4,31 @@ class UserController extends Controller
     // Connection utilisateur
     public function register()
     {
-        if (!$_POST) {
-            echo self::getRender('register.html.twig', []);
+        global $router;
+        $model = new UserModel();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
+            $birthdate = $_POST['birthdate'];
+            $rawPass = $_POST['password'];
+            $password = password_hash($rawPass, PASSWORD_DEFAULT);
+
+            $user = new User([
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'mail' => $mail,
+                'birthdate' => $birthdate,
+                'password' => $password,
+            ]);
+
+            $model->createUser($user);
+
+            header('Location: ' . $router->generate('dashboard'));
+            exit();
         } else {
-            global $router;
-            $model = new UserModel();
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
-                $birthdate = $_POST['birthdate'];
-                $rawPass = $_POST['password'];
-                $password = password_hash($rawPass, PASSWORD_DEFAULT);
-
-                $user = new User([
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'mail' => $mail,
-                    'birthdate' => $birthdate,
-                    'password' => $password,
-
-                ]);
-
-                $model->createUser($user);
-                header('Location: ' . $router->generate('home'));
-            } else {
-                echo self::getRender('connect.html.twig', []);
-            }
+            echo self::getRender('register.html.twig', []);
         }
     }
 
@@ -201,14 +198,14 @@ class UserController extends Controller
     public function addProperty()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
+
             if (null !== $_FILES['cover']) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
                 $Pmodel = new PictureModel();
-    
-    
+
+
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 $cover = $_FILES['cover']['name'];
@@ -220,7 +217,7 @@ class UserController extends Controller
                 $longitude = $_POST['longitude'];
                 $selectedCategories = $_POST['categories'];
                 $titlePictures = $_FILES['title']['name'];
-                
+
                 $rental = new Rental([
                     'id_user' => $id_user,
                     'title' => $title,
@@ -233,44 +230,44 @@ class UserController extends Controller
                     'latitude' => $latitude,
                     'longitude' => $longitude
                 ]);
-    
-                
+
+
                 $insertEtRecupId = $model->addRental($id_user, $rental);
-                
+
                 foreach ($selectedCategories as $id_category) {
                     $model->addRentalCategory($insertEtRecupId, $id_category);
                 }
 
-    
+
                 if ($insertEtRecupId) {
                     $uploadTitleImg = 'asset/media/images/';
 
                     $uploadImg = 'asset/media/images/';
                     $uploadFile = $uploadImg . $_FILES['cover']['name'];
                     $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
-                   
+
                     foreach ($titlePictures as $index => $titlePicture) {
                         $uploadTitleFile = $uploadTitleImg . $titlePicture;
                         $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
-    
+
                         if (!$controleUpload || !$controleTitleUpload) {
                             // Gérer l'échec du téléchargement
                         }
-    
+
                         $picture = new Picture([
                             'id_rental' => $insertEtRecupId,
                             'title' => $titlePicture
                         ]);
-    
+
                         $picture = $Pmodel->addPicture($picture);
                     }
 
-                   
+
                     $picturesString = "";
                     foreach ($titlePictures as $titlePicture) {
                         $picturesString .= "Image Title: $titlePicture\n";
                     }
-    
+
                     header('Location: ' . $router->generate('userProperty'));
                     exit;
                 }
@@ -284,17 +281,17 @@ class UserController extends Controller
     public function editProperty()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-           
-            if (isset($_FILES['title']) ) {
+
+            if (isset($_FILES['title'])) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
                 $Pmodel = new PictureModel();
-    
+
                 $id_rental = $_GET['id_rental'];
                 $title = $_POST['title'];
                 $content = $_POST['content'];
-                
+
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
                 $address = $_POST['address'];
@@ -303,12 +300,12 @@ class UserController extends Controller
                 $longitude = $_POST['longitude'];
                 $selectedCategories = $_POST['categories'];
                 $titlePictures = $_FILES['title']['name'];
-    
+
                 $rental = new Rental([
-                    
+
                     'title' => $title,
                     'content' => $content,
-                   
+
                     'capacity' => $capacity,
                     'surface_area' => $surface_area,
                     'address' => $address,
@@ -316,44 +313,43 @@ class UserController extends Controller
                     'latitude' => $latitude,
                     'longitude' => $longitude
                 ]);
-    
+
                 $model->updateRental($rental);
-                
+
                 foreach ($selectedCategories as $id_category) {
                     $model->updateRentalCategory($id_rental, $id_category);
                 }
 
-    
+
                 if ($id_rental) {
                     $uploadTitleImg = 'asset/media/images/';
-                    
+
                     foreach ($titlePictures as $index => $titlePicture) {
                         $uploadTitleFile = $uploadTitleImg . $titlePicture;
                         $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
-    
+
                         if (!$controleTitleUpload) {
                             // Gérer l'échec du téléchargement
                         }
-    
+
                         $picture = new Picture([
                             'id_rental' => $id_rental,
                             'title' => $titlePicture
                         ]);
-    
+
                         $picture = $Pmodel->addPicture($picture);
                     }
 
-                   
+
                     $picturesString = "";
                     foreach ($titlePictures as $titlePicture) {
                         $picturesString .= "Image Title: $titlePicture\n";
                     }
-    
+
                     header('Location: ' . $router->generate('userProperty'));
                 }
             }
         }
-        
     }
 
     public function deleteProperty()
@@ -384,6 +380,20 @@ class UserController extends Controller
 
             echo self::getRender('rental.html.twig', ['reservations' => $reservations, 'rentals' => $rentals]);
         }
+    }
+
+    public function deleteReservation()
+    {
+        global $router;
+        $id_user = $_SESSION['id_user'];
+        $id_rental = $_POST['id_rental'];
+
+        $model = new RentalModel();
+        $model->deleteUserReservation($id_user, $id_rental);
+
+        header('Location:' . $router->generate('userReservations'));
+        exit();
+
     }
 
     //Dashboard - CRUD Wishlist User
@@ -447,8 +457,7 @@ class UserController extends Controller
             header('Location: ' . $router->generate('login'));
             exit();
         } else {
-           echo self::getRender('messenger.html.twig', []);
+            echo self::getRender('messenger.html.twig', []);
         }
-        
     }
 }

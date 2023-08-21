@@ -129,12 +129,12 @@ class RentalModel extends Model
         $req->execute();
     }
 
-    public function updateRentalCategory(int $id_rental, $id_category) 
+    public function updateRentalCategory(int $id_rental, $id_category)
     {
         $req = $this->getDb()->prepare('UPDATE `rental_category` SET `id_category`=:id_category WHERE `id_rental`=:id_rental');
         $req->bindParam(':id_category', $id_category, PDO::PARAM_INT);
         $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
-    
+
         $req->execute();
     }
 
@@ -162,5 +162,13 @@ class RentalModel extends Model
             $this->getDb()->rollBack();
             throw $e; // or handle it in another way depending on your needs
         }
+    }
+
+    public function deleteUserReservation(int $id_user, $id_rental)
+    {
+        $req = $this->getDb()->prepare('DELETE FROM `reservation` WHERE `id_user` = :id_user AND `id_rental` = :id_rental');
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
+        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
+        $req->execute();
     }
 }

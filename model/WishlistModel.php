@@ -39,7 +39,7 @@ class WishlistModel extends Model
         return $req->fetchColumn() > 0;
     }
 
-    public function deleteWish($id_user, $id_rental)
+    public function deleteWish(int $id_user, $id_rental)
     {
         $req = $this->getDb()->prepare('DELETE FROM `wishlist` WHERE `id_user` = :id_user AND `id_rental` = :id_rental');
         $req->bindParam('id_user', $id_user, PDO::PARAM_INT);

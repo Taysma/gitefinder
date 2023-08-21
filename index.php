@@ -50,12 +50,13 @@ $router->map('GET', '/dashboard/favoris/supprimer/[i:id_rental]', 'UserControlle
 //                                       USER - RESERVATION
 $router->map('GET', '/dashboard/reservation', 'UserController#getUserReservation', 'userReservations');
 $router->map('POST', '/nouveau', 'RentalController#newReservation', 'addReservation');
+$router->map('POST', '/delete', 'UserController#deleteReservation', 'deleteReservation');
 
 //                                       USER - MESSAGERIE
 $router->map('GET', '/dashboard/messagerie', 'UserController#getUserMessagerie', 'userMessagerie');
 
 //                                            SEARCH
-$router->map('GET', '/search', 'SearchController#searchResult', 'search');
+// $router->map('GET', '/search', 'SearchController#searchResult', 'search');
 
 $match = $router->match();
 
