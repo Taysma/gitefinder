@@ -1,63 +1,336 @@
 {% extends "template.html.twig" %}
 
 {% block title %}
-	Formulaire de location
+	Formulaire d'ajout de location
 {% endblock %}
 
 {% block header %}
 	{% include 'header.html.twig' with {'categories' : cats } %}
 {% endblock %}
+
 {% block content %}
-	<section class="addrental">
+
+	<section class="addproperty">
 		<nav class="breadcrumb" aria-label="breadcrumb">
 			<ol class="ol-breadcrumb">
-
 				<li class="breadcrumb-item">
-
-					<a href="{{ path('dashboard') }}">
-						&#x3008; Dashboard</a>
+					<a href="{{ path('dashboard') }}">&#x3008; Dashboard</a>
 				</li>
-
-
 			</ol>
 		</nav>
-		{# container propriete #}
-		<div class="container-propriete">
-			<div class="btn-add">
-				<button id="btn-add">Ajouter un bien</button>
-			</div>
-			<div class="container-card-property">
+		<div class="icon-add">
+			<img class="iconhome" src="{{asset('/media/icon/addproperty.png')}}" alt="">
+		</div>
 
+		{# card #}
+		<div class="container-card-property">
+			{% for rental in rentals %}
 				<div class="card">
 					<div class="img-card">
-						<img src="../asset/media/images/chalet-foret-nuit.jpg" alt="chavaren foret" class="size-img">
-
+						<a href="{{ path('baseRental') ~ rental.id_rental }}">
+							<img class='size-img' src="{{ asset('/media/images/' ~ rental.cover) }}" alt="{{ rental.title }}">
+						</a>
 					</div>
 					<div class="content-card">
 						<div class="title-prince">
 							<div class="h1-title-card">
-								<h1>Paradise Beach, Bantayan Island
-								</h1>
+								<h1>{{ rental.title }}</h1>
 							</div>
 							<div class="prince">
-
-								<span>150</span>
+								<span>{{ rental.price }}</span>
 								<span>€</span>
 							</div>
 						</div>
 						<div class="location-card">
-							<span class="city">Rome</span>
-							<span>,</span>
-							<span class="country">Italy</span>
+							<span class="city">{{ rental.address }}</span>
+						</div>
+						<div class="rating-card">
+							<span class="rating">4.8</span>
+							<span>
+								<img src="{{ asset('/media/icon/etoile.svg') }}" alt="star rating" class="size-img-star">
+							</span>
+						</div>
+						<div class="divbtnedit">
+							<button class="edit-btn" type="button">edit</button>
+
+							<form action="{{ path('deleteProperty') }}" method="POST">
+								<input type="hidden" name="id_rental" value="{{ rental.id_rental }}">
+								<input type="submit" value="delete" id="delete-changes-btn">
+							</form>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="profil-information">
+			{# formulaire ajout #}
+			<div class="form-cart">
+				<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
+					<h2>Formulaire d'ajout de location</h2>
+					<div class="container-form">
+						<div class="name-address">
+							<div class="name">
+								<label for="name">Nom de la location:</label>
+								<input type="text" id="name" class="name-edit" name="title" value="">
+							</div>
+							<div class="address">
+								<label for="address">Adresse:</label>
+								<input type="text" class="address address-edit" name="address" value="">
+								<div class="accommodation-types"></div>
+							</div>
+						</div>
+						<div class="cart">
+							<div id="mapid"></div>
+						</div>
+						<div class="number-serface">
+							<div class="capacity-container">
+								<label for="capacity">Nombre de personne:</label>
+								<select name="capacity" id="capacity">
+									{% for num in 1..1000 %}
+										<option value="{{ num }}">{{ num }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div
+								class="number-container">
+								{# Surface_area #}
+								<label for="Surface_area">Surface:</label>
+								<input type="text" id="Surface_area" name="surface_area" value="" placeholder="Surface">
+							</div>
+						</div>
+
+						{# prince #}
+						<div class="price">
+							<label for="price">Prix:</label>
+							<div class="input-span">
+								<input type="number" id="price" class="input-prince" name="price" value="">
+								<span>€</span>
+							</div>
+						</div>
+
+						{# Catégories de gîtes #}
+						<legend>Catégories de gîtes:</legend>
+						<div class="checkbox-group">
+							{% for category in categories %}
+								<div class="checkbox">
+									<label class="checkbox-wrapper">
+										<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.id_category }}" id="{{ category.id_category }}">
+										<span class="checkbox-tile">
+											<span class="checkbox-icon"><img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></span>
+											<span class="checkbox-label">{{ category.name }}</span>
+										</span>
+									</label>
+								</div>
+							{% endfor %}
 						</div>
 
 
+						{# gps #}
+						<div class="latitude-longitude">
+							<label for="latitude">latitude</label>
+							<input type="text" id="latitude" name="latitude" readonly>
+							<label for="longitude">longitude</label>
+							<input type="text" id="longitude" name="longitude" readonly>
+						</div>
+
+						{# description #}
+						<div class="description-container">
+							<label for="content">Description:</label>
+							<textarea id="description" name="content"></textarea>
+						</div>
+
+						{# objectif faire comme pour le profil #}
+
+						<span>Gallerie image :</span>
+						<div class="add-img">
+							<div class="img-profil-rental">
+								<div class="container-picture">
+									<div class="picture-rental">
+										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" multiple style="display: none;">
+										<div class="cover-indicator">Couverture</div>
+
+										<label for="profile-upload-rental" class="profile-picture firstImage" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div role="button" class="button-83 addmore-picture">ajouter une image</div>
+						<div class="update-delete">
+							<input type="submit" value="Ajouter la location" id="save-changes-btn">
+							<button type="button" class="close-changes-btn">Fermer</button>
+						</div>
+					</div>
+				</form>
+
+				{# mettre image du bien du proprieter #}
+				<div
+					class="banner" class="image">
+					{# <img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt=""> #}
+					<div class="card">
+						<div class="heart-kr" id="heart-kr"></div>
+						<div class="img-card imageContainer">
+							<img src="{{ asset('/media/images/boatkarim.png' ) }}" alt="gite en Foret">
+						</div>
+						<div class="txt-card">
+							<div class="title-card">
+								<div class="h1-card ">
+									<h1 class="h1-complete-edit"></h1>
+								</div>
+								<p class="prince-edit"></p>
+							</div>
+							<div class="location-card">
+								<span class="city city-edit"></span>
+							</div>
+							<h2 class="h2-card"></h2>
+							<div class="note-card">
+								<p>4</p>
+								<span>
+									<img src="{{ asset('/media/icon/etoile.svg') }}" alt="">
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{# edit property #}
+			<div class="editproperty">
+				<form action="{{ path('addProperty') }}" method="POST" class="profil-information" enctype="multipart/form-data">
+					<h2>Formulaire modification de location</h2>
+					<div class="container-form">
+						<div class="name-address">
+							<div class="name">
+								<label for="name">Nom de la location:</label>
+								<input type="text" id='name' class="name-edit" placeholder="{{ rental.title }}">
+							</div>
+							<div class="address">
+								<label for="address">Adresse:</label>
+								<input type="text" class="address address-edit" name="address" value="{{ rental.address }}">
+								<div class="accommodation-types"></div>
+							</div>
+						</div>
+						<div class="cart">
+							<div id="mapid"></div>
+						</div>
+						<div class="number-serface">
+							<div class="capacity-container">
+								<label for="capacity">Nombre de personne:</label>
+								<select name="capacity" id="capacity">
+									{% for num in 1..10 %}
+										<option value="{{ num }}">{{ num }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div
+								class="number-container">
+								{# Surface_area #}
+								<label for="Surface_area">Surface:</label>
+								<input type="text" id="Surface_area" name="surface_area" value="{{ rental.surface_area }}" placeholder="Surface">
+							</div>
+						</div>
+
+						{# prince #}
+						<div class="price">
+							<label for="price">Prix:</label>
+							<div class="input-span">
+								<input type="number" id="price" name="price" class="input-prince" value="{{ rental.price }}">
+								<span>€</span>
+							</div>
+						</div>
+
+						{# Catégories de gîtes #}
+						<legend>Catégories de gîtes:</legend>
+						<div class="checkbox-group">
+							{% for category in categories %}
+								<div class="checkbox">
+									<label class="checkbox-wrapper">
+										<input type="checkbox" class="checkbox-input" name="categories[]" value="{{ category.name }}" id="{{ category.id_category }}">
+										<span class="checkbox-tile">
+											<span class="checkbox-icon"><img src="{{ asset('/media/icon/category/' ~ category.tag) }}" alt="{{ category.name }}"></span>
+											<span class="checkbox-label">{{ category.name }}</span>
+										</span>
+									</label>
+								</div>
+							{% endfor %}
+						</div>
+
+						{# gps #}
+						<div class="latitude-longitude">
+							<label for="latitude">latitude</label>
+							<input type="text" id="latitude" name="latitude" readonly>
+							<label for="longitude">longitude</label>
+							<input type="text" id="longitude" name="longitude" readonly>
+						</div>
+
+
+						{# description #}
+						<div class="description-container">
+							<label for="content">Description:</label>
+							<textarea id="description" name="content" value="{{ rental.content }}"></textarea>
+						</div>
+
+						<span>Gallerie image :</span>
+						<div class="add-img">
+							<div class="img-profil-rental">
+								<div class="container-picture">
+									<div class="picture-rental">
+										<input type="file" name='cover' class="profile-upload-rental" accept="image/*" style="display: none;">
+										<div class="cover-indicator">Couverture</div>
+
+										<label for="profile-upload-rental" class="profile-picture firstImage" style="background-image: url('{{ asset('/media/images/' ) }}')"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div role="button" class="button-83 addmore-picture">ajouter une image</div>
+
+					</div>
+
+					{# objectif faire comme pour le profil #}
+					<div class="update-delete">
+						<input type="submit" value="Ajouter la location" id="save-changes-btn">
+						<input type="submit" value="delete" id="delete-changes-btn">
+						<button type="button" class="close-changes-btn">Fermer</button>
+					</div>
+				</form>
+
+				<div
+					class="banner" class="image">
+					{# <img class="img-banner" src="{{asset('/media/images/montagnesrose.jpg')}}" alt=""> #}
+					<div class="card">
+						<div class="heart-kr" id="heart-kr"></div>
+						<div class="img-card imageContainer">
+							<img src="{{ asset('/media/images/boatkarim.png' ) }}" alt="gite en Foret">
+						</div>
+						<div class="txt-card">
+							<div class="title-card">
+								<div class="h1-card ">
+									<h1 class="h1-complete-edit"></h1>
+								</div>
+								<p class="prince-edit"></p>
+							</div>
+							<div class="location-card">
+								<span class="city city-edit"></span>
+							</div>
+							<h2 class="h2-card"></h2>
+							<div class="note-card">
+								<p>4</p>
+								<span>
+									<img src="{{ asset('/media/icon/etoile.svg') }}" alt="">
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
 	</section>
 
+	{% block javascripts %}
+		{{ parent() }}
+		<script defer src="{{ asset('/js/maps.js') }}"></script>
+		<script defer src="{{ asset('/js/listenerInputProperty.js') }}"></script>
+	{% endblock %}
 {% endblock %}

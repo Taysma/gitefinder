@@ -66,8 +66,9 @@
 									<form action="#">
 										<button id="wait" type="submit">En cours</button>
 									</form>
-									<form action="#">
-										<button id="annuler" type="submit">annuler</button>
+									<form action="{{ path('deleteReservation') }}" method="POST">
+										<input type="hidden" name="id_rental" value="{{ rental.id_rental }}">
+										<button id="annuler" type="submit">Annuler</button>
 									</form>
 								</div>
 

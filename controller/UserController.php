@@ -4,37 +4,34 @@ class UserController extends Controller
     // Connection utilisateur
     public function register()
     {
-        if (!$_POST) {
-            echo self::getRender('register.html.twig', []);
+        global $router;
+        $model = new UserModel();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
+            $birthdate = $_POST['birthdate'];
+            $rawPass = $_POST['password'];
+            $password = password_hash($rawPass, PASSWORD_DEFAULT);
+
+            $user = new User([
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'mail' => $mail,
+                'birthdate' => $birthdate,
+                'password' => $password,
+            ]);
+
+            $model->createUser($user);
+
+            header('Location: ' . $router->generate('dashboard'));
+            exit();
         } else {
-            global $router;
-            $model = new UserModel();
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $mail = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
-                $birthdate = $_POST['birthdate'];
-                $rawPass = $_POST['password'];
-                $password = password_hash($rawPass, PASSWORD_DEFAULT);
-
-                $user = new User([
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'mail' => $mail,
-                    'birthdate' => $birthdate,
-                    'password' => $password,
-
-                ]);
-
-                $model->createUser($user);
-                header('Location: ' . $router->generate('home'));
-            } else {
-                echo self::getRender('connect.html.twig', []);
-            }
+            echo self::getRender('register.html.twig', []);
         }
     }
-    
+
     public function login()
     {
         if (!$_POST) {
@@ -91,17 +88,23 @@ class UserController extends Controller
 
     public function getUserProfil()
     {
-        $userModel = new UserModel();
-        $personnalData = $userModel->getUserById();
+        if (!isset($_SESSION['connect']) || $_SESSION['connect'] !== true) {
+            global $router;
+            header('Location: ' . $router->generate('login'));
+            exit();
+        } else {
+            $userModel = new UserModel();
+            $personnalData = $userModel->getUserById();
 
-        echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
+            echo self::getRender('profil.html.twig', ['dataP' => $personnalData]);
+        }
     }
 
     public function editProfil()
     {
         global $router;
         $model = new UserModel();
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
@@ -176,30 +179,36 @@ class UserController extends Controller
     //Dashboard - CRUD Propriétés User
     public function getUserProperty()
     {
-        $id_user = $_SESSION['id_user'];
+        if (!isset($_SESSION['connect']) || $_SESSION['connect'] !== true) {
+            global $router;
+            header('Location: ' . $router->generate('login'));
+            exit();
+        } else {
+            $id_user = $_SESSION['id_user'];
 
-        $model = new RentalModel();
-        $CategoryModel = new CategoryModel();
-        $rentalsUser = $model->getUserRentals($id_user);
-        $categories = $CategoryModel->getAllCategory();
+            $model = new RentalModel();
+            $CategoryModel = new CategoryModel();
+            $rentalsUser = $model->getUserRentals($id_user);
+            $categories = $CategoryModel->getAllCategory();
 
-        echo self::getRender('addproperty.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
+            echo self::getRender('property.html.twig', ['rentals' => $rentalsUser, 'categories' => $categories]);
+        }
     }
 
     public function addProperty()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump($_FILES);
-            if (isset($_FILES['title']) ) {
+
+            if (null !== $_FILES['cover']) {
                 $id_user = $_SESSION['id_user'];
                 global $router;
                 $model = new RentalModel();
                 $Pmodel = new PictureModel();
-    
-    
+
+
                 $title = $_POST['title'];
                 $content = $_POST['content'];
-                // $cover = $_POST['cover'];
+                $cover = $_FILES['cover']['name'];
                 $capacity = $_POST['capacity'];
                 $surface_area = $_POST['surface_area'];
                 $address = $_POST['address'];
@@ -208,12 +217,12 @@ class UserController extends Controller
                 $longitude = $_POST['longitude'];
                 $selectedCategories = $_POST['categories'];
                 $titlePictures = $_FILES['title']['name'];
-    
+
                 $rental = new Rental([
                     'id_user' => $id_user,
                     'title' => $title,
                     'content' => $content,
-                    // 'cover' => $cover,
+                    'cover' => $cover,
                     'capacity' => $capacity,
                     'surface_area' => $surface_area,
                     'address' => $address,
@@ -221,120 +230,127 @@ class UserController extends Controller
                     'latitude' => $latitude,
                     'longitude' => $longitude
                 ]);
-    
+
+
                 $insertEtRecupId = $model->addRental($id_user, $rental);
-                
+
                 foreach ($selectedCategories as $id_category) {
                     $model->addRentalCategory($insertEtRecupId, $id_category);
                 }
 
-    
+
                 if ($insertEtRecupId) {
                     $uploadTitleImg = 'asset/media/images/';
-                    
+
+                    $uploadImg = 'asset/media/images/';
+                    $uploadFile = $uploadImg . $_FILES['cover']['name'];
+                    $controleUpload = move_uploaded_file($_FILES['cover']['tmp_name'], $uploadFile);
+
                     foreach ($titlePictures as $index => $titlePicture) {
                         $uploadTitleFile = $uploadTitleImg . $titlePicture;
                         $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
-    
-                        if (!$controleTitleUpload) {
+
+                        if (!$controleUpload || !$controleTitleUpload) {
                             // Gérer l'échec du téléchargement
                         }
-    
+
                         $picture = new Picture([
                             'id_rental' => $insertEtRecupId,
                             'title' => $titlePicture
                         ]);
-    
+
                         $picture = $Pmodel->addPicture($picture);
                     }
 
-                   
+
                     $picturesString = "";
                     foreach ($titlePictures as $titlePicture) {
                         $picturesString .= "Image Title: $titlePicture\n";
                     }
-    
-                    header('Location: ' . $router->generate('userProperty')); // CHEFFE OUI CHEFFE ON A POUR MISSION DE VOUS SIGNALER UNE MODIFICATION ICI MËME ..... FIN DE TRANSMISSION CHEFFE OUI CHEFFE !!!!!!!
+
+                    header('Location: ' . $router->generate('userProperty'));
+                    exit;
                 }
+            } else {
+                $message = "Les informations n'a pas pu être enregister.";
+                echo self::getRender('property.html.twig', ['message' => $message]);
             }
         }
     }
 
-    // public function editProperty()
-    // {
+    public function editProperty()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-           
-    //         if (isset($_FILES['title']) ) {
-    //             $id_user = $_SESSION['id_user'];
-    //             global $router;
-    //             $model = new RentalModel();
-    //             $Pmodel = new PictureModel();
-    
-    
-    //             $title = $_POST['title'];
-    //             $content = $_POST['content'];
-                
-    //             $capacity = $_POST['capacity'];
-    //             $surface_area = $_POST['surface_area'];
-    //             $address = $_POST['address'];
-    //             $price = intval($_POST['price']);
-    //             $latitude = $_POST['latitude'];
-    //             $longitude = $_POST['longitude'];
-    //             $selectedCategories = $_POST['categories'];
-    //             $titlePictures = $_FILES['title']['name'];
-    
-    //             $rental = new Rental([
-    //                 'id_user' => $id_user,
-    //                 'title' => $title,
-    //                 'content' => $content,
-                   
-    //                 'capacity' => $capacity,
-    //                 'surface_area' => $surface_area,
-    //                 'address' => $address,
-    //                 'price' => $price,
-    //                 'latitude' => $latitude,
-    //                 'longitude' => $longitude
-    //             ]);
-    
-    //             $model->updateRental($id_user, $rental);
-    //             var_dump($selectedCategories);
-    //             foreach ($selectedCategories as $id_category) {
-    //                 $model->addRentalCategory($insertEtRecupId, $id_category);
-    //             }
+            if (isset($_FILES['title'])) {
+                $id_user = $_SESSION['id_user'];
+                global $router;
+                $model = new RentalModel();
+                $Pmodel = new PictureModel();
 
-    
-    //             if ($insertEtRecupId) {
-    //                 $uploadTitleImg = 'asset/media/images/';
-                    
-    //                 foreach ($titlePictures as $index => $titlePicture) {
-    //                     $uploadTitleFile = $uploadTitleImg . $titlePicture;
-    //                     $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
-    
-    //                     if (!$controleTitleUpload) {
-    //                         // Gérer l'échec du téléchargement
-    //                     }
-    
-    //                     $picture = new Picture([
-    //                         'id_rental' => $insertEtRecupId,
-    //                         'title' => $titlePicture
-    //                     ]);
-    
-    //                     $picture = $Pmodel->addPicture($picture);
-    //                 }
+                $id_rental = $_GET['id_rental'];
+                $title = $_POST['title'];
+                $content = $_POST['content'];
 
-                   
-    //                 $picturesString = "";
-    //                 foreach ($titlePictures as $titlePicture) {
-    //                     $picturesString .= "Image Title: $titlePicture\n";
-    //                 }
-    
-    //                 header('Location: ' . $router->generate('userProperty'));
-    //             }
-    //         }
-    //     }
-        
-    // }
+                $capacity = $_POST['capacity'];
+                $surface_area = $_POST['surface_area'];
+                $address = $_POST['address'];
+                $price = intval($_POST['price']);
+                $latitude = $_POST['latitude'];
+                $longitude = $_POST['longitude'];
+                $selectedCategories = $_POST['categories'];
+                $titlePictures = $_FILES['title']['name'];
+
+                $rental = new Rental([
+
+                    'title' => $title,
+                    'content' => $content,
+
+                    'capacity' => $capacity,
+                    'surface_area' => $surface_area,
+                    'address' => $address,
+                    'price' => $price,
+                    'latitude' => $latitude,
+                    'longitude' => $longitude
+                ]);
+
+                $model->updateRental($rental);
+
+                foreach ($selectedCategories as $id_category) {
+                    $model->updateRentalCategory($id_rental, $id_category);
+                }
+
+
+                if ($id_rental) {
+                    $uploadTitleImg = 'asset/media/images/';
+
+                    foreach ($titlePictures as $index => $titlePicture) {
+                        $uploadTitleFile = $uploadTitleImg . $titlePicture;
+                        $controleTitleUpload = move_uploaded_file($_FILES['title']['tmp_name'][$index], $uploadTitleFile);
+
+                        if (!$controleTitleUpload) {
+                            // Gérer l'échec du téléchargement
+                        }
+
+                        $picture = new Picture([
+                            'id_rental' => $id_rental,
+                            'title' => $titlePicture
+                        ]);
+
+                        $picture = $Pmodel->addPicture($picture);
+                    }
+
+
+                    $picturesString = "";
+                    foreach ($titlePictures as $titlePicture) {
+                        $picturesString .= "Image Title: $titlePicture\n";
+                    }
+
+                    header('Location: ' . $router->generate('userProperty'));
+                }
+            }
+        }
+    }
 
     public function deleteProperty()
     {
@@ -351,76 +367,97 @@ class UserController extends Controller
     //Dashboard - CRUD Reservation User
     public function getUserReservation()
     {
-        $model = new ReservationModel();
-        $reservations = $model->getAllUserReservation();
+        if (!isset($_SESSION['connect']) || $_SESSION['connect'] !== true) {
+            global $router;
+            header('Location: ' . $router->generate('login'));
+            exit();
+        } else {
+            $model = new ReservationModel();
+            $reservations = $model->getAllUserReservation();
 
-        $rentalModel = new RentalModel();
-        $rentals = $rentalModel->getAllRentals();
+            $rentalModel = new RentalModel();
+            $rentals = $rentalModel->getAllRentals();
 
-        echo self::getRender('rental.html.twig', ['reservations' => $reservations, 'rentals' => $rentals]);
+            echo self::getRender('rental.html.twig', ['reservations' => $reservations, 'rentals' => $rentals]);
+        }
+    }
+
+    public function deleteReservation()
+    {
+        global $router;
+        $id_user = $_SESSION['id_user'];
+        $id_rental = $_POST['id_rental'];
+
+        $model = new RentalModel();
+        $model->deleteUserReservation($id_user, $id_rental);
+
+        header('Location:' . $router->generate('userReservations'));
+        exit();
+
     }
 
     //Dashboard - CRUD Wishlist User
     public function getUserWishlist()
     {
-        $model = new WishlistModel();
-        $wishlist = $model->getWish();
+        if (!isset($_SESSION['connect']) || $_SESSION['connect'] !== true) {
+            global $router;
+            header('Location: ' . $router->generate('login'));
+            exit();
+        } else {
+            $model = new WishlistModel();
+            $wishlist = $model->getWish();
 
-        $rentalModel = new RentalModel();
-        $rentals = $rentalModel->getAllRentals();
+            $rentalModel = new RentalModel();
+            $rentals = $rentalModel->getAllRentals();
 
-        echo self::getRender('favoris.html.twig', ['wishlist' => $wishlist, 'rentals' => $rentals]);
+            echo self::getRender('favoris.html.twig', ['wishlist' => $wishlist, 'rentals' => $rentals]);
+        }
     }
 
-    public function addToWishlist()
+    public function addToWishlist(int $id_rental)
     {
         if (isset($_SESSION['connect']) && $_SESSION['connect'] === true) {
 
-            global $router;
-
             $id_user = $_SESSION['id_user'];
-            //$id_rental = dataset;
 
-            $favorite = new Wishlist([
-                //'id_rental' => $id_rental,
-                'id_user' => $id_user,
-            ]);
+            global $router;
+            $model = new RentalModel();
+            $model->getOneRental($id_rental);
+
+            $favorite = new Wishlist(['id_user' => $id_user, 'id_rental' => $id_rental]);
 
             $favoriteModel = new WishlistModel();
-            $favoriteModel->addWish($favorite);
+            $favoriteModel->addWish($favorite, $id_rental);
 
-            header('Location: ' . $router->generate('home'));
-
+            header('Location:' . $router->generate('home'));
+            exit();
         } else {
             $message = "Veillez vous connecter pour ajouter des favoris";
             echo self::getRender('connect.html.twig', ['message' => $message]);
         }
     }
 
-    public function deleteFromWishlist()
+    public function deleteFromWishlist(int $id_rental)
     {
+        global $router;
         $id_user = $_SESSION['id_user'];
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['method'] === 'DELETE') {
-            if (isset($_POST['id_rental'])) {
-                $id_rental = $_POST['id_rental'];
+        $model = new WishlistModel();
+        $model->deleteWish($id_user, $id_rental);
 
-                $favoriteModel = new WishlistModel();
-                $favoriteModel->deleteWish($id_rental, $id_user);
-
-                // Return a JSON response
-                header('Content-Type: application/json');
-                echo json_encode(['success' => true]);
-                exit();
-            } else {
-                echo self::getRender('dashboard.html.twig', []);
-            }
-        }
+        header('Location:' . $router->generate('home'));
+        exit();
     }
 
     //Dashboard - CRUD Messagerie User
     public function getUserMessagerie()
     {
-        echo self::getRender('messenger.html.twig', []);
+        if (!isset($_SESSION['connect']) || $_SESSION['connect'] !== true) {
+            global $router;
+            header('Location: ' . $router->generate('login'));
+            exit();
+        } else {
+            echo self::getRender('messenger.html.twig', []);
+        }
     }
 }

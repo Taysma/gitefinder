@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 20 juil. 2023 à 09:10
+-- Généré le : lun. 21 août 2023 à 01:55
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.2.0
 
@@ -31,8 +31,8 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `tag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `slug` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `slug` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `chat` (
   `id_chat` int NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
   `id_rental` int NOT NULL,
-  `content` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `content` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `send_at` datetime NOT NULL,
   PRIMARY KEY (`id_chat`),
   KEY `USER` (`id_user`) USING BTREE,
@@ -113,12 +113,12 @@ CREATE TABLE IF NOT EXISTS `chat` (
 --
 
 INSERT INTO `chat` (`id_chat`, `id_user`, `id_rental`, `content`, `send_at`) VALUES
-(1, 1, 2, 'bonjour je souhaiterais savoir si le bateaux est a réaction et si il va dans l\'espace\r\n\r\nmerci au revoir', '2023-06-06 00:00:00'),
-(2, 1, 3, 'bonjour devons nous prévoir les lampes torches ou bien immôler mon petit frère suffira pour éclairer la grotte intégralement ?', '2023-06-06 00:00:00'),
-(4, 2, 1, 'bonjour si on accroche tout plein de ballons a la villa elle va s\'envoler comme dans le film la haut ?', '2023-06-06 00:00:00'),
-(5, 2, 3, 'bonjour votre grotte est elle assez profonde pour trouver du pétrole si par malheur on y donnais un malencontreux coup de pioche ?', '2023-06-06 00:00:00'),
-(6, 3, 1, 'bonjour peut on utiliser les meubles si nous manquons de charbon ou de bûche ?', '2023-06-06 00:00:00'),
-(7, 3, 2, 'bonjour quel est la profondeur en mer du lieu ou nous irons ? c\'est pas pour moi c\'est pour un ami', '2023-06-06 00:00:00');
+(1, 5, 2, 'bonjour je souhaiterais savoir si le bateaux est a réaction et si il va dans l\'espace\r\n\r\nmerci au revoir', '2023-06-06 00:00:00'),
+(2, 5, 3, 'bonjour devons nous prévoir les lampes torches ou bien immôler mon petit frère suffira pour éclairer la grotte intégralement ?', '2023-06-06 00:00:00'),
+(4, 6, 1, 'bonjour si on accroche tout plein de ballons a la villa elle va s\'envoler comme dans le film la haut ?', '2023-06-06 00:00:00'),
+(5, 6, 3, 'bonjour votre grotte est elle assez profonde pour trouver du pétrole si par malheur on y donnais un malencontreux coup de pioche ?', '2023-06-06 00:00:00'),
+(6, 4, 1, 'bonjour peut on utiliser les meubles si nous manquons de charbon ou de bûche ?', '2023-06-06 00:00:00'),
+(7, 4, 2, 'bonjour quel est la profondeur en mer du lieu ou nous irons ? c\'est pas pour moi c\'est pour un ami', '2023-06-06 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,7 @@ INSERT INTO `chat` (`id_chat`, `id_user`, `id_rental`, `content`, `send_at`) VAL
 DROP TABLE IF EXISTS `newsletter`;
 CREATE TABLE IF NOT EXISTS `newsletter` (
   `id_newsletter` int NOT NULL AUTO_INCREMENT,
-  `mail` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_newsletter`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -156,10 +156,10 @@ DROP TABLE IF EXISTS `picture`;
 CREATE TABLE IF NOT EXISTS `picture` (
   `id_picture` int NOT NULL AUTO_INCREMENT,
   `id_rental` int NOT NULL,
-  `title` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_picture`),
   KEY `RENTAL` (`id_rental`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `picture`
@@ -180,28 +180,28 @@ DROP TABLE IF EXISTS `rental`;
 CREATE TABLE IF NOT EXISTS `rental` (
   `id_rental` int NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
-  `title` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `content` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
-  `cover` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `content` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `cover` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `capacity` int NOT NULL,
   `surface_area` int NOT NULL,
-  `city` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
-  `country` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price` int NOT NULL,
+  `latitude` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `longitude` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_rental`),
   KEY `USER` (`id_user`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `rental`
 --
 
-INSERT INTO `rental` (`id_rental`, `id_user`, `title`, `content`, `cover`, `capacity`, `surface_area`, `city`, `address`, `country`, `price`) VALUES
-(1, 1, 'villa walesca', 'Découvrez la Villa Walesca, une vieille demeure de 100 ans en bord de mer. Son architecture d\'époque vous transporte dans un autre temps, tandis que les vues panoramiques et les jardins paisibles créent une atmosphère enchanteresse. Profitez de l\'élégance intemporelle, de l\'authenticité préservée et d\'une expérience inoubliable dans ce havre de charme et de tranquillité', 'villawalesca.png', 15, 300, '99001 palavasse les flots', '3 rue du coquillage', 'France', 300),
-(2, 2, 'boat karim', 'Offrez-vous une expérience unique en mer avec la location du BoatKarim ! Profitez de nuits magiques, bercé par les vagues, dans un cadre tranquille et magnifique. Réveillez-vous chaque matin avec une vue imprenable sur l\'horizon marin. Réservez dès maintenant et embarquez pour des souvenirs mémorables en mer.', 'boatkarim.png', 22, 500, 'Kuala lumpur', '2 rue duché kuala', 'France', 5000),
-(3, 3, 'les grottes sombre', 'Dormez au cœur de la nature dans notre gîte unique en grotte. Vivez une expérience insolite et magique. Réservez dès maintenant pour des vacances inoubliables loin de tout.......absolument tout', 'grotte.png', 16, 130, 'sables d\'olonne', '666 impasse du non retour', 'France', 666),
-(4, 1, 'cabane perché', 'Découvrez notre cabane perchée, l\'endroit idéal pour échapper au quotidien ! Perdez vos enfants en toute tranquillité ou amusez-vous à les traquer à vue avec notre fameuse phrase : \"Ha bah c\'était pas un sanglier\". Profitez de la nature, du calme et de l\'aventure dans notre cabane unique en son genre. Réservez dès maintenant pour des moments inoubliables en famille !', 'cabanearbre.jpg', 500, 2000, 'NoWayCity', 'lieu dit: la malchance 00000', 'Nerverland', 999);
+INSERT INTO `rental` (`id_rental`, `id_user`, `title`, `content`, `cover`, `capacity`, `surface_area`, `address`, `price`, `latitude`, `longitude`) VALUES
+(1, 5, 'villa walesca', 'Découvrez la Villa Walesca, une vieille demeure de 100 ans en bord de mer. Son architecture d\'époque vous transporte dans un autre temps, tandis que les vues panoramiques et les jardins paisibles créent une atmosphère enchanteresse. Profitez de l\'élégance intemporelle, de l\'authenticité préservée et d\'une expérience inoubliable dans ce havre de charme et de tranquillité', 'villawalesca.png', 15, 300, '3 rue du coquillage,\r\n99001 palavasse les flots,\r\nFrance', 300, '', ''),
+(2, 6, 'boat karim', 'Offrez-vous une expérience unique en mer avec la location du BoatKarim ! Profitez de nuits magiques, bercé par les vagues, dans un cadre tranquille et magnifique. Réveillez-vous chaque matin avec une vue imprenable sur l\'horizon marin. Réservez dès maintenant et embarquez pour des souvenirs mémorables en mer.', 'boatkarim.png', 22, 500, '2 rue duché kuala,\r\nKuala lumpur,\r\nFrance', 5000, '', ''),
+(3, 4, 'les grottes sombre', 'Dormez au cœur de la nature dans notre gîte unique en grotte. Vivez une expérience insolite et magique. Réservez dès maintenant pour des vacances inoubliables loin de tout.......absolument tout', 'grotte.png', 16, 130, '666 impasse du non retour,\r\nsables d\'olonne,\r\nFrance', 666, '', ''),
+(4, 9, 'cabane perché', 'Découvrez notre cabane perchée, l\'endroit idéal pour échapper au quotidien ! Perdez vos enfants en toute tranquillité ou amusez-vous à les traquer à vue avec notre fameuse phrase : \"Ha bah c\'était pas un sanglier\". Profitez de la nature, du calme et de l\'aventure dans notre cabane unique en son genre. Réservez dès maintenant pour des moments inoubliables en famille !', 'cabanearbre.jpg', 500, 2000, 'lieu dit: la malchance 00000,\r\nNoWayCity,\r\nNerverland', 999, '', '');
 
 -- --------------------------------------------------------
 
@@ -217,28 +217,6 @@ CREATE TABLE IF NOT EXISTS `rental_category` (
   KEY `RENTAL` (`id_rental`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Déchargement des données de la table `rental_category`
---
-
-INSERT INTO `rental_category` (`id_category`, `id_rental`) VALUES
-(1, 1),
-(1, 1),
-(5, 1),
-(9, 1),
-(11, 1),
-(17, 1),
-(5, 2),
-(9, 2),
-(15, 2),
-(41, 2),
-(51, 2),
-(3, 3),
-(5, 3),
-(7, 3),
-(21, 3),
-(53, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -250,14 +228,24 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `id_reservation` int NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
   `id_rental` int NOT NULL,
-  `available` int NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
   `checkin_date` date NOT NULL,
   `checkout_date` date NOT NULL,
-  `validation` date NOT NULL,
+  `num_guest` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `total_price` int NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_reservation`),
   KEY `USER` (`id_user`) USING BTREE,
   KEY `RENTAL` (`id_rental`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `reservation`
+--
+
+INSERT INTO `reservation` (`id_reservation`, `id_user`, `id_rental`, `status`, `checkin_date`, `checkout_date`, `num_guest`, `total_price`, `created_at`) VALUES
+(1, 5, 3, NULL, '2023-08-09', '2023-08-20', '1', 7692, '2023-08-10 16:13:15'),
+(2, 5, 4, NULL, '2023-08-21', '2023-08-27', '1', 6293, '2023-08-10 16:15:04');
 
 -- --------------------------------------------------------
 
@@ -270,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `review` (
   `id_review` int NOT NULL AUTO_INCREMENT,
   `id_user` int NOT NULL,
   `id_rental` int NOT NULL,
-  `content` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `content` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `rating` int NOT NULL,
   `created_at` date NOT NULL,
   PRIMARY KEY (`id_review`),
@@ -283,12 +271,12 @@ CREATE TABLE IF NOT EXISTS `review` (
 --
 
 INSERT INTO `review` (`id_review`, `id_user`, `id_rental`, `content`, `rating`, `created_at`) VALUES
-(1, 1, 2, 'le bateaux etais super le paysage magnifique mis a part l\'attaque de pirates qui nous ont honteusement dépouiller le voyage fut agréable.', 3, '2023-06-06'),
-(2, 1, 3, 'la bière etait bonne les nains sont sympas mais je sais toujours pas combien il faut de nain pour creuser un tunnel de 28m dans du granit en 2 jours', 3, '2023-06-06'),
-(3, 2, 1, 'chouette villa on a pu jouer a chache-cache avec belle maman prevenez nous si vous la retrouvez', 3, '2023-06-06'),
-(4, 2, 3, 'plus jamais je reviens !!! je suis tombé sur un troll tres farceur qui voulais me farcir avec des pommes je compte faire une réclamation', 1, '2023-06-06'),
-(5, 3, 1, 'séjour tres étrange nous avons entendues des bruits dans la cave sur toute la durée l\'endroit est peux etre hantée faite attention ', 3, '2023-06-06'),
-(6, 3, 2, 'le circuit des îles était genial on a pas trouver le one piece mais l\'aventure etait au RDV', 3, '2023-06-06');
+(1, 5, 2, 'le bateaux etais super le paysage magnifique mis a part l\'attaque de pirates qui nous ont honteusement dépouiller le voyage fut agréable.', 3, '2023-06-06'),
+(2, 5, 3, 'la bière etait bonne les nains sont sympas mais je sais toujours pas combien il faut de nain pour creuser un tunnel de 28m dans du granit en 2 jours', 3, '2023-06-06'),
+(3, 6, 1, 'chouette villa on a pu jouer a chache-cache avec belle maman prevenez nous si vous la retrouvez', 3, '2023-06-06'),
+(4, 6, 3, 'plus jamais je reviens !!! je suis tombé sur un troll tres farceur qui voulais me farcir avec des pommes je compte faire une réclamation', 1, '2023-06-06'),
+(5, 4, 1, 'séjour tres étrange nous avons entendues des bruits dans la cave sur toute la durée l\'endroit est peux etre hantée faite attention ', 3, '2023-06-06'),
+(6, 4, 2, 'le circuit des îles était genial on a pas trouver le one piece mais l\'aventure etait au RDV', 3, '2023-06-06');
 
 -- --------------------------------------------------------
 
@@ -300,28 +288,27 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `firstname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `lastname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `mail` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `birthdate` date NOT NULL,
-  `password` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` int NOT NULL,
+  `password` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `content` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `roles` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `avatar` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `avatar` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id_user`, `firstname`, `lastname`, `mail`, `birthdate`, `password`, `phone`, `content`, `roles`, `avatar`) VALUES
-(1, 'waleska', '', 'walesca@gintefinder.fr', '1900-01-01', 'cheffe', 606060606, 'c\'est la cheffe donc elle fait la cheffe quand elle fait la cheffe', 'cheffe', ''),
-(2, 'karim', '', 'karim@gintefinder.fr', '1900-02-01', 'frontend', 606060606, 'il developpa ses faculté d\'observation a un niveau si élever qu\'uon appella cette technique le karim des rois ', 'middle boss', ''),
-(3, 'dimitri', '', 'dimitri@gintefinder.fr', '1900-03-01', '123456789', 606060606, 'travailleur de lombre il veille au bon grain sous la direction de LA cheffe parce que tout le monde aime la cheffe', 'roublard', ''),
-(4, 'dimitri', 'johan', 'orikham@hotmail.fr', '1989-10-21', '$2y$10$kIp0OMWUouEPfpJ.fXStMeeJra.Hj0kvoV6Cb3f6BwNEfHLlNCM5i', 606060606, 'travailleur de lombre il veille au bon grain sous la direction de LA cheffe parce que tout le monde aime la cheffe', 'roublard', 'profilDimitri'),
-(5, 'walesca', 'commanderinchief', 'walesca@hotmail.fr', '2023-06-01', '$2y$10$N3.CsYSoJdXjZ/hhLRUo4.3M76kzSP.tL5GkMS2zWOHPhFuLcdYmG', 606060606, 'c\'est la cheffe donc elle fait la cheffe quand elle fait la cheffe', 'cheffe', 'profilWalesca'),
-(6, 'titi', 'tata', 'toto@toto.fr', '2023-06-29', '$2y$10$UOhZf/0/OOw4UGNfBwPkVutE3MmJ9jM6vwQX9JnGv.7VtISGdIy2C', 606060606, NULL, NULL, 'profilKarim');
+(4, 'dimitri', 'johan', 'orikham@hotmail.fr', '1989-10-21', '$2y$10$kIp0OMWUouEPfpJ.fXStMeeJra.Hj0kvoV6Cb3f6BwNEfHLlNCM5i', '0766683113', 'travailleur de lombre il veille au bon grain sous la direction de LA cheffe parce que tout le monde aime la cheffe', 'roublard', 'profilDimitri.png'),
+(5, 'walesca', 'commanderinchief', 'walesca@hotmail.fr', '2023-06-01', '$2y$10$N3.CsYSoJdXjZ/hhLRUo4.3M76kzSP.tL5GkMS2zWOHPhFuLcdYmG', '606060606', 'c\'est la cheffe donc elle fait la cheffe quand elle fait la cheffe', 'cheffe', '87735d9c58c44ceb6763fac9bb909c78.jpg'),
+(6, 'Karim', 'desrois', 'toto@toto.fr', '2023-06-29', '$2y$10$UOhZf/0/OOw4UGNfBwPkVutE3MmJ9jM6vwQX9JnGv.7VtISGdIy2C', '606060606', 'il developpa ses faculté d\'observation a un niveau si élever qu\'on appella cette technique le karim des rois technique qui devins sont surnom', 'middle boss', 'profilKarim'),
+(9, 'pierre', 'pierre', 'test@test.fr', '1989-10-21', '$2y$10$jQIuAttgMsu8DZsdjQskyeiEl5jbE7J5.S1ndKj1f3ZGc8r2QQtfi', '123456789', NULL, NULL, '167858be706244ec77469989a6a11a28.jpg'),
+(27, 'Angeline', 'Gillot', 'angie@hotmail.fr', '2023-02-23', '$2y$10$Wh4UVlNOqznwqOh9zhqUoeolKPkopaAr.Jyctq.uAYQhRdp0hR.za', '', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -337,19 +324,19 @@ CREATE TABLE IF NOT EXISTS `wishlist` (
   PRIMARY KEY (`id_wishlist`),
   KEY `USER` (`id_user`) USING BTREE,
   KEY `RENTAL` (`id_rental`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `wishlist`
 --
 
 INSERT INTO `wishlist` (`id_wishlist`, `id_user`, `id_rental`) VALUES
-(1, 5, 2),
-(2, 5, 3),
 (3, 6, 1),
 (4, 6, 3),
 (5, 4, 1),
-(6, 4, 2);
+(6, 4, 2),
+(18, 5, 3),
+(19, 5, 2);
 
 --
 -- Contraintes pour les tables déchargées
@@ -359,8 +346,8 @@ INSERT INTO `wishlist` (`id_wishlist`, `id_user`, `id_rental`) VALUES
 -- Contraintes pour la table `chat`
 --
 ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`id_rental`) REFERENCES `rental` (`id_rental`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `picture`

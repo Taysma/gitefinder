@@ -39,11 +39,13 @@
 				</div>
 				<!-- Slider d'images -->
 				<div id="sliderContainer">
+				{% for picture in picture %}
 					<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
 					<img class="sliderImage" src="{{ asset('/media/images/chalet-foret-nuit.jpg') }}" alt="">
 					<img
-					class="sliderImage" src="{{ asset('/media/images/' ~ rental.cover) }}" alt="">
+					class="sliderImage" src="{{ asset('/media/images/' ~ picture.rental_id  ~ picture.title) }}" alt="">
 				<!-- Ajoutez plus d'images de slider si nécessaire -->
+				{%  endfor  %}
 				</div>
 			</div>
 		</div>

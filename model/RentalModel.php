@@ -1,7 +1,6 @@
 <?php
 class RentalModel extends Model
 {
-
     public function addRental($id_user, Rental $rental)
     {
         $id_user = $_SESSION['id_user'];
@@ -10,11 +9,12 @@ class RentalModel extends Model
         $surface_area = $rental->getSurface_area();
         $address = $rental->getAddress();
         $content = $rental->getContent();
+        $cover = $rental->getCover();
         $price = $rental->getPrice();
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
 
-        $req = $this->getDb()->prepare('INSERT INTO `rental` (`id_user`, `title`, `capacity`, `surface_area`, `address`, `content`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area,   :address, :content,   :price, :latitude, :longitude )');
+        $req = $this->getDb()->prepare('INSERT INTO `rental` (`id_user`, `title`, `capacity`, `surface_area`, `address`, `content`, `cover`, `price`, `latitude`, `longitude`) VALUES ( :id_user, :title, :capacity, :surface_area,   :address, :content, :cover,  :price, :latitude, :longitude )');
 
         $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $req->bindParam(':title', $title, PDO::PARAM_STR);
@@ -22,6 +22,7 @@ class RentalModel extends Model
         $req->bindParam(':surface_area', $surface_area, PDO::PARAM_STR);
         $req->bindParam(':address', $address, PDO::PARAM_STR);
         $req->bindParam(':content', $content, PDO::PARAM_STR);
+        $req->bindParam(':cover', $cover, PDO::PARAM_STR);
         $req->bindParam(':price', $price, PDO::PARAM_INT);
         $req->bindParam(':latitude', $latitude, PDO::PARAM_STR);
         $req->bindParam(':longitude', $longitude, PDO::PARAM_STR);
@@ -108,7 +109,6 @@ class RentalModel extends Model
         $cover = $rental->getCover();
         $address = $rental->getAddress();
         $content = $rental->getContent();
-
         $price = $rental->getPrice();
         $latitude = $rental->getLatitude();
         $longitude = $rental->getLongitude();
@@ -131,9 +131,8 @@ class RentalModel extends Model
 
     public function updateRentalCategory(int $id_rental, $id_category)
     {
-
-        $req = $this->getDb()->prepare('UPDATE `rental_category` SET `id_category`=:id_category WHERE `id_rental`');
-        $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
+        $req = $this->getDb()->prepare('UPDATE `rental_category` SET `id_category`=:id_category WHERE `id_rental`=:id_rental');
+        $req->bindParam(':id_category', $id_category, PDO::PARAM_INT);
         $req->bindParam(':id_rental', $id_rental, PDO::PARAM_INT);
 
         $req->execute();
@@ -163,5 +162,13 @@ class RentalModel extends Model
             $this->getDb()->rollBack();
             throw $e; // or handle it in another way depending on your needs
         }
+    }
+
+    public function deleteUserReservation(int $id_user, $id_rental)
+    {
+        $req = $this->getDb()->prepare('DELETE FROM `reservation` WHERE `id_user` = :id_user AND `id_rental` = :id_rental');
+        $req->bindParam('id_user', $id_user, PDO::PARAM_INT);
+        $req->bindParam('id_rental', $id_rental, PDO::PARAM_INT);
+        $req->execute();
     }
 }

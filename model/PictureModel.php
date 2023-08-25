@@ -38,6 +38,22 @@ class PictureModel extends Model
         return $picture;
     }
 
+    public function getAllPicture($id_rental)
+{
+    $pictures = [];
+
+    $req = $this->getDb()->prepare("SELECT `id_picture`, `id_rental`, `title` FROM `picture` WHERE `id_rental` = :id_rental");
+    $req->bindParam(":id_rental", $id_rental, PDO::PARAM_INT);
+    $req->execute();
+
+    while ($picture = $req->fetch(PDO::FETCH_ASSOC)) {
+        $pictures[] = new Picture($picture);
+    }
+
+    return $pictures;
+}
+
+
 
     //delete
     public function delete(int $id)
