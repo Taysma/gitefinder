@@ -4,7 +4,7 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 require_once './vendor/autoload.php';
 
 $router = new AltoRouter();
-$router->setBasePath('/projets/gitefinder');
+$router->setBasePath('/gitefinder');
 
 //                                        HOMEPAGE
 $router->map('GET', '/', 'HomeController#home', 'home');

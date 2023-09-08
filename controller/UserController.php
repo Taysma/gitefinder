@@ -1,7 +1,7 @@
 <?php
 class UserController extends Controller
 {
-    // Connection utilisateur
+    // inscription utilisateur
     public function register()
     {
         if (!$_POST) {
@@ -259,10 +259,11 @@ class UserController extends Controller
                         $picturesString .= "Image Title: $titlePicture\n";
                     }
     
-                    //header('Location: ' . $router->generate('userProperty')); // CHEFFE OUI CHEFFE ON A POUR MISSION DE VOUS SIGNALER UNE MODIFICATION ICI MËME ..... FIN DE TRANSMISSION CHEFFE OUI CHEFFE !!!!!!!
+                 
                 }
             }
         }
+        header('Location: ' . $router->generate('userProperty')); // 
     }
 
     public function editProperty()
